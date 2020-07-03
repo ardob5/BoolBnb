@@ -23,4 +23,9 @@ class Apartment extends Model
     public function optionals(){
       return $this -> belongsToMany(Optional::class);
     }
+
+    public function photos(){
+
+      return $this ->hasMany(Photo::class);
+    }
 }
