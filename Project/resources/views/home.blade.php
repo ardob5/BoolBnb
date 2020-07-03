@@ -7,13 +7,13 @@
         <h1 class="display-4">La tua casa Ovunque</h1>
         <div class="input-group">
           <div class="filter">
-            
+
             {{-- INSERISCO IL FORM PER LA RICERCA --}}
             <form action="{{route('search')}}" method="get">
               @csrf
               @method('GET')
               <div class="form-group">
-                <input type="search" class="form-control" name='search' placeholder="Cerca Località" value="">
+                <input type="search" class="form-control" id="algolia-input" name='search' placeholder="Cerca Località" value="">
               </div>
               <div class="form-check">
                 <label class="prova" for="wi_fi">WiFi</label>
@@ -21,6 +21,7 @@
               </div>
               <input type="submit" class="btn btn-primary" value='cerca'>
             </form>
+            <script type="text/javascript" src="{{ asset('/js/algolia.js') }}"></script>
           </div>
         </div>
       </div>
