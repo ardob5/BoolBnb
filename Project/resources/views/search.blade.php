@@ -10,8 +10,7 @@
             <div class="filter">
               <form>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Cerca località</label>
-                  <input type="search" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cerca Località">
+                  <input type="search" class="form-control" placeholder="Cerca Località">
                 </div>
                 <div class="form-check">
                   <label class="prova" for="wi_fi">WiFi</label>
@@ -32,11 +31,12 @@
         </div>
         <div class="container-fluid">
           <div class="row justify-content-center">
+            @include('components.carousel')
             @foreach ($apartmentWithSponsor as $apartment)
               <div class="card" style="width: 18rem; margin: 15px 30px;">
                 <img class="card-img-top" src="{{ $apartment -> image }}" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">{{ $apartment -> title }}</h5>
+                  <h5 class="card-title">{{ $apartment -> title }}<i class="fas fa-certificate" style="color: yellow; margin-left: 3px;"></i> <small>Sponsorizzato</small></h5>
                   <p class="card-text">{{ $apartment -> description }}</p>
                   <a href="{{ route('show', $apartment -> id) }}" class="btn btn-warning">Vedi Appartamento</a>
                 </div>

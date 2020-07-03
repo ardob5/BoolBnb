@@ -27,9 +27,9 @@ class ApartmentsController extends Controller
 
   public function search(){
 
+    $apartments = Apartment::all();
     $apartmentWithSponsor = [];
     $apartmentWithoutSponsor = [];
-    $apartments = Apartment::all();
     foreach ($apartments as $apartment) {
       if ( count($apartment -> sponsors) > 0 ) {
         $apartmentWithSponsor[] = $apartment;
@@ -41,7 +41,7 @@ class ApartmentsController extends Controller
 
     $apartments_no_sponsor = collect($apartmentWithoutSponsor) -> paginate(10);
 
-    return view('search', compact('apartments_no_sponsor', 'apartmentWithSponsor'));
+    return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor'));
   }
 
   public function show($id) {
