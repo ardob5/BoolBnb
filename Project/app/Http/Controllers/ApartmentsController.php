@@ -12,4 +12,9 @@ class ApartmentsController extends Controller
   {
     return view('home');
   }
+
+  public function search(Request $request){
+    
+    return view('search');
+  }
 }
