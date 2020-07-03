@@ -13,15 +13,13 @@ class SponsorsSeeder extends Seeder
      */
     public function run()
     {
-
       $apartments = Apartment::all();
 
       factory(Sponsor::class,3) -> create();
 
       foreach ($apartments as $apartment) {
-        $sponsors = Sponsor::inRandomOrder() -> first();
+        $sponsors = Sponsor::inRandomOrder() -> take(rand(1,3)) -> get();
         $apartment -> sponsors() -> attach($sponsors);
       }
-
     }
 }

@@ -8,10 +8,10 @@ use Faker\Generator as Faker;
 $factory->define(Sponsor::class, function (Faker $faker) {
     return [
 
-      'start_sponsor' => $faker -> dateTime(),
-      'end_sponsor' => $faker -> dateTime(),
+      'type' => $faker -> unique() -> randomElement($array = array('basic', 'standard', 'premium')),
       'cost' => $faker -> randomFloat($nbMaxDecimals = 2, $min = 15, $max = NULL),
-      'type' => $faker -> unique() -> randomElement($array = array('basic', 'standard', 'premium'))
+      'start_sponsor' => $faker -> dateTime(),
+      'end_sponsor' => $faker -> dateTime()
 
     ];
 });

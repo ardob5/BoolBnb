@@ -16,10 +16,10 @@ class CreateSponsorsTable extends Migration
         Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
 
+            $table->string('type');
+            $table->string('cost');
             $table->date('start_sponsor');
             $table->date('end_sponsor');
-            $table->string('cost');
-            $table->string('type');
 
             $table->timestamps();
         });

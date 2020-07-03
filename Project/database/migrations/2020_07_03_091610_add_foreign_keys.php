@@ -14,36 +14,31 @@ class AddForeignKeys extends Migration
     public function up()
     {
         Schema::table('apartments',function(Blueprint $table){
-
-          $table -> foreign('user_id', 'user_apartments')
-                    -> references('id')
-                    -> on('users')
-                    -> onDelete('cascade');
+          $table  -> foreign('user_id', 'user_apartments')
+                  -> references('id')
+                  -> on('users')
+                  -> onDelete('cascade');
         });
 
         Schema::table('messages',function(Blueprint $table){
-
-          $table -> foreign('apartment_id', 'apartment_messages')
-                    -> references('id')
-                    -> on('apartments')
-                    -> onDelete('cascade');
+          $table  -> foreign('apartment_id', 'apartment_messages')
+                  -> references('id')
+                  -> on('apartments')
+                  -> onDelete('cascade');
         });
 
         Schema::table('apartment_sponsor',function(Blueprint $table){
-
-          $table -> foreign('apartment_id', 'apartment_sponsors')
-                    -> references('id')
-                    -> on('apartments')
-                    -> onDelete('cascade');
-
-          $table -> foreign('sponsor_id', 'sponsor_apartments')
-                    -> references('id')
-                    -> on('sponsors')
-                    -> onDelete('cascade');
+          $table  -> foreign('apartment_id', 'apartment_sponsors')
+                  -> references('id')
+                  -> on('apartments')
+                  -> onDelete('cascade');
+          $table  -> foreign('sponsor_id', 'sponsor_apartments')
+                  -> references('id')
+                  -> on('sponsors')
+                  -> onDelete('cascade');
         });
 
         Schema::table('apartment_optional',function(Blueprint $table){
-
           $table -> foreign('apartment_id', 'apartment_optionals')
                     -> references('id')
                     -> on('apartments')
