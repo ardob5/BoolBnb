@@ -19,12 +19,23 @@ class ApartmentsController extends Controller
         $apartmentWithSponsor[] = $apartment;
       }
     }
+    
+    $apartments_sponsor = collect($apartmentWithSponsor) -> paginate(6);
 
-    return view('home', compact('apartmentWithSponsor'));
+    return view('home', compact('apartments_sponsor'));
   }
 
-  public function search(Request $request){
-    
-    return view('search');
+  public function search(){
+
+    $apartments = Apartment::paginate(15);
+
+    return view('search', compact('apartments'));
+  }
+
+  public function show($id) {
+
+    $apartment = Apartment::findOrFail($id);
+
+    return view('show', compact('apartment'));
   }
 }
