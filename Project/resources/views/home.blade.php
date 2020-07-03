@@ -19,9 +19,9 @@
                 <label class="prova" for="wi_fi">WiFi</label>
                 <input name="wi_fi" type="checkbox" class="prova-input"  value="" id="wi_fi">
               </div>
-              <input type="submit" class="btn btn-primary" value='cerca'>
+              <input type="submit" id="submit" class="btn btn-primary" value='cerca'>
             </form>
-            <script type="text/javascript" src="{{ asset('/js/algolia.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script>
           </div>
         </div>
       </div>
