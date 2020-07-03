@@ -1,19 +1,30 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    @foreach ($apartmentWithSponsor as $apartment)
+
+      <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop ->index }}" class=
+        @if ($loop->first)
+          "active"
+        @endif
+      ></li>
+    @endforeach
   </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="..." alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
-    </div>
+    @foreach ($apartmentWithSponsor as $apartment)
+      <div class="carousel-item
+      @if ($loop->first)
+        active
+      @endif
+      ">
+
+
+        <img class="d-block w-100" src="{{ $apartment -> image }}" alt="First slide">
+        <div class="specific_apt">
+          <h4>{{ $apartment -> title }} <i class="fas fa-certificate" style="color: yellow; margin-left: 3px;"></i></h4>
+          <a href="#">Vai all'appartamento</a>
+        </div>
+      </div>
+    @endforeach
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

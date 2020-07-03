@@ -39,10 +39,11 @@ class ApartmentsController extends Controller
       }
     }
 
-    $apartments_no_sponsor = collect($apartmentWithoutSponsor) -> paginate(10);
+    $apartments_no_sponsor = collect($apartmentWithoutSponsor) -> paginate(12);
 
     return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor'));
   }
+
 
   public function show($id) {
 

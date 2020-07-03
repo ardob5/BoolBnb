@@ -27,13 +27,12 @@
 
 
       {{-- APPARTAMENTI IN EVIDENZA --}}
-      <div class="sponsored_container">
+      {{-- <div class="sponsored_container">
         <div class="container">
           <h2>In Evidenza</h2>
         </div>
         <div class="container-fluid">
           <div class="row justify-content-center">
-            @include('components.carousel')
             @foreach ($apartmentWithSponsor as $apartment)
               <div class="card" style="width: 18rem; margin: 15px 30px;">
                 <img class="card-img-top" src="{{ $apartment -> image }}" alt="Card image cap">
@@ -45,6 +44,8 @@
               </div>
             @endforeach
           </div>
+        </div> --}}
+        @include('components.carousel')
           <div class="row justify-content-center">
             @foreach ($apartments_no_sponsor as $nosponsorApt)
               <div class="card" style="width: 18rem; margin: 15px 30px;">
@@ -57,11 +58,11 @@
               </div>
             @endforeach
           </div>
-          <div class="row justify-content-center mt-50">
+          <div class="row justify-content-center">
             {{ $apartments_no_sponsor -> links() }}
           </div>
         </div>
-      </div>
+
   </div>
 
 @endsection

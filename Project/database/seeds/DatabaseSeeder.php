@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
           PhotosSeeder::class,
           MessagesSeeder::class,
           OptionalsSeeder::class,
-          SponsorsSeeder::class
+          SponsorsSeeder::class,
         ]);
     }
 }

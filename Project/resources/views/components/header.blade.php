@@ -1,4 +1,4 @@
-<header>
+<header style="z-index: 2000;">
   <div class="header-sx">
     <div class="header-logo">
       <i class="fas fa-hotel"></i>
