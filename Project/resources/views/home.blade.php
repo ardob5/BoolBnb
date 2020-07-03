@@ -22,4 +22,13 @@
       </div>
     </div>
   </div>
+
+
+  <ul>
+    @foreach ($apartmentWithSponsor as $sponsored)
+      <li>
+        {{ $sponsored -> title }} <br>
+      </li>
+    @endforeach
+  </ul>
 @endsection

@@ -16,9 +16,8 @@ class PhotosSeeder extends Seeder
         $apartments = Apartment::all();
         foreach ($apartments as $apartment) {
             factory(Photo::class, 4)-> create([
-                'apartment_id' => $apartment->id
-            ]);
-
+            'apartment_id' => $apartment->id
+          ]);
         }
     }
 }
