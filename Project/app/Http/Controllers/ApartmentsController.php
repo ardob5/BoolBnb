@@ -22,4 +22,9 @@ class ApartmentsController extends Controller
 
     return view('home', compact('apartmentWithSponsor'));
   }
+
+  public function search(Request $request){
+    
+    return view('search');
+  }
 }
