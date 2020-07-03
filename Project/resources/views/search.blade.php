@@ -24,6 +24,8 @@
         </div>
       </div>
 
+      <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script>
+
 
       {{-- APPARTAMENTI IN EVIDENZA --}}
       <div class="sponsored_container">
