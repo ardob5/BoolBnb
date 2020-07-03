@@ -9,7 +9,6 @@ $(document).ready(function(){
 
 
 
-  // ALGOLIA API
   var places = require('places.js');
   var placesAutocomplete = places({
     appId: 'pl3MGAFPUYLC',
@@ -25,4 +24,4 @@ $(document).ready(function(){
     aroundLatLng: latLong,
     aroundRadius: 20 * 1000,
   });
-}); // FINE DOCUMENT READY
+}); 
