@@ -15,7 +15,7 @@
       </li>
       @auth
         <li>
-          <a href="#">Diventa un Host</a>
+          <a href="{{ route('create') }}">Diventa un Host</a>
         </li>
       @endauth
       <li>

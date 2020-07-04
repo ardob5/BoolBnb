@@ -45,7 +45,12 @@
             @endforeach
           </div>
         </div> --}}
-        @include('components.carousel')
+
+        {{-- @include('components.carousel') --}}
+      @empty (!$apartmentWithSponsor)
+        @include('components.carousel_one')
+      @endempty
+
           <div class="row justify-content-center">
             @foreach ($apartments_no_sponsor as $nosponsorApt)
               <div class="card" style="width: 18rem; margin: 15px 30px;">
@@ -61,8 +66,6 @@
           <div class="row justify-content-center">
             {{ $apartments_no_sponsor -> links() }}
           </div>
-        </div>
-
   </div>
 
 @endsection

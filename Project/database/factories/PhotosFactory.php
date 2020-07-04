@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Photo::class, function (Faker $faker) {
     return [
-        'img_path' => $faker->imageUrl($width = 200, $height = 150)
+        'img_path' => $faker->imageUrl($width = 600, $height = 400)
     ];
 });

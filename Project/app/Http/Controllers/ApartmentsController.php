@@ -39,7 +39,7 @@ class ApartmentsController extends Controller
       }
     }
 
-    $apartments_no_sponsor = collect($apartmentWithoutSponsor) -> paginate(12);
+    $apartments_no_sponsor = collect($apartmentWithoutSponsor) -> paginate(6);
 
     return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor'));
   }
@@ -49,8 +49,12 @@ class ApartmentsController extends Controller
 
     $apartment = Apartment::findOrFail($id);
     $photos = $apartment -> photos;
-   
+
 
     return view('show', compact('apartment', 'photos'));
+  }
+
+  public function create(){
+    return view('create_apartment');
   }
 }

@@ -30,6 +30,7 @@
 
 
   <div class="container">
+  @empty (!$apartments_sponsor)
     <div class="row">
       @foreach ($apartments_sponsor as $apartment)
         <div class="card" style="width: 18rem; margin: 15px 30px;">
@@ -46,6 +47,7 @@
     <div class="row justify-content-center mt-50">
       {{ $apartments_sponsor -> links() }}
     </div>
+  @endempty
   </div>
 
 @endsection
