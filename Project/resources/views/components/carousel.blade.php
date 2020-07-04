@@ -17,11 +17,10 @@
       @endif
       ">
 
-
         <img class="d-block w-100" src="{{ $apartment -> image }}" alt="First slide">
         <div class="specific_apt">
           <h4>{{ $apartment -> title }} <i class="fas fa-certificate" style="color: yellow; margin-left: 3px;"></i></h4>
-          <a href="#">Vai all'appartamento</a>
+          <a href="{{ route('show', $apartment->id) }}">Vai all'appartamento</a>
         </div>
       </div>
     @endforeach

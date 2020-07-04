@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script>
+      {{-- <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script> --}}
 
 
       {{-- APPARTAMENTI IN EVIDENZA --}}
