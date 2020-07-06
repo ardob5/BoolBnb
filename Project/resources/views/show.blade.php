@@ -65,22 +65,22 @@
       <div class="section3">
         <div class="apartment-location">
           <div class="gpsbox">
-            <h1>SOME GPS SHIET</h1>
+            <h1>GPS</h1>
           </div>
         </div>
         @if ($apartment->user->id !== Auth::id())
           <div class="apartment-mail">
             <h2>Richiedi informazioni</h2>
-            <form action="{{ route('informations', $apartment -> id) }}" method="post">
+            <form action="{{ route('informations', $apartment -> id) }}" method="post" class="formarco">
               @csrf
               @method('POST')
               <input type="email" name="email" placeholder="Inserisci la tua mail" value="{{ old('email') }}"class="@error('email') is-invalid @enderror">
               @error('email')
-                <small class="text-danger">{{ $message }}</small> 
+                <small class="text-danger">{{ $message }}</small>
               @enderror
               <textarea name="informations" rows="8" cols="50" value=" {{ old('informations') }}" class="@error('informations') is-invalid @enderror"></textarea>
               @error('informations')
-                <small class="text-danger">{{ $message }}</small> 
+                <small class="text-danger">{{ $message }}</small>
               @enderror
               <button type="submit" name="invia">Invia</button>
             </form>
