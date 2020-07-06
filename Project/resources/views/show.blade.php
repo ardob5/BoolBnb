@@ -68,7 +68,7 @@
             <h1>SOME GPS SHIET</h1>
           </div>
         </div>
-        @if ($apartment->user->id !== auth()->user()->id)
+        @if ($apartment->user->id !== Auth::id())
           <div class="apartment-mail">
             <h2>Richiedi informazioni</h2>
             <form action="{{ route('informations', $apartment -> id) }}" method="post">
