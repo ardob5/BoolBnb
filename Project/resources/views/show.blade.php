@@ -46,8 +46,11 @@
   </div>
 
   @auth
-    <a href="{{ route('edit', $apartment ->id )}}"> Edit </a>
+    @if ($apartment->user->id == auth()->user()->id)
+      <a href="{{ route('edit', $apartment ->id )}}"> Edit </a>
+    @endif
   @endauth
+
 
 
 

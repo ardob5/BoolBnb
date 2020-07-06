@@ -53,6 +53,7 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
+
               <div class="col-sm-6">
                 <label for="price">Prezzo in €</label>
                 <input type="number" required name="price" id="price" class="form-control @error('price') is-invalid @enderror" value="{{ $apartment -> price }}">
@@ -69,7 +70,16 @@
                 @error('image')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
-              </div>
+                <div class="img_card">
+                  <div class="image-upload">
+                    <label for="file-input">
+                      <i class="fas fa-upload"></i>
+                    </label>
+                    <input id="file-input" name="photos[]" id="photos" class="form-control" type="file" />
+                  </div>
+                </div>
+            </div>
+
               <div class="col-sm-6 d-flex justify-content-center">
                   @foreach ($apartment -> photos as $photo)
                     <div class="img_card">

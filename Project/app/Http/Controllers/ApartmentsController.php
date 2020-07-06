@@ -87,8 +87,8 @@ class ApartmentsController extends Controller
         $img_ext = $img->extension();
         $img_name = Str::slug($apartment -> id . "-" . $apartment -> title);
         $img_name_with_ext = $img_name . "." . $img_ext;
-        $img -> storeAs('apartments/copertina/' . $apartment -> id . "-" .$apartment -> title, $img_name_with_ext, 'public');
-        $img_path = 'apartments/copertina/' . $apartment -> id ."-" . $apartment -> title . "/" . $img_name_with_ext;
+        $img -> storeAs('apartments/copertina/' . $apartment -> id, $img_name_with_ext, 'public');
+        $img_path = 'apartments/copertina/' . $apartment -> id . "/" . $img_name_with_ext;
 
         $apartment -> image = $img_path;
       }
@@ -105,8 +105,8 @@ class ApartmentsController extends Controller
             $image_ext = $image->extension();
             $image_name = Str::slug($photo -> id . "-" . $apartment -> title . "-" . bin2hex(random_bytes(10)));
             $image_name_with_ext = $image_name . "." . $image_ext;
-            $image -> storeAs('apartments/photos/' . $apartment -> id . "-" .$apartment -> title, $image_name_with_ext, 'public');
-            $image_path = 'apartments/photos/' . $apartment -> id ."-" . $apartment -> title . "/" . $image_name_with_ext;
+            $image -> storeAs('apartments/photos/' . $apartment -> id, $image_name_with_ext, 'public');
+            $image_path = 'apartments/photos/' . $apartment -> id . "/" . $image_name_with_ext;
 
             $photo -> img_path = $image_path;
             $photo -> apartment_id = $apartment -> id;
@@ -151,7 +151,12 @@ class ApartmentsController extends Controller
     $apartment = Apartment::findOrFail($id);
     $optionals = Optional::all();
 
-    return view('edit_apartment', compact('apartment', 'optionals'));
+    if($apartment->user->id !== Auth::user()->id) {
+      return redirect()->route('home');
+    } else {
+      return view('edit_apartment', compact('apartment', 'optionals'));
+    }
+
   }
 
   public function update(Request $request, $id) {
@@ -194,8 +199,8 @@ class ApartmentsController extends Controller
           $image_ext = $image->extension();
           $image_name = Str::slug($photo -> id . "-" . $apartment -> title . "-" . bin2hex(random_bytes(10)));
           $image_name_with_ext = $image_name . "." . $image_ext;
-          $image -> storeAs('apartments/photos/' . $apartment -> id . "-" .$apartment -> title, $image_name_with_ext, 'public');
-          $image_path = 'apartments/photos/' . $apartment -> id ."-" . $apartment -> title . "/" . $image_name_with_ext;
+          $image -> storeAs('apartments/photos/' . $apartment -> id, $image_name_with_ext, 'public');
+          $image_path = 'apartments/photos/' . $apartment -> id . "/" . $image_name_with_ext;
 
           $photo -> img_path = $image_path;
           $photo -> apartment_id = $apartment -> id;
@@ -212,16 +217,17 @@ class ApartmentsController extends Controller
     $apartment = Apartment::findOrFail($id);
     $img = $apartment -> image;
 
-    if (Storage::disk('public') -> exists($img)) {
-      Storage::disk('public') -> deleteDirectory('apartments/copertina/' . $apartment -> id . '-' . $apartment -> title);
-      Storage::disk('public') -> deleteDirectory('apartments/photos/' . $apartment -> id . '-' . $apartment -> title);
-  }
+    if($apartment->user->id !== Auth::user()->id) {
+      return redirect()->route('home');
+    } else {
+        if (Storage::disk('public') -> exists($img)) {
+          Storage::disk('public') -> deleteDirectory('apartments/copertina/' . $apartment -> id);
+          Storage::disk('public') -> deleteDirectory('apartments/photos/' . $apartment -> id);
+        }
+      $apartment -> delete();
+      return redirect() -> route('my_apartments');
+    }
 
-
-
-    $apartment -> delete();
-
-    return redirect() -> route('my_apartments');
   }
 
 }
