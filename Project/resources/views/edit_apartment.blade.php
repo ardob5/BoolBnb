@@ -65,7 +65,7 @@
 
             <div class="form-group row">
               <div class="col-sm-6">
-                <label for="image">Foto copertina appartamento</label>
+                <label for="image">Modifica copertina</label>
                 <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
                 @error('image')
                     <small class="text-danger">{{ $message }}</small>
@@ -92,6 +92,7 @@
                         @endif
                         width="50" height="50" alt="{{ $apartment -> title }}">
                     </div>
+                    <a href="{{ route('delete_img', $photo -> id )}}">delete</a>
                   @endforeach
                   @if (count($apartment -> photos) < 4)
                     <div class="img_card">
@@ -99,7 +100,10 @@
                         <label for="file-input">
                           <i class="fas fa-upload"></i>
                         </label>
-                        <input id="file-input" name="photos[]" id="photos" class="form-control" type="file" />
+                        <input id="file-input" name="photos[]" id="photos" class="form-control  @error('photos') is-invalid @enderror" type="file" multiple/>
+                        @error ('photos')
+                          <small class="text-danger">{{ $message }}</small>
+                        @enderror
                       </div>
                     </div>
                   @endif

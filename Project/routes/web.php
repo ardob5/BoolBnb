@@ -21,3 +21,5 @@ Route::get('/edit/{id}', 'ApartmentsController@edit')->name('edit')->middleware(
 Route::post('/update/{it}', 'ApartmentsController@update')->name('update')->middleware('auth');
 
 Route::get('/delete/{id}', 'ApartmentsController@delete')->name('delete')->middleware('auth');
+
+Route::get('/delete_image/{id}', 'PhotosController@delete')->name('delete_img')->middleware('auth');

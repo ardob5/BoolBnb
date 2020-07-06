@@ -47,9 +47,11 @@
             </div>
         @endempty
 
-        @if (count($apartmentWithSponsor) < 1 && count($apartmentWithoutSponsor) < 1)
-            <h5>Diventa un host inserendo il tuo appartamento</h5>
-            <a href="{{ route('create') }}" type="button" class="btn btn-success">Inserisci Appartamento</a>
-        @endif
+
+
+
+        <h5>Inserisci il tuo appartamento</h5>
+        <a href="{{ route('create') }}" type="button" class="btn btn-success">Vai</a>
+
     </div>
 @endsection
