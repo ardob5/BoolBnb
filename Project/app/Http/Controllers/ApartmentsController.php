@@ -5,6 +5,7 @@ use App\Apartment;
 use App\Sponsor;
 use App\Photo;
 use App\Optional;
+use App\Message;
 
 use Storage;
 use Str;
@@ -211,7 +212,7 @@ class ApartmentsController extends Controller
           $photo = new Photo();
           $image_ext = $image->extension();
           $image_name = Str::slug($photo -> id . "-" . $apartment -> title . "-" . bin2hex(random_bytes(10)));
-          $image_name_with_ext = $image_name . "." . $image_ext;
+          $image_name_with_ext = $imaqge_name . "." . $image_ext;
           $image -> storeAs('apartments/photos/' . $apartment -> id, $image_name_with_ext, 'public');
           $image_path = 'apartments/photos/' . $apartment -> id . "/" . $image_name_with_ext;
 
@@ -240,6 +241,23 @@ class ApartmentsController extends Controller
       $apartment -> delete();
       return redirect() -> route('my_apartments');
     }
+
+  }
+
+  public function saveInformations(Request $request, $id) {
+
+    $validate_data = $request->validate([
+      'email' => 'required|email',
+      'informations' => 'required|string'
+    ]);
+
+    $message = new Message();
+    $message -> email = $validate_data['email'];
+    $message -> text = $validate_data['informations'];
+    $message -> apartment_id = $id;
+    $message -> save();
+
+    return redirect() -> route('show', $id) -> withSuccess('Messaggio inviato correttamente, riceverai una risposta a breve');
 
   }
 
