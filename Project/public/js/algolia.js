@@ -10814,7 +10814,11 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< Updated upstream
 module.exports = __webpack_require__(/*! C:\Users\39331\Desktop\MyProjects\BoolBnb\Project\resources\js\algolia.js */"./resources/js/algolia.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\algolia.js */"./resources/js/algolia.js");
+>>>>>>> Stashed changes
 
 
 /***/ }),

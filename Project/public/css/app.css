@@ -10101,16 +10101,14 @@ h3 {
 }
 
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
-
-body {
+* body {
   overflow-x: hidden;
 }
-
-.specific_apt {
+* body .specific_apt {
   background-color: #FFF;
   border-radius: 4px;
   width: 145px;
@@ -10118,75 +10116,68 @@ body {
   top: 50px;
   right: 50px;
 }
-
-header {
-  width: 100%;
-  height: 80px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding-left: 10px;
-  box-shadow: 1px 1px 6px 3px grey;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-.main_content {
+* body .main_content {
   margin-top: 80px;
 }
-.main_content .jumbotron {
+* body .main_content .jumbotron {
   height: 500px;
   background-color: blue;
 }
-
-.filter {
+* body .filter {
   width: 100%;
 }
-.filter form {
+* body .filter form {
   width: 75%;
 }
-
-.header-sx {
+* body header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  padding-left: 10px;
+  box-shadow: 1px 1px 10px 5px grey;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* FINE PARTE DESTRA */
+}
+* body header .header-sx {
   display: flex;
   width: 50%;
   justify-content: space-around;
 }
-
-.header-logo {
+* body header .header-sx .header-logo {
   font-size: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   width: 30%;
   color: #ff4444;
 }
-
-.header-logo i {
-  font-size: 30px;
+* body header .header-sx .header-logo a {
+  color: #ff4444;
 }
-
-.header-search {
-  background-color: cyan;
-  width: 150px;
+* body header .header-sx .header-logo i {
+  font-size: 32px;
 }
-
-/* FINE PARTE SINISTRA */
-.header-dx {
+* body header .header-dx {
   display: flex;
   width: 40%;
   justify-content: space-around;
 }
-
-.header-dx ul {
+* body header .header-dx ul {
   width: 100%;
   list-style-type: none;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-
-.register-button {
+* body header .header-dx ul a {
+  color: #323232;
+}
+* body header .header-dx ul .register-button {
   padding: 0 16px;
   height: 40px;
   border: 1px solid red;
@@ -10194,39 +10185,126 @@ header {
   display: flex;
   align-items: center;
 }
-
-.cta-100 {
+* body header .header-dx ul .register-button:hover {
+  background: red;
+}
+* body header .header-dx ul .register-button:hover a {
+  color: white;
+}
+* body .apartment {
+  padding-top: 0px;
+  border: 4px solid black;
+  height: 180%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+* body .apartment div[class^=section] {
+  width: 80%;
+}
+* body .apartment .section1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 30%;
+}
+* body .apartment .section1 .apartment-img {
+  height: 200px;
+  width: 100%;
+  background: red;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+* body .apartment .section1 .apartment-img img {
+  height: 300px !important;
+  width: 700px !important;
+  display: none !important;
+}
+* body .apartment .section1 .apartment-img .cta-100 {
   margin-top: 100px;
   padding-left: 8%;
   padding-top: 7%;
 }
-
-.col-md-4 {
+* body .apartment .section1 .apartment-img .col-md-4 {
   padding-bottom: 20px;
 }
-
-.white {
+* body .apartment .section1 .apartment-img .white {
   color: #fff !important;
 }
-
-.mt {
+* body .apartment .section1 .apartment-img .mt {
   float: left;
   margin-top: -20px;
   padding-top: 20px;
 }
-
-.bg-blue-ui {
+* body .apartment .section1 .apartment-img .bg-blue-ui {
   background-color: #708198 !important;
 }
-
-figure img {
-  width: 300px;
+* body .apartment .section1 .apartment-img figure img {
+  height: 200px;
 }
-
-.fas.fa-upload {
-  font-size: 50px;
+* body .apartment .section2 {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  height: 33%;
+  border-bottom: 1px #d6d6d6 solid;
 }
-
-#file-input {
-  display: none;
+* body .apartment .section2 .titleprice {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+* body .apartment .section2 .apartment-description {
+  height: 100%;
+  width: 50%;
+  padding: 15px;
+}
+* body .apartment .section2 .apartment-services {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+* body .apartment .section2 .apartment-services ul {
+  line-height: 30px;
+}
+* body .apartment .section3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 33%;
+}
+* body .apartment .section3 .apartment-location {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid green;
+}
+* body .apartment .section3 .apartment-location .gpsbox {
+  height: 50%;
+  width: 50%;
+  background: #4f7135;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+* body .apartment .section3 .apartment-mail {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+* body .apartment .section3 .apartment-mail input, * body .apartment .section3 .apartment-mail textarea {
+  width: 80%;
+}
+* body .apartment .section3 .apartment-mail button {
+  width: 35%;
 }
