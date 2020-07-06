@@ -6,11 +6,12 @@
                 <h2>In evidenza</h2>
                 <ol class="carousel-indicators">
                   @foreach ($apartmentWithSponsor as $apartment)
-                    <li data-target="#blogCarousel" data-slide-to="{{ $loop ->index }}" class=
+                    <li data-target="#blogCarousel" data-slide-to="{{ $loop ->index }}" class="
                       @if ($loop->first)
-                        "active"
+                        active
                       @endif
-                    ></li>
+                    ">
+                  </li>
                   @endforeach
                 </ol>
                 <!-- Carousel items -->
@@ -28,7 +29,15 @@
                               <!--Date-->
                               <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
                               <!--Image-->
-                              <figure> <img alt="" src=""</figure>
+                              <figure> 
+                                <img alt="{{ $apartment->title }}"
+                                @if(stristr($apartment -> image, 'http'))
+                                    src=" {{ asset($apartment -> image) }}"
+                                @else
+                                    src="{{ asset('storage/' . $apartment -> image) }}"
+                                @endif  
+                                 >
+                                </figure>
                             </div>
                             <div class="item-box-blog-body">
                               <!--Heading-->
@@ -41,7 +50,7 @@
                               <div class="item-box-blog-text">
                                 <p>{{$apartment -> title}}</p>
                               </div>
-                              <div class="mt"> <a href="{{ route('show', $apartment -> id) }}" tabindex="0" class="btn bg-blue-ui white read">vai all'appartamento</a> </div>
+                              <div class="mt"> <a href="{{ route('show', $apartment -> id) }}" tabindex="0" class="btn bg-blue-ui white read">Vai all'appartamento</a> </div>
                               <!--Read More Button-->
                             </div>
                           </div>

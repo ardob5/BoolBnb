@@ -54,7 +54,13 @@
           <div class="row justify-content-center">
             @foreach ($apartments_no_sponsor as $nosponsorApt)
               <div class="card" style="width: 18rem; margin: 15px 30px;">
-                <img class="card-img-top" src="{{ $nosponsorApt -> image }}" alt="Card image cap">
+                <img class="card-img-top"
+                  @if(stristr($nosponsorApt -> image, 'http'))
+                      src=" {{ asset($nosponsorApt -> image) }}"
+                    @else
+                      src="{{ asset('storage/' . $nosponsorApt -> image) }}"
+                  @endif  
+                  alt="{{ $nosponsorApt -> title }}">
                 <div class="card-body">
                   <h5 class="card-title">{{ $nosponsorApt -> title }}</h5>
                   <p class="card-text">{{ $nosponsorApt -> description }}</p>

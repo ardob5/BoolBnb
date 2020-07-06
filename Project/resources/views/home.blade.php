@@ -34,7 +34,13 @@
     <div class="row">
       @foreach ($apartments_sponsor as $apartment)
         <div class="card" style="width: 18rem; margin: 15px 30px;">
-          <img class="card-img-top" src="{{ $apartment -> image }}" alt="Card image cap">
+          <img class="card-img-top"
+          @if(stristr($apartment -> image, 'http'))
+              src=" {{ asset($apartment -> image) }}"
+          @else
+              src="{{ asset('storage/' . $apartment -> image) }}"
+          @endif  
+          alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{ $apartment -> title }}<i class="fas fa-certificate" style="color: yellow; margin-left: 3px;"></i> <small>Sponsorizzato</small> </h5>
             <p class="card-text">{{ $apartment -> description }}</p>
