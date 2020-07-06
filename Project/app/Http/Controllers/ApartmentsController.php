@@ -170,7 +170,7 @@ class ApartmentsController extends Controller
       'price' => 'required|integer',
       'image' => 'mimes:jpeg,jpg,bmp,png|max:8000',
       'photos' => 'array|max:4',
-      'photos.*' => 'mimes:jpeg,jpg,bmp,png|max:8000',
+      'photos.*' => 'mimes:jpeg,jpg,bmp,png|    max:8000',
       'optionals' => 'array',
       'description' => 'required|string'
     ]);
@@ -184,11 +184,24 @@ class ApartmentsController extends Controller
     $apartment -> area = $validate_data['area'];
     $apartment -> price = $validate_data['price'];
     $apartment -> description = $validate_data['description'];
-    // $apartment -> image = "";
-
-
+    
     $apartment -> save();
     $apartment -> optionals() -> sync($validate_data['optionals']);
+
+    if ($request->hasFile('image')) {
+      $img = $request->file('image');
+
+      if ($img->isValid()) {
+        $img_ext = $img->extension();
+        $img_name = Str::slug($apartment -> id . "-" . $apartment -> title);
+        $img_name_with_ext = $img_name . "." . $img_ext;
+        Storage::disk('public') -> deleteDirectory('apartments/copertina/' . $apartment -> id);
+        $img -> storeAs('apartments/copertina/' . $apartment -> id, $img_name_with_ext, 'public');
+        $img_path = 'apartments/copertina/' . $apartment -> id . "/" . $img_name_with_ext;
+        $apartment -> image = $img_path;
+        $apartment->save();
+      }
+    }
 
     if ($request->hasFile('photos')) {
 

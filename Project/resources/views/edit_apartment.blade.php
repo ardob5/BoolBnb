@@ -71,14 +71,15 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
                 <div class="img_card">
-                  <div class="image-upload">
-                    <label for="file-input">
-                      <i class="fas fa-upload"></i>
-                    </label>
-                    <input id="file-input" name="photos[]" id="photos" class="form-control" type="file" />
-                  </div>
+                  <img
+                      @if(stristr($apartment -> image, 'http'))
+                          src=" {{ asset($apartment -> image) }}"
+                      @else
+                          src="{{ asset('storage/' . $apartment -> image) }}"
+                      @endif
+                      width="50" height="50" alt="{{ $apartment -> title }}">
                 </div>
-            </div>
+              </div>
 
               <div class="col-sm-6 d-flex justify-content-center">
                   @foreach ($apartment -> photos as $photo)
