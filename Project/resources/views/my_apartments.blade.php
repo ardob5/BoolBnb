@@ -6,12 +6,12 @@
             <div class="row justify-content-center">
                 @foreach ($apartmentWithSponsor as $apartment)
                     <div class="card text-white bg-warning mb-3" style="width: 18rem;">
-                        <img 
+                        <img
                         @if(stristr($apartment -> image, 'http'))
                             src=" {{ asset($apartment -> img_path) }}"
                         @else
                             src="{{ asset('storage/' . $apartment -> image) }}"
-                        @endif  
+                        @endif
                         alt="{{ $apartment->title }}" class="card-img-top">
                         <div class="card-body">
                         <h5 class="card-title">{{ $apartment->title }}</h5>
@@ -27,17 +27,20 @@
             <div class="row justify-content-center">
                 @foreach ($apartmentWithoutSponsor as $apartment)
                     <div class="card text-white bg-info mb-3" style="width: 18rem;">
-                        <img 
+                        <img
                         @if(stristr($apartment -> image, 'http'))
                             src=" {{ asset($apartment -> img_path) }}"
                         @else
                             src="{{ asset('storage/' . $apartment -> image) }}"
-                        @endif  
+                        @endif
                         alt="{{ $apartment->title }}" class="card-img-top">
                         <div class="card-body">
                         <h5 class="card-title">{{ $apartment->title }}</h5>
                         <p class="card-text">{{ $apartment-> description }}</p>
-                        <a href="{{ route('show', $apartment->id) }}" class="btn btn-success">Dettagli</a>
+                        <div class="row">
+                          <a href="{{ route('show', $apartment->id) }}" class="btn btn-success">Dettagli</a>
+                          <a href="{{ route('delete', $apartment->id) }}" class="btn btn-danger">Elimina appartamento</a>
+                        </div>
                         </div>
                     </div>
                 @endforeach

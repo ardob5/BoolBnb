@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Apartment;
 use App\Sponsor;
 use App\Photo;
+use App\Optional;
+
+use Storage;
 use Str;
 use Auth;
 
@@ -84,17 +87,17 @@ class ApartmentsController extends Controller
         $img_ext = $img->extension();
         $img_name = Str::slug($apartment -> id . "-" . $apartment -> title);
         $img_name_with_ext = $img_name . "." . $img_ext;
-        $img -> storeAs('apartments/copertina/' . $apartment -> id . "-" .$apartment -> title, $img_name_with_ext, 'public');  
+        $img -> storeAs('apartments/copertina/' . $apartment -> id . "-" .$apartment -> title, $img_name_with_ext, 'public');
         $img_path = 'apartments/copertina/' . $apartment -> id ."-" . $apartment -> title . "/" . $img_name_with_ext;
-    
+
         $apartment -> image = $img_path;
       }
     }
 
     $apartment -> save();
-    
+
     if ($request->hasFile('photos')) {
-    
+
       $images = $request->file('photos');
       foreach ($images as $image) {
         if ($image -> isValid()) {
@@ -120,7 +123,7 @@ class ApartmentsController extends Controller
     $apartments = Auth::user()->apartments;
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
     $apartmentWithoutSponsor = $this->filterApartmentWithoutSponsor($apartments);
-    
+
     return view('my_apartments', compact('apartmentWithSponsor', 'apartmentWithoutSponsor'));
   }
 
@@ -142,6 +145,83 @@ class ApartmentsController extends Controller
       }
     }
     return $apartmentWithoutSponsor;
+  }
+
+  public function edit($id) {
+    $apartment = Apartment::findOrFail($id);
+    $optionals = Optional::all();
+
+    return view('edit_apartment', compact('apartment', 'optionals'));
+  }
+
+  public function update(Request $request, $id) {
+
+    $validate_data = $request->validate([
+      'title' => 'required|alpha_num',
+      'address' => 'required|alpha_num',
+      'room_number' => 'required|integer',
+      'bath_number' => 'required|integer',
+      'area' => 'required|integer',
+      'price' => 'required|integer',
+      'image' => 'mimes:jpeg,jpg,bmp,png|max:8000',
+      'photos' => 'array|max:4',
+      'photos.*' => 'mimes:jpeg,jpg,bmp,png|max:8000',
+      'optionals' => 'array',
+      'description' => 'required|string'
+    ]);
+
+    $apartment = Apartment::findOrFail($id);
+
+    $apartment -> title = $validate_data['title'];
+    $apartment -> address = $validate_data['address'];
+    $apartment -> room_number = $validate_data['room_number'];
+    $apartment -> bath_number = $validate_data['bath_number'];
+    $apartment -> area = $validate_data['area'];
+    $apartment -> price = $validate_data['price'];
+    $apartment -> description = $validate_data['description'];
+    // $apartment -> image = "";
+
+
+    $apartment -> save();
+    $apartment -> optionals() -> sync($validate_data['optionals']);
+
+    if ($request->hasFile('photos')) {
+
+      $images = $request->file('photos');
+      foreach ($images as $image) {
+        if ($image -> isValid()) {
+          $photo = new Photo();
+          $image_ext = $image->extension();
+          $image_name = Str::slug($photo -> id . "-" . $apartment -> title . "-" . bin2hex(random_bytes(10)));
+          $image_name_with_ext = $image_name . "." . $image_ext;
+          $image -> storeAs('apartments/photos/' . $apartment -> id . "-" .$apartment -> title, $image_name_with_ext, 'public');
+          $image_path = 'apartments/photos/' . $apartment -> id ."-" . $apartment -> title . "/" . $image_name_with_ext;
+
+          $photo -> img_path = $image_path;
+          $photo -> apartment_id = $apartment -> id;
+          $photo -> save();
+        }
+      }
+    }
+
+    return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' modificato con successo');
+  }
+
+  public function delete($id) {
+
+    $apartment = Apartment::findOrFail($id);
+    $img = $apartment -> image;
+
+    if (Storage::disk('public') -> exists($img)) {
+      Storage::disk('public') -> deleteDirectory('apartments/copertina/' . $apartment -> id . '-' . $apartment -> title);
+      Storage::disk('public') -> deleteDirectory('apartments/photos/' . $apartment -> id . '-' . $apartment -> title);
+  }
+
+
+
+    $apartment -> delete();
+
+    return redirect() -> route('my_apartments');
   }
 
 }

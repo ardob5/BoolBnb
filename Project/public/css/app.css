@@ -10222,3 +10222,11 @@ header {
 figure img {
   width: 300px;
 }
+
+.fas.fa-upload {
+  font-size: 50px;
+}
+
+#file-input {
+  display: none;
+}

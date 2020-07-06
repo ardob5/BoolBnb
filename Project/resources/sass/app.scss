@@ -115,9 +115,18 @@ header{
   color: #fff !important;
 }
 .mt{float: left;margin-top: -20px;padding-top: 20px;}
+
 .bg-blue-ui {
   background-color: #708198 !important;
 }
-figure img{width:300px;}
+figure img{
+  width:300px;
+}
 
+.fas.fa-upload {
+  font-size: 50px;
+}
 
+#file-input {
+  display: none;
+}
