@@ -10312,6 +10312,10 @@ h3 {
   background-color: transparent;
   /* FINE PARTE DESTRA */
 }
+* body header:hover .register-button {
+  transition: all 0.4s linear;
+  background: white;
+}
 * body header .header-sx {
   width: 50%;
   display: flex;
@@ -10330,12 +10334,14 @@ h3 {
   margin-top: 11px;
 }
 * body header .header-sx .header-logo h2 a {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   margin-top: 11px;
   color: #e13c3c;
   text-decoration: none;
   font-weight: bolder;
 }
 * body header .header-sx .header-logo i {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   color: #e13c3c;
   font-size: 32px;
 }
@@ -10345,6 +10351,7 @@ h3 {
   justify-content: space-around;
 }
 * body header .header-dx ul {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   margin-top: 16px;
   width: 100%;
   list-style-type: none;
@@ -10353,7 +10360,12 @@ h3 {
   align-items: center;
 }
 * body header .header-dx ul a {
-  color: #323232;
+  text-decoration: none;
+  font-weight: bold;
+  color: white !important;
+}
+* body header .header-dx ul i {
+  color: white !important;
 }
 * body header .header-dx ul .register-button {
   padding: 0 1px !important;

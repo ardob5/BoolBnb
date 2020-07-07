@@ -3,7 +3,7 @@
 @section('content')
   <div class="main_content">
     <div class="jumbotron jumbotron-fluid">
-      <div class="container">
+      <div class="container container-input">
         <h1 class="display-4">La tua casa Ovunque</h1>
         <div class="input-group">
           <div class="filter">
