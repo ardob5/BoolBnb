@@ -38,6 +38,7 @@
                         <h5 class="card-title">{{ $apartment->title }}</h5>
                         <p class="card-text">{{ $apartment-> description }}</p>
                         <div class="row">
+                          <a href="{{ route('edit', $apartment->id) }}" class="btn btn-primary">Edit</a>
                           <a href="{{ route('show', $apartment->id) }}" class="btn btn-success">Dettagli</a>
                           <a href="{{ route('delete', $apartment->id) }}" class="btn btn-danger">Elimina appartamento</a>
                         </div>
@@ -46,8 +47,6 @@
                 @endforeach
             </div>
         @endempty
-
-
 
 
         <h5>Inserisci il tuo appartamento</h5>
