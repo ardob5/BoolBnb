@@ -10118,6 +10118,7 @@ h3 {
 }
 * body .main_content .jumbotron {
   height: 500px;
+  padding-top: 80px;
   background-color: blue;
 }
 * body .filter {
@@ -10147,15 +10148,21 @@ h3 {
   align-items: center;
 }
 * body header .header-sx .header-logo {
-  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 20px;
   width: 30%;
   color: #ff4444;
 }
-* body header .header-sx .header-logo a {
+* body header .header-sx .header-logo h2 {
+  margin-top: 11px;
+}
+* body header .header-sx .header-logo h2 a {
+  margin-top: 11px;
   color: #ff4444;
+  text-decoration: none;
+  font-weight: bolder;
 }
 * body header .header-sx .header-logo i {
   font-size: 32px;
@@ -10164,8 +10171,10 @@ h3 {
   display: flex;
   width: 40%;
   justify-content: space-around;
+  align-items: center !important;
 }
 * body header .header-dx ul {
+  margin-top: 16px;
   width: 100%;
   list-style-type: none;
   display: flex;
