@@ -158,6 +158,12 @@
     opacity: 1;
   }
 }
+.banner {
+  height: 1000px;
+  background-color: lightblue;
+  margin: 0;
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -10574,7 +10580,7 @@ h3 a:hover {
 }
 
 .reduction_card {
-  max-width: 45% !important;
+  max-width: 30% !important;
 }
 
 .border_card {

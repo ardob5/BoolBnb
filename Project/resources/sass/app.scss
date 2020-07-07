@@ -5,6 +5,7 @@
 @import 'variables';
 @import 'carousel_one';
 @import 'animations';
+@import 'banner';
 
 $redbnb: rgb(225, 60, 60);
 
@@ -375,7 +376,7 @@ h3 {
 }
 
 .reduction_card {
-  max-width: 45% !important ;
+  max-width: 30% !important ;
 }
 
 .border_card {
