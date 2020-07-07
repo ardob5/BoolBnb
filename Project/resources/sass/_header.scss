@@ -1,0 +1,94 @@
+// INIZIO HEADER
+header {
+  @include allcenter;
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  padding-left: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: all 0.4s linear;
+  background-color: transparent;
+    &:hover .register-button {
+      transition: all 0.3s linear;
+    }
+  // HEADER SX
+  .header-sx {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .header-logo {
+      @include allcenter;
+      font-size: 20px;
+      width: 30%;
+      color: $redbnb;
+      h2 {
+        margin-top: 11px;
+        a {
+          text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+          margin-top: 11px;
+          color: $redbnb;
+          text-decoration: none;
+          font-weight: bolder;
+        }
+      }
+      i {
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        color: $redbnb;
+        font-size: 32px;
+      }
+    }
+  }
+  // HEADER DX
+  .header-dx{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    ul{
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      margin-top: 16px;
+      width: 100%;
+      list-style-type: none;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      li {
+        a {
+          text-decoration: none;
+          font-weight: bold;
+          color: white !important;
+          letter-spacing: 1.5px;
+        }
+        i {
+          color: white !important;
+        }
+      }
+      .register-button{
+        padding: 0 1px !important;
+        height: 40px;
+        border: 1px solid $redbnb;
+        border-radius: 0.25rem;
+        display: flex;
+        align-items: center;
+        &:hover{
+          background: $redbnb;
+          a{
+            color: white;
+          }
+        }
+      }
+      .login-button{
+        padding: 0 16px;
+        height: 40px;
+        background: $redbnb;
+        border-radius: 0.25rem;
+        display: flex;
+        align-items: center;
+        color: white;
+      }
+    }
+  }
+}
+// FINE HEADER
