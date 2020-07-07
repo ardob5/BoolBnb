@@ -21,12 +21,12 @@ class CreateApartmentsTable extends Migration
             $table->integer('price');
             $table->integer('room_number');
             $table->integer('bath_number');
+            $table->integer('beds');
             $table->integer('area');
             $table->string('address');
             $table->string('image');
             $table->float('latitude');
             $table->float('longitude');
-            $table->bigInteger('views') -> default(0);
 
             $table->bigInteger('user_id') -> unsigned() -> index();
 

@@ -49,14 +49,19 @@
           <ul>
             <li>owner: {{ $apartment ->user -> name}} {{ $apartment -> user-> lastName}}</li>
             <li>rooms' number: {{ $apartment -> room_number }}</li>
-            <li>Posti letto</li>
+            <li>Posti letto: {{ $apartment -> beds }}</li>
             <li>bath's number: {{ $apartment -> bath_number}}</li>
             <li>area: {{ $apartment -> area }} mq</li>
             <li>address: {{ $apartment -> address }}</li>
             <li>optionals:
-              @foreach ($optionals as $optional)
-                <small>{{ $optional -> optional }}</small>
-              @endforeach</li>
+                <ol>
+                  @foreach ($optionals as $optional)
+                  <li>
+                    <small>{{ $optional -> optional }}</small>
+                  </li>
+                  @endforeach
+                </ol>
+              </li>
           </ul>
         </div>
       </div>
@@ -74,7 +79,11 @@
             <form action="{{ route('informations', $apartment -> id) }}" method="post" class="formarco">
               @csrf
               @method('POST')
-              <input type="email" name="email" placeholder="Inserisci la tua mail" value="{{ old('email') }}"class="@error('email') is-invalid @enderror">
+              <input type="email" name="email" placeholder="Inserisci la tua mail" value="
+              @auth
+                  {{ auth()->user()->email }}
+              @endauth
+              "class="@error('email') is-invalid @enderror">
               @error('email')
                 <small class="text-danger">{{ $message }}</small>
               @enderror
