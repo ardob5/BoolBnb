@@ -41,7 +41,7 @@
         <div class="apartment-description">
           <div class="titleprice">
             <h1>{{ $apartment -> title }}</h1>
-            <p>{{ $apartment -> price }} €</p>
+            <h6>{{ $apartment -> price }} €</h6>
           </div>
           <p>{{ $apartment -> description }}</p>
         </div>

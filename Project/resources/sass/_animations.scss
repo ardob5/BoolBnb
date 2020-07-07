@@ -1,0 +1,30 @@
+@keyframes fade-in {
+
+    0% {
+      opacity: 0;
+    }
+  
+    75% {
+      opacity: .7;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-up {
+  
+    0% {
+      transform: translateY(200px);
+    }
+  
+    75% {
+      opacity: .7;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }

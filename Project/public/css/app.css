@@ -1,4 +1,163 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+#blogCarousel {
+  padding-bottom: 100px;
+}
+
+.blog .carousel-indicators {
+  left: 0;
+  top: 10px;
+  height: 50%;
+}
+
+/* The colour of the indicators */
+.blog .carousel-indicators li {
+  background: #708198;
+  border-radius: 100%;
+  width: 16px;
+  height: 0px;
+}
+
+.blog .carousel-indicators .active {
+  background: #f2e93a;
+}
+
+.item-carousel-blog-block {
+  outline: medium none;
+  padding: 15px;
+}
+
+.item-box-blog {
+  border: 1px solid #dadada;
+  text-align: center;
+  z-index: 4;
+  padding: 20px;
+}
+
+.item-box-blog-image {
+  position: relative;
+}
+
+.item-box-blog-image figure img {
+  width: 100%;
+  height: auto;
+}
+
+.item-box-blog-date {
+  position: absolute;
+  z-index: 5;
+  padding: 4px 20px;
+  top: -20px;
+  right: 8px;
+  background-color: #41cb52;
+}
+
+.item-box-blog-date span {
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.item-box-blog-date span.mon {
+  font-size: 18px;
+}
+
+.item-box-blog-date span.day {
+  font-size: 16px;
+}
+
+.item-box-blog-body {
+  padding: 10px;
+}
+
+.item-heading-blog a h5 {
+  margin: 0;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.item-box-blog-heading a {
+  text-decoration: none;
+}
+
+.item-box-blog-data p {
+  font-size: 13px;
+}
+
+.item-box-blog-data p i {
+  font-size: 12px;
+}
+
+.item-box-blog-text {
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.mt-10 {
+  float: left;
+  margin-top: -10px;
+  padding-top: 10px;
+}
+
+.btn.bg-blue-ui.white.read {
+  cursor: pointer;
+  padding: 4px 20px;
+  float: left;
+  margin-top: 10px;
+}
+
+.btn.bg-blue-ui.white.read:hover {
+  box-shadow: 0px 5px 15px inset #4d5f77;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slide-up {
+  0% {
+    transform: translateY(200px);
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  0% {
+    transform: translateY(200px);
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -10118,14 +10277,25 @@ h3 {
 }
 * body .main_content .jumbotron {
   height: 500px;
-  padding-top: 80px;
-  background-color: blue;
+  opacity: 0;
+  background: url("../img/background-home.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-animation: fade-in 2s linear forwards;
+          animation: fade-in 2s linear forwards;
 }
 * body .filter {
   width: 100%;
 }
 * body .filter form {
   width: 75%;
+}
+* body .container-input {
+  transform: translateY(200px);
+  opacity: 0;
+  -webkit-animation: slide-up 2s 1s ease-in-out forwards;
+          animation: slide-up 2s 1s ease-in-out forwards;
 }
 * body header {
   display: flex;
@@ -10135,10 +10305,11 @@ h3 {
   height: 80px;
   background-color: white;
   padding-left: 10px;
-  box-shadow: 1px 1px 10px 5px grey;
   position: fixed;
   top: 0;
   left: 0;
+  transition: all 0.4s linear;
+  background-color: transparent;
   /* FINE PARTE DESTRA */
 }
 * body header .header-sx {
@@ -10153,25 +10324,25 @@ h3 {
   align-items: center;
   font-size: 20px;
   width: 30%;
-  color: #ff4444;
+  color: #e13c3c;
 }
 * body header .header-sx .header-logo h2 {
   margin-top: 11px;
 }
 * body header .header-sx .header-logo h2 a {
   margin-top: 11px;
-  color: #ff4444;
+  color: #e13c3c;
   text-decoration: none;
   font-weight: bolder;
 }
 * body header .header-sx .header-logo i {
+  color: #e13c3c;
   font-size: 32px;
 }
 * body header .header-dx {
   display: flex;
   width: 40%;
   justify-content: space-around;
-  align-items: center !important;
 }
 * body header .header-dx ul {
   margin-top: 16px;
@@ -10187,13 +10358,13 @@ h3 {
 * body header .header-dx ul .register-button {
   padding: 0 1px !important;
   height: 40px;
-  border: 1px solid red;
+  border: 1px solid #e13c3c;
   border-radius: 15px;
   display: flex;
   align-items: center;
 }
 * body header .header-dx ul .register-button:hover {
-  background: red;
+  background: #e13c3c;
 }
 * body header .header-dx ul .register-button:hover a {
   color: white;
@@ -10201,7 +10372,7 @@ h3 {
 * body header .header-dx ul .login-button {
   padding: 0 16px;
   height: 40px;
-  background: red;
+  background: #e13c3c;
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -10214,9 +10385,13 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #e13c3c;
 }
 * body .apartment div[class^=section] {
   width: 80%;
+  background: white;
+  margin-bottom: 5px;
+  border-radius: 10px;
 }
 * body .apartment .section1 {
   display: flex;
@@ -10227,15 +10402,15 @@ h3 {
 }
 * body .apartment .section1 .apartment-img {
   height: 300px;
-  width: 850px;
-  background: red;
+  width: 857px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 * body .apartment .section1 .apartment-img img {
   height: 300px !important;
-  width: 850px !important;
+  width: 857px !important;
+  border-radius: 10px;
 }
 * body .apartment .section1 .apartment-img .cta-100 {
   margin-top: 100px;
@@ -10263,12 +10438,19 @@ h3 {
   display: flex;
   justify-content: space-between;
   height: 400px;
-  border-bottom: 1px #d6d6d6 solid;
 }
 * body .apartment .section2 .titleprice {
   width: 80%;
   display: flex;
   flex-direction: column;
+}
+* body .apartment .section2 .titleprice h6 {
+  font-size: 12px;
+  font-weight: bolder;
+}
+* body .apartment .section2 .titleprice h1 {
+  text-transform: capitalize;
+  color: #e13c3c;
 }
 * body .apartment .section2 .apartment-description {
   height: 100%;
@@ -10284,6 +10466,7 @@ h3 {
 }
 * body .apartment .section2 .apartment-services ul {
   line-height: 30px;
+  list-style-type: none;
 }
 * body .apartment .section3 {
   display: flex;
@@ -10327,4 +10510,11 @@ h3 {
 }
 * body .apartment .section3 .apartment-mail button {
   width: 35%;
+}
+* .alert-success {
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  z-index: 100;
+  transform: translateX(-50%);
 }

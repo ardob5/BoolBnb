@@ -30,3 +30,28 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+$(document).ready(function () {
+    // header scroll
+    $(document).scroll(function () {
+        var scrollDocument = $(document).scrollTop();
+        if (scrollDocument != 0) {
+            $('header').css({
+                'background-color': 'white',
+                'box-shadow': '1px 1px 15px 5px grey'
+            });
+        } else {
+            $('header').css({
+                'background-color': 'transparent',
+                'box-shadow': 'none'
+            });
+        }
+        // fade-out messaggi di successo
+        var alert = $('.alert-success');
+        alert.fadeOut(4000);
+    });
+});
+
+// fade-out messaggi di successo
+var alert = $('.alert-success');
+        alert.fadeOut(6000);
