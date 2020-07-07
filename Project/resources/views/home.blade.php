@@ -17,7 +17,11 @@
                 @method('GET')
                 <div class="form-group">
                   <div class="row flex-nowrap justify-content-space-between">
+<<<<<<< HEAD
                     <input type="search" class="form-control"  name='search' placeholder="Cerca Località" value="">
+=======
+                    <input type="search" class="form-control" name='search' placeholder="Cerca Località" value="">
+>>>>>>> master
                     <input type="submit" id="submit" class="btn bnb_btn" value='Cerca'>
                   </div>
                 </div>
