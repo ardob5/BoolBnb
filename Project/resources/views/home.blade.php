@@ -28,13 +28,13 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container-fluid">
     @empty (!$apartments_sponsor)
-      <div class="row mb-2">
+      <div class="row mb-2 spc_around">
         @foreach ($apartments_sponsor as $apartment)
-          <div class="col-md-6">
-            <div class="card flex-md-row mb-4 box-shadow h-md-250 border_card">
-              <div class="col-md-6">
+          <div class="col-md-6 reduction_card">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 border_card onHover">
+              <div class="col-md-6  d-flex justify-content-center align-items-center">
                 <img class="card-img-right flex-auto d-none d-md-block"
                 @if(stristr($apartment -> image, 'http'))
                   src=" {{ asset($apartment -> image) }}"
