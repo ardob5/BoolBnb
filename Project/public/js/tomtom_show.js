@@ -102,19 +102,12 @@ $(document).ready(function () {
   var map = tt.map({
     container: 'map',
     key: 'GA5MivJiK0ZxoB9tGaVHIhVkwckf4jOc',
-    style: 'tomtom://vector/1/basic-main',
+    source: 'vector',
+    basePath: '/sdk',
     center: position,
-    zoom: 15
+    zoom: 20
   });
   var marker = new tt.Marker().setLngLat(position).addTo(map);
-  var popupOffsets = {
-    top: [0, 0],
-    bottom: [0, -70],
-    'bottom-right': [0, -70],
-    'bottom-left': [0, -70],
-    left: [25, -35],
-    right: [-25, -35]
-  };
 });
 
 /***/ }),
