@@ -51,7 +51,3 @@ $(document).ready(function () {
         alert.fadeOut(4000);
     });
 });
-
-// fade-out messaggi di successo
-var alert = $('.alert-success');
-        alert.fadeOut(6000);
