@@ -10275,17 +10275,10 @@ h3 {
   top: 50px;
   right: 50px;
 }
-* body .main_content .jumbotron {
-  height: 500px;
-  opacity: 0;
-  background: url("../img/background-home.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  -webkit-animation: fade-in 2s linear forwards;
-          animation: fade-in 2s linear forwards;
-}
 * body .filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 * body .filter form {
@@ -10314,7 +10307,6 @@ h3 {
 }
 * body header:hover .register-button {
   transition: all 0.4s linear;
-  background: white;
 }
 * body header .header-sx {
   width: 50%;
@@ -10359,10 +10351,11 @@ h3 {
   justify-content: space-around;
   align-items: center;
 }
-* body header .header-dx ul a {
+* body header .header-dx ul li a {
   text-decoration: none;
   font-weight: bold;
   color: white !important;
+  letter-spacing: 1.5px;
 }
 * body header .header-dx ul i {
   color: white !important;
@@ -10389,6 +10382,29 @@ h3 {
   display: flex;
   align-items: center;
   color: white;
+}
+* body .main_content .jumbotron {
+  height: 500px;
+  opacity: 0;
+  position: relative;
+  background: url("../img/background-home.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-animation: fade-in 2s linear forwards;
+          animation: fade-in 2s linear forwards;
+}
+* body .main_content .jumbotron h1 {
+  color: white;
+}
+* body .main_content .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
 }
 * body .apartment {
   padding-top: 78px;
@@ -10529,4 +10545,29 @@ h3 {
   left: 50%;
   z-index: 100;
   transform: translateX(-50%);
+}
+
+.bnb_btn {
+  background: #e13c3c;
+  color: white;
+}
+.bnb_btn:hover {
+  color: white;
+}
+
+.center_home {
+  padding-top: 50px;
+}
+
+.border_card {
+  border: 2px solid #e13c3c;
+}
+
+h3 a:hover {
+  text-decoration: none;
+}
+
+.fab.fa-stripe-s {
+  font-size: 22px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
