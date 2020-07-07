@@ -21,5 +21,6 @@
 
     {{-- Scripts --}}
     <script src="https://kit.fontawesome.com/d99074f875.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js')}}" charset="utf-8"></script>
   </body>
 </html>
