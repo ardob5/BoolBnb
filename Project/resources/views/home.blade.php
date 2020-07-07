@@ -16,8 +16,8 @@
                 @csrf
                 @method('GET')
                 <div class="form-group">
-                  <div class="row justify-content-space-between">
-                    <input type="search" class="form-control" style="width: calc(100% - 62.25px);" id="algolia-input" name='search' placeholder="Cerca Località" value="">
+                  <div class="row flex-nowrap justify-content-space-between">
+                    <input type="search" class="form-control" name='search' placeholder="Cerca Località" value="">
                     <input type="submit" id="submit" class="btn bnb_btn" value='Cerca'>
                   </div>
                 </div>
