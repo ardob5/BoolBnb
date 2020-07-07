@@ -69,9 +69,10 @@
       {{-- inzio sezione 3 --}}
       <div class="section3">
         <div class="apartment-location">
-          <div class="gpsbox">
-            <h1>GPS</h1>
-          </div>
+          <div id='map' style='height:400px;width:500px'></div>
+          <h1 id="latitude">{{$apartment -> latitude}}</h1>
+          <h1 id="longitude">{{$apartment -> longitude}}</h1>
+          <script type="text/javascript" src="{{ asset('./js/tomtom_show.js') }}"></script>
         </div>
         @if ($apartment->user->id !== Auth::id())
           <div class="apartment-mail">
