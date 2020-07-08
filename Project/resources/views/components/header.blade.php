@@ -1,11 +1,12 @@
 <header style="z-index: 2000;">
   <div class="header-sx">
     <div class="header-logo">
-      <i class="fas fa-hotel"></i>
-      <h2>
-        <a href="{{ route('home') }}"> BoolBnb</a>
-      </h2>
-    </div>
+      <div class="logo-img">
+        <a href="{{ route('home') }}">
+          <img src="{{asset('img/LOGO_UNO_MOD.png')}}" alt="logo_boolbnb">
+        </a>
+      </div>
+  </div>
   </div>
   <div class="header-dx">
     <ul>

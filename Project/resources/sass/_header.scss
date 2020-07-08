@@ -24,21 +24,17 @@ header {
 
     .header-logo {
       @include allcenter;
-      font-size: 20px;
       width: 30%;
-      color: $redbnb;
-      h2 {
+      div {
         margin-top: 11px;
         a {
           margin-top: 11px;
-          color: $redbnb;
-          text-decoration: none;
-          font-weight: bolder;
+          img {
+            width: 90px;
+            height: 70px;
+            margin-bottom: 10px;
+          }
         }
-      }
-      i {
-        color: $redbnb;
-        font-size: 32px;
       }
     }
   }

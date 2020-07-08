@@ -1,33 +1,32 @@
 @extends('layouts.main_layout')
 
 @section('content')
-  <div>
-    {{-- HOME - JUMBOTRON --}}
-    <div class="jumbotron jumbotron-fluid">
-      <div class="overlay"></div>
-        <div class="container container-input center_home">
-          <div class="row justify-content-center">
-            <h1 class="display-4">Home is where love resides</h1>
-          </div>
-          {{-- JUMBOTRON - SEARCHBAR --}}
-          <div class="input-group">
-            <div class="filter">
 
-              {{-- SEARCH - FORM --}}
-              <form action="{{route('search')}}" method="get">
-                @csrf
-                @method('GET')
-                <div class="form-group">
-                  <div class="row flex-nowrap justify-content-space-between">
-                    <input type="search" class="form-control"  name='search' placeholder="Cerca Località" value="">
-                    <input type="submit" id="submit" class="btn bnb_btn" value='Cerca'>
-                  </div>
+  {{-- HOME - JUMBOTRON --}}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="overlay"></div>
+      <div class="container container-input center_home">
+        <div class="row justify-content-center">
+          <h1 class="display-4">Home is where love resides<span style="color: rgb(225,60,60);">.</span></h1>
+        </div>
+        {{-- JUMBOTRON - SEARCHBAR --}}
+        <div class="input-group">
+          <div class="filter">
+
+            {{-- SEARCH - FORM --}}
+            <form action="{{route('search')}}" method="get">
+              @csrf
+              @method('GET')
+              <div class="form-group">
+                <div class="row flex-nowrap justify-content-space-between">
+                  <input type="search" class="form-control"  name='search' placeholder="Cerca Località" value="">
+                  <input type="submit" id="submit" class="btn bnb_btn" value='Cerca'>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
-    </div>
+      </div>
   </div>
 
   {{-- HOME - SECTION-NORACISM' --}}
@@ -64,26 +63,38 @@
         <div class="aside_left">
           <div class="row">
             <div class="col-md-12 banner_container">
-              <h1>Perché affittare su Boolbnb?</h1>
-              <p>Indipendentemente dal tipo di alloggio o stanza che vuoi condividere, Airbnb rende semplice e sicuro ospitare dei viaggiatori. Spetta a te il controllo completo della disponibilità, dei prezzi, delle regole della casa e della modalità di interazione con gli ospiti.</p>
+              <h1 class="first_banner_element">Perché affittare su Boolbnb?</h1>
+              <p>Indipendentemente dal tipo di alloggio o stanza che vuoi condividere, BoolBnB rende semplice e sicuro ospitare dei viaggiatori. Spetta a te il controllo completo della disponibilità, dei prezzi, delle regole della casa e della modalità di interazione con gli ospiti.</p>
+              <div class="row justify-content-center">
+                <img src="{{ asset('img/img2-banner.jpg')}}" alt="">
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 banner_container">
               <h1>Con noi sei al sicuro</h1>
               <p>Per tenere al sicuro te, il tuo alloggio e le tue cose, tuteliamo ogni prenotazione con una protezione in caso di danni alla casa di 1.000.000 USD e con un'altra assicurazione di pari valore contro gli incidenti.</p>
+              <div class="row justify-content-center">
+                <img src="{{ asset('img/img-banner.jpg')}}" alt="">
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 banner_container">
               <h1>Decidi il tuo prezzo</h1>
               <p>Hai sempre la possibilità di scegliere il prezzo. Serve aiuto? Abbiamo degli strumenti per aiutarti a soddisfare la domanda della tua zona.</p>
+              <div class="row justify-content-center">
+                <img src="{{ asset('img/img3-banner.jpg')}}" alt="">
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 banner_container">
               <h1>Pagamenti rapidi</h1>
-              <p>Siamo quattro scappati di casa non sappiamo ancora come farti pagare</p>
+              <p>Siamo cinque scappati di casa non sappiamo ancora come farti pagare</p>
+              <div class="row justify-content-center">
+                <img src="{{ asset('img/img4-banner.jpg')}}" alt="">
+              </div>
             </div>
           </div>
         </div>
@@ -106,7 +117,7 @@
                     @endif
                     alt="Card image cap">
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-md-4">
                     <div class="card-body d-flex flex-column align-items-start">
 
                       <h3 class="mb-0">
@@ -122,13 +133,12 @@
                         <span>Bagni: {{$apartment -> bath_number}}</span> <br>
                         <div class="hr_container">
                           <hr style="height:1px; color: lightgrey; width:100%; margin:2px 0;">
-                          <span>$ a notte</span> <br>
                           <span class="total_prc">$ totale</span>
                         </div>
                       </p>
                     </div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div class="from_bottom">
                       <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
                     </div>
@@ -139,12 +149,54 @@
               <div class="col-md-1"></div>
             @endforeach
           </div>
-
           {{-- PAGINATE - SPONSORED --}}
           <div class="row justify-content-center mt-50 ">
             {{ $apartments_sponsor -> links() }}
           </div>
         @endempty
+
+        {{-- FEATURES --}}
+        {{-- FIRST ROW --}}
+        <div class="row">
+          <div class="col-md-10 offset-1">
+            <div class="row">
+              <div class="col-md-6 d-flex align-items-center">
+                <div class="row">
+                  <h1>Crea la tua esperienza</h1>
+                  <p>Tutte le esperienze partono dai nostri standard di qualità: competenza, accesso e interazione. Tuttavia, pensa anche a come interagire con gli ospiti online e riduci al minimo ciò di cui potrebbero aver bisogno per partecipare. Quando hai un'idea, avvia la procedura di invio della proposta.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <img src="{{ asset('img/img-home.jpg')}}" alt="">
+                </div>
+              </div>
+            </div>
+            {{-- FIX OFFSET --}}
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+
+        {{-- SECOND ROW --}}
+        <div class="row">
+          <div class="col-md-10 offset-1">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <img src="{{ asset('img/img2-home.jpg')}}" alt="">
+                </div>
+              </div>
+              <div class="col-md-6 d-flex align-items-center">
+                <div class="row">
+                  <h1>Configura tutto e inizia a offrire l'esperienza</h1>
+                  <p>Nell'attesa, puoi scegliere un luogo che rappresenti te e la tua attività, oltre a iniziare a pianificare la configurazione della webcam, l'illuminazione e il sonoro. Puoi anche far pratica con Zoom, una piattaforma per conferenze. Non preoccuparti: prima che tu inizi a offrire l'esperienza, condivideremo con te tante risorse per consentirti di avere successo.</p>
+                </div>
+              </div>
+            </div>
+            {{-- FIX OFFSET --}}
+            <div class="col-md-1"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

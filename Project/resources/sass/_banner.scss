@@ -21,12 +21,26 @@
       font-size: 3rem;
       text-align: center;
       color: rgb(249, 164, 164);
+      margin-top: 15px;
+      padding-top:15px;
+      border-top: 1px solid lightgrey;
+    }
+
+    .first_banner_element {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
     }
 
     p {
       font-family: 'Raleway', sans-serif;
       font-size: 1.0rem;
       color: rgb(252, 230, 230);
+    }
+    img {
+      width: 80%;
+      height: auto;
+      border-radius: 3px;
     }
   }
 }
