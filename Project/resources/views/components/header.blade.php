@@ -9,7 +9,6 @@
   </div>
   <div class="header-dx">
     <ul>
-      <li><i class="fas fa-globe"></i></li>
       <li>
         <a href="{{ route('home')}}">Home</a>
       </li>
@@ -28,7 +27,7 @@
             </li>
             @if (Route::has('register'))
                 <li class="register-button nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                 </li>
             @endif
         @else

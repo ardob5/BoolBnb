@@ -2,26 +2,16 @@
 
 @section('content')
 
-  <div class="main_content">
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">La tua casa Ovunque</h1>
-          <div class="input-group">
-            <div class="filter">
-              <form>
-                <div class="form-group">
-                  <input type="search" class="form-control" placeholder="Cerca Località">
-                </div>
-                <div class="form-check">
-                  <label class="prova" for="wi_fi">WiFi</label>
-                  <input name="wi_fi" type="checkbox" class="prova-input"  value="" id="wi_fi">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-            </div>
-          </div>
+<div>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="overlay"></div>
+      <div class="container container-input center_home">
+        <div class="row justify-content-center">
+          <h1 class="display-4">Home is where love resides.</h1>
         </div>
       </div>
+  </div>
+</div>
 
       {{-- <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script> --}}
 
@@ -47,31 +37,31 @@
         </div> --}}
 
         {{-- @include('components.carousel') --}}
-      @empty (!$apartmentWithSponsor)
-        @include('components.carousel_one')
-      @endempty
+    @empty (!$apartmentWithSponsor)
+      @include('components.carousel_one')
+    @endempty
 
-          <div class="row justify-content-center">
-            @foreach ($apartments_no_sponsor as $nosponsorApt)
-              <div class="card" style="width: 18rem; margin: 15px 30px;">
-                <img class="card-img-top"
-                  @if(stristr($nosponsorApt -> image, 'http'))
-                      src=" {{ asset($nosponsorApt -> image) }}"
-                    @else
-                      src="{{ asset('storage/' . $nosponsorApt -> image) }}"
-                  @endif  
-                  alt="{{ $nosponsorApt -> title }}">
-                <div class="card-body">
-                  <h5 class="card-title">{{ $nosponsorApt -> title }}</h5>
-                  <p class="card-text">{{ $nosponsorApt -> description }}</p>
-                  <a href="{{ route('show', $nosponsorApt -> id) }}" class="btn btn-primary">Vedi Appartamento</a>
-                </div>
-              </div>
-            @endforeach
+    <div class="row justify-content-center">
+      @foreach ($apartments_no_sponsor as $nosponsorApt)
+        <div class="card" style="width: 18rem; margin: 15px 30px;">
+          <img class="card-img-top"
+            @if(stristr($nosponsorApt -> image, 'http'))
+                src=" {{ asset($nosponsorApt -> image) }}"
+              @else
+                src="{{ asset('storage/' . $nosponsorApt -> image) }}"
+            @endif
+            alt="{{ $nosponsorApt -> title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ $nosponsorApt -> title }}</h5>
+            <p class="card-text">{{ $nosponsorApt -> description }}</p>
+            <a href="{{ route('show', $nosponsorApt -> id) }}" class="btn btn-primary">Vedi Appartamento</a>
           </div>
-          <div class="row justify-content-center">
-            {{ $apartments_no_sponsor -> links() }}
-          </div>
-  </div>
+        </div>
+      @endforeach
+    </div>
+    <div class="row justify-content-center">
+      {{ $apartments_no_sponsor -> links() }}
+    </div>
+
 
 @endsection

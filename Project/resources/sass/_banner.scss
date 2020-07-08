@@ -1,5 +1,13 @@
-.banner {
-  height: 1000px;
+.aside_left {
+  height: 1055.6px;
   background-color: lightblue;
-  margin: 0;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  .banner_container {
+    @include allcenter;
+    flex-direction: column;
+  }
 }
