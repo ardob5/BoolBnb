@@ -148,5 +148,11 @@
       </div>
     </div>
   </div>
+<button type="button" id="scrolled-button" class="btn btn-sm rounded">
+  <i class="fas fa-angle-up"></i>
+</button>
+@endsection
 
+@section('script')
+    <script src="{{ asset('js/home.js') }}"></script>
 @endsection

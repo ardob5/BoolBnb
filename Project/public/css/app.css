@@ -10259,11 +10259,6 @@ header .header-dx .register-button {
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
-}
-header .header-dx .register-button:hover {
-  background: #e13c3c;
-}
-header .header-dx .register-button:hover a {
   color: white;
 }
 header .header-dx .login-button {
@@ -10524,6 +10519,15 @@ ul .page-item .page-link {
 ul .page-item.active .page-link {
   background-color: #e13c3c;
   border-color: #e13c3c;
+}
+
+#scrolled-button {
+  background-color: #e13c3c;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  color: white;
+  display: none;
 }
 
 * {

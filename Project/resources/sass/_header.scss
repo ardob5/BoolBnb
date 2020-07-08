@@ -81,12 +81,13 @@ header {
       border-radius: 0.25rem;
       display: flex;
       align-items: center;
-      &:hover {
-        background: $redbnb;
-        a {
-          color: white;
-        }
-      }
+      color: white;
+      // &:hover {
+      //   background: $redbnb;
+        // a {
+        //   color: white;
+        // }
+      // }
     }
     .login-button {
       padding: 0 16px;

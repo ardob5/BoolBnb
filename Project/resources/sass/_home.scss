@@ -58,3 +58,12 @@ ul {
     border-color: $redbnb;
   }
 }
+
+#scrolled-button {
+  background-color:$redbnb;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  color: white;
+  display: none;
+}

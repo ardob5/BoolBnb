@@ -49705,45 +49705,7 @@ var app = new Vue({
   el: '#app'
 });
 $(document).ready(function () {
-  // HEADER SCROLL
-  $(document).scroll(function () {
-    var scrollDocument = $(document).scrollTop();
-
-    if (scrollDocument != 0) {
-      $('header').css({
-        'background-color': 'white',
-        'box-shadow': '1px 1px 15px 5px grey'
-      });
-      $('.header-dx ul a').css({
-        'color': 'rgb(225, 60, 60)'
-      });
-    } else {
-      $('header').css({
-        'background-color': 'transparent',
-        'box-shadow': 'none'
-      });
-      $('.header-dx ul a').css({
-        'color': 'white'
-      });
-    }
-  });
-  $('.register-button a').mouseenter(function () {
-    $('.register-button a').css({
-      'color': 'white'
-    });
-  });
-  $('.register-button').mouseleave(function () {
-    if (scrollDocument == 0) {
-      $('.register-button a').css({
-        'color': 'white'
-      });
-    } else {
-      $('.register-button a').css({
-        'color': 'rgb(225, 60, 60)'
-      });
-    }
-  }); // FADE-OUT MESSAGGI CON SUCCESSO
-
+  // FADE-OUT MESSAGGI CON SUCCESSO
   var alert = $('.alert-success');
   alert.fadeOut(4000);
 });
