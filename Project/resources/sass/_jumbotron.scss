@@ -14,6 +14,7 @@
     color: white;
   }
 }
+
 .overlay {
   position: absolute;
   top: 0;
@@ -23,10 +24,31 @@
   height: 100%;
   width: 100%;
 }
+
+.container-input {
+  transform: translateY(200px);
+  opacity: 0;
+  animation: slide-up 2s 1s ease-in-out forwards;
+}
+
+.center_home {
+  padding-top: 50px;
+}
+
+.filter {
+  @include allcenter;
+  width: 100%;
+  form {
+    width: 75%;
+  }
+}
+
 .bnb_btn {
   background: $redbnb;
   color: white;
   &:hover {
     color: white;
+    background: rgba(225, 60, 60, 0.8);
+
   }
 }

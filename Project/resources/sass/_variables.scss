@@ -20,7 +20,9 @@ $cyan: #6cb2eb;
 $redbnb: rgb(225, 60, 60);
 
 // Mixins
-@mixin allcenter{
+
+@mixin allcenter {
+
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,6 @@
 // INIZIO CASA
 
-.apartment{
+.apartment {
   padding-top: 78px;
   border: 4px solid black;
   height: 180%;
@@ -9,102 +9,100 @@
   align-items: center;
   background: $redbnb;
 
-  div[class^="section"]{
+  div[class^="section"] {
     width: 80%;
     background: white;
     margin-bottom: 5px;
     border-radius: 10px;
   }
-
-  .section1{
+  .section1 {
     @include allcenter;
     flex-direction: column;
     height: 30%;
-
-    .apartment-img{
+    .apartment-img {
       height: 300px;
       width: 857px;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-
-      img{
+      img {
         height: 300px !important;
         width: 857px !important;
         border-radius: 10px;
         // display: none !important;
       }
 
-      // jumbotron
-
+      // JUMBOTRON
       .cta-100 {
         margin-top: 100px;
         padding-left: 8%;
         padding-top: 7%;
       }
-      .col-md-4{
+
+      .col-md-4 {
           padding-bottom:20px;
       }
-
       .white {
         color: #fff !important;
       }
-      .mt{float: left;margin-top: -20px;padding-top: 20px;}
+      .mt {
+        float: left;
+        margin-top: -20px;
+        padding-top: 20px;
+      }
       .bg-blue-ui {
         background-color: #708198 !important;
       }
-      figure img{height:200px;}
+      figure img{
+        height:200px;
+      }
     }
   }
-  .section2{
+  .section2 {
     display: flex;
     justify-content: space-between;
     height: 400px;
-
-    .titleprice{
+    .titleprice {
       width: 80%;
       display: flex;
       flex-direction: column;
-
-      h6{
+      h6 {
         font-size: 12px;
         font-weight: bolder;
       }
-
-      h1{
+      h1 {
         text-transform: capitalize;
         color: $redbnb;
       }
     }
 
-    .apartment-description{
+    .apartment-description {
       height: 100%;
       width: 50%;
       padding: 15px;
     }
 
-    .apartment-services{
+    .apartment-services {
       height: 100%;
       width: 30%;
       @include allcenter;
-
-      ul{
+      ul {
         line-height: 30px;
         list-style-type: none;
       }
     }
   }
-  .section3{
+
+  .section3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 400px;
 
-    .apartment-location{
+    .apartment-location {
       height: 100%;
       width: 40%;
       @include allcenter;
-
       .gpsbox{
         height: 150px;
         width: 150px;
@@ -113,7 +111,8 @@
         text-align: center;
       }
     }
-    .apartment-mail{
+
+    .apartment-mail {
       height: 100%;
       width: 40%;
       display: flex;
@@ -121,7 +120,7 @@
       justify-content: space-around;
       align-items: center;
 
-      .formarco{
+      .formarco {
         height: 70%;
         display: flex;
         flex-direction: column;
@@ -132,13 +131,13 @@
       input, textarea {
         width: 80%;
       }
-
-      button{
+      button {
         width: 35%;
       }
     }
   }
 }
+
 
 .alert-success {
   position: absolute;

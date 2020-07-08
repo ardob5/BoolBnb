@@ -19,7 +19,7 @@ class ApartmentsController extends Controller
 
     $apartments = Apartment::all();
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
-    $apartments_sponsor = collect($apartmentWithSponsor) -> paginate(6);
+    $apartments_sponsor = collect($apartmentWithSponsor) -> paginate(4);
 
     return view('home', compact('apartments_sponsor'));
   }
@@ -185,7 +185,7 @@ class ApartmentsController extends Controller
     $apartment -> area = $validate_data['area'];
     $apartment -> price = $validate_data['price'];
     $apartment -> description = $validate_data['description'];
-    
+
     $apartment -> save();
     $apartment -> optionals() -> sync($validate_data['optionals']);
 

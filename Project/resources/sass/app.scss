@@ -1,55 +1,38 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+
+// Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 // Variables
 @import 'variables';
+
+// SCSS Files
 @import 'carousel_one';
 @import 'animations';
 @import 'banner';
 @import 'header';
-@import 'my-apartment';
 @import 'jumbotron';
+@import 'my-apartment';
+@import 'home';
 
-
-// $redbnb: rgb(255, 60, 60);
-// Bootstrap
-
-@import 'carousel_one';
-
-
-
-
-*{
+* {
   box-sizing: border-box;
-  padding:0;
-  margin:0;
 
-  body{
-    overflow-x: hidden;
-
-    .specific_apt {
-      background-color: #FFF;
-      border-radius: 4px;
-      width: 145px;
-      position: absolute;
-      top: 50px;
-      right: 50px;
-    }
-
-    .filter {
-      @include allcenter;
-      width: 100%;
-      form {
-        width: 75%;
-      }
-    }
-
-    .container-input {
-      transform: translateY(200px);
-      opacity: 0;
-      animation: slide-up 2s 1s ease-in-out forwards;
-    }
-  }
+  padding: 0;
+  margin: 0;
 }
+
+  body {
+    overflow-x: hidden;
+    // .specific_apt {
+    //   background-color: #FFF;
+    //   border-radius: 4px;
+    //   width: 145px;
+    //   position: absolute;
+    //   top: 50px;
+    //   right: 50px;
+    // }
+
+  }
