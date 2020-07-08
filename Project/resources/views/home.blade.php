@@ -133,7 +133,7 @@
                         <span>Bagni: {{$apartment -> bath_number}}</span> <br>
                         <div class="hr_container">
                           <hr style="height:1px; color: lightgrey; width:100%; margin:2px 0;">
-                          <span class="total_prc">$ totale</span>
+                          <span class="total_prc">{{ $apartment -> price }} € - Totale</span>
                         </div>
                       </p>
                     </div>
