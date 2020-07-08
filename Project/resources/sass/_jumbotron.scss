@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// JUMBOTRON
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
 .jumbotron {
   height: 500px;
   opacity: 0;
@@ -13,7 +17,10 @@
     color: white;
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
 .overlay {
   position: absolute;
   top: 0;
@@ -23,6 +30,7 @@
   height: 100%;
   width: 100%;
 }
+<<<<<<< HEAD
 
 .container-input {
   transform: translateY(200px);
@@ -42,11 +50,16 @@
   }
 }
 
+=======
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
 .bnb_btn {
   background: $redbnb;
   color: white;
   &:hover {
     color: white;
+<<<<<<< HEAD
     background: rgba(225, 60, 60, 0.8);
+=======
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
   }
 }

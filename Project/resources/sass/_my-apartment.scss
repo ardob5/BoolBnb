@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 .apartment {
+=======
+// INIZIO CASA
+
+.apartment{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
   padding-top: 78px;
   border: 4px solid black;
   height: 180%;
@@ -7,45 +13,72 @@
   align-items: center;
   background: $redbnb;
 
+<<<<<<< HEAD
   div[class^="section"] {
+=======
+  div[class^="section"]{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
     width: 80%;
     background: white;
     margin-bottom: 5px;
     border-radius: 10px;
   }
 
+<<<<<<< HEAD
   .section1 {
+=======
+  .section1{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
     @include allcenter;
     flex-direction: column;
     height: 30%;
 
+<<<<<<< HEAD
     .apartment-img {
+=======
+    .apartment-img{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
       height: 300px;
       width: 857px;
       display: flex;
       align-items: flex-end;
       justify-content: center;
 
+<<<<<<< HEAD
       img {
+=======
+      img{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
         height: 300px !important;
         width: 857px !important;
         border-radius: 10px;
         // display: none !important;
       }
 
+<<<<<<< HEAD
       // Jumbotron Apt
+=======
+      // jumbotron
+
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
       .cta-100 {
         margin-top: 100px;
         padding-left: 8%;
         padding-top: 7%;
       }
+<<<<<<< HEAD
       .col-md-4 {
         padding-bottom:20px;
+=======
+      .col-md-4{
+          padding-bottom:20px;
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
       }
 
       .white {
         color: #fff !important;
       }
+<<<<<<< HEAD
       .mt {
         float: left;
         margin-top: -20px;
@@ -60,10 +93,21 @@
     }
   }
   .section2 {
+=======
+      .mt{float: left;margin-top: -20px;padding-top: 20px;}
+      .bg-blue-ui {
+        background-color: #708198 !important;
+      }
+      figure img{height:200px;}
+    }
+  }
+  .section2{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
     display: flex;
     justify-content: space-between;
     height: 400px;
 
+<<<<<<< HEAD
     .titleprice {
       width: 80%;
       display: flex;
@@ -73,38 +117,77 @@
         font-weight: bolder;
       }
       h1 {
+=======
+    .titleprice{
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+
+      h6{
+        font-size: 12px;
+        font-weight: bolder;
+      }
+
+      h1{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
         text-transform: capitalize;
         color: $redbnb;
       }
     }
 
+<<<<<<< HEAD
     .apartment-description {
+=======
+    .apartment-description{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
       height: 100%;
       width: 50%;
       padding: 15px;
     }
 
+<<<<<<< HEAD
     .apartment-services {
+=======
+    .apartment-services{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
       height: 100%;
       width: 30%;
       @include allcenter;
 
+<<<<<<< HEAD
       ul {
+=======
+      ul{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
         line-height: 30px;
         list-style-type: none;
       }
     }
   }
+<<<<<<< HEAD
   .section3 {
+=======
+  .section3{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 400px;
+<<<<<<< HEAD
     .apartment-location {
       height: 100%;
       width: 40%;
       @include allcenter;
       .gpsbox {
+=======
+
+    .apartment-location{
+      height: 100%;
+      width: 40%;
+      @include allcenter;
+
+      .gpsbox{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
         height: 150px;
         width: 150px;
         background: rgb(79, 113, 53);
@@ -112,7 +195,11 @@
         text-align: center;
       }
     }
+<<<<<<< HEAD
     .apartment-mail {
+=======
+    .apartment-mail{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
       height: 100%;
       width: 40%;
       display: flex;
@@ -120,7 +207,11 @@
       justify-content: space-around;
       align-items: center;
 
+<<<<<<< HEAD
       .formarco {
+=======
+      .formarco{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
         height: 70%;
         display: flex;
         flex-direction: column;
@@ -132,9 +223,24 @@
         width: 80%;
       }
 
+<<<<<<< HEAD
       button {
+=======
+      button{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
         width: 35%;
       }
     }
   }
 }
+<<<<<<< HEAD
+=======
+
+.alert-success {
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  z-index: 100;
+  transform: translateX(-50%);
+}
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1

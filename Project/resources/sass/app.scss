@@ -1,10 +1,23 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+@import '~bootstrap/scss/bootstrap';
+
 // Variables
 @import 'variables';
+<<<<<<< HEAD
+=======
+@import 'carousel_one';
+@import 'animations';
+@import 'banner';
+@import 'header';
+@import 'my-apartment';
+@import 'jumbotron';
+
+
+// $redbnb: rgb(255, 60, 60);
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
 
 // SCSS Files
 @import 'carousel_one';
@@ -15,14 +28,22 @@
 @import 'my-apartment';
 @import 'home';
 
+<<<<<<< HEAD
 // GENERAL CSS
 * {
+=======
+
+
+
+*{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 
   body {
     overflow-x: hidden;
+<<<<<<< HEAD
     // .specific_apt {
     //   background-color: #FFF;
     //   border-radius: 4px;
@@ -39,5 +60,30 @@
     left: 50%;
     z-index: 100;
     transform: translateX(-50%);
+=======
+
+    .specific_apt {
+      background-color: #FFF;
+      border-radius: 4px;
+      width: 145px;
+      position: absolute;
+      top: 50px;
+      right: 50px;
+    }
+
+    .filter {
+      @include allcenter;
+      width: 100%;
+      form {
+        width: 75%;
+      }
+    }
+
+    .container-input {
+      transform: translateY(200px);
+      opacity: 0;
+      animation: slide-up 2s 1s ease-in-out forwards;
+    }
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
   }
 }

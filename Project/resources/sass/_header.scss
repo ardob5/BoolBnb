@@ -10,18 +10,27 @@ header {
   left: 0;
   transition: all 0.4s linear;
   background-color: transparent;
+<<<<<<< HEAD
 
     &:hover .register-button {
       transition: all 0.3s linear;
     }
 
+=======
+    &:hover .register-button {
+      transition: all 0.3s linear;
+    }
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
   // HEADER SX
   .header-sx {
     width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
     .header-logo {
       @include allcenter;
       font-size: 20px;
@@ -30,6 +39,10 @@ header {
       h2 {
         margin-top: 11px;
         a {
+<<<<<<< HEAD
+=======
+          text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
           margin-top: 11px;
           color: $redbnb;
           text-decoration: none;
@@ -37,11 +50,16 @@ header {
         }
       }
       i {
+<<<<<<< HEAD
+=======
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
         color: $redbnb;
         font-size: 32px;
       }
     }
   }
+<<<<<<< HEAD
 
   // HEADER DX
   .header-dx {
@@ -50,6 +68,15 @@ header {
     justify-content: space-around;
 
     ul {
+=======
+  // HEADER DX
+  .header-dx{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    ul{
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
       margin-top: 16px;
       width: 100%;
       list-style-type: none;
@@ -60,6 +87,7 @@ header {
         a {
           text-decoration: none;
           font-weight: bold;
+<<<<<<< HEAD
           color: white;
           letter-spacing: 1.5px;
         }
@@ -69,21 +97,40 @@ header {
       }
 
       .register-button {
+=======
+          color: white !important;
+          letter-spacing: 1.5px;
+        }
+        i {
+          color: white !important;
+        }
+      }
+      .register-button{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
         padding: 0 1px !important;
         height: 40px;
         border: 1px solid $redbnb;
         border-radius: 0.25rem;
         display: flex;
         align-items: center;
+<<<<<<< HEAD
 
         &:hover {
           background: $redbnb;
           a {
+=======
+        &:hover{
+          background: $redbnb;
+          a{
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
             color: white;
           }
         }
       }
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
       .login-button{
         padding: 0 16px;
         height: 40px;
