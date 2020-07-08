@@ -19,13 +19,8 @@ $teal: #4dc0b5;
 $cyan: #6cb2eb;
 $redbnb: rgb(225, 60, 60);
 
-<<<<<<< HEAD
-// Mixin
-@mixin allcenter {
-=======
 // Mixins
-@mixin allcenter{
->>>>>>> a7d985173aec0917db0228dc86e6ba082adec3a1
+@mixin allcenter {
   display: flex;
   justify-content: center;
   align-items: center;
