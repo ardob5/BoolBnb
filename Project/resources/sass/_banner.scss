@@ -1,13 +1,33 @@
+
 .aside_left {
   height: 1055.6px;
-  background-color: lightblue;
+  background-color: #e13c3c;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  padding: 30px;
+  box-shadow: 0px 0px 19px 10px #9e2a2a;
+  box-shadow: 0px 0px 19px 10px #541313;
+
   .banner_container {
     @include allcenter;
     flex-direction: column;
+    padding: 0 30px;
+
+    h1 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+      font-size: 3rem;
+      text-align: center;
+      color: rgb(249, 164, 164);
+    }
+
+    p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.0rem;
+      color: rgb(252, 230, 230);
+    }
   }
 }
