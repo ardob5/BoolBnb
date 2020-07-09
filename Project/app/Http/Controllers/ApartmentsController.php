@@ -24,15 +24,39 @@ class ApartmentsController extends Controller
     return view('home', compact('apartments_sponsor'));
   }
 
-  public function search(){
+  public function search(Request $request){
+    // dd($request -> lat);
 
-    $apartments = Apartment::all();
-    $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
-    $apartmentWithoutSponsor = $this->filterApartmentWithoutSponsor($apartments);
-    $apartments_no_sponsor = collect($apartmentWithoutSponsor) -> paginate(6);
 
-    return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor'));
-  }
+
+    $radians = 20;
+        /*
+         * using eloquent approach, make sure to replace the "Restaurant" with your actual model name
+         * replace 6371000 with 6371 for kilometer and 3956 for miles
+         */
+        $apartments = Apartment::selectRaw("id, name, address, latitude, longitude,
+                         ( 6371 * acos( cos( radians($radians) ) *
+                           cos( radians( $request -> lat) )
+                           * cos( radians( $request -> lon ) - radians($radians)
+                           ) + sin( radians($radians) ) *
+                           sin( radians(  $request -> lat ) ) )
+                         ) AS distance", [$request -> lat, $request -> lon, $request -> lat])
+            // ->where('active', '=', 1)
+            ->having("distance", "<", $radians)
+            ->orderBy("distance",'asc')
+            ->offset(0)
+            ->limit(20)
+            ->get();
+
+            dd($apartments);
+        return $restaurants;
+    }
+    // $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
+    // $apartmentWithoutSponsor = $this->filterApartmentWithoutSponsor($apartments);
+    // $apartments_no_sponsor = collect($apartmentWithoutSponsor) -> paginate(6);
+
+    // return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor'));
+  // }
 
   public function show($id) {
 
@@ -206,7 +230,7 @@ class ApartmentsController extends Controller
         $apartment->save();
       }
     }
-   
+
 
     if ($request->hasFile('photos')) {
 
@@ -227,7 +251,7 @@ class ApartmentsController extends Controller
       }
     }
 
-    
+
 
     return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' modificato con successo');
   }

@@ -16,7 +16,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/createApartment.js', 'public/js')
     .js('resources/js/edit.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .js('resources/js/tomtom_show.js', 'public/js');
+    .js('resources/js/tomtom_show.js', 'public/js')
+    .js('resources/js/tomtom_search.js', 'public/js');
 
 mix.options({
     processCssUrls: false
