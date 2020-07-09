@@ -70,37 +70,37 @@
       <div class="section3">
         <div class="apartment-location">
           <div id='map' style='height:400px;width:500px'></div>
-          <h1 id="latitude">{{$apartment -> latitude}}</h1>
-          <h1 id="longitude">{{$apartment -> longitude}}</h1>
-          <script type="text/javascript" src="{{ asset('./js/tomtom_show.js') }}"></script>
+          <input type="hidden" id="latitude" value="{{$apartment -> latitude}}"></input>
+          <input type="hidden" id="longitude" value="{{$apartment -> longitude}}"></input>
         </div>
         @if ($apartment->user->id !== Auth::id())
-          <div class="apartment-mail">
-            <h2>Richiedi informazioni</h2>
-            <form action="{{ route('informations', $apartment -> id) }}" method="post" class="formarco">
-              @csrf
-              @method('POST')
-              <input type="email" name="email" placeholder="Inserisci la tua mail" value="
-              @auth
-                  {{ auth()->user()->email }}
-              @endauth
-              "class="@error('email') is-invalid @enderror">
-              @error('email')
-                <small class="text-danger">{{ $message }}</small>
-              @enderror
-              <textarea name="informations" rows="8" cols="50" value=" {{ old('informations') }}" class="@error('informations') is-invalid @enderror"></textarea>
-              @error('informations')
-                <small class="text-danger">{{ $message }}</small>
-              @enderror
-              <button type="submit" name="invia">Invia</button>
-            </form>
-          </div>
+        <div class="apartment-mail">
+          <h2>Richiedi informazioni</h2>
+          <form action="{{ route('informations', $apartment -> id) }}" method="post" class="formarco">
+            @csrf
+            @method('POST')
+            <input type="email" name="email" placeholder="Inserisci la tua mail" value="
+            @auth
+            {{ auth()->user()->email }}
+            @endauth
+            "class="@error('email') is-invalid @enderror">
+            @error('email')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+            <textarea name="informations" rows="8" cols="50" value=" {{ old('informations') }}" class="@error('informations') is-invalid @enderror"></textarea>
+            @error('informations')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+            <button type="submit" name="invia">Invia</button>
+          </form>
+        </div>
         @endif
       </div>
     </div>
   </div>
-@endsection
-
-@section('script')
+  @endsection
+  
+  @section('script')
+  <script type="text/javascript" src="{{ asset('./js/tomtom_show.js') }}"></script>
   <script src="{{ asset('js/createApartment.js') }}"></script>
 @endsection

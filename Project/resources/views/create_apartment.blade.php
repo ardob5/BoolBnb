@@ -11,20 +11,51 @@
             @csrf
 
             <div class="form-group row">
-              <div class="col-sm-6">
+              <div class="col-sm-12">
                 <label for="title">Titolo</label>
                 <input type="text" required name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Titolo dell'appartamento" value="{{ old('title') }}">
                 @error('title')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
-              <div class="col-sm-6">
-                <label for="address">Indirizzo</label>
-                <input type="text" required name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="Indirizzo" value="{{ old('address') }}">
-                @error('address')
+            </div>
+
+            <div div class="form-group row">
+
+                <div class="col-sm-3">
+                  <label for="address">Indirizzo</label>
+                  <input type="text" required name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="Indirizzo" value="{{ old('address') }}">
+                  @error('address')
+                      <small class="text-danger">{{ $message }}</small>
+                  @enderror
+                </div>
+                <input type="hidden" id="latitude-create" name="lat" value="{{ old('lat') }}">
+                <input type="hidden" id="longitude-create" name="lon" value="{{ old('lon') }}">
+
+                <div class="col-sm-3">
+                  <label for="civicNumber">Numero Civico</label>
+                  <input type="number" required name="civicNumber" id="civicNumber" class="form-control @error('civicNumber') is-invalid @enderror" placeholder="Indirizzo" value="{{ old('civicNumber') }}">
+                  @error('address')
+                      <small class="text-danger">{{ $message }}</small>
+                  @enderror
+                </div>
+  
+                <div class="col-sm-3">
+                  <label for="city">Città</label>
+                  <input type="text" required name="city" id="city" class="form-control @error('city') is-invalid @enderror" placeholder="Citta" value="{{ old('city') }}">
+                  @error('city')
+                      <small class="text-danger">{{ $message }}</small>
+                  @enderror
+                </div>
+              
+              <div class="col-sm-3">
+                <label for="postCode">Codice Postale</label>
+                <input type="number" required name="postCode" id="postCode" class="form-control @error('postCode') is-invalid @enderror" placeholder="Citta" value="{{ old('postCode') }}">
+                @error('postCode')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
+
             </div>
 
             <div class="form-group row">
@@ -50,7 +81,7 @@
                 @enderror
               </div>
             </div>
-    
+
             <div class="form-group row">
               <div class="col-sm-6">
                 <label for="area">Area</label>
@@ -67,7 +98,7 @@
                 @enderror
               </div>
             </div>
-    
+
             <div class="form-group row">
               <div class="col-sm-6">
                 <label for="image">Foto copertina appartamento</label>
@@ -84,7 +115,7 @@
                 @enderror
               </div>
             </div>
-            
+
               <div class="form-group row">
                 <div class="col-sm-12">
                   <div class="form-check">
@@ -116,7 +147,7 @@
                   </div>
                 </div>
               </div>
-            
+
             <div class="form-group row">
               <div class="col-sm-12">
                 <label for="description">Descrizione appartamento</label>
@@ -132,7 +163,7 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 @endsection
 
 @section('script')

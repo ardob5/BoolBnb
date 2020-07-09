@@ -9,6 +9,7 @@
         <div class="row justify-content-center">
           <h1 class="display-4">Home is where love resides.</h1>
         </div>
+        <input type="search" class="form-control" id="search-search-bar"  name='search' placeholder="Cerca Località" value="">
       </div>
   </div>
 </div>
@@ -64,4 +65,9 @@
     </div>
 
 
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/tomtom_search.js') }}"></script>
 @endsection

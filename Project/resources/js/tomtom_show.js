@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-  var longitude = $('#longitude').html();
-  var latitude = $('#latitude').html();
+  var longitude = $('#longitude').val();
+  var latitude = $('#latitude').val();
 
   var position = [ longitude, latitude ];
 
@@ -14,8 +14,13 @@ $(document).ready(function(){
         source: 'vector',
         basePath: '/sdk',
         center: position,
-        zoom: 20
+        zoom: 15
       });
+
+      console.log(longitude);
+      console.log(latitude);
+      
+      
 
   var marker = new tt.Marker().setLngLat(position).addTo(map);
 

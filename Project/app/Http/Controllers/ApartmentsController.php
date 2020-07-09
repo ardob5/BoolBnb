@@ -7,6 +7,7 @@ use App\Photo;
 use App\Optional;
 use App\Message;
 
+use DB;
 use Storage;
 use Str;
 use Auth;
@@ -15,6 +16,7 @@ use Illuminate\Http\Request;
 
 class ApartmentsController extends Controller
 {
+  // INDEX
   public function index() {
 
     $apartments = Apartment::all();
@@ -24,16 +26,21 @@ class ApartmentsController extends Controller
     return view('home', compact('apartments_sponsor'));
   }
 
-  public function search(){
+  // SEARCH
+  public function search(Request $request){
 
     $apartments = Apartment::all();
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
-    $apartmentWithoutSponsor = $this->filterApartmentWithoutSponsor($apartments);
-    $apartments_no_sponsor = collect($apartmentWithoutSponsor) -> paginate(6);
 
+    $apartmentsRadius20 = $this -> findNearestHouse($request -> lat , $request -> lon);
+
+    $apartments_no_sponsor = collect($apartmentsRadius20) -> paginate(12);
+
+    // dd($apartments_no_sponsor);
     return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor'));
   }
 
+  // SHOW
   public function show($id) {
 
     $apartment = Apartment::findOrFail($id);
@@ -43,7 +50,8 @@ class ApartmentsController extends Controller
     return view('show', compact('apartment', 'photos', 'optionals'));
   }
 
-  public function create(){
+  // CREATE
+  public function create() {
     return view('create_apartment');
   }
 
@@ -51,12 +59,17 @@ class ApartmentsController extends Controller
 
     $validate_data = $request->validate([
       'title' => 'required|alpha_num',
-      'address' => 'required|alpha_num',
+      'address' => 'required',
+      'city' => 'required|alpha',
+      'civicNumber' => 'required',
+      'postCode' => 'required|integer',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
       'beds' => 'required|integer',
       'area' => 'required|integer',
-      'price' => 'required|integer',
+      'price' => 'required|integer|not_in:0',
+      'lat' => 'required',
+      'lon' => 'required',
       'image' => 'required|mimes:jpeg,jpg,bmp,png|max:8000',
       'photos' => 'array|max:4',
       'photos.*' => 'mimes:jpeg,jpg,bmp,png|max:8000',
@@ -67,6 +80,9 @@ class ApartmentsController extends Controller
     $apartment = new Apartment();
     $apartment -> title = $validate_data['title'];
     $apartment -> address = $validate_data['address'];
+    $apartment -> city = $validate_data['city'];
+    $apartment -> civicNumber = $validate_data['civicNumber'];
+    $apartment -> postCode = $validate_data['postCode'];
     $apartment -> room_number = $validate_data['room_number'];
     $apartment -> bath_number = $validate_data['bath_number'];
     $apartment -> beds = $validate_data['beds'];
@@ -74,8 +90,8 @@ class ApartmentsController extends Controller
     $apartment -> price = $validate_data['price'];
     $apartment -> description = $validate_data['description'];
     $apartment -> image = "";
-    $apartment -> latitude = 1;
-    $apartment -> longitude = 1;
+    $apartment -> latitude = $validate_data['lat'];
+    $apartment -> longitude = $validate_data['lon'];
     $apartment -> user_id = auth()->user()->id;
     $apartment -> save();
 
@@ -121,6 +137,9 @@ class ApartmentsController extends Controller
     return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' inserito con successo');
   }
 
+
+
+  // MY APARTMENTS
   public function myApartments() {
 
     $apartments = Auth::user()->apartments;
@@ -130,26 +149,9 @@ class ApartmentsController extends Controller
     return view('my_apartments', compact('apartmentWithSponsor', 'apartmentWithoutSponsor'));
   }
 
-  public function filterApartmentWithSponsor($apartments) {
-    $apartmentWithSponsor = [];
-    foreach ($apartments as $apartment) {
-      if (count($apartment -> sponsors) > 0) {
-        $apartmentWithSponsor[] = $apartment;
-      }
-    }
-    return $apartmentWithSponsor;
-  }
 
-  public function filterApartmentWithoutSponsor($apartments) {
-    $apartmentWithoutSponsor = [];
-    foreach ($apartments as $apartment) {
-      if (count($apartment -> sponsors) < 1) {
-        $apartmentWithoutSponsor[] = $apartment;
-      }
-    }
-    return $apartmentWithoutSponsor;
-  }
 
+  // EDIT
   public function edit($id) {
     $apartment = Apartment::findOrFail($id);
     $optionals = Optional::all();
@@ -162,16 +164,22 @@ class ApartmentsController extends Controller
 
   }
 
+  // UPDATE
   public function update(Request $request, $id) {
 
     $validate_data = $request->validate([
       'title' => 'required|alpha_num',
-      'address' => 'required|alpha_num',
+      'address' => 'required',
+      'city' => 'required|alpha',
+      'civicNumber' => 'required',
+      'postCode' => 'required|integer',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
       'beds' => 'required|integer',
       'area' => 'required|integer',
       'price' => 'required|integer',
+      'lat' => 'required',
+      'lon' => 'required',
       'image' => 'mimes:jpeg,jpg,bmp,png|max:8000',
       'photos' => 'array|max:4',
       'photos.*' => 'mimes:jpeg,jpg,bmp,png|max:8000',
@@ -183,12 +191,17 @@ class ApartmentsController extends Controller
 
     $apartment -> title = $validate_data['title'];
     $apartment -> address = $validate_data['address'];
+    $apartment -> city = $validate_data['city'];
+    $apartment -> civicNumber = $validate_data['civicNumber'];
+    $apartment -> postCode = $validate_data['postCode'];
     $apartment -> room_number = $validate_data['room_number'];
     $apartment -> bath_number = $validate_data['bath_number'];
     $apartment -> beds = $validate_data['beds'];
     $apartment -> area = $validate_data['area'];
     $apartment -> price = $validate_data['price'];
     $apartment -> description = $validate_data['description'];
+    $apartment -> latitude = $validate_data['lat'];
+    $apartment -> longitude = $validate_data['lon'];
 
     $apartment -> save();
     $apartment -> optionals() -> sync($validate_data['optionals']);
@@ -206,7 +219,7 @@ class ApartmentsController extends Controller
         $apartment->save();
       }
     }
-   
+
 
     if ($request->hasFile('photos')) {
 
@@ -226,8 +239,6 @@ class ApartmentsController extends Controller
         }
       }
     }
-
-    
 
     return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' modificato con successo');
   }
@@ -250,6 +261,27 @@ class ApartmentsController extends Controller
 
   }
 
+  // FUNZIONI DA RICHIAMARE
+  public function filterApartmentWithSponsor($apartments) {
+    $apartmentWithSponsor = [];
+    foreach ($apartments as $apartment) {
+      if (count($apartment -> sponsors) > 0) {
+        $apartmentWithSponsor[] = $apartment;
+      }
+    }
+    return $apartmentWithSponsor;
+  }
+
+  public function filterApartmentWithoutSponsor($apartments) {
+    $apartmentWithoutSponsor = [];
+    foreach ($apartments as $apartment) {
+      if (count($apartment -> sponsors) < 1) {
+        $apartmentWithoutSponsor[] = $apartment;
+      }
+    }
+    return $apartmentWithoutSponsor;
+  }
+
   public function saveInformations(Request $request, $id) {
 
     $validate_data = $request->validate([
@@ -266,5 +298,23 @@ class ApartmentsController extends Controller
     return redirect() -> route('show', $id) -> withSuccess('Messaggio inviato correttamente, riceverai una risposta a breve');
 
   }
+
+  protected function findNearestHouse($latitude, $longitude, $radius = 20) {
+
+    $apartments = DB::table('apartments') -> selectRaw("id, title, description, price, room_number, bath_number, beds, address, image, latitude, longitude, user_id ,
+                     ( 6371 * acos( cos( radians(?) ) *
+                       cos( radians( latitude ) )
+                       * cos( radians( longitude ) - radians(?)
+                       ) + sin( radians(?) ) *
+                       sin( radians( latitude ) ) )
+                     ) AS distance", [$latitude, $longitude, $latitude])
+        ->having("distance", "<", $radius)
+        ->orderBy("distance",'asc')
+        ->get();
+
+    return $apartments;
+  }
+
+
 
 }

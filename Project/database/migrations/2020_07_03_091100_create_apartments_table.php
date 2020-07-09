@@ -24,9 +24,12 @@ class CreateApartmentsTable extends Migration
             $table->integer('beds');
             $table->integer('area');
             $table->string('address');
+            $table->integer('civicNumber');
+            $table->string('city');
+            $table->string('postCode');
             $table->string('image');
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->decimal('latitude', 11, 8);
+            $table->decimal('longitude', 11, 8);
 
             $table->bigInteger('user_id') -> unsigned() -> index();
 

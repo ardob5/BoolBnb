@@ -19,8 +19,13 @@
               @method('GET')
               <div class="form-group">
                 <div class="row flex-nowrap justify-content-space-between">
-                  <input type="search" class="form-control"  name='search' placeholder="Cerca Località" value="">
-                  <input type="submit" id="submit" class="btn bnb_btn" value='Cerca'>
+                  {{-- BARRA DI RICERCA --}}
+                  <input type="search" class="form-control" id="home-search-bar"  name='search' placeholder="Cerca Località" value="">
+                  {{-- SUBMIT --}}
+                  <input type="submit" id="submit-home" class="btn bnb_btn" value='Cerca'>
+
+                  <input type="hidden" name="lat" id="hidden-lat" value="">
+                  <input type="hidden" name="lon" id="hidden-lon" value ="">
                 </div>
               </div>
             </form>
@@ -167,10 +172,10 @@
                 <img width="100%" src="{{ asset('img/img-home.jpg')}}" alt="">
               </div>
             </div>
-           
+
             {{-- FIX OFFSET --}}
             <div class="col-md-1"></div>
-          
+
         </div>
 
         {{-- SECOND ROW --}}
@@ -184,10 +189,10 @@
                   <h1>Configura tutto e inizia a offrire l'esperienza</h1>
                   <p>Nell'attesa, puoi scegliere un luogo che rappresenti te e la tua attività, oltre a iniziare a pianificare la configurazione della webcam, l'illuminazione e il sonoro. Puoi anche far pratica con Zoom, una piattaforma per conferenze. Non preoccuparti: prima che tu inizi a offrire l'esperienza, condivideremo con te tante risorse per consentirti di avere successo.</p>
               </div>
-    
+
             {{-- FIX OFFSET --}}
             {{-- <div class="col-md-1"></div> --}}
-          
+
         </div>
       </div>
     </div>
@@ -199,4 +204,5 @@
 
 @section('script')
     <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/tomtom_search.js') }}"></script>
 @endsection
