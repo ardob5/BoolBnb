@@ -57,6 +57,7 @@ class ApartmentsController extends Controller
 
   public function store(Request $request) {
 
+    dd($request);
     $validate_data = $request->validate([
       'title' => 'required|alpha_num',
       'address' => 'required|alpha_num',

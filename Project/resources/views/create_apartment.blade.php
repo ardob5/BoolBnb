@@ -20,10 +20,12 @@
               </div>
               <div class="col-sm-6">
                 <label for="address">Indirizzo</label>
-                <input type="text" required name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="Indirizzo" value="{{ old('address') }}">
+                <input type="text" required name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="Citta, indirizzo" value="{{ old('address') }}">
                 @error('address')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
+                <input type="hidden" id="hidden-lat" name="lat" value="">
+                <input type="hidden" id="hidden-lon" name="lon" value="">
               </div>
             </div>
 
@@ -50,7 +52,7 @@
                 @enderror
               </div>
             </div>
-    
+
             <div class="form-group row">
               <div class="col-sm-6">
                 <label for="area">Area</label>
@@ -67,7 +69,7 @@
                 @enderror
               </div>
             </div>
-    
+
             <div class="form-group row">
               <div class="col-sm-6">
                 <label for="image">Foto copertina appartamento</label>
@@ -84,7 +86,7 @@
                 @enderror
               </div>
             </div>
-            
+
               <div class="form-group row">
                 <div class="col-sm-12">
                   <div class="form-check">
@@ -116,7 +118,7 @@
                   </div>
                 </div>
               </div>
-            
+
             <div class="form-group row">
               <div class="col-sm-12">
                 <label for="description">Descrizione appartamento</label>
@@ -132,7 +134,7 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 @endsection
 
 @section('script')
