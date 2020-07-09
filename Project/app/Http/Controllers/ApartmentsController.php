@@ -57,15 +57,19 @@ class ApartmentsController extends Controller
 
   public function store(Request $request) {
 
-    dd($request);
     $validate_data = $request->validate([
       'title' => 'required|alpha_num',
-      'address' => 'required|alpha_num',
+      'address' => 'required',
+      'city' => 'required|alpha',
+      'civicNumber' => 'required',
+      'postCode' => 'required|integer',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
       'beds' => 'required|integer',
       'area' => 'required|integer',
-      'price' => 'required|integer',
+      'price' => 'required|integer|not_in:0',
+      'lat' => 'required',
+      'lon' => 'required',
       'image' => 'required|mimes:jpeg,jpg,bmp,png|max:8000',
       'photos' => 'array|max:4',
       'photos.*' => 'mimes:jpeg,jpg,bmp,png|max:8000',
@@ -76,6 +80,9 @@ class ApartmentsController extends Controller
     $apartment = new Apartment();
     $apartment -> title = $validate_data['title'];
     $apartment -> address = $validate_data['address'];
+    $apartment -> city = $validate_data['city'];
+    $apartment -> civicNumber = $validate_data['civicNumber'];
+    $apartment -> postCode = $validate_data['postCode'];
     $apartment -> room_number = $validate_data['room_number'];
     $apartment -> bath_number = $validate_data['bath_number'];
     $apartment -> beds = $validate_data['beds'];
@@ -83,8 +90,8 @@ class ApartmentsController extends Controller
     $apartment -> price = $validate_data['price'];
     $apartment -> description = $validate_data['description'];
     $apartment -> image = "";
-    $apartment -> latitude = 45.5840057;
-    $apartment -> longitude = 9.2730143;
+    $apartment -> latitude = $validate_data['lat'];
+    $apartment -> longitude = $validate_data['lon'];
     $apartment -> user_id = auth()->user()->id;
     $apartment -> save();
 
@@ -162,12 +169,17 @@ class ApartmentsController extends Controller
 
     $validate_data = $request->validate([
       'title' => 'required|alpha_num',
-      'address' => 'required|alpha_num',
+      'address' => 'required',
+      'city' => 'required|alpha',
+      'civicNumber' => 'required',
+      'postCode' => 'required|integer',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
       'beds' => 'required|integer',
       'area' => 'required|integer',
       'price' => 'required|integer',
+      'lat' => 'required',
+      'lon' => 'required',
       'image' => 'mimes:jpeg,jpg,bmp,png|max:8000',
       'photos' => 'array|max:4',
       'photos.*' => 'mimes:jpeg,jpg,bmp,png|max:8000',
@@ -179,12 +191,17 @@ class ApartmentsController extends Controller
 
     $apartment -> title = $validate_data['title'];
     $apartment -> address = $validate_data['address'];
+    $apartment -> city = $validate_data['city'];
+    $apartment -> civicNumber = $validate_data['civicNumber'];
+    $apartment -> postCode = $validate_data['postCode'];
     $apartment -> room_number = $validate_data['room_number'];
     $apartment -> bath_number = $validate_data['bath_number'];
     $apartment -> beds = $validate_data['beds'];
     $apartment -> area = $validate_data['area'];
     $apartment -> price = $validate_data['price'];
     $apartment -> description = $validate_data['description'];
+    $apartment -> latitude = $validate_data['lat'];
+    $apartment -> longitude = $validate_data['lon'];
 
     $apartment -> save();
     $apartment -> optionals() -> sync($validate_data['optionals']);
