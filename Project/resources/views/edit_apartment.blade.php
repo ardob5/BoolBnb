@@ -2,9 +2,11 @@
 
 @section('content')
 
+<div class="overlay-image">
+</div>
   <div class="main_content">
     <div class="container">
-      <h2>Modifica il tuo appartamento</h2>
+      <h2 class="text-center mb-5">Modifica il tuo appartamento</h2>
       <div class="row">
         <div class="col-md-10 mx-auto">
           <form action=" {{ route('update', $apartment -> id )}} " method="post" enctype="multipart/form-data" role="form">
@@ -29,14 +31,21 @@
             </div>
 
             <div class="form-group row">
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <label for="room_number">Numero di stanze</label>
                 <input type="number" required name="room_number" id="room_number" class="form-control  @error('room_number') is-invalid @enderror" value="{{ $apartment -> room_number }}">
                 @error('room_number')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-4">
+                <label for="beds">Posti letto</label>
+                <input type="number" required name="beds" id="beds" class="form-control  @error('beds') is-invalid @enderror" value="{{ $apartment -> beds }}">
+                @error('beds')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+              <div class="col-sm-4">
                 <label for="bath_number">Numero di bagni</label>
                 <input type="number" required name="bath_number" id="bath_number" class="form-control  @error('bath_number') is-invalid @enderror" value="{{ $apartment -> bath_number }}">
                 @error('bath_number')
@@ -70,37 +79,46 @@
                 @error('image')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
-                <div class="img_card">
+                <div class="img_card mt-3">
                   <img
                       @if(stristr($apartment -> image, 'http'))
                           src=" {{ asset($apartment -> image) }}"
                       @else
                           src="{{ asset('storage/' . $apartment -> image) }}"
                       @endif
-                      width="50" height="50" alt="{{ $apartment -> title }}">
+                      width="60" height="60" alt="{{ $apartment -> title }}">
                 </div>
               </div>
-
-              <div class="col-sm-6 d-flex justify-content-center">
+              
+              <div class="col-sm-6 d-flex justify-content-center align-items-center">
                   @foreach ($apartment -> photos as $photo)
-                    <div class="img_card">
+                    <div class="img_card mr-3">
                       <img
                         @if(stristr($photo -> img_path, 'http'))
                             src=" {{ asset($photo -> img_path) }}"
                         @else
                             src="{{ asset('storage/' . $photo -> img_path) }}"
                         @endif
-                        width="50" height="50" alt="{{ $apartment -> title }}">
+                        width="60" height="60" alt="{{ $apartment -> title }}">
+                        <div class="text-center mt-2">
+                          <a href="{{ route('delete_img', $photo -> id )}}"><i class="fas fa-minus minus text-danger"></i></a>
+                        </div>
                     </div>
-                    <a href="{{ route('delete_img', $photo -> id )}}">delete</a>
                   @endforeach
                   @if (count($apartment -> photos) < 4)
                     <div class="img_card">
                       <div class="image-upload">
-                        <label for="file-input">
-                          <i class="fas fa-upload"></i>
-                        </label>
-                        <input id="file-input" name="photos[]" id="photos" class="form-control  @error('photos') is-invalid @enderror" type="file" multiple/>
+                        @if (count($apartment -> photos) < 1)
+                            <label for="file-input">
+                              Foto appartamento
+                            </label>
+                            <input id="file-input" name="photos[]" id="photos" class="form-control  @error('photos') is-invalid @enderror" type="file" multiple/>
+                          @else
+                            <label for="file-input">
+                              <i class="far fa-plus-square plus text-success"></i>
+                            </label>
+                            <input id="file-input" name="photos[]" id="photos" class="form-control d-none  @error('photos') is-invalid @enderror" type="file" multiple/>
+                        @endif
                         @error ('photos')
                           <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -146,5 +164,8 @@
       </div>
     </div>
   </div>
+@endsection
 
+@section('script')
+  <script src="{{ asset('js/edit.js') }}"></script>
 @endsection

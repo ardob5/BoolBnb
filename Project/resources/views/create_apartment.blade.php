@@ -3,7 +3,7 @@
 @section('content')
   <div class="main_content">
     <div class="container">
-      <h2>Inserisci il tuo appartamento</h2>
+      <h2 class="text-center">Inserisci il tuo appartamento</h2>
       <div class="row">
         <div class="col-md-10 mx-auto">
           <form action="{{ route('store_apartment') }}" method="post" enctype="multipart/form-data" role="form">
@@ -28,17 +28,24 @@
             </div>
 
             <div class="form-group row">
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <label for="room_number">Numero di stanze</label>
                 <input type="number" required name="room_number" id="room_number" class="form-control  @error('room_number') is-invalid @enderror" value="{{ old('room_number') }}">
                 @error('room_number')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <label for="bath_number">Numero di bagni</label>
                 <input type="number" required name="bath_number" id="bath_number" class="form-control  @error('bath_number') is-invalid @enderror" value="{{ old('bath_number') }}">
                 @error('bath_number')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+              <div class="col-sm-4">
+                <label for="beds">Posti letto</label>
+                <input type="number" required name="beds" id="beds" class="form-control  @error('beds') is-invalid @enderror" value="{{ old('bath_number') }}">
+                @error('beds')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
@@ -120,10 +127,14 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Crea appartamento</button>
+            <button type="submit" class="btn ">Crea appartamento</button>
           </form>
         </div>
       </div>
     </div>
   </div>  
+@endsection
+
+@section('script')
+  <script src="{{ asset('js/createApartment.js') }}"></script>
 @endsection

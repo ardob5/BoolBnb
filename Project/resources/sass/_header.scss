@@ -58,8 +58,10 @@ header {
           color: white;
           letter-spacing: 1.5px;
         }
-        &:nth-child(3) a {
-          color: white !important;
+        &#login {
+           a {
+            color: white !important;
+          }
         }
       }
       .register-button {
@@ -94,6 +96,13 @@ header {
       align-items: center;
       color: white;
     }
+
+    .dropdown {
+      a {
+        color: $redbnb !important;
+      }
+    }
   }
-}
+
 // FINE HEADER
+}

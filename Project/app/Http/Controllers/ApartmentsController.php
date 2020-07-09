@@ -54,6 +54,7 @@ class ApartmentsController extends Controller
       'address' => 'required|alpha_num',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
+      'beds' => 'required|integer',
       'area' => 'required|integer',
       'price' => 'required|integer',
       'image' => 'required|mimes:jpeg,jpg,bmp,png|max:8000',
@@ -68,6 +69,7 @@ class ApartmentsController extends Controller
     $apartment -> address = $validate_data['address'];
     $apartment -> room_number = $validate_data['room_number'];
     $apartment -> bath_number = $validate_data['bath_number'];
+    $apartment -> beds = $validate_data['beds'];
     $apartment -> area = $validate_data['area'];
     $apartment -> price = $validate_data['price'];
     $apartment -> description = $validate_data['description'];
@@ -167,11 +169,12 @@ class ApartmentsController extends Controller
       'address' => 'required|alpha_num',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
+      'beds' => 'required|integer',
       'area' => 'required|integer',
       'price' => 'required|integer',
       'image' => 'mimes:jpeg,jpg,bmp,png|max:8000',
       'photos' => 'array|max:4',
-      'photos.*' => 'mimes:jpeg,jpg,bmp,png|    max:8000',
+      'photos.*' => 'mimes:jpeg,jpg,bmp,png|max:8000',
       'optionals' => 'array',
       'description' => 'required|string'
     ]);
@@ -182,13 +185,13 @@ class ApartmentsController extends Controller
     $apartment -> address = $validate_data['address'];
     $apartment -> room_number = $validate_data['room_number'];
     $apartment -> bath_number = $validate_data['bath_number'];
+    $apartment -> beds = $validate_data['beds'];
     $apartment -> area = $validate_data['area'];
     $apartment -> price = $validate_data['price'];
     $apartment -> description = $validate_data['description'];
 
     $apartment -> save();
     $apartment -> optionals() -> sync($validate_data['optionals']);
-
     if ($request->hasFile('image')) {
       $img = $request->file('image');
 
@@ -203,6 +206,7 @@ class ApartmentsController extends Controller
         $apartment->save();
       }
     }
+   
 
     if ($request->hasFile('photos')) {
 
@@ -212,7 +216,7 @@ class ApartmentsController extends Controller
           $photo = new Photo();
           $image_ext = $image->extension();
           $image_name = Str::slug($photo -> id . "-" . $apartment -> title . "-" . bin2hex(random_bytes(10)));
-          $image_name_with_ext = $imaqge_name . "." . $image_ext;
+          $image_name_with_ext = $image_name . "." . $image_ext;
           $image -> storeAs('apartments/photos/' . $apartment -> id, $image_name_with_ext, 'public');
           $image_path = 'apartments/photos/' . $apartment -> id . "/" . $image_name_with_ext;
 
@@ -222,6 +226,8 @@ class ApartmentsController extends Controller
         }
       }
     }
+
+    
 
     return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' modificato con successo');
   }

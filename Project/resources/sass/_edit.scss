@@ -1,0 +1,33 @@
+.plus {
+    font-size:30px;
+    cursor: pointer;
+}
+
+.minus {
+    font-size: 20px;
+}
+
+img {
+    cursor: pointer;
+}
+
+.overlay-image {
+    background-color: rgba(0,0,0, .8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 3000;
+    text-align: center;
+
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 800px;
+    }
+
+}

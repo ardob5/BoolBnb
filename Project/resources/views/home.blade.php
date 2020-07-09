@@ -158,44 +158,36 @@
         {{-- FEATURES --}}
         {{-- FIRST ROW --}}
         <div class="row">
-          <div class="col-md-10 offset-1">
-            <div class="row">
-              <div class="col-md-6 d-flex align-items-center">
-                <div class="row">
-                  <h1>Crea la tua esperienza</h1>
-                  <p>Tutte le esperienze partono dai nostri standard di qualità: competenza, accesso e interazione. Tuttavia, pensa anche a come interagire con gli ospiti online e riduci al minimo ciò di cui potrebbero aver bisogno per partecipare. Quando hai un'idea, avvia la procedura di invio della proposta.</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="row">
-                  <img src="{{ asset('img/img-home.jpg')}}" alt="">
-                </div>
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h1 class="text-right">Crea la tua esperienza</h1>
+                <p class="text-right">Tutte le esperienze partono dai nostri standard di qualità: competenza, accesso e interazione. Tuttavia, pensa anche a come interagire con gli ospiti online e riduci al minimo ciò di cui potrebbero aver bisogno per partecipare. Quando hai un'idea, avvia la procedura di invio della proposta.</p>
+            </div>
+            <div class="col-md-6">
+              <div>
+                <img width="100%" src="{{ asset('img/img-home.jpg')}}" alt="">
               </div>
             </div>
+           
             {{-- FIX OFFSET --}}
             <div class="col-md-1"></div>
-          </div>
+          
         </div>
 
         {{-- SECOND ROW --}}
         <div class="row">
-          <div class="col-md-10 offset-1">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="row">
-                  <img src="{{ asset('img/img2-home.jpg')}}" alt="">
-                </div>
-              </div>
-              <div class="col-md-6 d-flex align-items-center">
-                <div class="row">
-                  <h1>Configura tutto e inizia a offrire l'esperienza</h1>
-                  <p>Nell'attesa, puoi scegliere un luogo che rappresenti te e la tua attività, oltre a iniziare a pianificare la configurazione della webcam, l'illuminazione e il sonoro. Puoi anche far pratica con Zoom, una piattaforma per conferenze. Non preoccuparti: prima che tu inizi a offrire l'esperienza, condivideremo con te tante risorse per consentirti di avere successo.</p>
-                </div>
+            <div class="col-md-6">
+              <div>
+                <img width="100%" src="{{ asset('img/img2-home.jpg')}}" alt="">
               </div>
             </div>
+              <div class="col-md-6 d-flex flex-column justify-content-center">
+                  <h1>Configura tutto e inizia a offrire l'esperienza</h1>
+                  <p>Nell'attesa, puoi scegliere un luogo che rappresenti te e la tua attività, oltre a iniziare a pianificare la configurazione della webcam, l'illuminazione e il sonoro. Puoi anche far pratica con Zoom, una piattaforma per conferenze. Non preoccuparti: prima che tu inizi a offrire l'esperienza, condivideremo con te tante risorse per consentirti di avere successo.</p>
+              </div>
+    
             {{-- FIX OFFSET --}}
-            <div class="col-md-1"></div>
-          </div>
+            {{-- <div class="col-md-1"></div> --}}
+          
         </div>
       </div>
     </div>

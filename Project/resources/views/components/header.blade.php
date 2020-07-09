@@ -23,7 +23,7 @@
       </li>
         <!-- Authentication Links -->
         @guest
-            <li class="nav-item">
+            <li id="login" class="nav-item">
                 <a class="nav-link login-button" href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
             @if (Route::has('register'))

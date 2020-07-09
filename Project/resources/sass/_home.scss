@@ -4,6 +4,9 @@
   color: white;
   padding-bottom: 30px;
   border-radius: 1rem;
+  transform: translateX(400px);
+  opacity: 0;
+  animation: slide-left 3s 2s ease-in-out forwards;
 }
 
 // CARD CSS

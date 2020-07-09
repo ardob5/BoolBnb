@@ -100,3 +100,7 @@
     </div>
   </div>
 @endsection
+
+@section('script')
+  <script src="{{ asset('js/createApartment.js') }}"></script>
+@endsection
