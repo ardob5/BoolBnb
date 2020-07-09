@@ -1,7 +1,10 @@
 // INIZIO HEADER
 header {
 
-  @include allcenter;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 80px;
   background-color: white;
@@ -30,7 +33,7 @@ header {
         a {
           margin-top: 11px;
           img {
-            width: 90px;
+            width: 70px;
             height: 70px;
             margin-bottom: 10px;
           }
@@ -103,6 +106,77 @@ header {
       }
     }
   }
+
+  .dx-responsive{
+    display: none;
+  }
+
+  .responsive-icon{
+    display: none;
+  }
+
+  // FINE HEADER DX
+
+  // INIZIO HEADER DX RESPONSIVE
+  @media screen and (max-width: 980px) {
+
+  header{
+    display: flex;
+    justify-content: space-between;
+  }
+
+    // debug buttons padding
+    .nav-link{
+      padding: 0 !important;
+    }
+
+    .responsive-icon{
+      padding-right: 30px;
+      display: block;
+      font-size: 40px;
+      color: $redbnb;
+    }
+
+    .header-dx{
+      display: none;
+    }
+
+    .dx-responsive{
+      display: none;
+      height: 200px;
+      width: 300px;
+      background: $redbnb;
+      border-radius: 10px;
+      margin-top: 150px;
+      margin-right: 20px;
+
+      ul{
+        height: 100%;
+        text-align: center;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        li{
+          width: 100%;
+          font-size: 20px;
+          font-weight: bold;
+
+          a{
+            color: white !important;
+            text-decoration: none;
+            padding: 0px !important;
+
+            &:hover{
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  // FINE HEADER DX RESPONSIVE
 
 // FINE HEADER
 }
