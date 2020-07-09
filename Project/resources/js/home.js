@@ -84,15 +84,13 @@ $(document).ready(function () {
 
     // HAMBURGER MENU
 
-    $('.responsive-icon').click(
-      function(){
+    $('.responsive-icon').click(function(){
         $('.responsive-icon').hide();
         $('.dx-responsive').slideDown(1000);
       }
     );
 
-    $(".jumbotron, .header-sx, .container-fluid").click(
-      function(){
+    $(".jumbotron, .header-sx, .container-fluid").click(function(){
         $('.responsive-icon').slideDown(3000);
         $('.dx-responsive').slideUp(1000);
       }

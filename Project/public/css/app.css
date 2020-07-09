@@ -10147,8 +10147,65 @@ h3 {
     opacity: 1;
   }
 }
+@-webkit-keyframes large-button {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes large-button {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes slide-left {
+  0% {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(0) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes slide-left {
+  0% {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(0) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
 .aside_left {
-  height: 1055.6px;
   background-color: #e13c3c;
   border-radius: 6px;
   display: flex;
@@ -10172,17 +10229,31 @@ h3 {
   font-size: 3rem;
   text-align: center;
   color: #f9a4a4;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid lightgrey;
+}
+.aside_left .banner_container .first_banner_element {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 .aside_left .banner_container p {
   font-family: "Raleway", sans-serif;
   font-size: 1rem;
   color: #fce6e6;
 }
+.aside_left .banner_container img {
+  width: 80%;
+  height: auto;
+  border-radius: 3px;
+}
 
 header {
+  z-index: 2000;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 80px;
   background-color: white;
@@ -10206,22 +10277,18 @@ header .header-sx .header-logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   width: 30%;
-  color: #e13c3c;
 }
-header .header-sx .header-logo h2 {
+header .header-sx .header-logo div {
   margin-top: 11px;
 }
-header .header-sx .header-logo h2 a {
+header .header-sx .header-logo div a {
   margin-top: 11px;
-  color: #e13c3c;
-  text-decoration: none;
-  font-weight: bolder;
 }
-header .header-sx .header-logo i {
-  color: #e13c3c;
-  font-size: 32px;
+header .header-sx .header-logo div a img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
 }
 header .header-dx {
   display: flex;
@@ -10242,7 +10309,7 @@ header .header-dx ul li a {
   color: white;
   letter-spacing: 1.5px;
 }
-header .header-dx ul li:nth-child(3) a {
+header .header-dx ul li#login a {
   color: white !important;
 }
 header .header-dx ul .register-button {
@@ -10269,6 +10336,63 @@ header .header-dx .login-button {
   display: flex;
   align-items: center;
   color: white;
+}
+header .header-dx .dropdown a {
+  color: #e13c3c !important;
+}
+header .dx-responsive {
+  display: none;
+}
+header .responsive-icon {
+  display: none;
+}
+@media screen and (max-width: 980px) {
+  header header {
+    display: flex;
+    justify-content: space-between;
+  }
+  header .nav-link {
+    padding: 0 !important;
+  }
+  header .responsive-icon {
+    padding-right: 30px;
+    display: block;
+    font-size: 40px;
+    color: #e13c3c;
+  }
+  header .header-dx {
+    display: none;
+  }
+  header .dx-responsive {
+    display: none;
+    height: 200px;
+    width: 300px;
+    background: #e13c3c;
+    border-radius: 10px;
+    margin-top: 150px;
+    margin-right: 20px;
+  }
+  header .dx-responsive ul {
+    height: 100%;
+    text-align: center;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  header .dx-responsive ul li {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  header .dx-responsive ul li a {
+    color: white !important;
+    text-decoration: none;
+    padding: 0px !important;
+  }
+  header .dx-responsive ul li a:hover {
+    border-radius: 10px;
+  }
 }
 
 .jumbotron {
@@ -10469,11 +10593,65 @@ header .header-dx .login-button {
   transform: translateX(-50%);
 }
 
+.my-apartments .card {
+  position: relative;
+}
+.my-apartments .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.card-img-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-img-overlay .btn-large {
+  color: white;
+  font-size: 22px;
+  background-color: #e13c3c;
+  padding: 45px;
+  border-radius: 15px;
+  transition: all 0.3s linear;
+  -webkit-animation: large-button 4s infinite linear;
+          animation: large-button 4s infinite linear;
+}
+.card-img-overlay .btn-large:hover {
+  opacity: 0.8;
+  -webkit-animation: 0;
+          animation: 0;
+}
+
+.btn-small {
+  color: white;
+  font-size: 15px;
+  background-color: #e13c3c;
+  padding: 10px;
+  border-radius: 15px;
+  transition: all 0.3s linear;
+  position: fixed;
+  z-index: 200;
+  top: 100px;
+  right: 10px;
+}
+.btn-small:hover {
+  opacity: 0.8;
+  color: white;
+}
+
 .no_racism {
   background: black;
   color: white;
   padding-bottom: 30px;
   border-radius: 1rem;
+  transform: translateX(400px);
+  opacity: 0;
+  -webkit-animation: slide-left 3s 2s ease-in-out forwards;
+          animation: slide-left 3s 2s ease-in-out forwards;
 }
 
 .onHover {
@@ -10524,10 +10702,63 @@ ul .page-item.active .page-link {
 #scrolled-button {
   background-color: #e13c3c;
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 2.5%;
+  right: 2.5%;
   color: white;
   display: none;
+}
+
+.main_content {
+  margin-top: 130px;
+}
+.main_content h2 {
+  color: #e13c3c;
+}
+.main_content button {
+  background-color: #e13c3c;
+  border-color: #e13c3c;
+  color: white;
+  transition: all 0.2s linear;
+}
+.main_content button:hover {
+  opacity: 0.8;
+  color: white;
+}
+.main_content .form-check-inline label {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+.plus {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.minus {
+  font-size: 20px;
+}
+
+img {
+  cursor: pointer;
+}
+
+.overlay-image {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  z-index: 3000;
+  text-align: center;
+}
+.overlay-image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
 }
 
 * {

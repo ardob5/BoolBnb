@@ -121,7 +121,7 @@ $(document).ready(function () {
     } // scrolled-button
 
 
-    if (scrollDocument + $(window).height() == $(document).height()) {
+    if (scrollDocument > $('.container-fluid').offset().top) {
       scrolledButton.css('display', 'block');
     }
 
@@ -161,6 +161,15 @@ $(document).ready(function () {
         'color': 'white'
       });
     }
+  }); // HAMBURGER MENU
+
+  $('.responsive-icon').click(function () {
+    $('.responsive-icon').hide();
+    $('.dx-responsive').slideDown(1000);
+  });
+  $(".jumbotron, .header-sx, .container-fluid").click(function () {
+    $('.responsive-icon').slideDown(3000);
+    $('.dx-responsive').slideUp(1000);
   });
 });
 
@@ -173,7 +182,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/marcopetrini/Desktop/projectTeam/BoolBnb/Project/resources/js/home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\home.js */"./resources/js/home.js");
 
 
 /***/ })
