@@ -14,7 +14,7 @@
             @csrf
 
             <div class="form-group row">
-              <div class="col-sm-12">
+              <div class="col-md-12">
                 <label for="title">Titolo</label>
                 <input type="text" required name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Titolo dell'appartamento" value="{{ $apartment -> title }}">
                 @error('title')
@@ -25,7 +25,7 @@
 
             <div class="form-group row">
 
-              <div class="col-sm-3">
+              <div class="col-md-3">
                 <label for="address">Indirizzo</label>
                 <input type="text" required name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="Indirizzo" value="{{ $apartment -> address }}">
                 @error('address')
@@ -33,7 +33,7 @@
                 @enderror
               </div>
 
-              <div class="col-sm-3">
+              <div class="col-md-3">
                 <label for="address">Numero Civico</label>
                 <input type="number" required name="civicNumber" id="civicNumber" class="form-control @error('civicNumber') is-invalid @enderror" placeholder="Indirizzo" value="{{ $apartment -> civicNumber }}">
                 @error('civicNumber')
@@ -41,7 +41,7 @@
                 @enderror
               </div>
 
-              <div class="col-sm-3">
+              <div class="col-md-3">
                 <label for="city">Città</label>
                 <input type="text" required name="city" id="city" class="form-control @error('city') is-invalid @enderror" placeholder="Citta" value="{{ $apartment -> city }}">
                 @error('city')
@@ -49,7 +49,7 @@
                 @enderror
               </div>
 
-              <div class="col-sm-3">
+              <div class="col-md-3">
                 <label for="postCode">Codice Postale</label>
                 <input type="number" required name="postCode" id="postCode" class="form-control @error('postCode') is-invalid @enderror" placeholder="Citta" value="{{ $apartment -> postCode }}">
                 @error('postCode')
@@ -62,23 +62,23 @@
             <input type="hidden" id="longitude-edit" name="lon" value="{{ $apartment -> longitude }}">
 
             <div class="form-group row">
-              <div class="col-sm-4">
+              <div class="col-md-4">
                 <label for="room_number">Numero di stanze</label>
                 <input type="number" required name="room_number" id="room_number" class="form-control  @error('room_number') is-invalid @enderror" value="{{ $apartment -> room_number }}">
                 @error('room_number')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
-  
-              <div class="col-sm-4">
+
+              <div class="col-md-4">
                 <label for="beds">Posti letto</label>
                 <input type="number" required name="beds" id="beds" class="form-control  @error('beds') is-invalid @enderror" value="{{ $apartment -> beds }}">
                 @error('beds')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
-  
-              <div class="col-sm-4">
+
+              <div class="col-md-4">
                 <label for="bath_number">Numero di bagni</label>
                 <input type="number" required name="bath_number" id="bath_number" class="form-control  @error('bath_number') is-invalid @enderror" value="{{ $apartment -> bath_number }}">
                 @error('bath_number')
@@ -89,7 +89,7 @@
             </div>
 
             <div class="form-group row">
-              <div class="col-sm-6">
+              <div class="col-md-6">
                 <label for="area">Area</label>
                 <input type="number" required name="area" id="area" class="form-control @error('area') is-invalid @enderror" value="{{ $apartment -> area }}">
                 @error('area')
@@ -97,7 +97,7 @@
                 @enderror
               </div>
 
-              <div class="col-sm-6">
+              <div class="col-md-6">
                 <label for="price">Prezzo in €</label>
                 <input type="number" required name="price" id="price" class="form-control @error('price') is-invalid @enderror" value="{{ $apartment -> price }}">
                 @error('price')
@@ -107,24 +107,15 @@
             </div>
 
             <div class="form-group row">
-              <div class="col-sm-6">
+              <div class="col-md-6">
                 <label for="image">Modifica copertina</label>
                 <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
                 @error('image')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
-                <div class="img_card mt-3">
-                  <img
-                      @if(stristr($apartment -> image, 'http'))
-                          src=" {{ asset($apartment -> image) }}"
-                      @else
-                          src="{{ asset('storage/' . $apartment -> image) }}"
-                      @endif
-                      width="60" height="60" alt="{{ $apartment -> title }}">
-                </div>
               </div>
-              
-              <div class="col-sm-6 d-flex justify-content-center align-items-center">
+
+              <div class="col-md-6 d-flex justify-content-flex-start align-items-center">
                   @foreach ($apartment -> photos as $photo)
                     <div class="img_card mr-3">
                       <img
@@ -140,7 +131,7 @@
                     </div>
                   @endforeach
                   @if (count($apartment -> photos) < 4)
-                    <div class="img_card">
+                    <div class="img_card" style="width: 100%;">
                       <div class="image-upload">
                         @if (count($apartment -> photos) < 1)
                             <label for="file-input">
@@ -162,8 +153,27 @@
               </div>
             </div>
 
+            <div class="row">
+              <div class="col-md-6">
+                {{-- IMMAGINE COPERTINA APPARTAMENTO --}}
+                <div class="img_card mt-3">
+                  <img
+                      @if(stristr($apartment -> image, 'http'))
+                          src=" {{ asset($apartment -> image) }}"
+                      @else
+                          src="{{ asset('storage/' . $apartment -> image) }}"
+                      @endif
+                      width="100" height="80" alt="{{ $apartment -> title }}">
+                </div>
+              </div>
+              {{-- FOTO APPARTAMENTO --}}
+              <div class="col-md-6">
+
+              </div>
+            </div>
+
               <div class="form-group row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                   <div class="form-check">
                     <label>Optionals:</label>
                   </div>
@@ -183,7 +193,7 @@
               </div>
 
             <div class="form-group row">
-              <div class="col-sm-12">
+              <div class="col-md-12">
                 <label for="description">Descrizione appartamento</label>
                 <textarea rows="4" name="description" required id="description" class="form-control @error('description') is-invalid @enderror" placeholder="Descrizione"> {{ $apartment -> description }}</textarea>
                 @error('description')
