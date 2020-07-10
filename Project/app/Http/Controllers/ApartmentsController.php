@@ -1,5 +1,6 @@
 <?php
 
+// IMPORTO MODELLI
 namespace App\Http\Controllers;
 use App\Apartment;
 use App\Sponsor;
@@ -16,47 +17,55 @@ use Illuminate\Http\Request;
 
 class ApartmentsController extends Controller
 {
-  // INDEX
+  // HOMEPAGE (index)[visibile] ----------------------------------------------------------------------
   public function index() {
 
+    // prendo tutte le colonne di Apartment
     $apartments = Apartment::all();
+    // filtro gli appartamenti che hanno sponsor (funzione in fondo)
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
+    // riunisco e impagino gli appartamenti filtrati
     $apartments_sponsor = collect($apartmentWithSponsor) -> paginate(4);
 
     return view('home', compact('apartments_sponsor'));
   }
 
-  // SEARCH
+  // PAGINA DI RICERCA (search)[visibile]  ------------------------------------------------------------
   public function search(Request $request){
-
+    // prendo tutte le colonne di Apartment
     $apartments = Apartment::all();
+    // filtro gli appartamenti che hanno sponsor (funzione in fondo)
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
-
+    // filtro gli appartamenti a un raggio definito partendo da lat e lon definita
     $apartmentsRadius20 = $this -> findNearestHouse($request -> lat , $request -> lon);
-
+    // riunisco e impagino gli appartamenti filtrati per raggio
     $apartments_no_sponsor = collect($apartmentsRadius20) -> paginate(12);
 
-    // dd($apartments_no_sponsor);
     return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor'));
   }
 
-  // SHOW
+  // PAGINA DI DETTAGLIO APPARTAMENTO (show)[visibile] -------------------------------------------------
   public function show($id) {
-
+    // prendo tutte le colonne di Apartment
     $apartment = Apartment::findOrFail($id);
+    // ricavo le url delle foto salvate nel database
     $photos = $apartment -> photos;
+    // ricavo gli optional degli appartamenti salvati nel database
     $optionals = $apartment -> optionals;
 
     return view('show', compact('apartment', 'photos', 'optionals'));
   }
 
-  // CREATE
+  // PAGINA DI CREAZIONE APPARTAMENTO (create)[visibile] ----------------------------------------------
   public function create() {
     return view('create_apartment');
   }
 
+  // PAGINA DI UPLOAD APPARTAMENTO CREATO (store)[non visibile]-----------------------------------------------
+                  // request da create.blade.php
   public function store(Request $request) {
 
+    // validazione dati presi dal form in create.blade.php, e slavataggio in variabile di dati validati
     $validate_data = $request->validate([
       'title' => 'required|alpha_num',
       'address' => 'required',
@@ -77,7 +86,10 @@ class ApartmentsController extends Controller
       'description' => 'required|string'
     ]);
 
+    // creazione nuovo modello appartamento
     $apartment = new Apartment();
+
+    // compilazione  dei valori del nuovo modello tramite valori presi dal form
     $apartment -> title = $validate_data['title'];
     $apartment -> address = $validate_data['address'];
     $apartment -> city = $validate_data['city'];
@@ -92,7 +104,9 @@ class ApartmentsController extends Controller
     $apartment -> image = "";
     $apartment -> latitude = $validate_data['lat'];
     $apartment -> longitude = $validate_data['lon'];
+    // autenticazione user
     $apartment -> user_id = auth()->user()->id;
+    // salvataggio dati
     $apartment -> save();
 
     if (!empty($validate_data['optionals'])) {
@@ -112,7 +126,7 @@ class ApartmentsController extends Controller
         $apartment -> image = $img_path;
       }
     }
-
+    // salvataggio dati
     $apartment -> save();
 
     if ($request->hasFile('photos')) {
@@ -138,12 +152,14 @@ class ApartmentsController extends Controller
   }
 
 
-
-  // MY APARTMENTS
+  // PAGINA DI DETTAGLIO APPARTAMENTI PERSONALI(my apartments)[visibile]-----------------------------------------------
   public function myApartments() {
 
+    // prendo gli appartamenti dello user autenticato
     $apartments = Auth::user()->apartments;
+    // filtro gli appartamenti con lo sponsor
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
+    // filtro gli appartamenti senza sponsor
     $apartmentWithoutSponsor = $this->filterApartmentWithoutSponsor($apartments);
 
     return view('my_apartments', compact('apartmentWithSponsor', 'apartmentWithoutSponsor'));
@@ -151,11 +167,14 @@ class ApartmentsController extends Controller
 
 
 
-  // EDIT
+  // PAGINA DI EDITING APPARTAMENTO(edit)[visibile]---------------------------------------------------------------
   public function edit($id) {
+    // prendo l'appartamento specifico che l'utente vuole modificare, tramite il richiamo del suo id
     $apartment = Apartment::findOrFail($id);
+    // prendo tutti gli optional del database per permettere all'utente di aggiungerli o toglierli
     $optionals = Optional::all();
 
+    // controllo per impedire a uno che non sia l'utente proprietario, di interagire e modificare l'apppartamento
     if($apartment->user->id !== Auth::user()->id) {
       return redirect()->route('home');
     } else {
@@ -164,9 +183,11 @@ class ApartmentsController extends Controller
 
   }
 
-  // UPDATE
+  // PAGINA DI UPLOAD NUOVI DATI APPARTAMENTO MODIFICATI(upload)[non visibile]-----------------------------------------------
+                      // request da edit.blade.php
   public function update(Request $request, $id) {
 
+    // validazione dati presi dal form in create.blade.php, e slavataggio in variabile di dati validati
     $validate_data = $request->validate([
       'title' => 'required|alpha_num',
       'address' => 'required',
@@ -187,8 +208,10 @@ class ApartmentsController extends Controller
       'description' => 'required|string'
     ]);
 
+    // creazione nuovo modello appartamento
     $apartment = Apartment::findOrFail($id);
 
+    // compilazione  dei valori del nuovo modello tramite valori presi dal form
     $apartment -> title = $validate_data['title'];
     $apartment -> address = $validate_data['address'];
     $apartment -> city = $validate_data['city'];
@@ -203,13 +226,17 @@ class ApartmentsController extends Controller
     $apartment -> latitude = $validate_data['lat'];
     $apartment -> longitude = $validate_data['lon'];
 
+      // salvataggio dati
     $apartment -> save();
+
+    // sincronizzazione nuovi optionals
     $apartment -> optionals() -> sync($validate_data['optionals']);
+
     if ($request->hasFile('image')) {
       $img = $request->file('image');
 
-      if ($img->isValid()) {
-        $img_ext = $img->extension();
+      if ($img->isValid()) {                                                            // da dove viene la funzione isValid???????????????????????????????????????????????????
+        $img_ext = $img->extension();                                                  // da dove viene la funzione extension???????????????????????????????????????????????????
         $img_name = Str::slug($apartment -> id . "-" . $apartment -> title);
         $img_name_with_ext = $img_name . "." . $img_ext;
         Storage::disk('public') -> deleteDirectory('apartments/copertina/' . $apartment -> id);
@@ -243,6 +270,7 @@ class ApartmentsController extends Controller
     return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' modificato con successo');
   }
 
+  // PAGINA DI CANCELLAZIONE APPARTAMENTO (delete)[non visibile] ---------------------------------------------------------------------------------------
   public function delete($id) {
 
     $apartment = Apartment::findOrFail($id);
@@ -261,7 +289,9 @@ class ApartmentsController extends Controller
 
   }
 
-  // FUNZIONI DA RICHIAMARE
+  // FUNZIONI DA RICHIAMARE ----------------------------------------------------------------------------------------------------------------
+
+  // funzione per filtrare gli appartamenti con sponsor
   public function filterApartmentWithSponsor($apartments) {
     $apartmentWithSponsor = [];
     foreach ($apartments as $apartment) {
@@ -272,6 +302,7 @@ class ApartmentsController extends Controller
     return $apartmentWithSponsor;
   }
 
+  // funzione per filtrare gli appartamenti senza sponsor
   public function filterApartmentWithoutSponsor($apartments) {
     $apartmentWithoutSponsor = [];
     foreach ($apartments as $apartment) {
@@ -282,6 +313,7 @@ class ApartmentsController extends Controller
     return $apartmentWithoutSponsor;
   }
 
+  // funzione per salvare le informazioni del messaggio
   public function saveInformations(Request $request, $id) {
 
     $validate_data = $request->validate([
@@ -299,6 +331,7 @@ class ApartmentsController extends Controller
 
   }
 
+  // FUNZIONE MATEMATICA PER RICAVARE UN RAGGIO DI AZIONE DELLA RICERCA TOM TOM
   protected function findNearestHouse($latitude, $longitude, $radius = 20) {
 
     $apartments = DB::table('apartments') -> selectRaw("id, title, description, price, room_number, bath_number, beds, address, image, latitude, longitude, user_id ,

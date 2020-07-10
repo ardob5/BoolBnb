@@ -37,8 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // collegamento uno a molti con la tabella apartment
     public function apartments(){
-
       return $this -> hasMany(Apartment::class);
 
     }
