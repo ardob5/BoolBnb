@@ -32,15 +32,8 @@ class ApartmentsController extends Controller
 
   // PAGINA DI RICERCA (search)[visibile]  ------------------------------------------------------------
   public function search(Request $request){
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     // prendo tutte le colonne di Apartment
-=======
-    
->>>>>>> master
-=======
-    
->>>>>>> master
     $apartments = Apartment::all();
     // filtro gli appartamenti che hanno sponsor (funzione in fondo)
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
@@ -48,21 +41,11 @@ class ApartmentsController extends Controller
     $apartmentsRadius20 = $this -> findNearestHouse($request -> lat , $request -> lon);
     // riunisco e impagino gli appartamenti filtrati per raggio
     $apartments_no_sponsor = collect($apartmentsRadius20) -> paginate(12);
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor'));
-=======
-=======
->>>>>>> master
     $search = $request -> search;
 
     // dd($apartments_no_sponsor);
     return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor', 'search'));
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> master
+
   }
 
   // PAGINA DI DETTAGLIO APPARTAMENTO (show)[visibile] -------------------------------------------------
@@ -370,9 +353,7 @@ class ApartmentsController extends Controller
   }
 
   public function searchFilter(Request $request) {
-    
+
   }
-
-
 
 }

@@ -11,7 +11,7 @@ $(document).ready(function () {
                 'background-color': 'white',
                 'box-shadow': '1px 1px 15px 5px grey'
             });
-    
+
             $('.header-dx ul li a').css({
                 'color': 'rgb(225, 60, 60)'
             });
@@ -26,15 +26,15 @@ $(document).ready(function () {
             });
             $('.header-dx ul a').css({
                 'color': 'white'
-            });     
-    
+            });
+
         }
-    
+
         // scrolled-button
         if (scrollDocument >  $('.container-fluid').offset().top) {
             scrolledButton.css('display', 'block');
         }
-    
+
         if (scrollDocument < $('.container-fluid').offset().top) {
             scrolledButton.css('display', 'none');
         }

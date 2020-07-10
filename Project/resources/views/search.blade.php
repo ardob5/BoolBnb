@@ -14,6 +14,10 @@
   </div>
 </div>
 
+<label for="piscina">Piscina</label>
+<input type="checkbox" class="filter_input" name="piscina" value="">
+<label for="wi-fi">Wi-Fi</label>
+<input type="checkbox" class="filter_input" name="wi-fi" value="">
       {{-- <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script> --}}
 
 
