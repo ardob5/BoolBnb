@@ -101,6 +101,7 @@ $(document).ready(function () {
     var scrollDocument = $(document).scrollTop();
 
     if (scrollDocument != 0) {
+      $('.logobnb').attr('src', 'img/LOGO_UNO_MOD.png');
       $('header').css({
         'background-color': 'white',
         'box-shadow': '1px 1px 15px 5px grey'
@@ -110,6 +111,7 @@ $(document).ready(function () {
       });
       registerButton.addClass('scrolled');
     } else {
+      $('.logobnb').attr('src', 'img/LOGO_UNO_MOD_BA.png');
       registerButton.removeClass('scrolled');
       $('header').css({
         'background-color': 'transparent',
@@ -161,15 +163,6 @@ $(document).ready(function () {
         'color': 'white'
       });
     }
-  }); // HAMBURGER MENU
-
-  $('.responsive-icon').click(function () {
-    $('.responsive-icon').hide();
-    $('.dx-responsive').slideDown(1000);
-  });
-  $(".jumbotron, .header-sx, .container-fluid").click(function () {
-    $('.responsive-icon').slideDown(3000);
-    $('.dx-responsive').slideUp(1000);
   });
 });
 
@@ -182,7 +175,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/js/home.js */"./resources/js/home.js");
 
 
 /***/ })

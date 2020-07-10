@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -94,8 +94,8 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  var longitude = $('#longitude').html();
-  var latitude = $('#latitude').html();
+  var longitude = $('#longitude').val();
+  var latitude = $('#latitude').val();
   var position = [longitude, latitude];
   console.log(position);
   tomtom.setProductInfo('<your-product-name>', '<your-product-version>');
@@ -105,21 +105,23 @@ $(document).ready(function () {
     source: 'vector',
     basePath: '/sdk',
     center: position,
-    zoom: 20
+    zoom: 15
   });
+  console.log(longitude);
+  console.log(latitude);
   var marker = new tt.Marker().setLngLat(position).addTo(map);
 });
 
 /***/ }),
 
-/***/ 2:
+/***/ 5:
 /*!*******************************************!*\
   !*** multi ./resources/js/tomtom_show.js ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\ESERCIZIO FINALE\ProgettoFinale\BoolBnb\Project\resources\js\tomtom_show.js */"./resources/js/tomtom_show.js");
+module.exports = __webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/js/tomtom_show.js */"./resources/js/tomtom_show.js");
 
 
 /***/ })

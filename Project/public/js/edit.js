@@ -116,6 +116,34 @@ $(document).ready(function () {
   });
   overlay.click(function () {
     overlay.hide();
+  }); // chiamata ajax per latitudine e longitudine
+
+  $('input').keyup(function () {
+    var address = $('#address').val();
+    var city = $('#city').val();
+    var civicNumber = $('#civicNumber').val();
+    var postCode = $('#postCode').val();
+    var url = "https://api.tomtom.com/search/2/structuredGeocode.JSON?key=GA5MivJiK0ZxoB9tGaVHIhVkwckf4jOc";
+    $.ajax({
+      url: url,
+      method: "GET",
+      data: {
+        streetName: address,
+        streetNumber: civicNumber,
+        countryCode: 'IT',
+        municipality: city,
+        postalCode: postCode
+      },
+      success: function success(data) {
+        var lat = data.results[0]['position']['lat'];
+        var lon = data.results[0]['position']['lon'];
+        $('#latitude-edit').val(lat);
+        $('#longitude-edit').val(lon);
+      },
+      error: function error(_error, status) {
+        console.log('errore:' + _error);
+      }
+    });
   });
 });
 
@@ -128,7 +156,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/marcopetrini/Desktop/projectTeam/BoolBnb/Project/resources/js/edit.js */"./resources/js/edit.js");
+module.exports = __webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/js/edit.js */"./resources/js/edit.js");
 
 
 /***/ })

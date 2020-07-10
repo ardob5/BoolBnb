@@ -94,6 +94,10 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
+  $('#address').val('');
+  $('#city').val('');
+  $('#civicNumber').val('');
+  $('#postCode').val('');
   var header = $('header');
   var links = $('header a');
   header.css({
@@ -102,6 +106,34 @@ $(document).ready(function () {
   });
   links.css({
     'color': 'rgb(225, 60, 60)'
+  }); // chiamata ajax per latitudine e longitudine
+
+  $('input').keyup(function () {
+    var address = $('#address').val();
+    var city = $('#city').val();
+    var civicNumber = $('#civicNumber').val();
+    var postCode = $('#postCode').val();
+    var url = "https://api.tomtom.com/search/2/structuredGeocode.JSON?key=GA5MivJiK0ZxoB9tGaVHIhVkwckf4jOc";
+    $.ajax({
+      url: url,
+      method: "GET",
+      data: {
+        streetName: address,
+        streetNumber: civicNumber,
+        countryCode: 'IT',
+        municipality: city,
+        postalCode: postCode
+      },
+      success: function success(data) {
+        var lat = data.results[0]['position']['lat'];
+        var lon = data.results[0]['position']['lon'];
+        $('#latitude-create').val(lat);
+        $('#longitude-create').val(lon);
+      },
+      error: function error(_error, status) {
+        console.log('errore:' + _error);
+      }
+    });
   });
 });
 
@@ -114,7 +146,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/marcopetrini/Desktop/projectTeam/BoolBnb/Project/resources/js/createApartment.js */"./resources/js/createApartment.js");
+module.exports = __webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/js/createApartment.js */"./resources/js/createApartment.js");
 
 
 /***/ })
