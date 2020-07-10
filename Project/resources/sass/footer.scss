@@ -1,0 +1,85 @@
+footer{
+  height: 400px;
+  width: 100%;
+  margin-top: 130px;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255,255,255,.5);
+  // // debug
+  // border: solid black 1px;
+  background: rgb(238,146,146);
+  background: linear-gradient(270deg, rgba(245,161,161,1) 5%, rgba(234,104,104,1) 30%, rgba(225,60,60,1) 100%);
+
+  .lato-sx{
+    height: 350px;
+    width: 30%;
+    // // debug
+    // border: solid black 1px;
+    .logo{
+      height: 70px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // // debug
+      // border: solid black 1px;
+      img{
+        height: 70px;
+        width: 90px;
+        opacity: 0.8px;
+      }
+    }
+    .text{
+      font-size: 12px;
+      width: 100%;
+      height: auto;
+      text-align: center;
+      // color: white;
+      // // debug
+      // border: solid black 1px;
+    }
+  }
+  .lato-dx{
+    height: 350px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    // // debug
+    // border: solid black 1px;
+    .link1{
+      height: 350px;
+      width: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      // color: white;
+      // // debug
+      // border: solid black 1px;
+
+    }
+    .link2{
+      height: 350px;
+      width: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      // color: white;
+      // // debug
+      // border: solid black 1px;
+    }
+    .social{
+      height: 350px;
+      width: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      // // debug
+      // border: solid black 1px;
+    }
+  }
+}

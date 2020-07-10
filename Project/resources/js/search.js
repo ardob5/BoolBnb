@@ -1,9 +1,8 @@
 $(document).ready(function () {
-
     var registerButton = $('.register-button');
     var scrolledButton = $('#scrolled-button');
 
-    // HEADER SCROLL
+    // header scroll
     $(document).scroll(function () {
         var scrollDocument = $(document).scrollTop();
         if (scrollDocument != 0) {
@@ -12,14 +11,12 @@ $(document).ready(function () {
                 'background-color': 'white',
                 'box-shadow': '1px 1px 15px 5px grey'
             });
-
+    
             $('.header-dx ul li a').css({
                 'color': 'rgb(225, 60, 60)'
             });
             registerButton.addClass('scrolled');
 
-            
-            
         } else {
             $('.logobnb').attr('src', 'img/LOGO_UNO_MOD_BA.png');
             registerButton.removeClass('scrolled');
@@ -29,16 +26,15 @@ $(document).ready(function () {
             });
             $('.header-dx ul a').css({
                 'color': 'white'
-            });
-
-
+            });     
+    
         }
-
+    
         // scrolled-button
         if (scrollDocument >  $('.container-fluid').offset().top) {
             scrolledButton.css('display', 'block');
         }
-
+    
         if (scrollDocument < $('.container-fluid').offset().top) {
             scrolledButton.css('display', 'none');
         }
@@ -86,5 +82,4 @@ $(document).ready(function () {
         }
     });
 
-    
 });

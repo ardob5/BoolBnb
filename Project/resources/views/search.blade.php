@@ -67,7 +67,9 @@
 
 @endsection
 
+<input id="search-lat-lon" type="hidden" name="search-lat-lon" value="{{ $search }}">
+
 @section('script')
-    <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/search.js') }}"></script>
     <script src="{{ asset('js/tomtom_search.js') }}"></script>
 @endsection
