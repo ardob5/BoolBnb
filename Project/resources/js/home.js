@@ -7,6 +7,7 @@ $(document).ready(function () {
     $(document).scroll(function () {
         var scrollDocument = $(document).scrollTop();
         if (scrollDocument != 0) {
+            $('.logobnb').attr('src', 'img/LOGO_UNO_MOD.png');
             $('header').css({
                 'background-color': 'white',
                 'box-shadow': '1px 1px 15px 5px grey'
@@ -17,10 +18,10 @@ $(document).ready(function () {
             });
             registerButton.addClass('scrolled');
 
-            $('.logobnb').attr('src', 'img/LOGO_UNO_MOD.png');
             
             
         } else {
+            $('.logobnb').attr('src', 'img/LOGO_UNO_MOD_BA.png');
             registerButton.removeClass('scrolled');
             $('header').css({
                 'background-color': 'transparent',
@@ -29,7 +30,6 @@ $(document).ready(function () {
             $('.header-dx ul a').css({
                 'color': 'white'
             });
-            $('.logobnb').attr('src', 'img/LOGO_UNO_MOD_BA.png');
 
 
         }
