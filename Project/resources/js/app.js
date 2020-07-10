@@ -36,4 +36,18 @@ $(document).ready(function () {
     // FADE-OUT MESSAGGI CON SUCCESSO
     var alert = $('.alert-success');
     alert.fadeOut(4000);
+
+    // HAMBURGER MENU
+
+    $('.responsive-icon').click(function(){
+        $('.responsive-icon').hide();
+        $('.dx-responsive').show(1000);
+      }
+    );
+
+    $(".jumbotron, .header-sx, .container-fluid").click(function(){
+        $('.dx-responsive').slideUp(1000);
+        $('.responsive-icon').show(2500);
+      }
+    );
 });

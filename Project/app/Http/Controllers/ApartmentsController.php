@@ -28,7 +28,7 @@ class ApartmentsController extends Controller
 
   // SEARCH
   public function search(Request $request){
-
+    
     $apartments = Apartment::all();
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
 
@@ -36,8 +36,10 @@ class ApartmentsController extends Controller
 
     $apartments_no_sponsor = collect($apartmentsRadius20) -> paginate(12);
 
+    $search = $request -> search;
+
     // dd($apartments_no_sponsor);
-    return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor'));
+    return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor', 'search'));
   }
 
   // SHOW
@@ -313,6 +315,10 @@ class ApartmentsController extends Controller
         ->get();
 
     return $apartments;
+  }
+
+  public function searchFilter(Request $request) {
+    
   }
 
 

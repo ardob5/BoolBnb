@@ -4,7 +4,7 @@
     <div class="header-logo">
       <div class="logo-img">
         <a href="{{ route('home') }}">
-          <img src="{{asset('img/logobnb.png')}}" alt="logo_boolbnb">
+          <img class="logobnb" src="{{asset('img/LOGO_UNO_MOD_BA.png')}}" alt="logo_boolbnb">
         </a>
       </div>
   </div>
