@@ -64,7 +64,7 @@
   <div class="container-fluid">
     <div class="row justify-content-around">
       {{-- HOME - LEFT - CONTENT --}}
-      <div class="col-md-3 offset-1">
+      <div class="col-lg-3 col-md-12 offset-lg-1">
         <div class="aside_left">
           <div class="row">
             <div class="col-md-12 banner_container">
@@ -106,7 +106,7 @@
       </div>
 
       {{-- HOME - RIGHT - CONTENT --}}
-      <div class="col-md-8 justify-content-center">
+      <div class="col-lg-8 col-md-12 justify-content-center">
         {{-- CREAZIONE CARD - SPONSORED --}}
         @empty (!$apartments_sponsor)
           <div class="row justify-content-center">
