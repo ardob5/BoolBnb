@@ -10286,8 +10286,8 @@ header .header-sx .header-logo div a {
   margin-top: 11px;
 }
 header .header-sx .header-logo div a img {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 75px;
   margin-bottom: 10px;
 }
 header .header-dx {
@@ -10759,6 +10759,71 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 800px;
+}
+
+footer {
+  height: 400px;
+  width: 100%;
+  margin-top: 130px;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  background: #ee9292;
+  background: linear-gradient(270deg, #f5a1a1 5%, #ea6868 30%, #e13c3c 100%);
+}
+footer .lato-sx {
+  height: 350px;
+  width: 30%;
+}
+footer .lato-sx .logo {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer .lato-sx .logo img {
+  height: 70px;
+  width: 90px;
+  opacity: 0.8px;
+}
+footer .lato-sx .text {
+  font-size: 12px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+footer .lato-dx {
+  height: 350px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+footer .lato-dx .link1 {
+  height: 350px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+footer .lato-dx .link2 {
+  height: 350px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+footer .lato-dx .social {
+  height: 350px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 * {

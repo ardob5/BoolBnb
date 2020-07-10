@@ -49707,7 +49707,16 @@ var app = new Vue({
 $(document).ready(function () {
   // FADE-OUT MESSAGGI CON SUCCESSO
   var alert = $('.alert-success');
-  alert.fadeOut(4000);
+  alert.fadeOut(4000); // HAMBURGER MENU
+
+  $('.responsive-icon').click(function () {
+    $('.responsive-icon').hide();
+    $('.dx-responsive').show(1000);
+  });
+  $(".jumbotron, .header-sx, .container-fluid").click(function () {
+    $('.dx-responsive').slideUp(1000);
+    $('.responsive-icon').show(2500);
+  });
 });
 
 /***/ }),
@@ -49844,8 +49853,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\ESERCIZIO FINALE\ProgettoFinale\BoolBnb\Project\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\ESERCIZIO FINALE\ProgettoFinale\BoolBnb\Project\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

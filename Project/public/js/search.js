@@ -81,50 +81,101 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/tomtom_search.js":
-/*!***************************************!*\
-  !*** ./resources/js/tomtom_search.js ***!
-  \***************************************/
+/***/ "./resources/js/search.js":
+/*!********************************!*\
+  !*** ./resources/js/search.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  $('#home-search-bar').keyup(function () {
-    var city = $('#home-search-bar').val();
-    console.log(city);
-    var url = "https://api.tomtom.com/search/2/geocode/" + city + ".JSON?key=GA5MivJiK0ZxoB9tGaVHIhVkwckf4jOc";
-    $.ajax({
-      url: url,
-      method: "GET",
-      success: function success(data) {
-        var lat = data.results[0]['position']['lat'];
-        var lon = data.results[0]['position']['lon'];
-        console.log(lat + ', ' + lon);
-        $('#hidden-lat').val(lat);
-        $('#hidden-lon').val(lon);
-      },
-      error: function error(_error, status) {
-        console.log('errore:' + _error);
-      }
+  var registerButton = $('.register-button');
+  var scrolledButton = $('#scrolled-button'); // header scroll
+
+  $(document).scroll(function () {
+    var scrollDocument = $(document).scrollTop();
+
+    if (scrollDocument != 0) {
+      $('.logobnb').attr('src', 'img/LOGO_UNO_MOD.png');
+      $('header').css({
+        'background-color': 'white',
+        'box-shadow': '1px 1px 15px 5px grey'
+      });
+      $('.header-dx ul li a').css({
+        'color': 'rgb(225, 60, 60)'
+      });
+      registerButton.addClass('scrolled');
+    } else {
+      $('.logobnb').attr('src', 'img/LOGO_UNO_MOD_BA.png');
+      registerButton.removeClass('scrolled');
+      $('header').css({
+        'background-color': 'transparent',
+        'box-shadow': 'none'
+      });
+      $('.header-dx ul a').css({
+        'color': 'white'
+      });
+    } // scrolled-button
+
+
+    if (scrollDocument > $('.container-fluid').offset().top) {
+      scrolledButton.css('display', 'block');
+    }
+
+    if (scrollDocument < $('.container-fluid').offset().top) {
+      scrolledButton.css('display', 'none');
+    }
+  }); // click sul scrolled-Button
+
+  scrolledButton.click(function () {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
     });
+  }); // hover register-button
+
+  registerButton.mouseenter(function () {
+    registerButton.css({
+      'background-color': 'rgb(225, 60, 60)'
+    });
+    $('.register-button a').css({
+      'color': 'white'
+    });
+  }); // hover register-button
+
+  registerButton.mouseleave(function () {
+    registerButton.css({
+      'background-color': 'transparent'
+    });
+
+    if (registerButton.hasClass('scrolled')) {
+      $('.register-button a').css({
+        'color': 'rgb(225, 60, 60)'
+      });
+    } else {
+      $('.register-button a').css({
+        'color': 'white'
+      });
+    }
   });
 });
 
 /***/ }),
 
-/***/ 6:
-/*!*********************************************!*\
-  !*** multi ./resources/js/tomtom_search.js ***!
-  \*********************************************/
+/***/ 4:
+/*!**************************************!*\
+  !*** multi ./resources/js/search.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/js/tomtom_search.js */"./resources/js/tomtom_search.js");
+module.exports = __webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })
