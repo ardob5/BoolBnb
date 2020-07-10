@@ -1,7 +1,5 @@
 @extends('layouts.main_layout')
-
 @section('content')
-
 <div>
   <div class="jumbotron jumbotron-fluid">
     <div class="overlay"></div>
@@ -13,14 +11,11 @@
       </div>
   </div>
 </div>
-
-<label for="piscina">Piscina</label>
-<input type="checkbox" class="filter_input" name="piscina" value="">
-<label for="wi-fi">Wi-Fi</label>
-<input type="checkbox" class="filter_input" name="wi-fi" value="">
+<input class="filter" type="checkbox" name="optionals[]" value="4">
+<label for="optionals">wi-fi</label>
+<input class="filter" type="checkbox" name="optionals[]" value="2">
+<label for="optionals">Piscina</label>
       {{-- <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script> --}}
-
-
       {{-- APPARTAMENTI IN EVIDENZA --}}
       {{-- <div class="sponsored_container">
         <div class="container">
@@ -40,12 +35,10 @@
             @endforeach
           </div>
         </div> --}}
-
         {{-- @include('components.carousel') --}}
     @empty (!$apartmentWithSponsor)
       @include('components.carousel_one')
     @endempty
-
     <div class="row justify-content-center">
       @foreach ($apartments_no_sponsor as $nosponsorApt)
         <div class="card" style="width: 18rem; margin: 15px 30px;">
@@ -67,12 +60,9 @@
     <div class="row justify-content-center">
       {{ $apartments_no_sponsor -> links() }}
     </div>
-
-
 @endsection
-
-<input id="search-lat-lon" type="hidden" name="search-lat-lon" value="{{ $search }}">
-
+<input id="search-lat" type="hidden" name="search-lat" value="{{ $latitude }}">
+<input id="search-lon" type="hidden" name="search-lon" value="{{ $longitude }}">
 @section('script')
     <script src="{{ asset('js/search.js') }}"></script>
     <script src="{{ asset('js/tomtom_search.js') }}"></script>
