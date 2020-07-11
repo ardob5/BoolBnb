@@ -11,10 +11,26 @@
       </div>
   </div>
 </div>
+<input class="filter" type="checkbox" name="optionals[]" value="1">
+<label for="optionals">Pool</label>
+<input class="filter" type="checkbox" name="optionals[]" value="2">
+<label for="optionals">Security</label>
+<input class="filter" type="checkbox" name="optionals[]" value="3">
+<label for="optionals">Box-auto</label>
 <input class="filter" type="checkbox" name="optionals[]" value="4">
 <label for="optionals">wi-fi</label>
-<input class="filter" type="checkbox" name="optionals[]" value="2">
-<label for="optionals">Piscina</label>
+<input class="filter" type="checkbox" name="optionals[]" value="5">
+<label for="optionals">Sauna</label>
+<input class="filter" type="checkbox" name="optionals[]" value="6">
+<label for="optionals">Sea-view</label>
+
+<div class="form-group">
+  <select id="distance" class="filter" name="radius" id="radius">
+    <option value="20">20 km</option>
+    <option value="50">50 km</option>
+    <option value="100">100 km</option>
+  </select>
+</div>
       {{-- <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script> --}}
       {{-- APPARTAMENTI IN EVIDENZA --}}
       {{-- <div class="sponsored_container">

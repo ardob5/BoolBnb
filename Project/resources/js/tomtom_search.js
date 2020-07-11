@@ -8,7 +8,7 @@ $(document).ready(function(){
   var city = $('#home-search-bar').val();
 
   // preparo l'url personalizzato da dare in pasto all'api
-  var url = "https://api.tomtom.com/search/2/geocode/" + city + ".JSON?key=GA5MivJiK0ZxoB9tGaVHIhVkwckf4jOc";
+  var url = "https://api.tomtom.com/search/2/geocode/" + city + ".JSON?key=A19bLrkzxbFaNdTAWvUaqCPN1NCB7UQH";
 
   // chiamata ajax per ottenere latitudine e longitudine partendo dalla città
   $.ajax({

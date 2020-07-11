@@ -25,13 +25,7 @@ $(document).ready(function () {
                 'color': 'white'
             });
         }
-        // // scrolled-button
-        // if (scrollDocument >  $('.container-fluid').offset().top) {
-        //     scrolledButton.css('display', 'block');
-        // }
-        // if (scrollDocument < $('.container-fluid').offset().top) {
-        //     scrolledButton.css('display', 'none');
-        // }
+        
     });
     // click sul scrolled-Button
     scrolledButton.click(function () {
@@ -65,22 +59,31 @@ $(document).ready(function () {
             });
         }
     });
-    $('.filter').change(function () {
-        if ($(this).prop('checked')) {
-            console.log('checked');
-            var value = $(this).val();
-        } else {
-            var value = 0;
-        }
+
+    // filtro
+    var optionals = [];
+
+    $('.filter').change(function (e) {
+
+        e.preventDefault();
+        optionals = [];
+
+        $('input[name="optionals[]"]:checked').each(function () {
+
+            optionals.push($(this).val());
+        })
+
+        var radius = $('#distance').val();
         var lat = $('#search-lat').val();
         var lon = $('#search-lon').val();
         $.ajax({
             type: "GET",
             url: "http://localhost:8000/api/search/filter",
             data: {
-                val: value,
+                optionals: optionals,
                 latitude: lat,
-                longitude: lon
+                longitude: lon,
+                distance: radius
             },
             success: function (response) {
                console.log(response)

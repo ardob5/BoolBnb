@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/search/filter', 'ApartmentsController@searchFilter')->name('search_filter');
+Route::get('/search/filter', 'FilterController@filterCheckbox')->name('search_filter');

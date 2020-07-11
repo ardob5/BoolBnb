@@ -241,6 +241,7 @@ class ApartmentsController extends Controller
     $message -> save();
     return redirect() -> route('show', $id) -> withSuccess('Messaggio inviato correttamente, riceverai una risposta a breve');
   }
+  
   protected function findNearestHouse($latitude, $longitude, $radius = 20) {
     $apartments = DB::table('apartments') -> selectRaw("id, title, description, price, room_number, bath_number, beds, address, image, latitude, longitude, user_id ,
                      ( 6371 * acos( cos( radians(?) ) *
@@ -254,26 +255,13 @@ class ApartmentsController extends Controller
         ->get();
     return $apartments;
   }
-  protected function findNearestHouseWithFilter($latitude, $longitude, $radius = 20) {
-    $apartments = DB::table('apartments') -> selectRaw("id, title, description, price, room_number, bath_number, beds, address, image, latitude, longitude, user_id ,
-                     ( 6371 * acos( cos( radians(?) ) *
-                       cos( radians( latitude ) )
-                       * cos( radians( longitude ) - radians(?)
-                       ) + sin( radians(?) ) *
-                       sin( radians( latitude ) ) )
-                     ) AS distance", [$latitude, $longitude, $latitude])
-        ->having("distance", "<", $radius)
-        ->orderBy("distance",'asc')
-        ->get();
-        // $ciao = $apartments -> get();
-    return $apartments;
-  }
+
   public function searchFilter(Request $request) {
     $latitude = $request -> latitude;
     $longitude = $request -> longitude;
     $id_optional = $request -> val;
     $filter_apartments = [];
-    $apartments = $this -> findNearestHouseWithFilter($latitude, $longitude);
+    // $apartments = $this -> findNearestHouseWithFilter($latitude, $longitude);
     // $apartments_collection =  collect($apartments);
     // foreach ($apartments as $apartment) {
     //   foreach ($apartment -> optionals as $optional) {
@@ -282,15 +270,30 @@ class ApartmentsController extends Controller
     //     }
     //   }
     // }
-    $ciao = [];
-      $optionals_filter = DB::table('apartment_optional') -> where('optional_id', '=', 2) -> get();
-      foreach ($optionals_filter  as $optional) {
-        foreach ($apartments as $apartment) {
-          if ($apartment -> id == $optional -> apartment_id) {
-            $ciao[] = $apartment;
-          }
-        }
+    $optionals_request = $request -> optionals;
+  
+    
+      // $optionals_filter = DB::table('apartment_optional') -> whereIn('optional_id', $optionals) -> get();
+      // foreach ($optionals_filter  as $optional) {
+      //   foreach ($apartments as $apartment) {
+      //     if ($apartment -> id == $optional -> apartment_id) {
+      //       $ciao[] = $apartment;
+      //     }
+      //   }
+      // }
+      $apartments = Apartment::all();
+      $id_optionals = [];
+     foreach ($apartments as $apartment) {
+       $id_optionals = [];
+       foreach ($apartment -> optionals as $optional) {
+        $id_optionals[] = $optional -> id;
       }
+      $result = array_intersect($optionals_request, $id_optionals);
+      if ($result == $optionals_request) {
+        $filter_apartments[] = $apartment;
+      }
+     }
+
     // $apartments = DB::table('apartments') -> selectRaw("id, title, description, price, room_number, bath_number, beds, address, image, latitude, longitude, user_id ,
     //                  ( 6371 * acos( cos( radians(?) ) *
     //                    cos( radians( latitude ) )
@@ -302,6 +305,6 @@ class ApartmentsController extends Controller
     //     ->orderBy("distance",'asc')
     //     ->get();
     // $apartments_collection = $apartments_collection -> where('', '=', 'prova4');
-    return $ciao;
+    return $filter_apartments;
   }
 }
