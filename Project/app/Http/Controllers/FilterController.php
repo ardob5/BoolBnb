@@ -25,15 +25,21 @@ class FilterController extends Controller {
 
     public function filterCheckbox(Request $request) {
 
+
     $apartments = Apartment::all();
     $latitude = $request -> latitude;
     $longitude = $request -> longitude;
     $radius = $request -> distance;
     $optionals_request = $request -> optionals;
+    $beds_request = $request -> beds;
+    $rooms_request = $request -> rooms;
     $filter_apartments = [];
     $id_optionals = [];
     $apartments_radius_filter = [];
-    
+    $apartments_complete_filter = [];
+    $apartments_final_filter = [];
+
+     
     if (isset($optionals_request)) {
         //  filtro checkbox
         foreach ($apartments as $apartment) {
@@ -42,9 +48,9 @@ class FilterController extends Controller {
                 $id_optionals[] = $optional -> id;
             }
 
-            $result = array_intersect($optionals_request, $id_optionals);
+            $comune_array = array_intersect($optionals_request, $id_optionals);
 
-            if ($result == $optionals_request) {
+            if ($comune_array == $optionals_request) {
                 $filter_apartments[] = $apartment;
             }
         }
@@ -53,40 +59,63 @@ class FilterController extends Controller {
     // filtro distanza
     $apartments_radius = $this -> findNearestHouse($latitude, $longitude, $radius);
 
-    if (count($filter_apartments) < 1) {
-        
-        return $apartments_radius;
-        
-    } else {
 
         // filtro distanza con filtro checkbox
         foreach ($apartments_radius as $apartment_radius) {
-          
+            if (count($filter_apartments) < 1) {
+                $apartments_radius_filter[] = $apartment_radius;
+            }
             foreach ($filter_apartments as $filter_apartment) {
                 
                 if ($apartment_radius -> id === $filter_apartment -> id) {
                     $apartments_radius_filter[] = $apartment_radius;
                 }
+                
             }
           }
 
-          return $apartments_radius_filter;
-    }
+        
+        // filtro appartamneti per numero letti
+       if ($beds_request) {
+           $apartments_beds = Apartment::where('beds', '>=', $beds_request)->get();
+       } else {
+           $apartments_beds = [];
+       }
 
-    
-   
-  
-    
-      // $optionals_filter = DB::table('apartment_optional') -> whereIn('optional_id', $optionals) -> get();
-      // foreach ($optionals_filter  as $optional) {
-      //   foreach ($apartments as $apartment) {
-      //     if ($apartment -> id == $optional -> apartment_id) {
-      //       $ciao[] = $apartment;
-      //     }
-      //   }
-      // }
-      
-    
+        foreach ($apartments_radius_filter as $apartment_filter) {
+            if (!$beds_request) {
+                $apartments_complete_filter[] = $apartment_filter;
+            }
+            foreach ($apartments_beds as $apartment_beds) {
+                
+                if ($apartment_filter -> id === $apartment_beds -> id) {
+                   
+                    $apartments_complete_filter[] = $apartment_filter;
+                }
+            }
+        }
+
+        // filtro appartamneti per numero stanze
+       if ($rooms_request) {
+            $apartments_rooms = Apartment::where('room_number', '>=', $rooms_request)->get();
+        } else {
+            $apartments_rooms = [];
+        }
+
+        foreach ($apartments_complete_filter as $apartment_complete) {
+            if (!$rooms_request) {
+                $apartments_final_filter[] = $apartment_complete;
+            }
+            foreach ($apartments_rooms as $apartment_rooms) {
+                
+                if ($apartment_complete -> id === $apartment_rooms -> id) {
+                   
+                    $apartments_final_filter[] = $apartment_complete;
+                }
+            }
+        }
+
+     return $apartments_final_filter;
     
     }
 }

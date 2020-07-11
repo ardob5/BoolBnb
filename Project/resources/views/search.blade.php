@@ -24,12 +24,22 @@
 <input class="filter" type="checkbox" name="optionals[]" value="6">
 <label for="optionals">Sea-view</label>
 
-<div class="form-group">
+<div class="">
   <select id="distance" class="filter" name="radius" id="radius">
     <option value="20">20 km</option>
     <option value="50">50 km</option>
     <option value="100">100 km</option>
   </select>
+</div>
+
+<div class="">
+  <label for="rooms">N° minimo di stanze</label>
+  <input class="filter" type="number" name="rooms" id="rooms">
+</div>
+
+<div class="">
+  <label for="rooms">Numero minimo posti letto</label>
+  <input class="filter" type="number" name="beds" id="beds">
 </div>
       {{-- <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script> --}}
       {{-- APPARTAMENTI IN EVIDENZA --}}

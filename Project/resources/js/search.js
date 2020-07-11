@@ -74,17 +74,22 @@ $(document).ready(function () {
         })
 
         var radius = $('#distance').val();
+        var rooms = $('#rooms').val();
+        var beds = $('#beds').val();
         var lat = $('#search-lat').val();
         var lon = $('#search-lon').val();
         $.ajax({
-            type: "GET",
+            method: "GET",
             url: "http://localhost:8000/api/search/filter",
             data: {
                 optionals: optionals,
                 latitude: lat,
                 longitude: lon,
-                distance: radius
+                distance: radius,
+                beds: beds,
+                rooms: rooms
             },
+            dataType: "json",
             success: function (response) {
                console.log(response)
             }
