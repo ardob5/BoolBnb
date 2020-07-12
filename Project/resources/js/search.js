@@ -63,10 +63,16 @@ $(document).ready(function () {
     // filtro
     var optionals = [];
 
+    // handlebars
+    var source = $('#entry-template').html();
+    var template = Handlebars.compile(source);
+
     $('.filter').change(function (e) {
 
         e.preventDefault();
         optionals = [];
+
+        
 
         $('input[name="optionals[]"]:checked').each(function () {
 
@@ -78,6 +84,10 @@ $(document).ready(function () {
         var beds = $('#beds').val();
         var lat = $('#search-lat').val();
         var lon = $('#search-lon').val();
+        $('.container-apartments').html('');
+        // 
+        $('.main_content').css('opacity', '.4');
+        $('.logobnb-loading').show();
         $.ajax({
             method: "GET",
             url: "http://localhost:8000/api/search/filter",
@@ -92,6 +102,32 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
                console.log(response)
+               var data = response;
+               $('.main_content').css('opacity', '1');
+               $('.logobnb-loading').hide();
+
+               if (data.length > 0) {
+                   
+                   for (var i = 0; i < data.length; i++) {
+    
+                       var apartment = data[i];
+                       var context = {
+                            title: apartment.title,
+                            beds: apartment.beds,
+                            rooms: apartment.room_number,
+                            bath: apartment.bath_number,
+                            price: apartment.price,
+                            img: apartment.image,
+                            id: apartment.id 
+                       }
+    
+                       $('.container-apartments').append(template(context));
+                
+                   }
+               } else {
+                $('.container-apartments').append('<div class="alert alert-danger text-center" role="alert">' + '<strong class="text-danger">' + 'Nessun risultato trovato' + '</strong>' + '</div>');
+               }
+
             }
         });
     });

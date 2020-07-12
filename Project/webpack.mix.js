@@ -18,7 +18,10 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/search.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .js('resources/js/tomtom_show.js', 'public/js')
+    .js('resources/js/tomtom_home.js', 'public/js')
+    .js('resources/js/login.js', 'public/js')
     .js('resources/js/tomtom_search.js', 'public/js');
+    
 
 mix.options({
     processCssUrls: false

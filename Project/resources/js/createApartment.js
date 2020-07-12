@@ -1,6 +1,9 @@
 // EVENTI E CHIAMATE AJAX NELLE PAGINE DI CREAZIONE APPARTAMENTO
 $(document).ready(function () {
 
+    // metto il logo rosso
+    $('.logobnb').attr('src', 'http://localhost:8000/img/LOGO_UNO_MOD.png');
+    
     // svuoto i valori dagli input in create.blade.php al caricamento della pagina
     $('#address').val('');
     $('#city').val('');
@@ -9,6 +12,7 @@ $(document).ready(function () {
     // chiudo in variabile i tag header con i suoi link
     var header = $('header');
     var links = $('header a');
+
 
     // cambio stile css dell'header
     header.css({

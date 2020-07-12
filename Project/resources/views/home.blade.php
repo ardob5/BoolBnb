@@ -204,5 +204,5 @@
 
 @section('script')
     <script src="{{ asset('js/home.js') }}"></script>
-    <script src="{{ asset('js/tomtom_search.js') }}"></script>
+    <script src="{{ asset('js/tomtom_home.js') }}"></script>
 @endsection

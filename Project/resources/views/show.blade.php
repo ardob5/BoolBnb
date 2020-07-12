@@ -102,5 +102,4 @@
 
   @section('script')
     <script type="text/javascript" src="{{ asset('./js/tomtom_show.js') }}"></script>
-    <script src="{{ asset('js/createApartment.js') }}"></script>
   @endsection

@@ -243,7 +243,7 @@ class ApartmentsController extends Controller
   }
   
   protected function findNearestHouse($latitude, $longitude, $radius = 20) {
-    $apartments = DB::table('apartments') -> selectRaw("id, title, description, price, room_number, bath_number, beds, address, image, latitude, longitude, user_id ,
+    $apartments = DB::table('apartments') -> selectRaw("id, title, description, price, room_number, bath_number, beds, address, image, latitude, longitude, user_id , created_at,
                      ( 6371 * acos( cos( radians(?) ) *
                        cos( radians( latitude ) )
                        * cos( radians( longitude ) - radians(?)

@@ -104,5 +104,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/createApartment.js') }}"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
 @endsection

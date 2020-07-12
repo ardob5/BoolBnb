@@ -90,6 +90,12 @@ header {
         // }
       // }
     }
+    #login {
+      transition: all .2s linear;
+      &:hover {
+        opacity: .7;
+      }
+    }
     .login-button {
       padding: 0 16px;
       height: 40px;
