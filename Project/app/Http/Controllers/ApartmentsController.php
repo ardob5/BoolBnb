@@ -37,11 +37,17 @@ class ApartmentsController extends Controller
     $apartment = Apartment::findOrFail($id);
     $photos = $apartment -> photos;
     $optionals = $apartment -> optionals;
+    $views = $apartment -> views;
+    // dd($views);
 
     $view = new View();
-    $view -> apartment_id = $id;
-    $view -> save();
-
+    foreach ($views as $view) {
+      $view -> apartment_id = $id;
+      $view -> views_IP = $_SERVER['REMOTE_ADDR'];
+      if ($view -> views_IP !== $_SERVER['REMOTE_ADDR']) {
+        $view -> save();
+      }
+    }
     return view('show', compact('apartment', 'photos', 'optionals', 'view'));
   }
   // CREATE

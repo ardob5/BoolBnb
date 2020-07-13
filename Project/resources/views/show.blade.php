@@ -44,31 +44,29 @@
             <h6>{{ $apartment -> price }} €</h6>
           </div>
           <p>{{ $apartment -> description }}</p>
+          @if ($apartment-> user-> id == Auth::id())
+            <a href="{{route('stats', $apartment -> id)}}">Stats</a>
+          @endif
         </div>
         <div class="apartment-services">
           <ul>
-            <li>owner: {{ $apartment ->user -> name}} {{ $apartment -> user-> lastName}}</li>
-            <li>rooms' number: {{ $apartment -> room_number }}</li>
+            <li>Proprietario: {{ $apartment ->user -> name}} {{ $apartment -> user-> lastName}}</li>
+            <li>Numero di stanze: {{ $apartment -> room_number }}</li>
             <li>Posti letto: {{ $apartment -> beds }}</li>
-            <li>bath's number: {{ $apartment -> bath_number}}</li>
-            <li>area: {{ $apartment -> area }} mq</li>
-            <li>address: {{ $apartment -> address }}</li>
-            <li>Views:
-              {{ count($apartment -> views)}}
+            <li>Bagni: {{ $apartment -> bath_number}}</li>
+            <li>Metri quadrati: {{ $apartment -> area }} mq</li>
+            <li>Indirizzo: {{ $apartment -> address }}, {{ $apartment -> civicNumber}}</li>
+            <li>Views: {{ count($apartment -> views)}}</li>
+            <li>Optionals:
+              <ul>
+                @foreach ($optionals as $optional)
+                <li>
+                  <small>{{ $optional -> optional }}</small>
+                </li>
+                @endforeach
+              </ul>
             </li>
-            <li>optionals:
-                <ul>
-                  @foreach ($optionals as $optional)
-                  <li>
-                    <small>{{ $optional -> optional }}</small>
-                  </li>
-                  @endforeach
-                </ul>
-              </li>
           </ul>
-          @if ($apartment->user->id == Auth::id())
-            <a href="{{route('stats', $apartment -> id)}}">Stats</a>
-          @endif
         </div>
       </div>
       {{-- fine sezione 2 --}}

@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(View::class, function (Faker $faker) {
     return [
-        
+        'views_IP' => $faker -> ipv4()
     ];
 });
