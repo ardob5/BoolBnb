@@ -5,6 +5,8 @@ use App\Sponsor;
 use App\Photo;
 use App\Optional;
 use App\Message;
+use App\View;
+
 use DB;
 use Storage;
 use Str;
@@ -35,7 +37,12 @@ class ApartmentsController extends Controller
     $apartment = Apartment::findOrFail($id);
     $photos = $apartment -> photos;
     $optionals = $apartment -> optionals;
-    return view('show', compact('apartment', 'photos', 'optionals'));
+
+    $view = new View();
+    $view -> apartment_id = $id;
+    $view -> save();
+
+    return view('show', compact('apartment', 'photos', 'optionals', 'view'));
   }
   // CREATE
   public function create() {
@@ -210,6 +217,69 @@ class ApartmentsController extends Controller
       return redirect() -> route('my_apartments');
     }
   }
+
+  public function stats($id) {
+    $apartment = Apartment::findOrFail($id);
+    if($apartment->user->id !== Auth::id()) {
+      return redirect()->route('home')->withSuccess('Non sei autorizzato');
+    } else {
+      return view('stats', compact('id'));
+    }
+  }
+
+  // API
+  public function statsResults(Request $request) {
+    $id = $request -> id;
+    $totalViews = [];
+    $views_months = [];
+    for ($i=1; $i < 13; $i++) {
+      $views = DB::table('views')
+                        ->select(DB::raw('ifnull(count(id), 0) as viewsCounter', 'created_at'), DB::raw('MONTH(created_at) month'))
+                        ->where('apartment_id', '=', $id)
+                        ->groupBy('month')
+                        ->having('month', '=', $i)
+                        ->get();
+      $totalViews[] = $views;
+    }
+    foreach ($totalViews as $viewsArr) {
+      if (count($viewsArr) < 1 ) {
+        $views_months[] = 0;
+      }
+
+      foreach ($viewsArr as $i) {
+        $views_months[] = $i-> viewsCounter;
+      }
+    }
+    return $views_months;
+  }
+
+  // API
+  public function messagesApt(Request $request) {
+    $id = $request -> id;
+    $totalMsg = [];
+    $messages_months = [];
+
+    for ($i=1; $i < 13; $i++) {
+      $msg = DB::table('messages')
+                        ->select(DB::raw('ifnull(count(id), 0) as messagesCounter', 'created_at'), DB::raw('MONTH(created_at) month'))
+                        ->where('apartment_id', '=', $id)
+                        ->groupBy('month')
+                        ->having('month', '=', $i)
+                        ->get();
+      $totalMsg[] = $msg;
+    }
+    foreach ($totalMsg as $msgArr) {
+      if (count($msgArr) < 1 ) {
+        $messages_months[] = 0;
+      }
+
+      foreach ($msgArr as $i) {
+        $messages_months[] = $i-> messagesCounter;
+      }
+    }
+    return $messages_months;
+  }
+
   // FUNZIONI DA RICHIAMARE
   public function filterApartmentWithSponsor($apartments) {
     $apartmentWithSponsor = [];
@@ -220,6 +290,7 @@ class ApartmentsController extends Controller
     }
     return $apartmentWithSponsor;
   }
+
   public function filterApartmentWithoutSponsor($apartments) {
     $apartmentWithoutSponsor = [];
     foreach ($apartments as $apartment) {
@@ -241,7 +312,7 @@ class ApartmentsController extends Controller
     $message -> save();
     return redirect() -> route('show', $id) -> withSuccess('Messaggio inviato correttamente, riceverai una risposta a breve');
   }
-  
+
   protected function findNearestHouse($latitude, $longitude, $radius = 20) {
     $apartments = DB::table('apartments') -> selectRaw("id, title, description, price, room_number, bath_number, beds, address, image, latitude, longitude, user_id , created_at,
                      ( 6371 * acos( cos( radians(?) ) *
@@ -254,57 +325,5 @@ class ApartmentsController extends Controller
         ->orderBy("distance",'asc')
         ->get();
     return $apartments;
-  }
-
-  public function searchFilter(Request $request) {
-    $latitude = $request -> latitude;
-    $longitude = $request -> longitude;
-    $id_optional = $request -> val;
-    $filter_apartments = [];
-    // $apartments = $this -> findNearestHouseWithFilter($latitude, $longitude);
-    // $apartments_collection =  collect($apartments);
-    // foreach ($apartments as $apartment) {
-    //   foreach ($apartment -> optionals as $optional) {
-    //     if ($optional -> id == $id_optional) {
-    //         $filter_apartments[] = $apartment;
-    //     }
-    //   }
-    // }
-    $optionals_request = $request -> optionals;
-  
-    
-      // $optionals_filter = DB::table('apartment_optional') -> whereIn('optional_id', $optionals) -> get();
-      // foreach ($optionals_filter  as $optional) {
-      //   foreach ($apartments as $apartment) {
-      //     if ($apartment -> id == $optional -> apartment_id) {
-      //       $ciao[] = $apartment;
-      //     }
-      //   }
-      // }
-      $apartments = Apartment::all();
-      $id_optionals = [];
-     foreach ($apartments as $apartment) {
-       $id_optionals = [];
-       foreach ($apartment -> optionals as $optional) {
-        $id_optionals[] = $optional -> id;
-      }
-      $result = array_intersect($optionals_request, $id_optionals);
-      if ($result == $optionals_request) {
-        $filter_apartments[] = $apartment;
-      }
-     }
-
-    // $apartments = DB::table('apartments') -> selectRaw("id, title, description, price, room_number, bath_number, beds, address, image, latitude, longitude, user_id ,
-    //                  ( 6371 * acos( cos( radians(?) ) *
-    //                    cos( radians( latitude ) )
-    //                    * cos( radians( longitude ) - radians(?)
-    //                    ) + sin( radians(?) ) *
-    //                    sin( radians( latitude ) ) )
-    //                  ) AS distance", [$latitude, $longitude, $latitude])
-    //     ->having("distance", "<", $radius)
-    //     ->orderBy("distance",'asc')
-    //     ->get();
-    // $apartments_collection = $apartments_collection -> where('', '=', 'prova4');
-    return $filter_apartments;
   }
 }

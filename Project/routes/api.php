@@ -19,3 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/search/filter', 'FilterController@filterCheckbox')->name('search_filter');
+
+Route::get('/stats_apt', 'ApartmentsController@statsResults')->name('stats_apt');
+
+Route::get('/messages_apt', 'ApartmentsController@messagesApt')->name('messages_apt');

@@ -53,6 +53,9 @@
             <li>bath's number: {{ $apartment -> bath_number}}</li>
             <li>area: {{ $apartment -> area }} mq</li>
             <li>address: {{ $apartment -> address }}</li>
+            <li>Views:
+              {{ count($apartment -> views)}}
+            </li>
             <li>optionals:
                 <ul>
                   @foreach ($optionals as $optional)
@@ -63,6 +66,9 @@
                 </ul>
               </li>
           </ul>
+          @if ($apartment->user->id == Auth::id())
+            <a href="{{route('stats', $apartment -> id)}}">Stats</a>
+          @endif
         </div>
       </div>
       {{-- fine sezione 2 --}}
