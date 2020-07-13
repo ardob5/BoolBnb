@@ -10,7 +10,7 @@ $factory->define(Apartment::class, function (Faker $faker) {
 
       'title' => $faker->word(),
         'description' => $faker->text(),
-        'price' => $faker->randomNumber(),
+        'price' => $faker->numberBetween($min = 25, $max = 200 ),
         'room_number' => $faker->numberBetween($min = 1, $max = 5 ),
         'bath_number' => $faker->numberBetween($min = 1, $max = 3 ),
         'beds' => $faker->numberBetween($min = 1, $max = 3),
