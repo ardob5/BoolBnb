@@ -7,6 +7,7 @@ use App\Optional;
 use App\Message;
 use App\View;
 
+use Carbon\Carbon;
 use DB;
 use Storage;
 use Str;
@@ -39,16 +40,21 @@ class ApartmentsController extends Controller
     $optionals = $apartment -> optionals;
     $IP = $_SERVER['REMOTE_ADDR'];
     $find = false;
-    
+    $now = date('Y-m-d');
+
     foreach ($apartment -> views as $view) {
+      if ($view -> created_at -> toDateString() == $now) {
+        $find = true;
+      }
       if ($view -> views_IP == $IP) {
         $find = true;
       }
     }
 
-    if ($apartment->user_id == Auth::id()) {
+    if ($apartment-> user_id == Auth::id()) {
       $find = true;
     }
+
 
     if (!$find) {
       $view = new View();
