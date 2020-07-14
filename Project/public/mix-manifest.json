@@ -1,10 +1,13 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
     "/js/createApartment.js": "/js/createApartment.js",
     "/js/edit.js": "/js/edit.js",
     "/js/home.js": "/js/home.js",
+    "/js/login.js": "/js/login.js",
     "/js/search.js": "/js/search.js",
+    "/js/stats.js": "/js/stats.js",
+    "/js/tomtom_home.js": "/js/tomtom_home.js",
     "/js/tomtom_search.js": "/js/tomtom_search.js",
-    "/js/tomtom_show.js": "/js/tomtom_show.js"
+    "/js/tomtom_show.js": "/js/tomtom_show.js",
+    "/css/app.css": "/css/app.css"
 }

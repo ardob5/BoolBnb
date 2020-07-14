@@ -163,8 +163,24 @@ $(document).ready(function () {
         'color': 'white'
       });
     }
-  });
-});
+  }); // home responsive
+
+  if (window.matchMedia('(max-width: 1170px)').matches) {
+    $('.mediaquery_change').removeClass('col-md-4');
+    $('.mediaquery_change').addClass('col-md-6');
+  }
+}); // responsive JS
+// document.addEventListener('DOMContentLoaded', init);
+//
+// function init(){
+//   let query = window.matchMedia("(max-width: 980px)");
+//
+//   if(query.matches){
+//     document.querySelector('.bnb-btn').style.background = "blue";
+//   }else{
+//     document.querySelector('h1').style.color = "black";
+//   }
+// }
 
 /***/ }),
 
@@ -175,7 +191,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/js/home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\home.js */"./resources/js/home.js");
 
 
 /***/ })

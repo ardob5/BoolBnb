@@ -81,24 +81,24 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/tomtom_search.js":
-/*!***************************************!*\
-  !*** ./resources/js/tomtom_search.js ***!
-  \***************************************/
+/***/ "./resources/js/tomtom_home.js":
+/*!*************************************!*\
+  !*** ./resources/js/tomtom_home.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 // EVENTI E CHIAMATE AJAX NELLE PAGINE DI RICERCA APPARTAMENTO
 $(document).ready(function () {
   // evento al rilascio di un tasto sui tag input
-  $('#search-search-bar').keyup(function () {
+  $('#home-search-bar').keyup(function () {
     // chiudo in una variabile il valore dell'input nella barra di ricerca
-    var city = $('#search-search-bar').val(); // preparo l'url personalizzato da dare in pasto all'api
+    var city = $('#home-search-bar').val(); // preparo l'url personalizzato da dare in pasto all'api
 
     var url = "https://api.tomtom.com/search/2/geocode/" + city + ".JSON?key=A19bLrkzxbFaNdTAWvUaqCPN1NCB7UQH"; // chiamata ajax per ottenere latitudine e longitudine partendo dalla città
 
@@ -108,12 +108,10 @@ $(document).ready(function () {
       success: function success(data) {
         // chiudo in variabili i valori dati dall'api di latitudine e longitudine
         var lat = data.results[0]['position']['lat'];
-        console.log(lat);
-        var lon = data.results[0]['position']['lon'];
-        console.log(lon); // inserisco i dati nell'hidden input che servirà a passarli al backend
+        var lon = data.results[0]['position']['lon']; // inserisco i dati nell'hidden input che servirà a passarli al backend
 
-        $('#hidden-lat-search').val(lat);
-        $('#hidden-lon-search').val(lon);
+        $('#hidden-lat').val(lat);
+        $('#hidden-lon').val(lon);
       },
       error: function error(_error, status) {
         console.log('errore:' + _error);
@@ -124,14 +122,14 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 8:
-/*!*********************************************!*\
-  !*** multi ./resources/js/tomtom_search.js ***!
-  \*********************************************/
+/***/ 6:
+/*!*******************************************!*\
+  !*** multi ./resources/js/tomtom_home.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\tomtom_search.js */"./resources/js/tomtom_search.js");
+module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\tomtom_home.js */"./resources/js/tomtom_home.js");
 
 
 /***/ })

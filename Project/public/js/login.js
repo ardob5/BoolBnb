@@ -81,57 +81,64 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/tomtom_search.js":
-/*!***************************************!*\
-  !*** ./resources/js/tomtom_search.js ***!
-  \***************************************/
+/***/ "./resources/js/login.js":
+/*!*******************************!*\
+  !*** ./resources/js/login.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// EVENTI E CHIAMATE AJAX NELLE PAGINE DI RICERCA APPARTAMENTO
 $(document).ready(function () {
-  // evento al rilascio di un tasto sui tag input
-  $('#search-search-bar').keyup(function () {
-    // chiudo in una variabile il valore dell'input nella barra di ricerca
-    var city = $('#search-search-bar').val(); // preparo l'url personalizzato da dare in pasto all'api
+  // chiudo in variabile i tag header con i suoi link
+  var header = $('header');
+  var links = $('header a');
+  var registerButton = $('.register-button'); // metto il logo rosso
 
-    var url = "https://api.tomtom.com/search/2/geocode/" + city + ".JSON?key=A19bLrkzxbFaNdTAWvUaqCPN1NCB7UQH"; // chiamata ajax per ottenere latitudine e longitudine partendo dalla città
+  $('.logobnb').attr('src', 'http://localhost:8000/img/LOGO_UNO_MOD.png'); //cambio stile css dell'header
 
-    $.ajax({
-      url: url,
-      method: "GET",
-      success: function success(data) {
-        // chiudo in variabili i valori dati dall'api di latitudine e longitudine
-        var lat = data.results[0]['position']['lat'];
-        console.log(lat);
-        var lon = data.results[0]['position']['lon'];
-        console.log(lon); // inserisco i dati nell'hidden input che servirà a passarli al backend
+  header.css({
+    'background-color': 'white',
+    'box-shadow': '1px 1px 15px rgba(0, 0, 0, .1)'
+  }); // cambio stile css dei link nell'header
 
-        $('#hidden-lat-search').val(lat);
-        $('#hidden-lon-search').val(lon);
-      },
-      error: function error(_error, status) {
-        console.log('errore:' + _error);
-      }
+  links.css({
+    'color': 'rgb(225, 60, 60)'
+  }); // hover bottone register
+
+  registerButton.mouseenter(function () {
+    registerButton.css({
+      'background-color': 'rgb(225, 60, 60)'
+    });
+    $('.register-button a').css({
+      'color': 'white'
+    });
+  }); // hover bottone register
+
+  registerButton.mouseleave(function () {
+    registerButton.css({
+      'background-color': 'white'
+    });
+    $('.register-button a').css({
+      'color': 'rgb(225, 60, 60)'
     });
   });
 });
 
 /***/ }),
 
-/***/ 8:
-/*!*********************************************!*\
-  !*** multi ./resources/js/tomtom_search.js ***!
-  \*********************************************/
+/***/ 7:
+/*!*************************************!*\
+  !*** multi ./resources/js/login.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\tomtom_search.js */"./resources/js/tomtom_search.js");
+module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\login.js */"./resources/js/login.js");
 
 
 /***/ })

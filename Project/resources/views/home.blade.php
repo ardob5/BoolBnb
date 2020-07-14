@@ -1,18 +1,13 @@
 @extends('layouts.main_layout')
 
 @section('content')
-  @if (session('success'))
-      <div class="alert alert-success text-center" role="alert">
-        <strong>{{ session('success') }}</strong>
-      </div>
-  @endif
 
   {{-- HOME - JUMBOTRON --}}
   <div class="jumbotron jumbotron-fluid">
     <div class="overlay"></div>
       <div class="container container-input center_home">
         <div class="row justify-content-center">
-          <h1 class="display-4">Home is where love resides<span style="color: rgb(225,60,60);">.</span></h1>
+          <h1 class="display-4 jumbotitle">Home is where love resides<span style="color: rgb(225,60,60);">.</span></h1>
         </div>
         {{-- JUMBOTRON - SEARCHBAR --}}
         <div class="input-group">
@@ -98,7 +93,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row mq_resize">
             <div class="col-md-12 banner_container">
               <h1>Pagamenti rapidi</h1>
               <p>Siamo cinque scappati di casa non sappiamo ancora come farti pagare</p>
@@ -127,28 +122,28 @@
                     @endif
                     alt="Card image cap">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 mediaquery_change">
                     <div class="card-body d-flex flex-column align-items-start">
 
                       <h3 class="mb-0">
                         <a class="text-dark" href="{{ route('show', $apartment -> id) }}"> {{ $apartment -> title }} </a>
                         <span>
-                          <strong class="d-inline-block mb-2 text-warning"><i class="fab fa-stripe-s"></i></strong>
+                          {{-- <strong class="d-inline-block mb-2 text-warning"><i class="fab fa-stripe-s"></i></strong> --}}
                         </span>
                       </h3>
                       <div class="mb-1 text-muted">{{ $apartment -> created_at -> diffForHumans() }}</div>
                       <p>
                         <span>Posti Letto: {{$apartment -> beds}}</span> <br>
                         <span>Numero di stanze: {{$apartment -> room_number}}</span> <br>
-                        <span>Bagni: {{$apartment -> bath_number}}</span> <br>
-                        <div class="hr_container">
+                        <span class="mediaquery_remove">Bagni: {{$apartment -> bath_number}}</span> <br>
+                        <div class="hr_container mediaquery_remove">
                           <hr style="height:1px; color: lightgrey; width:100%; margin:2px 0;">
                           <span class="total_prc">{{ $apartment -> price }} € - Totale</span>
                         </div>
                       </p>
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 mediaquery_disappear">
                     <div class="from_bottom">
                       <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
                     </div>
@@ -167,7 +162,7 @@
 
         {{-- FEATURES --}}
         {{-- FIRST ROW --}}
-        <div class="row">
+        <div class="row lastboxes">
             <div class="col-md-6 d-flex flex-column justify-content-center">
                 <h1 class="text-right">Crea la tua esperienza</h1>
                 <p class="text-right">Tutte le esperienze partono dai nostri standard di qualità: competenza, accesso e interazione. Tuttavia, pensa anche a come interagire con gli ospiti online e riduci al minimo ciò di cui potrebbero aver bisogno per partecipare. Quando hai un'idea, avvia la procedura di invio della proposta.</p>
@@ -184,7 +179,7 @@
         </div>
 
         {{-- SECOND ROW --}}
-        <div class="row">
+        <div class="row lastboxes">
             <div class="col-md-6">
               <div>
                 <img width="100%" src="{{ asset('img/img2-home.jpg')}}" alt="">

@@ -93,6 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// EVENTI E CHIAMATE AJAX NELLE PAGINE DI EDITING APPARTAMENTO
 $(document).ready(function () {
   var header = $('header');
   var links = $('header a');
@@ -116,14 +117,17 @@ $(document).ready(function () {
   });
   overlay.click(function () {
     overlay.hide();
-  }); // chiamata ajax per latitudine e longitudine
+  }); // evento al rilascio di un tasto sui tag input
 
   $('input').keyup(function () {
+    // prendo i valori degli input
     var address = $('#address').val();
     var city = $('#city').val();
     var civicNumber = $('#civicNumber').val();
-    var postCode = $('#postCode').val();
-    var url = "https://api.tomtom.com/search/2/structuredGeocode.JSON?key=GA5MivJiK0ZxoB9tGaVHIhVkwckf4jOc";
+    var postCode = $('#postCode').val(); // preparo l'url della chiamata ajax all'api di tom tom
+
+    var url = "https://api.tomtom.com/search/2/structuredGeocode.JSON?key=GA5MivJiK0ZxoB9tGaVHIhVkwckf4jOc"; // chiamata ajax per ottenere latitudine e longitudine partendo da indirizzo, città, numero civico e codice postale
+
     $.ajax({
       url: url,
       method: "GET",
@@ -135,8 +139,10 @@ $(document).ready(function () {
         postalCode: postCode
       },
       success: function success(data) {
+        // chiudo in variabili i valori dati dall'api di latitudine e longitudine
         var lat = data.results[0]['position']['lat'];
-        var lon = data.results[0]['position']['lon'];
+        var lon = data.results[0]['position']['lon']; // inserisco i dati nell'hidden input che servirà a passarli al backend
+
         $('#latitude-edit').val(lat);
         $('#longitude-edit').val(lon);
       },
@@ -156,7 +162,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/umbertodelpiano/Desktop/Boolean /esercizi-boolean/BoolBnb/Project/resources/js/edit.js */"./resources/js/edit.js");
+module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\edit.js */"./resources/js/edit.js");
 
 
 /***/ })

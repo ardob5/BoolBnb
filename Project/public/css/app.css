@@ -10205,6 +10205,16 @@ h3 {
     opacity: 1;
   }
 }
+@-webkit-keyframes girotondo {
+  0% {
+    transform: translate(-50%, -50%) rotate(-1turn);
+  }
+}
+@keyframes girotondo {
+  0% {
+    transform: translate(-50%, -50%) rotate(-1turn);
+  }
+}
 .aside_left {
   background-color: #e13c3c;
   border-radius: 6px;
@@ -10215,6 +10225,7 @@ h3 {
   padding: 30px;
   box-shadow: 0px 0px 19px 10px #9e2a2a;
   box-shadow: 0px 0px 19px 10px #541313;
+  min-width: 324px;
 }
 .aside_left .banner_container {
   display: flex;
@@ -10327,6 +10338,12 @@ header .header-dx .register-button {
   display: flex;
   align-items: center;
   color: white;
+}
+header .header-dx #login {
+  transition: all 0.2s linear;
+}
+header .header-dx #login:hover {
+  opacity: 0.7;
 }
 header .header-dx .login-button {
   padding: 0 16px;
@@ -10699,6 +10716,10 @@ ul .page-item.active .page-link {
   border-color: #e13c3c;
 }
 
+.lastboxes {
+  justify-content: center;
+}
+
 #scrolled-button {
   background-color: #e13c3c;
   position: fixed;
@@ -10708,6 +10729,66 @@ ul .page-item.active .page-link {
   display: none;
 }
 
+@media screen and (max-width: 991px) {
+  .jumbotitle {
+    text-align: center !important;
+  }
+
+  .aside_left {
+    margin-bottom: 50px;
+  }
+
+  .card-body > h3 {
+    font-size: 50px;
+  }
+
+  .card-body > p {
+    font-size: 25px;
+  }
+
+  .card {
+    border-radius: 20px;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .mediaquery_disappear {
+    display: none;
+  }
+
+  .card {
+    max-height: 180px;
+    max-width: 500px;
+    margin-left: 100px;
+  }
+}
+@media screen and (max-width: 1455px) {
+  .pagination {
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+
+  .card {
+    max-height: 200px;
+    max-width: 730px;
+    margin-left: 100px;
+  }
+  .card img {
+    max-height: 80%;
+  }
+  .card .mediaquery_remove {
+    display: none;
+  }
+
+  .lastboxes {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .lastboxes * {
+    margin: auto;
+    text-align: center !important;
+  }
+}
 .main_content {
   margin-top: 130px;
 }
@@ -10759,6 +10840,19 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 800px;
+}
+
+.logobnb-loading {
+  width: 90px;
+  height: 75px;
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0);
+  -webkit-animation: girotondo 1.5s linear infinite;
+          animation: girotondo 1.5s linear infinite;
 }
 
 footer {
@@ -10835,4 +10929,9 @@ footer .lato-dx .social {
 
 body {
   overflow-x: hidden;
+}
+@media screen and (max-width: 991px) {
+  body .mq_resize {
+    margin: auto !important;
+  }
 }
