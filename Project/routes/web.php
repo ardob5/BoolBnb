@@ -29,3 +29,5 @@ Route::get('/stats/{id}', 'ApartmentsController@stats')->name('stats')->middlewa
 Route::post('/informations_message/{id}', 'ApartmentsController@saveInformations')->name('informations'); //ROTTA I MESSAGGI INVIATI DA SALVARE NEL DATABASE
 
 Route::get('/show_msg/{id}', 'ApartmentsController@showMsg')->name('show_msg')->middleware('auth');
+
+Route::get('/payment/process', 'PaymentsController@process')->name('payment.process');
