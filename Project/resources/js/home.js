@@ -18,8 +18,8 @@ $(document).ready(function () {
             });
             registerButton.addClass('scrolled');
 
-
-
+            
+            
         } else {
             $('.logobnb').attr('src', 'img/LOGO_UNO_MOD_BA.png');
             registerButton.removeClass('scrolled');
@@ -86,25 +86,5 @@ $(document).ready(function () {
         }
     });
 
-    // home responsive
-
-    if (window.matchMedia('(max-width: 1170px)').matches){
-      $('.mediaquery_change').removeClass('col-md-4');
-      $('.mediaquery_change').addClass('col-md-6');
-    }
-
+    
 });
-
-// responsive JS
-
-// document.addEventListener('DOMContentLoaded', init);
-//
-// function init(){
-//   let query = window.matchMedia("(max-width: 980px)");
-//
-//   if(query.matches){
-//     document.querySelector('.bnb-btn').style.background = "blue";
-//   }else{
-//     document.querySelector('h1').style.color = "black";
-//   }
-// }

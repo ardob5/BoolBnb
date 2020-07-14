@@ -62,10 +62,6 @@ ul {
   }
 }
 
-.lastboxes{
-  justify-content: center;
-}
-
 #scrolled-button {
   background-color:$redbnb;
   position: fixed;
@@ -74,77 +70,3 @@ ul {
   color: white;
   display: none;
 }
-
-// INIZIO RESPONSIVE
-@media screen and (max-width: 991px) {
-
-  .jumbotitle{
-    text-align: center !important;
-  }
-
-  .aside_left{
-    margin-bottom: 50px;
-  }
-
-  .card-body>h3{
-    font-size: 50px;
-  }
-
-  .card-body>p{
-    font-size: 25px;
-  }
-
-  .card{
-    border-radius: 20px;
-  }
-
-}
-
-@media screen and (max-width: 1170px) {
-
-  .mediaquery_disappear{
-    display: none;
-  }
-
-  .card{
-    max-height: 180px;
-    max-width: 500px;
-    margin-left: 100px;
-  }
-}
-
-@media screen and (max-width: 1455px) {
-
-  .pagination{
-    margin-top: 50px;
-    margin-bottom: 100px;
-  }
-
-  .card{
-    max-height: 200px;
-    max-width: 730px;
-    margin-left: 100px;
-
-    img{
-      max-height: 80%;
-    }
-
-    .mediaquery_remove{
-      display: none;
-    }
-  }
-
-  .lastboxes{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-    *{
-      margin: auto;
-      text-align: center !important;
-
-    }
-
-  }
-}
-// FINE RESPONSIVE
