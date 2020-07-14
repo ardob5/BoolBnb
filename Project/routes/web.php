@@ -24,6 +24,8 @@ Route::get('/delete/{id}', 'ApartmentsController@delete')->name('delete')->middl
 
 Route::get('/delete_image/{id}', 'PhotosController@delete')->name('delete_img')->middleware('auth'); //ROTTA PER LA CANCELLAZIONE DELLE FOTO SELEZIONATE RELATIVE ALL'APPARTAMENTO SELEZIONATO
 
+Route::get('/stats/{id}', 'ApartmentsController@stats')->name('stats')->middleware('auth');
+
 Route::post('/informations_message/{id}', 'ApartmentsController@saveInformations')->name('informations'); //ROTTA I MESSAGGI INVIATI DA SALVARE NEL DATABASE
 
-Route::get('/stats/{id}', 'ApartmentsController@stats')->name('stats');
+Route::get('/show_msg/{id}', 'ApartmentsController@showMsg')->name('show_msg')->middleware('auth');

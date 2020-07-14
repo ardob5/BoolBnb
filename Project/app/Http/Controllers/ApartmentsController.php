@@ -346,4 +346,15 @@ class ApartmentsController extends Controller
         ->get();
     return $apartments;
   }
+
+  public function showMsg($id) {
+    $apartment = Apartment::findOrFail($id);
+    $messages = Message::where('apartment_id', $id) -> orderBy('created_at', 'desc')->get();
+
+    if($apartment->user->id !== Auth::id()) {
+      return redirect()->route('home')->withSuccess('Non sei autorizzato');
+    } else {
+      return view('show_msg', compact('messages'));
+    }
+  }
 }

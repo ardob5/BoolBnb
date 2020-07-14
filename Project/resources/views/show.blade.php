@@ -45,7 +45,8 @@
           </div>
           <p>{{ $apartment -> description }}</p>
           @if ($apartment-> user-> id == Auth::id())
-            <a href="{{route('stats', $apartment -> id)}}">Stats</a>
+            <a href="{{route('stats', $apartment -> id)}}">Stats</a> <br>
+            <a href="{{ route('show_msg', $apartment -> id)}}">Messages</a>
           @endif
         </div>
         <div class="apartment-services">
