@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
           <h1 class="display-4">Home is where love resides.</h1>
         </div>
-        <form action="{{route('search')}}" method="get">
+        <form id="form-search" action="{{route('search')}}" method="get">
           @csrf
           @method('GET')
           <div class="form-group">
@@ -181,7 +181,7 @@
   <!-- FINE HANDLEBARS -->
 
 @section('script')
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-    <script src="{{ asset('js/search.js') }}"></script>
     <script src="{{ asset('js/tomtom_search.js') }}"></script>
 @endsection

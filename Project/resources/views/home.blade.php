@@ -19,7 +19,7 @@
           <div class="filter">
 
             {{-- SEARCH - FORM --}}
-            <form action="{{route('search')}}" method="get">
+            <form  id="form-search" action="{{route('search')}}" method="get">
               @csrf
               @method('GET')
               <div class="form-group">
@@ -208,6 +208,6 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/home.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script src="{{ asset('js/tomtom_home.js') }}"></script>
 @endsection
