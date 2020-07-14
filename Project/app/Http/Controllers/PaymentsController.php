@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Braintree_Transaction;
+
 
 class PaymentsController extends Controller
 {
 
   public function process(Request $request) {
-    $payload = $request->input('payload', false);
+    $payload = $request->payload;
     $nonce = $payload['nonce'];
+    
 
-    $status = Braintree_Transaction::sale([
+    $status = \Braintree\Transaction::sale([
                                    'amount' => '10.00',
                                   	'paymentMethodNonce' => $nonce,
                                   	'options' => [
@@ -21,5 +22,6 @@ class PaymentsController extends Controller
     ]);
 
     return response()->json($status);
+
   }
 }

@@ -30,4 +30,4 @@ Route::post('/informations_message/{id}', 'ApartmentsController@saveInformations
 
 Route::get('/show_msg/{id}', 'ApartmentsController@showMsg')->name('show_msg')->middleware('auth');
 
-Route::get('/payment/process', 'PaymentsController@process')->name('payment.process');
+Route::get('/payment/process', 'PaymentsController@process')->name('payment_process');

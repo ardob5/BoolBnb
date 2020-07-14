@@ -222,26 +222,19 @@
 <script>
   var button = document.querySelector('#submit-button');
   braintree.dropin.create({
-    authorization: "{{ Braintree\ClientToken::generate() }}",
+    authorization: "{{ \Braintree\ClientToken::generate() }}",
     container: '#dropin-container'
     }, function (createErr, instance) {
         button.addEventListener('click', function () {
           instance.requestPaymentMethod(function (err, payload) {
-            // $.get("", {payload}, function (response) {
-              // if (response.success) {
-              //   alert('Payment successfull!');
-              // } else {
-              //   alert('Payment failed');
-              //   }
-              // }, 'json');
 
             $.ajax({
-              url: 'http://localhost:8000/payment/process',
+              url: "{{ route('payment_process') }}",
               method: "GET",
               data: {
                   payload: payload
               },
-              dataType: 'json',
+              
               success: function (result) {
                   console.log(result);
                   if (result.success) {
@@ -254,8 +247,6 @@
                 console.log('errore:' + error);
                 }
               });
-
-
             });
           });
         });
