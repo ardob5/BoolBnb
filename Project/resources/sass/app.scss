@@ -21,8 +21,6 @@
 @import 'edit';
 @import 'search';
 @import 'footer';
-@import 'sponsor_apt';
-
 * {
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
@@ -44,12 +42,5 @@
     // .onHover{
     //   background-image: linear-gradient(270deg, rgb(235, 223, 156), white);
     // }
-
-    @media screen and (max-width: 991px) {
-
-      .mq_resize{
-        margin: auto !important;
-      }
-    }
 
   }

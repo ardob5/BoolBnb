@@ -7,9 +7,17 @@
   transform: translateX(400px);
   opacity: 0;
   animation: slide-left 3s 2s ease-in-out forwards;
+
+  // NON SCOMMENTARE PRIMA DI GIOVEDI' IMPORTANTE
+  // &:hover{
+  //   background-image: url('https://i.imgur.com/NiT6MCQ.png');
+  //   background-position: right bottom;
+  //   background-repeat: no-repeat;
+  // }
+
 }
 
-// CARD CSS
+// card CSS
 .onHover {
   border: none;
   background-image: linear-gradient(270deg, rgb(255, 240, 240), white);
@@ -75,52 +83,124 @@ ul {
   display: none;
 }
 
+// CARTINA
+.cartina{
+  width: 1000px;
+  height: 220px;
+  background-image: linear-gradient(270deg, rgb(255, 240, 240), white);
+  display: flex;
+  border-radius: 20px;
+  margin-bottom: 20px;
+
+  .cartina_left{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .img{
+      height: 100%;
+      width: 95%;
+
+      img{
+        height: 100%;
+        width: 100%;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius:20px;
+      }
+    }
+  }
+
+  .cartina_center{
+    width: 42%;
+    height: 100%;
+    color: white;
+
+    h3{
+      text-transform: capitalize;
+    }
+
+    p{
+      margin-bottom: 5px;
+      color: rgb(55, 55, 55);
+    }
+
+    hr{
+      background: rgb(55, 55, 55);
+      width: 70%;
+    }
+  }
+
+  .cartina_right{
+    width: 24%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    div{
+      margin-bottom: 20px;
+    }
+  }
+
+  .cartina_sponsor{
+    width: 4%;
+    height: 100%;
+    background-color: gold;
+    opacity: 0.7;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    p{
+      text-transform: uppercase;
+      transform: rotate(270deg);
+      margin-top: 118px;
+      color: white;
+      font-size: 20px;
+      margin-top: 170px;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+// ENDBOXES
+
+.endbox1, .endbox2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .endtext{
+    width: 30%;
+    text-align: left;
+  }
+
+  .endimg{
+    width: 60%;
+  }
+}
+
 // INIZIO RESPONSIVE
-@media screen and (max-width: 991px) {
-
-  .jumbotitle{
-    text-align: center !important;
-  }
-
-  .aside_left{
-    margin-bottom: 50px;
-  }
-
-  .card-body>h3{
-    font-size: 50px;
-  }
-
-  .card-body>p{
-    font-size: 25px;
-  }
-
-  .card{
-    border-radius: 20px;
-  }
-
-}
-
-@media screen and (max-width: 1170px) {
-
-  .mediaquery_disappear{
-    display: none;
-  }
-
-  .card{
-    max-height: 180px;
-    max-width: 500px;
-    margin-left: 100px;
-  }
-}
 
 @media screen and (max-width: 1455px) {
+
+  .bottone{
+    width: 80%;
+  }
+
+  .cartina .cartina_sponsor p {
+    font-size: 18px;
+    margin-top: 159px;
+  }
 
   .pagination{
     margin-top: 50px;
     margin-bottom: 100px;
   }
 
-  .card{
+  .cartina{
     max-height: 200px;
     max-width: 730px;
     margin-left: 100px;
@@ -129,22 +209,77 @@ ul {
       max-height: 80%;
     }
 
-    .mediaquery_remove{
+    .cartina_hr, .bagni{
       display: none;
     }
   }
+}
 
-  .lastboxes{
-    display: flex;
-    justify-content: center;
+@media screen and (max-width: 1350px) {
+
+  .endbox1, .endbox2{
     flex-direction: column;
 
-    *{
-      margin: auto;
-      text-align: center !important;
-
+    .endtext{
+      width: 70%;
+      text-align: center;
     }
-
   }
 }
+
+@media screen and (max-width: 1170px) {
+
+  .cartina{
+    max-height: 180px;
+    max-width: 500px;
+    margin-left: 100px;
+
+    .bottone, .bagni, .cartina_hr{
+      display: none;
+    }
+
+    .cartina_sponsor{
+      width: 10%;
+
+      p{
+        font-size: 18px;
+        margin-top: 137px;
+        font-weight: bolder;
+        letter-spacing: 1.8px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+
+  .jumbotitle{
+    text-align: center !important;
+  }
+
+  .aside_left{
+    margin-bottom: 50px;
+
+    .row{
+      margin: auto;
+    }
+  }
+
+  .cartina{
+    border-radius: 20px;
+    max-width: 800px;
+
+    .cartina_hr{
+      display: block;
+    }
+
+    .cartina_sponsor{
+      .sponsored{
+        margin-top: 123px;
+      }
+    }
+  }
+
+}
+
 // FINE RESPONSIVE
