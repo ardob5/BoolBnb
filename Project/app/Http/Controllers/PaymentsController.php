@@ -12,6 +12,7 @@ class PaymentsController extends Controller
 {
 
   public function process(Request $request) {
+    $this->checkSponsor();
     $payload = $request-> payload;
     $sponsor_type = $request -> val;
     $id = $request -> id;
@@ -58,5 +59,9 @@ class PaymentsController extends Controller
 
     return response()->json($status);
 
+  }
+
+  public function checkSponsor() {
+    DB::table('apartment_sponsor')->where('expire_data', '<=', date('Y-m-d H:i:s'))->delete();
   }
 }

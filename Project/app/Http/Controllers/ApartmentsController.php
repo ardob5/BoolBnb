@@ -17,6 +17,7 @@ class ApartmentsController extends Controller
 {
   // INDEX
   public function index() {
+    $this->checkSponsor();
     $apartments = Apartment::all();
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
     $apartments_sponsor = collect($apartmentWithSponsor) -> paginate(4);
@@ -24,6 +25,7 @@ class ApartmentsController extends Controller
   }
   // SEARCH
   public function search(Request $request){
+    $this->checkSponsor();
     $latitude = $request -> lat;
     $longitude = $request -> lon;
     $apartments = Apartment::all();
@@ -35,6 +37,7 @@ class ApartmentsController extends Controller
   }
   // SHOW
   public function show($id) {
+    $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
     $photos = $apartment -> photos;
     $optionals = $apartment -> optionals;
@@ -66,9 +69,11 @@ class ApartmentsController extends Controller
   }
   // CREATE
   public function create() {
+    $this->checkSponsor();
     return view('create_apartment');
   }
   public function store(Request $request) {
+    $this->checkSponsor();
     $validate_data = $request->validate([
       'title' => 'required|alpha_num',
       'address' => 'required',
@@ -140,6 +145,7 @@ class ApartmentsController extends Controller
   }
   // MY APARTMENTS
   public function myApartments() {
+    $this->checkSponsor();
     $apartments = Auth::user()->apartments;
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
     $apartmentWithoutSponsor = $this->filterApartmentWithoutSponsor($apartments);
@@ -147,6 +153,7 @@ class ApartmentsController extends Controller
   }
   // EDIT
   public function edit($id) {
+    $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
     $optionals = Optional::all();
     if($apartment->user->id !== Auth::user()->id) {
@@ -157,6 +164,7 @@ class ApartmentsController extends Controller
   }
   // UPDATE
   public function update(Request $request, $id) {
+    $this->checkSponsor();
     $validate_data = $request->validate([
       'title' => 'required|alpha_num',
       'address' => 'required',
@@ -224,6 +232,7 @@ class ApartmentsController extends Controller
     return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' modificato con successo');
   }
   public function delete($id) {
+    $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
     $img = $apartment -> image;
     if($apartment->user->id !== Auth::user()->id) {
@@ -239,6 +248,7 @@ class ApartmentsController extends Controller
   }
 
   public function stats($id) {
+    $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
     if($apartment->user->id !== Auth::id()) {
       return redirect()->route('home')->withSuccess('Non sei autorizzato');
@@ -249,6 +259,7 @@ class ApartmentsController extends Controller
 
   // API
   public function statsResults(Request $request) {
+    $this->checkSponsor();
     $id = $request -> id;
     $totalViews = [];
     $views_months = [];
@@ -275,6 +286,7 @@ class ApartmentsController extends Controller
 
   // API
   public function messagesApt(Request $request) {
+    $this->checkSponsor();
     $id = $request -> id;
     $totalMsg = [];
     $messages_months = [];
@@ -321,6 +333,7 @@ class ApartmentsController extends Controller
     return $apartmentWithoutSponsor;
   }
   public function saveInformations(Request $request, $id) {
+    $this->checkSponsor();
     $validate_data = $request->validate([
       'email' => 'required|email',
       'informations' => 'required|string'
@@ -348,6 +361,7 @@ class ApartmentsController extends Controller
   }
 
   public function showMsg($id) {
+    $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
     $messages = Message::where('apartment_id', $id) -> orderBy('created_at', 'desc')->get();
 
@@ -356,5 +370,10 @@ class ApartmentsController extends Controller
     } else {
       return view('show_msg', compact('messages'));
     }
+  }
+
+  public function checkSponsor() {
+    DB::table('apartment_sponsor')->where('expire_data', '<=', date('Y-m-d H:i:s'))->delete();
+    
   }
 }
