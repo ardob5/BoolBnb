@@ -56,7 +56,6 @@ class PaymentsController extends Controller
       'expire_data' => $expire_sponsor
     ]);
 
-
     return response()->json($status);
 
   }

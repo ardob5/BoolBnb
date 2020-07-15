@@ -2,6 +2,12 @@
 
 @section('content')
 
+  @if (session('success'))
+    <div class="alert alert-success text-center" role="alert">
+        <strong>{{session('success')}}</strong>
+    </div>
+  @endif
+
   {{-- HOME - JUMBOTRON --}}
   <div class="jumbotron jumbotron-fluid">
     <div class="overlay"></div>

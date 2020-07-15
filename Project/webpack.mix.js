@@ -19,7 +19,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/tomtom_home.js', 'public/js')
     .js('resources/js/login.js', 'public/js')
     .js('resources/js/tomtom_search.js', 'public/js')
-    .js('resources/js/stats.js', 'public/js');
+    .js('resources/js/stats.js', 'public/js')
+    .js('resources/js/sponsor_apt.js', 'public/js');
 
 
 mix.options({

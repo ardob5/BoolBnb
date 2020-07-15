@@ -156,7 +156,7 @@ class ApartmentsController extends Controller
     $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
     $optionals = Optional::all();
-    if($apartment->user->id !== Auth::user()->id) {
+    if($apartment->user->id !== Auth::id()) {
       return redirect()->route('home');
     } else {
       return view('edit_apartment', compact('apartment', 'optionals'));
@@ -262,7 +262,11 @@ class ApartmentsController extends Controller
   // SPONSOR APT
   public function sponsorApt($id) {
     $apartment = Apartment::findOrFail($id);
-    return view('sponsor', compact('apartment'));
+    if($apartment->user->id !== Auth::id()) {
+      return redirect()->route('home')->withSuccess('Non sei autorizzato');
+    } else {
+      return view('sponsor_apt', compact('apartment'));
+    }
   }
   // API
   public function statsResults(Request $request) {
