@@ -26,8 +26,10 @@ Route::get('/delete_image/{id}', 'PhotosController@delete')->name('delete_img')-
 
 Route::get('/stats/{id}', 'ApartmentsController@stats')->name('stats')->middleware('auth');
 
-Route::post('/informations_message/{id}', 'ApartmentsController@saveInformations')->name('informations'); //ROTTA I MESSAGGI INVIATI DA SALVARE NEL DATABASE
+Route::get('/sponsor_apt/{id}', 'ApartmentsController@sponsorApt')->name('sponsor')->middleware('auth');
 
 Route::get('/show_msg/{id}', 'ApartmentsController@showMsg')->name('show_msg')->middleware('auth');
+
+Route::post('/informations_message/{id}', 'ApartmentsController@saveInformations')->name('informations'); //ROTTA I MESSAGGI INVIATI DA SALVARE NEL DATABASE
 
 Route::get('/payment/process', 'PaymentsController@process')->name('payment_process');

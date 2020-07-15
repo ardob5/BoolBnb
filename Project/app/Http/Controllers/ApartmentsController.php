@@ -231,6 +231,7 @@ class ApartmentsController extends Controller
     }
     return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' modificato con successo');
   }
+  // DELETE
   public function delete($id) {
     $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
@@ -247,6 +248,7 @@ class ApartmentsController extends Controller
     }
   }
 
+  // STATS APT
   public function stats($id) {
     $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
@@ -257,6 +259,11 @@ class ApartmentsController extends Controller
     }
   }
 
+  // SPONSOR APT
+  public function sponsorApt($id) {
+    $apartment = Apartment::findOrFail($id);
+    return view('sponsor', compact('apartment'));
+  }
   // API
   public function statsResults(Request $request) {
     $this->checkSponsor();
@@ -374,6 +381,6 @@ class ApartmentsController extends Controller
 
   public function checkSponsor() {
     DB::table('apartment_sponsor')->where('expire_data', '<=', date('Y-m-d H:i:s'))->delete();
-    
+
   }
 }
