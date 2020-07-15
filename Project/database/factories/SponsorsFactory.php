@@ -9,9 +9,7 @@ $factory->define(Sponsor::class, function (Faker $faker) {
     return [
 
       'type' => $faker -> unique() -> randomElement($array = array('basic', 'standard', 'premium')),
-      'cost' => $faker -> randomFloat($nbMaxDecimals = 2, $min = 15, $max = NULL),
-      'start_sponsor' => $faker -> dateTime(),
-      'end_sponsor' => $faker -> dateTime()
+      'cost' => $faker -> randomFloat($nbMaxDecimals = 2, $min = 15, $max = NULL)
 
     ];
 });

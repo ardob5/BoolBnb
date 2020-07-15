@@ -20,6 +20,8 @@ class CreateApartmentSponsorTable extends Migration
             $table->bigInteger('sponsor_id') -> unsigned() -> index();
 
             $table->timestamps();
+
+            $table->dateTime('expire_data')->nullable();
         });
     }
 

@@ -18,8 +18,6 @@ class CreateSponsorsTable extends Migration
 
             $table->string('type');
             $table->string('cost');
-            $table->date('start_sponsor');
-            $table->date('end_sponsor');
 
             $table->timestamps();
         });

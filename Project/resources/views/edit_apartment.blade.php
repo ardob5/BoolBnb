@@ -209,6 +209,11 @@
     </div>
   </div>
 
+<select id="sponsor_name" name="sponsor_name">
+  <option value="2">Basic</option>
+  <option value="1">Standard</option>
+  <option value="3">Premium</option>
+</select>
 
 <div class="container">
   <div class="row">
@@ -226,15 +231,18 @@
     container: '#dropin-container'
     }, function (createErr, instance) {
         button.addEventListener('click', function () {
+          var sponsorType = $('#sponsor_name').val();
           instance.requestPaymentMethod(function (err, payload) {
 
             $.ajax({
               url: "{{ route('payment_process') }}",
               method: "GET",
               data: {
+                  id: {{$apartment -> id}},
+                  val: sponsorType,
                   payload: payload
               },
-              
+
               success: function (result) {
                   console.log(result);
                   if (result.success) {
