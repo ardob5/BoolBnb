@@ -3,16 +3,39 @@
 @section('content')
   <div class="main_content">
     <div class="apartment">
+      @if (session('success'))
+        <div class="alert alert-success text-center" role="alert">
+          <strong>{{ session('success') }}</strong>
+        </div>
+      @endif
+
+      {{-- IMMAGINI APPARTAMENTO ---------------------------------------------------------}}
       <div class="section1">
         <div class="apartment-img">
-          @if (session('success'))
-              <div class="alert alert-success text-center" role="alert">
-                <strong>{{ session('success') }}</strong>
-              </div>
-          @endif
+          <div class="img-principale">
+
+          </div>
+          <div class="img-secondarie">
+            <div class="img-scnd">
+
+            </div>
+            <div class="img-scnd">
+
+            </div>
+            <div class="img-scnd">
+
+            </div>
+            <div class="img-scnd">
+
+            </div>
+
+          </div>
+
+
+
 
             {{-- CAROUSEL SHOW --}}
-            @if (count($photos) > 0)
+            {{-- @if (count($photos) > 0)
               <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
                 <div class="carousel-inner">
                   @foreach ($photos as $photo)
@@ -32,18 +55,22 @@
                   @endforeach
                 </div>
               </div>
-            @endif
+            @endif --}}
         </div>
       </div>
-      {{-- fine sezione 1 --}}
-      {{-- inzio sezione 2 --}}
+
+      {{-- DETTAGLI APPARTAMENTO ------------------------------------------------------------}}
       <div class="section2">
         <div class="apartment-description">
           <div class="titleprice">
-            <h1>{{ $apartment -> title }}</h1>
-            <h6>{{ $apartment -> price }} €</h6>
+            <h1>{{ $apartment -> title }}  <span> di  {{ $apartment ->user -> name}} {{ $apartment -> user-> lastName}} </span></h1>
+            <div class="separatore"></div>
+            <div class="prezzo">
+              <h6>{{ $apartment -> price }} €</h6>
+            </div>
           </div>
-          <p>{{ $apartment -> description }}</p>
+          <p>{{ $apartment -> description }} </p>
+          <b><i class="fas fa-map-marker-alt"></i> in {{ $apartment -> address }}, {{ $apartment -> civicNumber}} </b>
           @if ($apartment-> user-> id == Auth::id())
             <a href="{{ route('stats', $apartment -> id)}}">Statistiche</a> <br>
             <a href="{{ route('show_msg', $apartment -> id)}}">Messaggi ricevuti</a> <br>
@@ -63,39 +90,47 @@
             @endif
           @endif
         </div>
+
         <div class="apartment-services">
-          <ul>
-            <li>Proprietario: {{ $apartment ->user -> name}} {{ $apartment -> user-> lastName}}</li>
-            <li>Numero di stanze: {{ $apartment -> room_number }}</li>
-            <li>Posti letto: {{ $apartment -> beds }}</li>
-            <li>Bagni: {{ $apartment -> bath_number}}</li>
-            <li>Metri quadrati: {{ $apartment -> area }} mq</li>
-            <li>Indirizzo: {{ $apartment -> address }}, {{ $apartment -> civicNumber}}</li>
+          <ul class="servizi">
+            <li><i class="fas fa-door-open"></i> {{ $apartment -> room_number }} stanze/a</li>
+            <li><i class="fas fa-bed"></i>  {{ $apartment -> beds }} letti</li>
+            <li><i class="fas fa-toilet"></i> {{ $apartment -> bath_number}} bagni</li>
+            <li><i class="fas fa-vector-square"></i> {{ $apartment -> area }} mq</li>
+          </ul>
+          <ul class="optional">
             <li>
               @if (count($apartment -> optionals) < 1)
-                No optionals
+                <h2>No optionals</h2>
                 @else
-                  Optionals:
+                  <h2>Optionals</h2>
                   <ul>
                     @foreach ($optionals as $optional)
                     <li>
-                      <small>{{ $optional -> optional }}</small>
+                      {{ $optional -> optional }}
                     </li>
                     @endforeach
                   </ul>
               @endif
             </li>
           </ul>
+
+
         </div>
       </div>
-      {{-- fine sezione 2 --}}
-      {{-- inzio sezione 3 --}}
+
+
+      {{-- MAPPA + MESSAGGIO --------------------------------------}}
+
+      {{-- ZONA MAPPA --}}
       <div class="section3">
         <div class="apartment-location">
-          <div id='map' style='height:400px;width:500px'></div>
+          <div id='map'></div>
           <input type="hidden" id="latitude" value="{{$apartment -> latitude}}"></input>
           <input type="hidden" id="longitude" value="{{$apartment -> longitude}}"></input>
         </div>
+
+        {{-- ZONA MAIL --}}
         @if ($apartment->user->id !== Auth::id())
         <div class="apartment-mail">
           <h2>Richiedi informazioni</h2>
@@ -110,7 +145,7 @@
             @error('email')
             <small class="text-danger">{{ $message }}</small>
             @enderror
-            <textarea name="informations" rows="8" cols="50" value=" {{ old('informations') }}" class="@error('informations') is-invalid @enderror"></textarea>
+            <textarea name="informations" placeholder="Salve, la contatto in merito all'appartamento...." rows="8" cols="50" value=" {{ old('informations') }}" class="@error('informations') is-invalid @enderror"></textarea>
             @error('informations')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -122,6 +157,11 @@
     </div>
   </div>
   @endsection
+
+  @section('script')
+    <script type="text/javascript" src="{{ asset('./js/tomtom_show.js') }}"></script>
+  @endsection
+
 
   @section('script')
     <script type="text/javascript" src="{{ asset('./js/tomtom_show.js') }}"></script>
