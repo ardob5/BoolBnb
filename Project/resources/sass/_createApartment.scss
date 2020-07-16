@@ -1,26 +1,25 @@
 .main_content {
-    margin-top: 130px;
 
-    h2 {
-        color: $redbnb;
-    }
+  h2 {
+      color: $redbnb;
+  }
 
-    button {
-        background-color: $redbnb;
-        border-color: $redbnb;
-        color: white;
-        transition: all .2s linear;
+  button {
+      background-color: $redbnb;
+      border-color: $redbnb;
+      color: white;
+      transition: all .2s linear;
 
-        &:hover {
-            opacity: .8;
-            color: white;
-        }
-    }
+      &:hover {
+          opacity: .8;
+          color: white;
+      }
+  }
 
-    .form-check-inline {
-        label {
-            margin-bottom: 0;
-            margin-left: 5px;
-        }
+  .form-check-inline {
+      label {
+          margin-bottom: 0;
+          margin-left: 5px;
+      }
     }
 }

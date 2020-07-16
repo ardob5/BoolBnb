@@ -2,6 +2,15 @@
 
 @section('content')
   <div class="main_content">
+    <div class="container-fluid mb-5">
+      <div class="row">
+        <div class="col-md-1">
+          <a href="{{ route('show', $apartment -> id)}}"><i class="fas fa-arrow-circle-left text-danger"></i></a>
+        </div>
+        {{-- FIX COL --}}
+        <div class="col-md-11"></div>
+      </div>
+    </div>
     <div class="container">
       <div class="row">
         {{-- BASIC --}}

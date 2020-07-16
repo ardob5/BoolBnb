@@ -12,7 +12,9 @@ use DB;
 use Storage;
 use Str;
 use Auth;
+
 use Illuminate\Http\Request;
+
 class ApartmentsController extends Controller
 {
   // INDEX
@@ -23,6 +25,7 @@ class ApartmentsController extends Controller
     $apartments_sponsor = collect($apartmentWithSponsor) -> paginate(4);
     return view('home', compact('apartments_sponsor'));
   }
+
   // SEARCH
   public function search(Request $request){
     $this->checkSponsor();
@@ -32,9 +35,9 @@ class ApartmentsController extends Controller
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
     $apartmentsRadius20 = $this -> findNearestHouse($latitude , $longitude);
     $apartments_no_sponsor = collect($apartmentsRadius20) -> paginate(12);
-    // dd($apartments_no_sponsor);
     return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor', 'latitude', 'longitude'));
   }
+
   // SHOW
   public function show($id) {
     $this->checkSponsor();
@@ -54,12 +57,9 @@ class ApartmentsController extends Controller
         $find = true;
       }
     }
-
     if ($apartment-> user_id == Auth::id()) {
       $find = true;
     }
-
-
     if (!$find) {
       $view = new View();
       $view -> apartment_id = $id;
@@ -68,11 +68,13 @@ class ApartmentsController extends Controller
     }
     return view('show', compact('apartment', 'photos', 'optionals', 'expireData'));
   }
+
   // CREATE
   public function create() {
     $this->checkSponsor();
     return view('create_apartment');
   }
+
   public function store(Request $request) {
     $this->checkSponsor();
     $validate_data = $request->validate([
@@ -144,6 +146,7 @@ class ApartmentsController extends Controller
     }
     return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' inserito con successo');
   }
+
   // MY APARTMENTS
   public function myApartments() {
     $this->checkSponsor();
@@ -152,6 +155,7 @@ class ApartmentsController extends Controller
     $apartmentWithoutSponsor = $this->filterApartmentWithoutSponsor($apartments);
     return view('my_apartments', compact('apartmentWithSponsor', 'apartmentWithoutSponsor'));
   }
+
   // EDIT
   public function edit($id) {
     $this->checkSponsor();
@@ -163,6 +167,7 @@ class ApartmentsController extends Controller
       return view('edit_apartment', compact('apartment', 'optionals'));
     }
   }
+
   // UPDATE
   public function update(Request $request, $id) {
     $this->checkSponsor();
@@ -201,6 +206,7 @@ class ApartmentsController extends Controller
     $apartment -> longitude = $validate_data['lon'];
     $apartment -> save();
     $apartment -> optionals() -> sync($validate_data['optionals']);
+    // CONTROLLO IMMAGINE DI COPERTINA
     if ($request->hasFile('image')) {
       $img = $request->file('image');
       if ($img->isValid()) {
@@ -214,6 +220,7 @@ class ApartmentsController extends Controller
         $apartment->save();
       }
     }
+    // CONTROLLO IMMAGINI APPARTAMENTO
     if ($request->hasFile('photos')) {
       $images = $request->file('photos');
       foreach ($images as $image) {
@@ -232,6 +239,7 @@ class ApartmentsController extends Controller
     }
     return redirect() -> route('show', $apartment -> id) -> withSuccess('Appartamento ' . $apartment -> title . ' modificato con successo');
   }
+
   // DELETE
   public function delete($id) {
     $this->checkSponsor();
@@ -269,7 +277,21 @@ class ApartmentsController extends Controller
       return view('sponsor_apt', compact('apartment'));
     }
   }
-  // API
+
+  // SHOW MESSAGES
+  public function showMsg($id) {
+    $this->checkSponsor();
+    $apartment = Apartment::findOrFail($id);
+    $messages = Message::where('apartment_id', $id) -> orderBy('created_at', 'desc')->get();
+
+    if($apartment->user->id !== Auth::id()) {
+      return redirect()->route('home')->withSuccess('Non sei autorizzato');
+    } else {
+      return view('show_msg', compact('messages', 'apartment'));
+    }
+  }
+
+  // API STATS
   public function statsResults(Request $request) {
     $this->checkSponsor();
     $id = $request -> id;
@@ -296,7 +318,7 @@ class ApartmentsController extends Controller
     return $views_months;
   }
 
-  // API
+  // API MESSAGES
   public function messagesApt(Request $request) {
     $this->checkSponsor();
     $id = $request -> id;
@@ -344,6 +366,7 @@ class ApartmentsController extends Controller
     }
     return $apartmentWithoutSponsor;
   }
+
   public function saveInformations(Request $request, $id) {
     $this->checkSponsor();
     $validate_data = $request->validate([
@@ -370,18 +393,6 @@ class ApartmentsController extends Controller
         ->orderBy("distance",'asc')
         ->get();
     return $apartments;
-  }
-
-  public function showMsg($id) {
-    $this->checkSponsor();
-    $apartment = Apartment::findOrFail($id);
-    $messages = Message::where('apartment_id', $id) -> orderBy('created_at', 'desc')->get();
-
-    if($apartment->user->id !== Auth::id()) {
-      return redirect()->route('home')->withSuccess('Non sei autorizzato');
-    } else {
-      return view('show_msg', compact('messages'));
-    }
   }
 
   public function checkSponsor() {

@@ -10,7 +10,7 @@ use DB;
 
 class PaymentsController extends Controller
 {
-
+  // FUNZIONE DI PAGAMENTO
   public function process(Request $request) {
     $this->checkSponsor();
     $payload = $request-> payload;
@@ -44,22 +44,19 @@ class PaymentsController extends Controller
                                    'submitForSettlement' => True
 	                                   ]
     ]);
-
-
     $sponsor = Sponsor::findOrFail($sponsor_type);
     $apartment = Apartment::findOrFail($id);
-    // $apartment -> sponsors() -> attach($sponsor);
     DB::table('apartment_sponsor')->insert([
       'created_at' => $now,
       'apartment_id' => $id,
       'sponsor_id' => $sponsor_type,
       'expire_data' => $expire_sponsor
     ]);
-
     return response()->json($status);
 
   }
 
+  // FUNZIONI DA RICHIAMARE
   public function checkSponsor() {
     DB::table('apartment_sponsor')->where('expire_data', '<=', date('Y-m-d H:i:s'))->delete();
   }
