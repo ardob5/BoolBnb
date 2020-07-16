@@ -1,13 +1,10 @@
 @extends('layouts.main_layout')
-
 @section('content')
-
   @if (session('success'))
       <div class="alert alert-success text-center" role="alert">
         <strong>{{ session('success') }}</strong>
       </div>
   @endif
-
     <div class="main_content">
         @empty (!$apartmentWithSponsor)
             <div class="container">
@@ -24,9 +21,9 @@
                     </thead>
                     <tbody>
                         @foreach ($apartmentWithSponsor as $apartment)
-                            <tr>
+                            <tr style="background: rgba(238, 236, 236, 0.1)">
                                 <td>
-                                    <img width="150px" 
+                                    <img width="150px"
                                     @if(stristr($apartment -> image, 'http'))
                                         src=" {{ asset($apartment -> img_path) }}"
                                     @else
@@ -54,7 +51,6 @@
                     </tbody>
                 </table>
         @endempty
-        
         @empty (!$apartmentWithoutSponsor)
             <table class="table">
                 <thead class="grey" style="background: rgb(225, 60, 60); color: #FFF;">
@@ -69,7 +65,7 @@
                 </thead>
                 <tbody>
                     @foreach ($apartmentWithoutSponsor as $apartment)
-                        <tr>
+                        <tr style="background: rgba(238, 236, 236, 0.1);">
                             <td>
                                 <img width="150px"
                                 @if(stristr($apartment -> image, 'http'))
@@ -100,9 +96,6 @@
                 </tbody>
             </table>
         @endempty
-    
-    
-    
             {{-- @empty(!$apartmentWithSponsor)
                 <div class="row justify-content-center">
                     @foreach ($apartmentWithSponsor as $apartment)
@@ -124,7 +117,7 @@
                     @endforeach
                 </div>
             @endempty
-    
+
             @empty(!$apartmentWithoutSponsor)
                 <div class="row justify-content-center">
                     @foreach ($apartmentWithoutSponsor as $apartment)
@@ -151,7 +144,6 @@
                 </div>
             @endempty --}}
     </div>
-
         @if (count($apartmentWithSponsor) < 1 && count($apartmentWithoutSponsor) < 1)
             <div class="container">
                 <div class="row mb-5">
@@ -184,7 +176,6 @@
                         </h4>
                         <p>
                             Una volta che il tuo annuncio viene pubblicato, gli ospiti idonei potranno contattarti. Puoi inviare loro delle domande prima del soggiorno.
-
                             Scopri come iniziare ad affittare
                         </p>
                     </div>
@@ -203,12 +194,10 @@
             </div>
         @endif
     </div>
-
     <div class="row justify-content-center mt-5">
         <a type="button" style="background-color: rgb(225, 60, 60); color: white;" class="btn btn-lg" href="{{ route('create') }}">Inserisci Appartamento</a>
     </div>
 @endsection
-
 @section('script')
     <script src="{{ asset('js/login.js') }}"></script>
 @endsection

@@ -12,52 +12,32 @@
       {{-- IMMAGINI APPARTAMENTO ---------------------------------------------------------}}
       <div class="section1">
         <div class="apartment-img">
-          <div class="img-principale">
-
-          </div>
-          <div class="img-secondarie">
-            <div class="img-scnd">
-
+            <div class="img-principale">
+              <img
+              @if(stristr($apartment -> image, 'http'))
+                  src=" {{ asset($apartment-> image) }}"
+              @else
+                  src="{{ asset('storage/' . $apartment-> image) }}"
+              @endif
+              alt="{{ $apartment -> title }}">
             </div>
-            <div class="img-scnd">
-
-            </div>
-            <div class="img-scnd">
-
-            </div>
-            <div class="img-scnd">
-
-            </div>
-
-          </div>
-
-
-
-
-            {{-- CAROUSEL SHOW --}}
-            {{-- @if (count($photos) > 0)
-              <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                <div class="carousel-inner">
-                  @foreach ($photos as $photo)
-                    <div class="carousel-item
-                    @if ($loop->first)
-                      active
+            @if (count($photos) > 0)
+              <div class="img-secondarie">
+                @foreach ($photos as $photo)
+                <div class="img-scnd">
+                    <img 
+                    @if(stristr($photo -> img_path, 'http'))
+                        src=" {{ asset($photo -> img_path) }}"
+                    @else
+                        src="{{ asset('storage/' . $photo -> img_path) }}"
                     @endif
-                    ">
-                      <img class="d-block w-100"
-                      @if(stristr($photo -> img_path, 'http'))
-                          src=" {{ asset($photo -> img_path) }}"
-                      @else
-                          src="{{ asset('storage/' . $photo -> img_path) }}"
-                      @endif
-                      alt="{{ $apartment -> title }}">
-                    </div>
-                  @endforeach
-                </div>
-              </div>
-            @endif --}}
+                    alt="{{ $apartment -> title }}">
+                  </div>
+                @endforeach
+            @endif
         </div>
       </div>
+    </div>
 
       {{-- DETTAGLI APPARTAMENTO ------------------------------------------------------------}}
       <div class="section2">
@@ -71,24 +51,42 @@
           </div>
           <p>{{ $apartment -> description }} </p>
           <b><i class="fas fa-map-marker-alt"></i> in {{ $apartment -> address }}, {{ $apartment -> civicNumber}} </b>
-          @if ($apartment-> user-> id == Auth::id())
-            <a href="{{ route('stats', $apartment -> id)}}">Statistiche</a> <br>
-            <a href="{{ route('show_msg', $apartment -> id)}}">Messaggi ricevuti</a> <br>
-            @if (count($apartment -> sponsors) < 1)
-              <a href="{{ route('sponsor', $apartment -> id)}}">Sponsorizza il tuo appartamento</a>
-              @else
-                <p>
-                  La tua sponsorizzazione
-                  @foreach ($apartment -> sponsors as $sponsorType)
-                    {{$sponsorType -> type }}
-                  @endforeach
-                  finirà il
+          <div class="pannello-utente">
+            <h2>Pannello Utente</h2>
+            <div class="bottoni">
+              @if ($apartment-> user-> id == Auth::id())
+                <div class="">
+                  <a href="{{ route('edit', $apartment -> id)}}"><i class="fas fa-edit"></i></a> <br>
+                  <h6>Edit </h6>
+                </div>
+                <div class="">
+                  <a href="{{ route('stats', $apartment -> id)}}"><i class="fas fa-poll"></i></a> <br>
+                  <h6>Stats </h6>
+                </div>
+                <div class="">
+                  <a href="{{ route('show_msg', $apartment -> id)}}"><i class="fas fa-envelope"></i></a> <br>
+                  <h6>Message</h6>
+                </div>
+                @if (count($apartment -> sponsors) < 1)
+                  <div class="">
+                    <a href="{{ route('sponsor', $apartment -> id)}}"><i class="fas fa-star"></i></a>
+                    <h6>Sponsorize</h6>
+                  </div>
+                @else
+                  <p>
+                    La tua sponsorizzazione
+                    @foreach ($apartment -> sponsors as $sponsorType)
+                      <b>{{$sponsorType -> type }}</b>
+                    @endforeach
+                    finirà il
                     @foreach ($expireData as $val)
                       {{$val -> expire_data }}
                     @endforeach
-                </p>
-            @endif
-          @endif
+                  </p>
+                @endif
+              @endif
+            </div>
+          </div>
         </div>
 
         <div class="apartment-services">
@@ -166,3 +164,11 @@
   @section('script')
     <script type="text/javascript" src="{{ asset('./js/tomtom_show.js') }}"></script>
   @endsection
+
+
+
+
+
+{{-- <div class="" style="background-image: {{}}">
+
+</div> --}}
