@@ -19,8 +19,8 @@ $(document).ready(function(){
           });
           registerButton.addClass('scrolled');
 
-          
-          
+
+
       } else {
           $('.logobnb').attr('src', 'img/LOGO_UNO_MOD_BA.png');
           registerButton.removeClass('scrolled');
@@ -93,29 +93,29 @@ $(document).ready(function(){
       e.preventDefault();
       var city = $('#home-search-bar').val();
     // chiudo in una variabile il valore dell'input nella barra di ricerca
-    
+
     if (city != '') {
 
        // preparo l'url personalizzato da dare in pasto all'api
       var url = "https://api.tomtom.com/search/2/geocode/" + city + ".JSON?key=A19bLrkzxbFaNdTAWvUaqCPN1NCB7UQH";
-    
+
       // chiamata ajax per ottenere latitudine e longitudine partendo dalla città
       $.ajax({
         url: url,
         method: "GET",
         success: function (data) {
-    
+
           // chiudo in variabili i valori dati dall'api di latitudine e longitudine
             var lat = data.results[0]['position']['lat'];
             console.log(lat)
             var lon = data.results[0]['position']['lon'];
             console.log(lon)
             console.log(city);
-    
+
             // inserisco i dati nell'hidden input che servirà a passarli al backend
             $('#hidden-lat').val(lat);
             $('#hidden-lon').val(lon);
-  
+
             $('#form-search').submit();
         },
         error: function(error, status){
@@ -123,9 +123,9 @@ $(document).ready(function(){
           }
         });
     }
-   
+
     });
-  
+
     (function() {
       var placesAutocomplete = places({
         appId: 'pl3MGAFPUYLC',
@@ -141,6 +141,4 @@ $(document).ready(function(){
         aroundLatLngViaIP: false,
       });
     })();
-
-  
 });

@@ -29,10 +29,9 @@ $(document).ready(function(){
     $('.register-button a').css({
     'color': 'rgb(225, 60, 60)'
     });
-
   });
 
-   
+
   //cambio stile css dell'header
     header.css({
         'background-color': 'white',
@@ -51,7 +50,7 @@ $(document).ready(function(){
   // chiudo in un array i valori precedenti
   var position = [ longitude, latitude ];
 
-// richiamo la funzione di tom tom che permette di creare una mappa
+  // richiamo la funzione di tom tom che permette di creare una mappa
   tomtom.setProductInfo('<your-product-name>', '<your-product-version>');
       var map = tt.map({
         container: 'map', //id del div che conterrà la mappa
@@ -62,8 +61,7 @@ $(document).ready(function(){
         zoom: 15 //valore dello zoom sulla mappa
       });
 
-// creazione del marcatore sulla mappa 
+  // creazione del marcatore sulla mappa
   var marker = new tt.Marker().setLngLat(position).addTo(map);
-
 
 });
