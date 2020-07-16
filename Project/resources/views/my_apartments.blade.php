@@ -9,7 +9,72 @@
   @endif
 
     <div class="main_content">
-        @empty(!$apartmentWithSponsor)
+      @empty (!$apartmentWithSponsor)
+
+        <table class="table">
+          <thead class="grey" style="background: yellow; color: #FFF;">
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Immagine</th>
+              <th scope="col">Data inserimento</th>
+              <th scope="col">PENSIAMOCI</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($apartmentWithSponsor as $apartment)
+              <tr>
+                <td> {{$apartment -> title}}</td>
+                <td>
+                  <img
+                  @if(stristr($apartment -> image, 'http'))
+                      src=" {{ asset($apartment -> img_path) }}"
+                  @else
+                      src="{{ asset('storage/' . $apartment -> image) }}"
+                  @endif
+                  alt="{{ $apartment->title }}" class="card-img-top">
+                </td>
+                <td>{{$apartment -> created_at -> diffForHumans() }}</td>
+                <td>ICONE</td>
+              </tr>
+          @endforeach
+          </tbody>
+        </table>
+      @endempty
+
+    @empty (!$apartmentWithoutSponsor)
+      <table class="table">
+        <thead class="grey" style="background: rgb(225, 60, 60); color: #FFF;">
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Immagine</th>
+            <th scope="col">Data inserimento</th>
+            <th scope="col">PENSIAMOCI</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($apartmentWithoutSponsor as $apartment)
+            <tr>
+              <td> {{$apartment -> title}}</td>
+              <td>
+                <img
+                @if(stristr($apartment -> image, 'http'))
+                    src=" {{ asset($apartment -> img_path) }}"
+                @else
+                    src="{{ asset('storage/' . $apartment -> image) }}"
+                @endif
+                alt="{{ $apartment->title }}" class="card-img-top">
+              </td>
+              <td>{{$apartment -> created_at -> diffForHumans() }}</td>
+              <td>ICONE</td>
+            </tr>
+        @endforeach
+        </tbody>
+      </table>
+    @endempty
+
+
+
+        {{-- @empty(!$apartmentWithSponsor)
             <div class="row justify-content-center">
                 @foreach ($apartmentWithSponsor as $apartment)
                     <div class="card text-white bg-warning mb-3" style="width: 18rem;">
@@ -22,7 +87,6 @@
                         alt="{{ $apartment->title }}" class="card-img-top">
                         <div class="card-body">
                         <h5 class="card-title">{{ $apartment->title }}</h5>
-                        <p class="card-text">{{ $apartment-> description }}</p>
                         <a href="{{ route('edit', $apartment->id) }}" class="btn btn-primary">Edit</a>
                         <a href="{{ route('show', $apartment->id) }}" class="btn btn-success">Dettagli</a>
                         <a href="{{ route('delete', $apartment->id) }}" class="btn btn-danger">Elimina appartamento</a>
@@ -45,7 +109,6 @@
                         alt="{{ $apartment->title }}" class="card-img-top">
                         <div class="card-body">
                         <h5 class="card-title">{{ $apartment->title }}</h5>
-                        <p class="card-text">{{ $apartment-> description }}</p>
                         <div class="row">
                           <a href="{{ route('edit', $apartment->id) }}" class="btn btn-primary">Edit</a>
                           <a href="{{ route('show', $apartment->id) }}" class="btn btn-success">Dettagli</a>
@@ -57,7 +120,7 @@
                     <a href="{{ route('create') }}" type="button" class="btn btn-small">Inserisci appartamento</a>
                 </div>
             </div>
-        @endempty
+        @endempty --}}
 
         @if (count($apartmentWithSponsor) < 1 && count($apartmentWithoutSponsor) < 1)
             <div class="container">

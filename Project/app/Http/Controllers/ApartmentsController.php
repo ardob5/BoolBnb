@@ -287,7 +287,7 @@ class ApartmentsController extends Controller
     if($apartment->user->id !== Auth::id()) {
       return redirect()->route('home')->withSuccess('Non sei autorizzato');
     } else {
-      return view('show_msg', compact('messages'));
+      return view('show_msg', compact('messages', 'apartment'));
     }
   }
 
