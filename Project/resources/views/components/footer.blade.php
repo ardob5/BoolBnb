@@ -1,7 +1,7 @@
 <footer>
   <div class="lato-sx">
     <div class="logo">
-      <img src="img/marcomaialona.png" alt="">
+      <img src="{{ asset('img/marcomaialona.png') }}" alt="">
     </div>
     <div class="text">
       <h1>
@@ -20,7 +20,7 @@
         </h1>
         <ul>
           <li>
-            <a href="http://localhost:8000/">
+            <a href="{{ route('home') }}">
               Home
             </a>
           </li>
@@ -34,7 +34,7 @@
         </ul>
         <ul>
           <li>
-            <a href="http://localhost:8000/myApartments">
+            <a href="{{ route('my_apartments') }}">
               Appartamenti
             </a>
           </li>
@@ -53,14 +53,14 @@
         </ul>
         <ul>
           <li>
-            <a href="http://localhost:8000/register">
+            <a href="{{ route('register') }}">
               Registrati
             </a>
           </li>
         </ul>
         <ul>
           <li>
-            <a href="http://localhost:8000/create">
+            <a href="{{ route('create') }}">
               Diventa Host
             </a>
           </li>
@@ -69,9 +69,9 @@
     </div>
 
     <div class="social">
-      <a href="facebook"><img src="img/facebook.png" alt=""></a>
-      <a href="facebook"><img src="img/instagram.png" alt=""></a>
-      <a href="facebook"><img src="img/whatsapp.png" alt=""></a>
+      <a href="facebook"><img src="{{ asset('img/facebook.png') }}" alt=""></a>
+      <a href="facebook"><img src="{{ asset('img/instagram.png') }}" alt=""></a>
+      <a href="facebook"><img src="{{ asset('img/whatsapp.png') }}" alt=""></a>
     </div>
   </div>
 </footer>

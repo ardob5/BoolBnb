@@ -156,13 +156,9 @@
   </div>
   @endsection
 
+ 
   @section('script')
-    <script type="text/javascript" src="{{ asset('./js/tomtom_show.js') }}"></script>
-  @endsection
-
-
-  @section('script')
-    <script type="text/javascript" src="{{ asset('./js/tomtom_show.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/tomtom_show.js') }}"></script>
   @endsection
 
 

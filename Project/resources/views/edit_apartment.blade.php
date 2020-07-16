@@ -208,60 +208,9 @@
       </div>
     </div>
   </div>
-
-<select id="sponsor_name" name="sponsor_name">
-  <option value="2">Basic</option>
-  <option value="1">Standard</option>
-  <option value="3">Premium</option>
-</select>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div id="dropin-container"></div>
-      <button id="submit-button">Request payment method</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  var button = document.querySelector('#submit-button');
-  braintree.dropin.create({
-    authorization: "{{ \Braintree\ClientToken::generate() }}",
-    container: '#dropin-container'
-    }, function (createErr, instance) {
-        button.addEventListener('click', function () {
-          var sponsorType = $('#sponsor_name').val();
-          instance.requestPaymentMethod(function (err, payload) {
-
-            $.ajax({
-              url: "{{ route('payment_process') }}",
-              method: "GET",
-              data: {
-                  id: {{$apartment -> id}},
-                  val: sponsorType,
-                  payload: payload
-              },
-
-              success: function (result) {
-                  console.log(result);
-                  if (result.success) {
-                    alert('Payment successfull!');
-                  } else {
-                    alert('Payment failed');
-                    }
-              },
-              error: function(error, status){
-                console.log('errore:' + error);
-                }
-              });
-            });
-          });
-        });
-</script>
-
 @endsection
 
 @section('script')
+  <script src="{{ asset('js/checkInput.js') }}"></script>
   <script src="{{ asset('js/edit.js') }}"></script>
 @endsection

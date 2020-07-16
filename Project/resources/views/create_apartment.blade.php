@@ -167,5 +167,6 @@
 @endsection
 
 @section('script')
+  <script src="{{ asset('js/checkInput.js') }}"></script>
   <script src="{{ asset('js/createApartment.js') }}"></script>
 @endsection
