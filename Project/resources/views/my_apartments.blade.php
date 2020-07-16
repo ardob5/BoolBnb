@@ -9,118 +9,148 @@
   @endif
 
     <div class="main_content">
-      @empty (!$apartmentWithSponsor)
-
-        <table class="table">
-          <thead class="grey" style="background: yellow; color: #FFF;">
-            <tr>
-              <th scope="col">Nome</th>
-              <th scope="col">Immagine</th>
-              <th scope="col">Data inserimento</th>
-              <th scope="col">PENSIAMOCI</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($apartmentWithSponsor as $apartment)
-              <tr>
-                <td> {{$apartment -> title}}</td>
-                <td>
-                  <img
-                  @if(stristr($apartment -> image, 'http'))
-                      src=" {{ asset($apartment -> img_path) }}"
-                  @else
-                      src="{{ asset('storage/' . $apartment -> image) }}"
-                  @endif
-                  alt="{{ $apartment->title }}" class="card-img-top">
-                </td>
-                <td>{{$apartment -> created_at -> diffForHumans() }}</td>
-                <td>ICONE</td>
-              </tr>
-          @endforeach
-          </tbody>
-        </table>
-      @endempty
-
-    @empty (!$apartmentWithoutSponsor)
-      <table class="table">
-        <thead class="grey" style="background: rgb(225, 60, 60); color: #FFF;">
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Immagine</th>
-            <th scope="col">Data inserimento</th>
-            <th scope="col">PENSIAMOCI</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($apartmentWithoutSponsor as $apartment)
-            <tr>
-              <td> {{$apartment -> title}}</td>
-              <td>
-                <img
-                @if(stristr($apartment -> image, 'http'))
-                    src=" {{ asset($apartment -> img_path) }}"
-                @else
-                    src="{{ asset('storage/' . $apartment -> image) }}"
-                @endif
-                alt="{{ $apartment->title }}" class="card-img-top">
-              </td>
-              <td>{{$apartment -> created_at -> diffForHumans() }}</td>
-              <td>ICONE</td>
-            </tr>
-        @endforeach
-        </tbody>
-      </table>
-    @endempty
-
-
-
-        {{-- @empty(!$apartmentWithSponsor)
-            <div class="row justify-content-center">
-                @foreach ($apartmentWithSponsor as $apartment)
-                    <div class="card text-white bg-warning mb-3" style="width: 18rem;">
-                        <img
-                        @if(stristr($apartment -> image, 'http'))
-                            src=" {{ asset($apartment -> img_path) }}"
-                        @else
-                            src="{{ asset('storage/' . $apartment -> image) }}"
-                        @endif
-                        alt="{{ $apartment->title }}" class="card-img-top">
-                        <div class="card-body">
-                        <h5 class="card-title">{{ $apartment->title }}</h5>
-                        <a href="{{ route('edit', $apartment->id) }}" class="btn btn-primary">Edit</a>
-                        <a href="{{ route('show', $apartment->id) }}" class="btn btn-success">Dettagli</a>
-                        <a href="{{ route('delete', $apartment->id) }}" class="btn btn-danger">Elimina appartamento</a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+        @empty (!$apartmentWithSponsor)
+            <div class="container">
+                <table class="table table-sponsor mb-5">
+                    <thead style="background: #FCBA32; color: #FFF;">
+                        <tr>
+                            <th scope="col">Copertina</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Città</th>
+                            <th scope="col">Sponsor</th>
+                            <th scope="col">Data inserimento</th>
+                            <th scope="col">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($apartmentWithSponsor as $apartment)
+                            <tr>
+                                <td>
+                                    <img width="150px" 
+                                    @if(stristr($apartment -> image, 'http'))
+                                        src=" {{ asset($apartment -> img_path) }}"
+                                    @else
+                                        src="{{ asset('storage/' . $apartment -> image) }}"
+                                    @endif
+                                    alt="{{ $apartment->title }}">
+                                </td>
+                                <td>{{ $apartment->title }}</td>
+                                <td>{{ $apartment->city }}</td>
+                                <td>
+                                    @foreach ($apartment->sponsors as $sponsor)
+                                        {{ $sponsor->type }}
+                                    @endforeach
+                                </td>
+                                <td>
+                                    {{ $apartment->created_at->diffForHumans() }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('edit', $apartment->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('show', $apartment->id) }}" class="btn btn-success"><i class="fas fa-info-circle"></i></a>
+                                    <a href="{{ route('delete', $apartment->id) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
         @endempty
-
-        @empty(!$apartmentWithoutSponsor)
-            <div class="row justify-content-center">
-                @foreach ($apartmentWithoutSponsor as $apartment)
-                    <div class="card text-white bg-info mb-3" style="width: 18rem;">
-                        <img
-                        @if(stristr($apartment -> image, 'http'))
-                            src=" {{ asset($apartment -> img_path) }}"
-                        @else
-                            src="{{ asset('storage/' . $apartment -> image) }}"
-                        @endif
-                        alt="{{ $apartment->title }}" class="card-img-top">
-                        <div class="card-body">
-                        <h5 class="card-title">{{ $apartment->title }}</h5>
-                        <div class="row">
-                          <a href="{{ route('edit', $apartment->id) }}" class="btn btn-primary">Edit</a>
-                          <a href="{{ route('show', $apartment->id) }}" class="btn btn-success">Dettagli</a>
-                          <a href="{{ route('delete', $apartment->id) }}" class="btn btn-danger">Elimina appartamento</a>
+        
+        @empty (!$apartmentWithoutSponsor)
+            <table class="table">
+                <thead class="grey" style="background: rgb(225, 60, 60); color: #FFF;">
+                <tr>
+                    <th scope="col">Copertina</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Città</th>
+                    <th scope="col">Sponsor</th>
+                    <th scope="col">Data inserimento</th>
+                    <th scope="col">Azioni</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach ($apartmentWithoutSponsor as $apartment)
+                        <tr>
+                            <td>
+                                <img width="150px"
+                                @if(stristr($apartment -> image, 'http'))
+                                    src=" {{ asset($apartment -> img_path) }}"
+                                @else
+                                    src="{{ asset('storage/' . $apartment -> image) }}"
+                                @endif
+                                alt="{{ $apartment->title }}">
+                            </td>
+                            <td> {{$apartment -> title}}</td>
+                            <td> {{$apartment -> city}}</td>
+                            <td>
+                                <a href="{{ route('sponsor', $apartment->id) }}" class="btn btn-warning">
+                                    <i class="fas fa-star" style="color: white;"></i>
+                                </a>
+                            </td>
+                            <td>{{$apartment -> created_at -> diffForHumans() }}</td>
+                            <td>
+                                <a href="{{ route('edit', $apartment->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{{ route('show', $apartment->id) }}" class="btn btn-success"><i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="{{ route('delete', $apartment->id) }}" class="btn btn-danger"><i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endempty
+    
+    
+    
+            {{-- @empty(!$apartmentWithSponsor)
+                <div class="row justify-content-center">
+                    @foreach ($apartmentWithSponsor as $apartment)
+                        <div class="card text-white bg-warning mb-3" style="width: 18rem;">
+                            <img
+                            @if(stristr($apartment -> image, 'http'))
+                                src=" {{ asset($apartment -> img_path) }}"
+                            @else
+                                src="{{ asset('storage/' . $apartment -> image) }}"
+                            @endif
+                            alt="{{ $apartment->title }}" class="card-img-top">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ $apartment->title }}</h5>
+                            <a href="{{ route('edit', $apartment->id) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('show', $apartment->id) }}" class="btn btn-success">Dettagli</a>
+                            <a href="{{ route('delete', $apartment->id) }}" class="btn btn-danger">Elimina appartamento</a>
+                            </div>
                         </div>
-                        </div>
-                    </div>
-                @endforeach
-                    <a href="{{ route('create') }}" type="button" class="btn btn-small">Inserisci appartamento</a>
+                    @endforeach
                 </div>
-            </div>
-        @endempty --}}
+            @endempty
+    
+            @empty(!$apartmentWithoutSponsor)
+                <div class="row justify-content-center">
+                    @foreach ($apartmentWithoutSponsor as $apartment)
+                        <div class="card text-white bg-info mb-3" style="width: 18rem;">
+                            <img
+                            @if(stristr($apartment -> image, 'http'))
+                                src=" {{ asset($apartment -> img_path) }}"
+                            @else
+                                src="{{ asset('storage/' . $apartment -> image) }}"
+                            @endif
+                            alt="{{ $apartment->title }}" class="card-img-top">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ $apartment->title }}</h5>
+                            <div class="row">
+                              <a href="{{ route('edit', $apartment->id) }}" class="btn btn-primary">Edit</a>
+                              <a href="{{ route('show', $apartment->id) }}" class="btn btn-success">Dettagli</a>
+                              <a href="{{ route('delete', $apartment->id) }}" class="btn btn-danger">Elimina appartamento</a>
+                            </div>
+                            </div>
+                        </div>
+                    @endforeach
+                        <a href="{{ route('create') }}" type="button" class="btn btn-small">Inserisci appartamento</a>
+                    </div>
+                </div>
+            @endempty --}}
+    </div>
 
         @if (count($apartmentWithSponsor) < 1 && count($apartmentWithoutSponsor) < 1)
             <div class="container">
@@ -172,6 +202,10 @@
                 </div>
             </div>
         @endif
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <a type="button" style="background-color: rgb(225, 60, 60); color: white;" class="btn btn-lg" href="{{ route('create') }}">Inserisci Appartamento</a>
     </div>
 @endsection
 
