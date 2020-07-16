@@ -1,6 +1,13 @@
 @extends('layouts.main_layout')
 
 @section('content')
+
+  @if (session('success'))
+      <div class="alert alert-success text-center" role="alert">
+        <strong>{{ session('success') }}</strong>
+      </div>
+  @endif
+
     <div class="main_content">
         @empty(!$apartmentWithSponsor)
             <div class="row justify-content-center">

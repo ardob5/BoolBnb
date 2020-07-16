@@ -38,6 +38,7 @@ class ApartmentsController extends Controller
   // SHOW
   public function show($id) {
     $this->checkSponsor();
+    $expireData = DB::table('apartment_sponsor')->select('expire_data')->where('apartment_id', '=', $id)->get();
     $apartment = Apartment::findOrFail($id);
     $photos = $apartment -> photos;
     $optionals = $apartment -> optionals;
@@ -65,7 +66,7 @@ class ApartmentsController extends Controller
       $view -> views_IP = $IP;
       $view -> save();
     }
-    return view('show', compact('apartment', 'photos', 'optionals'));
+    return view('show', compact('apartment', 'photos', 'optionals', 'expireData'));
   }
   // CREATE
   public function create() {
@@ -75,11 +76,11 @@ class ApartmentsController extends Controller
   public function store(Request $request) {
     $this->checkSponsor();
     $validate_data = $request->validate([
-      'title' => 'required|alpha_num',
+      'title' => 'required',
       'address' => 'required',
       'city' => 'required|alpha',
       'civicNumber' => 'required',
-      'postCode' => 'required|integer',
+      'postCode' => 'required|numeric',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
       'beds' => 'required|integer',
@@ -166,11 +167,11 @@ class ApartmentsController extends Controller
   public function update(Request $request, $id) {
     $this->checkSponsor();
     $validate_data = $request->validate([
-      'title' => 'required|alpha_num',
+      'title' => 'required',
       'address' => 'required',
       'city' => 'required|alpha',
       'civicNumber' => 'required',
-      'postCode' => 'required|integer',
+      'postCode' => 'required|numeric',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
       'beds' => 'required|integer',
@@ -236,15 +237,15 @@ class ApartmentsController extends Controller
     $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
     $img = $apartment -> image;
-    if($apartment->user->id !== Auth::user()->id) {
-      return redirect()->route('home');
+    if($apartment-> user-> id !== Auth::id()) {
+      return redirect()->route('home')->withSuccess('Non sei autorizzato');
     } else {
         if (Storage::disk('public') -> exists($img)) {
           Storage::disk('public') -> deleteDirectory('apartments/copertina/' . $apartment -> id);
           Storage::disk('public') -> deleteDirectory('apartments/photos/' . $apartment -> id);
         }
       $apartment -> delete();
-      return redirect() -> route('my_apartments');
+      return redirect() -> route('my_apartments')->withSuccess('Appartamento eliminato correttamente');
     }
   }
 
@@ -262,8 +263,8 @@ class ApartmentsController extends Controller
   // SPONSOR APT
   public function sponsorApt($id) {
     $apartment = Apartment::findOrFail($id);
-    if($apartment->user->id !== Auth::id()) {
-      return redirect()->route('home')->withSuccess('Non sei autorizzato');
+    if($apartment-> user-> id !== Auth::id() || count($apartment -> sponsors) > 0) {
+      return redirect()->route('home')->withSuccess('Appartamento già sponsorizzato');
     } else {
       return view('sponsor_apt', compact('apartment'));
     }

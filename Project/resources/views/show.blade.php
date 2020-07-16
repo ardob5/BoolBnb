@@ -45,9 +45,22 @@
           </div>
           <p>{{ $apartment -> description }}</p>
           @if ($apartment-> user-> id == Auth::id())
-            <a href="{{ route('stats', $apartment -> id)}}">Stats</a> <br>
-            <a href="{{ route('show_msg', $apartment -> id)}}">Messages</a> <br>
-            <a href="{{ route('sponsor', $apartment -> id)}}">Sponsor your apartment</a>
+            <a href="{{ route('stats', $apartment -> id)}}">Statistiche</a> <br>
+            <a href="{{ route('show_msg', $apartment -> id)}}">Messaggi ricevuti</a> <br>
+            @if (count($apartment -> sponsors) < 1)
+              <a href="{{ route('sponsor', $apartment -> id)}}">Sponsorizza il tuo appartamento</a>
+              @else
+                <p>
+                  La tua sponsorizzazione
+                  @foreach ($apartment -> sponsors as $sponsorType)
+                    {{$sponsorType -> type }}
+                  @endforeach
+                  finirà il
+                    @foreach ($expireData as $val)
+                      {{$val -> expire_data }}
+                    @endforeach
+                </p>
+            @endif
           @endif
         </div>
         <div class="apartment-services">
@@ -58,15 +71,19 @@
             <li>Bagni: {{ $apartment -> bath_number}}</li>
             <li>Metri quadrati: {{ $apartment -> area }} mq</li>
             <li>Indirizzo: {{ $apartment -> address }}, {{ $apartment -> civicNumber}}</li>
-            <li>Views: {{ count($apartment -> views)}}</li>
-            <li>Optionals:
-              <ul>
-                @foreach ($optionals as $optional)
-                <li>
-                  <small>{{ $optional -> optional }}</small>
-                </li>
-                @endforeach
-              </ul>
+            <li>
+              @if (count($apartment -> optionals) < 1)
+                No optionals
+                @else
+                  Optionals:
+                  <ul>
+                    @foreach ($optionals as $optional)
+                    <li>
+                      <small>{{ $optional -> optional }}</small>
+                    </li>
+                    @endforeach
+                  </ul>
+              @endif
             </li>
           </ul>
         </div>
