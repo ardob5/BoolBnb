@@ -78,10 +78,10 @@ class ApartmentsController extends Controller
   public function store(Request $request) {
     $this->checkSponsor();
     $validate_data = $request->validate([
-      'title' => 'required',
-      'address' => 'required',
-      'city' => 'required|alpha',
-      'civicNumber' => 'required',
+      'title' => 'required|not_regex:/[#@\$!_\-\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§]/',
+      'address' => 'required|not_regex:/[#@\$!_\-\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§]/',
+      'city' => 'required|not_regex:/[0-9#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§]/',
+      'civicNumber' => 'required|not_regex:/[a-zA-Z#@\$!_\-\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/',
       'postCode' => 'required|numeric',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
@@ -172,19 +172,19 @@ class ApartmentsController extends Controller
   public function update(Request $request, $id) {
     $this->checkSponsor();
     $validate_data = $request->validate([
-      'title' => 'required',
-      'address' => 'required',
-      'city' => 'required|alpha',
-      'civicNumber' => 'required',
+      'title' => 'required|not_regex:/[#@\$!_\-\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§]/',
+      'address' => 'required|not_regex:/[#@\$!_\-\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§]/',
+      'city' => 'required|not_regex:/[0-9#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§]/',
+      'civicNumber' => 'required|not_regex:/[a-zA-Z#@\$!_\-\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/',
       'postCode' => 'required|numeric',
       'room_number' => 'required|integer',
       'bath_number' => 'required|integer',
       'beds' => 'required|integer',
       'area' => 'required|integer',
-      'price' => 'required|integer',
+      'price' => 'required|integer|not_in:0',
       'lat' => 'required',
       'lon' => 'required',
-      'image' => 'mimes:jpeg,jpg,bmp,png|max:8000',
+      'image' => 'required|mimes:jpeg,jpg,bmp,png|max:8000',
       'photos' => 'array|max:4',
       'photos.*' => 'mimes:jpeg,jpg,bmp,png|max:8000',
       'optionals' => 'array',
