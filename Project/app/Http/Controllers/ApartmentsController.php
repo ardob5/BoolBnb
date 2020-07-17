@@ -355,8 +355,23 @@ class ApartmentsController extends Controller
     $preference -> apartment_id = $id;
     $preference -> user_id = $userID;
     $preference -> save();
-    return $preference;
+    
+    return "Appartamento aggiunto ai preferiti";
+      
   }
+
+  // API PREFERENCES REMOVE
+  public function removePref(Request $request) {
+    $id = $request -> id;
+    $userID = $request -> idUser;
+    Preference::where([
+      ['apartment_id', '=', $id],
+      ['user_id', '=', $userID]
+      ]) -> delete();
+
+      return "Appartamento rimosso dai preferiti";
+  }
+
 
   // FUNZIONI DA RICHIAMARE
   public function filterApartmentWithSponsor($apartments) {

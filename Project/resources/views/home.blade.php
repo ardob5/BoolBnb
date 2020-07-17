@@ -181,9 +181,18 @@
               </ul> --}}
             </div>
           </div>
-
+          @php
+            $preferences = $apartment -> preferences;
+          @endphp
           <div class="cartina_right">
-            <div class="cuoricino-container" data-id="{{$apartment -> id}}">
+            <div class="cuoricino-container 
+            @foreach($preferences as $preference)
+              @if($preference -> user_id == Auth::id())
+                favorite
+              @endif
+            @endforeach
+            " 
+            data-id="{{$apartment -> id}}">
               <i class="far fa-heart cuoricino"></i>
             </div>
             <div class="bottone">
@@ -235,32 +244,54 @@
 @endsection
 
 @section('script')
-    <script>
-
-
+  <script>
     $('.cuoricino-container').click(function(){
       @auth
-        $(this).css('color', 'red');
-        $(this).addClass('favorite');
+        var selfElement = $(this);
         var idApt = $(this).data('id');
         var userID = {{Auth::id()}};
-        $.ajax({
-            method: "GET",
-            url: 'http://localhost:8000/api/preferences_apt',
+
+        if (selfElement.hasClass('favorite')) {
+          
+          $.ajax({
+            method: "POST",
+            url: 'http://localhost:8000/api/preferences_apt/remove',
             data: {
                 id: idApt,
                 idUser: userID
             },
             success: function (response) {
               console.log(response);
+              selfElement.removeClass('favorite');
+            },
+            error: function(err) {
+              console.log(err);
             }
-        });
+          });
+        } else {
+
+          $.ajax({
+              method: "POST",
+              url: 'http://localhost:8000/api/preferences_apt',
+              data: {
+                  id: idApt,
+                  idUser: userID
+              },
+              success: function (response) {
+                console.log(response);
+                selfElement.addClass('favorite');
+              },
+              error: function(err) {
+                console.log(err);
+              }
+          });
+        }
+        
       @else
         window.location.href="{{route('register')}}" ;
     @endauth
     });
-
-    </script>
+  </script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script src="{{ asset('js/tomtom_home.js') }}"></script>
 @endsection
