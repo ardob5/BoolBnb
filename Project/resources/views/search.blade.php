@@ -177,9 +177,6 @@
 
                 <h3 class="mb-0">
                   <a class="text-dark" href="/show/@{{ id }}"> @{{title}} </a>
-                  <span>
-                    <strong class="d-inline-block mb-2 text-warning"><i class="fab fa-stripe-s"></i></strong>
-                  </span>
                 </h3>
                 <p>
                   <span>Posti Letto: @{{beds}}</span> <br>

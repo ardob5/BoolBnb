@@ -6,8 +6,8 @@
       </div>
   @endif
     <div class="main_content">
+      <div class="container">
         @empty (!$apartmentWithSponsor)
-            <div class="container">
                 <table class="table table-sponsor mb-5">
                     <thead style="background: #FCBA32; color: #FFF;">
                         <tr>
@@ -143,7 +143,7 @@
                     </div>
                 </div>
             @endempty --}}
-    </div>
+      </div>
         @if (count($apartmentWithSponsor) < 1 && count($apartmentWithoutSponsor) < 1)
             <div class="container">
                 <div class="row mb-5">

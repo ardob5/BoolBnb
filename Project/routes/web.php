@@ -20,7 +20,7 @@ Route::group([
   Route::get('/show_msg/{id}', 'ApartmentsController@showMsg')->name('show_msg'); // ROTTA PER VISUALIZZARE I MESSAGGI RICEVUTI AD UN SINGOLO APPARTAMENTO
   Route::get('/delete_image/{id}', 'PhotosController@delete')->name('delete_img'); // ROTTA PER LA CANCELLAZIONE DELLE FOTO SELEZIONATE RELATIVE ALL'APPARTAMENTO SELEZIONATO
   Route::get('/sponsor_apt/{id}', 'ApartmentsController@sponsorApt')->name('sponsor'); // ROTTA PER SPONSORIZZARE IL PROPRIO APPARTAMENTO
-
+  Route::get('/my_preferences', 'ApartmentsController@showPref')->name('my_preferences'); // ROTTA PER VISUALIZZARE APPARTAMENTI PREFERITI
 });
 
 // VIEW SENZA AUTENTICAZIONE

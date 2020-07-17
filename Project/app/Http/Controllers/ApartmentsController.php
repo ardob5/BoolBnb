@@ -292,6 +292,18 @@ class ApartmentsController extends Controller
     }
   }
 
+  // SHOW PREFERENCES
+  public function showPref(){
+    $apartments = Apartment::all();
+    $myPref = [];
+    $myPreferences = Preference::where('user_id', '=', Auth::id())->get();
+    foreach ($myPreferences as $preference) {
+      $myPref[] = $preference -> apartment;
+    }
+    // dd($myPref);
+    return view('preferences', compact('myPref'));
+  }
+
   // API STATS
   public function statsResults(Request $request) {
     $this->checkSponsor();
@@ -355,9 +367,9 @@ class ApartmentsController extends Controller
     $preference -> apartment_id = $id;
     $preference -> user_id = $userID;
     $preference -> save();
-    
+
     return "Appartamento aggiunto ai preferiti";
-      
+
   }
 
   // API PREFERENCES REMOVE
