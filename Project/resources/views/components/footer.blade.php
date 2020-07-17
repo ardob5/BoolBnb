@@ -5,10 +5,10 @@
     </div>
     <div class="text">
       <h1>
-        Home is where love resides.
+        Home is where Gian resides.
       </h1>
       <p>
-        Il vero viaggio di scoperta non consiste nel cercare nuove terre, ma nell'avere nuovi occhi.
+        BoolBnB è un bellissimo portale online che mette in contatto persone in cerca di un alloggio o di una camera per brevi periodi, con persone che dispongono di uno spazio extra da affittare, generalmente privati. <br> Nasce però come prova finale per mettere in pratica le tecnologie apprese in 6 mesi di corso. <br><br> Il sito fu creato nel luglio del 2020 da Alessandro Fraternali, Gianmarco Montanari, Marco Petrini, Riccardo Belli e Umberto Del Piano.
       </p>
     </div>
   </div>

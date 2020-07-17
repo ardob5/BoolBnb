@@ -26,35 +26,62 @@
   </div>
 </div>
 <div class="main_content">
-  <input class="filter" type="checkbox" name="optionals[]" value="1">
-  <label for="optionals">Pool</label>
-  <input class="filter" type="checkbox" name="optionals[]" value="2">
-  <label for="optionals">Security</label>
-  <input class="filter" type="checkbox" name="optionals[]" value="3">
-  <label for="optionals">Box-auto</label>
-  <input class="filter" type="checkbox" name="optionals[]" value="4">
-  <label for="optionals">wi-fi</label>
-  <input class="filter" type="checkbox" name="optionals[]" value="5">
-  <label for="optionals">Sauna</label>
-  <input class="filter" type="checkbox" name="optionals[]" value="6">
-  <label for="optionals">Sea-view</label>
-  
-  <div class="">
-    <select id="distance" class="filter" name="radius" id="radius">
-      <option value="20">20 km</option>
-      <option value="50">50 km</option>
-      <option value="100">100 km</option>
-    </select>
-  </div>
-  
-  <div class="">
-    <label for="rooms">N° minimo di stanze</label>
-    <input class="filter" type="number" name="rooms" id="rooms">
-  </div>
-  
-  <div class="">
-    <label for="rooms">Numero minimo posti letto</label>
-    <input class="filter" type="number" name="beds" id="beds">
+  <div class="sponsored_and_filters">
+    <div class="sponsored_carousel">
+      @empty (!$apartmentWithSponsor)
+        @include('components.carousel_one')
+      @endempty
+    </div>
+    <div class="filters">
+      <div class="filters_checkbox">
+        <div class="checkboxup">
+          <div class="checkboxes">
+            <input class="filter" type="checkbox" name="optionals[]" value="1">
+            <label for="optionals">Pool</label>
+          </div>
+          <div class="checkboxes">
+            <input class="filter" type="checkbox" name="optionals[]" value="2">
+            <label for="optionals">Security</label>
+          </div>
+          <div class="checkboxes">
+            <input class="filter" type="checkbox" name="optionals[]" value="3">
+            <label for="optionals">Box-auto</label>
+          </div>
+        </div>
+        <div class="checkboxdown">
+          <div class="checkboxes">
+            <input class="filter" type="checkbox" name="optionals[]" value="4">
+            <label for="optionals">wi-fi</label>
+          </div>
+          <div class="checkboxes">
+            <input class="filter" type="checkbox" name="optionals[]" value="5">
+            <label for="optionals">Sauna</label>
+          </div>
+          <div class="checkboxes">
+            <input class="filter" type="checkbox" name="optionals[]" value="6">
+            <label for="optionals">Sea-view</label>
+          </div>
+        </div>
+      </div>
+      <div class="filters_tendine">
+        <div class="tendine">
+          <p>Raggio di ricerca</p>
+          <select id="distance" class="filter" name="radius" id="radius">
+            <option value="20">20 km</option>
+            <option value="50">50 km</option>
+            <option value="100">100 km</option>
+          </select>
+        </div>
+        <div class="tendine">
+          <label for="rooms">Numero di stanze</label>
+          <input class="filter" type="number" name="rooms" id="rooms">
+        </div>
+        <div class="tendine">
+          <label for="rooms">Letti <br> necessari</label>
+          <input class="filter" type="number" name="beds" id="beds">
+        </div>
+      </div>
+    </div>
   </div>
         {{-- <script type="text/javascript" src="{{ asset('js/algolia.js') }}"></script> --}}
         {{-- APPARTAMENTI IN EVIDENZA --}}
@@ -78,9 +105,6 @@
           </div> --}}
           {{-- @include('components.carousel') --}}
           <img class="logobnb-loading" src="{{asset('img/LOGO_UNO_MOD.png')}}" alt="logo_boolbnb">
-      @empty (!$apartmentWithSponsor)
-        @include('components.carousel_one')
-      @endempty
       <div class="row justify-content-center container-apartments">
         @if(count($apartments_no_sponsor) < 1)
         <div class="alert alert-danger text-center" role="alert">
@@ -101,11 +125,11 @@
               </div>
               <div class="col-md-4">
                 <div class="card-body d-flex flex-column align-items-start">
-  
+
                   <h3 class="mb-0">
                     <a class="text-dark" href="{{ route('show', $nosponsorApt -> id) }}"> {{ $nosponsorApt -> title }} </a>
                   </h3>
-  
+
                   <p>
                     <span>Posti Letto: {{$nosponsorApt -> beds}}</span> <br>
                     <span>Numero di stanze: {{$nosponsorApt -> room_number}}</span> <br>
@@ -143,9 +167,9 @@
           <div class="card flex-md-row mb-4 box-shadow h-md-250 onHover">
             <div class="col-md-4  d-flex justify-content-center align-items-center">
               <img width="100%" class="card-img-right flex-auto d-none d-md-block"
-                
+
                 src="storage/@{{img}}"
-              
+
               alt="Card image cap">
             </div>
             <div class="col-md-4">

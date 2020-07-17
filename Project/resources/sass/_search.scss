@@ -11,3 +11,81 @@
     animation: girotondo 1.5s linear infinite;
 }
 
+*{ box-sizing: border-box; padding:0; margin:0;}
+
+.jumbotron{
+  height: 500px;
+  width: 100%;
+  background-color: blue;
+}
+
+.sponsored_and_filters{
+  display: flex;
+  justify-content: space-around;
+
+  .sponsored_carousel{
+    width: 35%;
+  }
+
+  .filters{
+    padding-left: 25px;
+    border-radius: 20px;
+    margin-top: 40px;
+    height: 325px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: $redbnb;
+    font-size: 20px;
+    margin-top: 50px;
+    box-shadow: 0px 0px 19px 10px #9e2a2a;
+    box-shadow: 0px 0px 19px 10px #541313;
+
+    .filters_checkbox{
+      height: 50%;
+
+      .checkboxup{
+        height: 50%;
+        display: flex;
+      }
+
+      .checkboxdown{
+        height: 50%;
+        display: flex;
+      }
+
+      .checkboxes{
+        width: 33.3%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        label{
+          margin-left: 5px;
+        }
+
+        input{
+          width: auto;
+        }
+      }
+    }
+
+    .filters_tendine{
+      height: 16%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      .tendine{
+        height: 10%;
+        width: 25%;
+
+        input{
+          width: 80%;
+        }
+
+      }
+    }
+
+  }
+}
