@@ -36,7 +36,7 @@ class ApartmentsController extends Controller
     $apartmentWithSponsor = $this->filterApartmentWithSponsor($apartments);
     $apartmentsRadius20 = $this -> findNearestHouse($latitude , $longitude);
     $apartments_no_sponsor = collect($apartmentsRadius20) -> paginate(12);
-    return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor', 'latitude', 'longitude'));
+    return view('search', compact('apartmentWithSponsor', 'apartments_no_sponsor', 'apartments', 'latitude', 'longitude'));
   }
 
   // SHOW

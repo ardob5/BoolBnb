@@ -112,44 +112,85 @@
         </div>
         @else
           @foreach ($apartments_no_sponsor as $nosponsorApt)
-          <div class="col-md-10 offset-1">
-            <div class="card flex-md-row mb-4 box-shadow h-md-250 onHover">
-              <div class="col-md-4  d-flex justify-content-center align-items-center">
-                <img width="100%" class="card-img-right flex-auto d-none d-md-block"
-                @if(stristr($nosponsorApt -> image, 'http'))
-                  src=" {{ asset($nosponsorApt -> image) }}"
-                @else
-                  src="{{ asset('storage/' . $nosponsorApt -> image) }}"
-                @endif
-                alt="Card image cap">
-              </div>
-              <div class="col-md-4">
-                <div class="card-body d-flex flex-column align-items-start">
-
-                  <h3 class="mb-0">
-                    <a class="text-dark" href="{{ route('show', $nosponsorApt -> id) }}"> {{ $nosponsorApt -> title }} </a>
-                  </h3>
-
-                  <p>
-                    <span>Posti Letto: {{$nosponsorApt -> beds}}</span> <br>
-                    <span>Numero di stanze: {{$nosponsorApt -> room_number}}</span> <br>
-                    <span>Bagni: {{$nosponsorApt -> bath_number}}</span> <br>
-                    <div class="hr_container">
-                      <hr style="height:1px; color: lightgrey; width:100%; margin:2px 0;">
-                      <span class="total_prc">{{ $nosponsorApt -> price }} € - Totale</span>
-                    </div>
-                  </p>
+            <div class="cartina">
+              <div class="cartina_left">
+                <div class="img">
+                  <div class="created-at-stick">
+                  </div>
+                  <img class="card-img-right flex-auto d-none d-md-block"
+                  @if(stristr($nosponsorApt -> image, 'http'))
+                    src=" {{ asset($nosponsorApt -> image) }}"
+                  @else
+                    src="{{ asset('storage/' . $nosponsorApt -> image) }}"
+                  @endif
+                  alt="cartina image cap">
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="from_bottom">
-                  <a href="{{ route('show', $nosponsorApt -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
+
+              <div class="cartina_center">
+                <h3 class="mb-0">
+                  <a class="text-dark" href="{{ route('show', $nosponsorApt -> id) }}"> {{ $nosponsorApt -> title }} </a>
+                  <span>
+                    {{-- <strong class="d-inline-block mb-2 text-warning"><i class="fab fa-stripe-s"></i></strong> --}}
+                  </span>
+                </h3>
+                <div class="detail-home">
+                  <div class="sticker-detail">
+                    <p><i class="fas fa-bed"></i> <span class="number-of-elements"> {{$nosponsorApt -> beds}} </span> posti letto</p>
+                  </div>
+
+                  <div class="sticker-detail">
+                    <p><i class="fas fa-door-open"></i> <span class="number-of-elements"> {{$nosponsorApt -> room_number}}</span> stanze</p>
+                  </div>
+
+                  <div class="sticker-detail">
+                    <p class="bagni"> <i class="fas fa-bath"></i>  <span class="number-of-elements"> {{$nosponsorApt -> bath_number}} </span> bagni</p>
+                  </div>
+                  <hr class="cartina_hr">
+                  <p>{{ $nosponsorApt -> price }} € - Totale</p>
                 </div>
+                <div class="optional-home">
+                  {{-- <ul class="optional">
+                    <li>
+                      @if (count($apartment -> optionals) < 1)
+                        <h2>No optionals</h2>
+                        @else
+                          <h2>Optionals</h2>
+                          <ul>
+                            @foreach ($optionals as $optional)
+                            <li>
+                              {{ $optional -> optional }}
+                            </li>
+                            @endforeach
+                          </ul>
+                      @endif
+                    </li>
+                  </ul> --}}
+                </div>
+              </div>
+              <div class="cartina_right">
+                <div class="cuoricino-container
+                @foreach ($apartments as $apartment)
+                  @foreach($apartment -> preferences as $preference)
+                    @if ($nosponsorApt -> id == $apartment -> id)
+                      @if($preference -> user_id == Auth::id())
+                        favorite
+                      @endif
+                    @endif
+                  @endforeach
+                @endforeach
+                "
+                data-id="{{$nosponsorApt -> id}}">
+                  <i class="far fa-heart cuoricino"></i>
+                </div>
+                <div class="bottone">
+                  <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
+                </div>
+              </div>
+              <div class="cartina_sponsor">
+                <p class="sponsored">sponsorizzato</p>
               </div>
             </div>
-          </div>
-          {{-- FIX OFFSET --}}
-          <div class="col-md-1"></div>
           @endforeach
         </div>
       @endif
@@ -163,45 +204,118 @@
 
     <!-- INIZIO HANDLEBARS -->
     <script id="entry-template" type="text/x-handlebars-template">
-        <div class="col-md-10 offset-1">
-          <div class="card flex-md-row mb-4 box-shadow h-md-250 onHover">
-            <div class="col-md-4  d-flex justify-content-center align-items-center">
-              <img width="100%" class="card-img-right flex-auto d-none d-md-block"
-
-                src="storage/@{{img}}"
-
-              alt="Card image cap">
+      <div class="cartina">
+        <div class="cartina_left">
+          <div class="img">
+            <div class="created-at-stick">
             </div>
-            <div class="col-md-4">
-              <div class="card-body d-flex flex-column align-items-start">
-
-                <h3 class="mb-0">
-                  <a class="text-dark" href="/show/@{{ id }}"> @{{title}} </a>
-                </h3>
-                <p>
-                  <span>Posti Letto: @{{beds}}</span> <br>
-                  <span>Numero di stanze: @{{rooms}}</span> <br>
-                  <span>Bagni: @{{bath}}</span> <br>
-                  <div class="hr_container">
-                    <hr style="height:1px; color: lightgrey; width:100%; margin:2px 0;">
-                    <span class="total_prc">@{{ price }} € - Totale</span>
-                  </div>
-                </p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="from_bottom">
-                <a href="/show/@{{ id }}" class="btn bnb_btn">Vai all'appartamento</a>
-              </div>
-            </div>
+            <img class="card-img-right flex-auto d-none d-md-block"
+              src="storage/@{{img}}"
+            alt="cartina image cap">
           </div>
         </div>
-        <!-- FIX OFFSET -->
-        <div class="col-md-1"></div>
+
+        <div class="cartina_center">
+          <h3 class="mb-0">
+            <a class="text-dark" href="/show/@{{ id }}"> @{{title}} </a>
+            <span>
+              {{-- <strong class="d-inline-block mb-2 text-warning"><i class="fab fa-stripe-s"></i></strong> --}}
+            </span>
+          </h3>
+          <div class="detail-home">
+            <div class="sticker-detail">
+              <p><i class="fas fa-bed"></i> <span class="number-of-elements"> @{{beds}} </span> posti letto</p>
+            </div>
+
+            <div class="sticker-detail">
+              <p><i class="fas fa-door-open"></i> <span class="number-of-elements"> @{{rooms }}</span> stanze</p>
+            </div>
+
+            <div class="sticker-detail">
+              <p class="bagni"> <i class="fas fa-bath"></i>  <span class="number-of-elements"> @{{bath}} </span> bagni</p>
+            </div>
+            <hr class="cartina_hr">
+            <p> @{{price}} € - Totale</p>
+          </div>
+        </div>
+        <div class="cartina_right">
+          <div class="cuoricino-container
+          @foreach ($apartments_no_sponsor as $nosponsorApt)
+
+            @foreach ($apartments as $apartment)
+              @foreach($apartment -> preferences as $preference)
+                @if ($nosponsorApt -> id == $apartment -> id)
+                  @if($preference -> user_id == Auth::id())
+                    favorite
+                  @endif
+                @endif
+              @endforeach
+            @endforeach
+            @endforeach
+          "
+          data-id="@{{id}}">
+            <i class="far fa-heart cuoricino"></i>
+          </div>
+          <div class="bottone">
+            <a href="/show/@{{ id }}" class="btn bnb_btn">Vai all'appartamento</a>
+          </div>
+        </div>
+        <div class="cartina_sponsor">
+          <p class="sponsored">sponsorizzato</p>
+        </div>
+      </div>
     </script>
   <!-- FINE HANDLEBARS -->
 
 @section('script')
+    <script>
+      $('.container-apartments').on('click', '.cuoricino-container', function(){
+        @auth
+          var selfElement = $(this);
+          var idApt = $(this).data('id');
+          var userID = {{Auth::id()}};
+
+          if (selfElement.hasClass('favorite')) {
+
+            $.ajax({
+              method: "POST",
+              url: 'http://localhost:8000/api/preferences_apt/remove',
+              data: {
+                  id: idApt,
+                  idUser: userID
+              },
+              success: function (response) {
+                console.log(response);
+                selfElement.removeClass('favorite');
+              },
+              error: function(err) {
+                console.log(err);
+              }
+            });
+          } else {
+
+            $.ajax({
+                method: "POST",
+                url: 'http://localhost:8000/api/preferences_apt',
+                data: {
+                    id: idApt,
+                    idUser: userID
+                },
+                success: function (response) {
+                  console.log(response);
+                  selfElement.addClass('favorite');
+                },
+                error: function(err) {
+                  console.log(err);
+                }
+            });
+          }
+
+        @else
+          window.location.href="{{route('register')}}" ;
+      @endauth
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script src="{{ asset('js/tomtom_search.js') }}"></script>
