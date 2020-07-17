@@ -191,7 +191,13 @@ ul {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
+    .cuoricino-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      cursor:pointer;
+    }
     div{
       margin-bottom: 20px;
     }

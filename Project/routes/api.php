@@ -11,3 +11,4 @@ Route::get('/search/filter', 'FilterController@filterCheckbox')->name('search_fi
 Route::get('/stats_apt', 'ApartmentsController@statsResults')->name('stats_apt'); // AJAX PER CHARTJS
 Route::get('/messages_apt', 'ApartmentsController@messagesApt')->name('messages_apt');  // AJAX PER STAMPA MESSAGGI
 Route::get('/payment/process', 'PaymentsController@process')->name('payment_process'); // ROTTA PER ESEGUIRE I PAGAMENTI TRAMITE BRAINTREE
+Route::get('/preferences_apt','ApartmentsController@savePref')->name('preferences');

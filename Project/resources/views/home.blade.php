@@ -183,7 +183,9 @@
           </div>
 
           <div class="cartina_right">
-            <i class="far fa-heart"></i>
+            <div class="cuoricino-container" data-id="{{$apartment -> id}}">
+              <i class="far fa-heart cuoricino"></i>
+            </div>
             <div class="bottone">
               <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
             </div>
@@ -227,9 +229,38 @@
 <button type="button" id="scrolled-button" class="btn btn-sm rounded">
   <i class="fas fa-angle-up"></i>
 </button>
+
+
+
 @endsection
 
 @section('script')
+    <script>
+
+
+    $('.cuoricino-container').click(function(){
+      @auth
+        $(this).css('color', 'red');
+        $(this).addClass('favorite');
+        var idApt = $(this).data('id');
+        var userID = {{Auth::id()}};
+        $.ajax({
+            method: "GET",
+            url: 'http://localhost:8000/api/preferences_apt',
+            data: {
+                id: idApt,
+                idUser: userID
+            },
+            success: function (response) {
+              console.log(response);
+            }
+        });
+      @else
+        window.location.href="{{route('register')}}" ;
+    @endauth
+    });
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
     <script src="{{ asset('js/tomtom_home.js') }}"></script>
 @endsection

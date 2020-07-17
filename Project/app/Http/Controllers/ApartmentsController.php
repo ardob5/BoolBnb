@@ -347,6 +347,17 @@ class ApartmentsController extends Controller
     return $messages_months;
   }
 
+  // API PREFERENCES
+  public function savePref(Request $request){
+    $id = $request -> id;
+    $userID = $request -> idUser;
+    $preference = new Preference();
+    $preference -> apartment_id = $id;
+    $preference -> user_id = $userID;
+    $preference -> save();
+    return $preference;
+  }
+
   // FUNZIONI DA RICHIAMARE
   public function filterApartmentWithSponsor($apartments) {
     $apartmentWithSponsor = [];
