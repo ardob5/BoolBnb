@@ -19,6 +19,11 @@ class Apartment extends Model
       return $this -> hasMany(Message::class);
     }
 
+    // collegamento uno a molti con la tabella preferences
+    public function preferences(){
+      return $this ->hasMany(Preference::class);
+    }
+
     // collegamento molti a molti con la tabella sponsor
     public function sponsors(){
       return $this -> belongsToMany(Sponsor::class);

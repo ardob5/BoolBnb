@@ -35,7 +35,6 @@ class AddForeignKeys extends Migration
         });
 
         Schema::table('photos',function(Blueprint $table){
-
           $table -> foreign('apartment_id', 'photos_apartment')
                     -> references('id')
                     -> on('apartments')
@@ -64,6 +63,13 @@ class AddForeignKeys extends Migration
                     -> on('optionals')
                     -> onDelete('cascade');
         });
+
+        Schema::table('preferences',function(Blueprint $table){
+          $table  -> foreign('apartment_id', 'apartment_preferences')
+                  -> references('id')
+                  -> on('apartments')
+                  -> onDelete('cascade');
+        });
     }
 
     /**
@@ -82,6 +88,12 @@ class AddForeignKeys extends Migration
       Schema::table('messages',function(Blueprint $table){
 
         $table -> dropForeign('apartment_messages');
+
+      });
+
+      Schema::table('preferences',function(Blueprint $table){
+
+        $table -> dropForeign('apartment_preferences');
 
       });
 

@@ -6,6 +6,7 @@ use App\Photo;
 use App\Optional;
 use App\Message;
 use App\View;
+use App\Preference;
 
 use Carbon\Carbon;
 use DB;
@@ -184,7 +185,7 @@ class ApartmentsController extends Controller
       'price' => 'required|integer|not_in:0',
       'lat' => 'required',
       'lon' => 'required',
-      'image' => 'required|mimes:jpeg,jpg,bmp,png|max:8000',
+      'image' => 'mimes:jpeg,jpg,bmp,png|max:8000',
       'photos' => 'array|max:4',
       'photos.*' => 'mimes:jpeg,jpg,bmp,png|max:8000',
       'optionals' => 'array',
