@@ -146,23 +146,51 @@ ul {
       text-transform: capitalize;
     }
 
-    p{
-      margin-bottom: 5px;
-      color: rgb(55, 55, 55);
-    }
+    .detail-home {
 
-    hr{
-      background: rgb(55, 55, 55);
-      width: 70%;
+      .sticker-detail{
+
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 0px 10px 10px 0px;
+        padding-left: 20px;
+        width: 50%;
+        position: relative;
+        left: -15px;
+
+        p{
+          margin-bottom: 5px;
+          color: rgb(55, 55, 55);
+        }
+
+        hr{
+          background: rgb(55, 55, 55);
+          width: 70%;
+        }
+
+        .fas {
+          font-size: 20px;
+        }
+
+        .number-of-elements {
+          font-size: 20px;
+          color: $redbnb;
+          font-weight: bold;
+        }
+      } // close sticker-detail
+    } // close detail-home
+
+    .optional-home {
+
     }
-  }
+  } // close cartina_center
 
   .cartina_right{
     width: 24%;
     height: 100%;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
     div{
       margin-bottom: 20px;

@@ -127,7 +127,7 @@
           <div class="cartina_left">
             <div class="img">
               <div class="created-at-stick">
-                <h6 id="created-at"> {{ $apartment -> created_at -> diffForHumans() }} </h6> 
+                <h6 id="created-at"> {{ $apartment -> created_at -> diffForHumans() }} </h6>
               </div>
               <img class="card-img-right flex-auto d-none d-md-block"
               @if(stristr($apartment -> image, 'http'))
@@ -147,14 +147,43 @@
               </span>
             </h3>
             <h6>di {{$apartment -> user -> name}} {{$apartment -> user -> lastName}}</h6>
-            <p>Letti: {{$apartment -> beds}}</p>
-            <p>Stanze: {{$apartment -> room_number}}</p>
-            <p class="bagni">Bagni: {{$apartment -> bath_number}}</p>
-            <hr class="cartina_hr">
-            <p>{{ $apartment -> price }} € - Totale</p>
+            <div class="detail-home">
+              <div class="sticker-detail">
+                <p><i class="fas fa-bed"></i> <span class="number-of-elements"> {{$apartment -> beds}} </span> posti letto</p>
+              </div>
+
+              <div class="sticker-detail">
+                <p><i class="fas fa-door-open"></i> <span class="number-of-elements"> {{$apartment -> room_number}}</span> stanze</p>
+              </div>
+
+              <div class="sticker-detail">
+                <p class="bagni"> <i class="fas fa-bath"></i>  <span class="number-of-elements"> {{$apartment -> bath_number}} </span> bagni</p>
+              </div>
+              <hr class="cartina_hr">
+              <p>{{ $apartment -> price }} € - Totale</p>
+            </div>
+            <div class="optional-home">
+              {{-- <ul class="optional">
+                <li>
+                  @if (count($apartment -> optionals) < 1)
+                    <h2>No optionals</h2>
+                    @else
+                      <h2>Optionals</h2>
+                      <ul>
+                        @foreach ($optionals as $optional)
+                        <li>
+                          {{ $optional -> optional }}
+                        </li>
+                        @endforeach
+                      </ul>
+                  @endif
+                </li>
+              </ul> --}}
+            </div>
           </div>
 
           <div class="cartina_right">
+            <i class="far fa-heart"></i>
             <div class="bottone">
               <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
             </div>
