@@ -120,12 +120,15 @@
 
       {{-- HOME - RIGHT - CONTENT --}}
       <div class="col-lg-8 col-md-12 justify-content-center">
-        {{-- CREAZIONE cartina - SPONSORED --}}
+        {{-- CREAZIONE cartina - SPONSORED ---------------------------------------------------}}
       @empty (!$apartments_sponsor)
         @foreach ($apartments_sponsor as $apartment)
         <div class="cartina">
           <div class="cartina_left">
             <div class="img">
+              <div class="created-at-stick">
+                <h6 id="created-at"> {{ $apartment -> created_at -> diffForHumans() }} </h6> 
+              </div>
               <img class="card-img-right flex-auto d-none d-md-block"
               @if(stristr($apartment -> image, 'http'))
                 src=" {{ asset($apartment -> image) }}"
@@ -135,6 +138,7 @@
               alt="cartina image cap">
             </div>
           </div>
+
           <div class="cartina_center">
             <h3 class="mb-0">
               <a class="text-dark" href="{{ route('show', $apartment -> id) }}"> {{ $apartment -> title }} </a>
@@ -142,13 +146,14 @@
                 {{-- <strong class="d-inline-block mb-2 text-warning"><i class="fab fa-stripe-s"></i></strong> --}}
               </span>
             </h3>
-            <p>{{ $apartment -> created_at -> diffForHumans() }}</p>
+            <h6>di {{$apartment -> user -> name}} {{$apartment -> user -> lastName}}</h6>
             <p>Letti: {{$apartment -> beds}}</p>
             <p>Stanze: {{$apartment -> room_number}}</p>
             <p class="bagni">Bagni: {{$apartment -> bath_number}}</p>
             <hr class="cartina_hr">
             <p>{{ $apartment -> price }} € - Totale</p>
           </div>
+
           <div class="cartina_right">
             <div class="bottone">
               <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
@@ -158,7 +163,8 @@
             <p class="sponsored">sponsorizzato</p>
           </div>
         </div>
-        {{-- FIX OFFSET --}}
+
+        {{-- FIX OFFSET ---------------------------------------------------------------}}
         @endforeach
           {{-- PAGINATE - SPONSORED --}}
           <div class="row justify-content-center mt-50 ">

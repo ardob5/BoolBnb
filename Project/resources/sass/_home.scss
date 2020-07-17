@@ -91,6 +91,7 @@ ul {
   display: flex;
   border-radius: 20px;
   margin-bottom: 20px;
+  position: relative;
 
   .cartina_left{
     width: 30%;
@@ -98,6 +99,26 @@ ul {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    .created-at-stick {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 11%;
+      height: 15%;
+      z-index: 2;
+      border-radius: 20px 0px 20px 0px;
+
+      #created-at {
+        color: white;
+        font-size: 15px;
+        margin: 0;
+      }
+    }
 
     .img{
       height: 100%;
@@ -116,6 +137,10 @@ ul {
     width: 42%;
     height: 100%;
     color: white;
+
+    h6 {
+      color: rgb(182, 182, 182);
+    }
 
     h3{
       text-transform: capitalize;
