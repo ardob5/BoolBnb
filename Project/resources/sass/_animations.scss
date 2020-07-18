@@ -73,3 +73,62 @@
         transform:  translate(-50%, -50%) rotate(-1turn);
       }
   }
+
+  @keyframes logo-scale {
+    0% {
+      width: 20px;
+      transform: rotate(0);
+    }
+
+    85% {
+      opacity: 1;
+      width: 250px;
+      transform: rotate(0);
+    }
+
+    100% {
+      transform: rotate(180deg);
+      width: 250px;
+      opacity: 0;
+    }
+  }
+
+  @keyframes name-stats {
+    0% {
+      opacity: 0;
+    }
+
+    30% {
+      opacity: 1;
+    }
+
+    75% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes content-stats-slide {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes sponsor-slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(200px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

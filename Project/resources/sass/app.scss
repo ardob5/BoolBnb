@@ -22,6 +22,7 @@
 @import 'footer';
 @import 'sponsor_apt';
 @import 'my-apartment';
+@import 'stats.scss';
 
 * {
   box-sizing: border-box;
@@ -45,7 +46,8 @@
     //   background-image: linear-gradient(270deg, rgb(235, 223, 156), white);
     // }
   .main_content {
-      margin-top: 100px;
+      margin-top: 130px;
+      min-height: calc(100vh - 80px - 430px);
     }
     .alert-success, .alert-error {
       position: absolute;
@@ -54,4 +56,8 @@
       z-index: 100;
       transform: translateX(-50%);
     }
+  }
+
+  .back-circle {
+    font-size: 30px;
   }

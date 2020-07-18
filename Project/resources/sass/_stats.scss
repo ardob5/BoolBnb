@@ -1,0 +1,42 @@
+.logo-container-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .logo-animation {
+        width: 20px;
+        animation: logo-scale 2s linear forwards;
+    }
+}
+
+.name-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $redbnb;
+
+    h3 {
+        opacity: 0;
+        animation: name-stats 3.5s 2.3s linear forwards ;
+    }
+}
+
+.content-stats {
+    opacity: 0;
+    animation: content-stats-slide 1.5s 5.8s linear forwards;
+}
+
+.btn-sponsor {
+    color: white;
+    opacity: 0;
+    background: #FCBA32;
+    transform: translateY(200px);
+    transition: all .2s linear;
+    animation: sponsor-slide-up 1.5s 7s linear forwards;
+    &:hover {
+        color: white;
+        opacity: .7;
+    }
+}

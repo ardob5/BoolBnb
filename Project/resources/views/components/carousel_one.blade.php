@@ -27,7 +27,10 @@
                           <div class="item-box-blog">
                             <div class="item-box-blog-image">
                               <!--Date-->
-                              <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
+                              <div class="created-at-stick">
+                                <h6 id="created-at"> {{ $apartment -> created_at -> diffForHumans() }} </h6>
+                              </div>
+                              {{-- <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div> --}}
                               <!--Image-->
                               <figure> 
                                 <img alt="{{ $apartment->title }}"
@@ -39,20 +42,29 @@
                                  >
                                 </figure>
                             </div>
-                            <div class="item-box-blog-body">
+                            <div class="item-box-blog-body row align-items-center">
                               <!--Heading-->
-                              <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                  <h5>{{$apartment -> title}}</h5>
-                                </a>
+                              <div class="col-sm-6 item-box-blog-heading">
+                                <h4><strong>{{$apartment -> title}}</strong></h4>
+                                <span><i class="fas fa-map-marker-alt"></i> in {{ $apartment -> address }}, {{ $apartment -> civicNumber}} - {{ $apartment -> city }}</span>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="apartment-services">
+                                  <ul class="servizi">
+                                    <li><i class="fas fa-door-open"></i> {{ $apartment -> room_number }} stanze/a</li>
+                                    <li><i class="fas fa-bed"></i>  {{ $apartment -> beds }} letti</li>
+                                    <li><i class="fas fa-toilet"></i> {{ $apartment -> bath_number}} bagni</li>
+                                    <li><i class="fas fa-vector-square"></i> {{ $apartment -> area }} mq</li>
+                                  </ul>
+                                </div>
                               </div>
                               <!--Text-->
                               <div class="item-box-blog-text">
-                                <p>{{$apartment -> title}}</p>
+                                
                               </div>
-                              <div class="mt"> <a href="{{ route('show', $apartment -> id) }}" tabindex="0" class="btn bg-blue-ui white read">Vai all'appartamento</a> </div>
-                              <!--Read More Button-->
                             </div>
+                            <div class="mt"> <a href="{{ route('show', $apartment -> id) }}" tabindex="0" class="btn bg-blue-ui white read button-bnb">Vai all'appartamento</a> </div>
+                            <!--Read More Button-->
                           </div>
                         </div>
                       </div>
