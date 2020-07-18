@@ -5,6 +5,10 @@
       <div class="alert alert-success text-center" role="alert">
         <strong>{{ session('success') }}</strong>
       </div>
+  @elseif(session('error'))
+      <div class="alert alert-danger text-danger alert-error" role="alert">
+        <strong>{{ session('error') }}</strong>
+      </div>
   @endif
 
   {{-- HOME - JUMBOTRON --}}
@@ -193,7 +197,6 @@
             @endforeach
             "
             data-id="{{$apartment -> id}}">
-              <i class="far fa-heart cuoricino"></i>
             </div>
             <div class="bottone">
               <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
@@ -245,6 +248,14 @@
 
 @section('script')
     <script>
+      $('.cuoricino-container').each(function() {
+        if ($(this).hasClass('favorite')) {
+          $(this).html('<i class="fas fa-heart cuoricino full"></i>');
+        } else {
+            $(this).html('<i class="far fa-heart cuoricino empty"></i>');
+        }
+      });
+
       $('.cuoricino-container').click(function(){
         @auth
           var selfElement = $(this);
@@ -261,8 +272,8 @@
                   idUser: userID
               },
               success: function (response) {
-                console.log(response);
                 selfElement.removeClass('favorite');
+                selfElement.html('<i class="far fa-heart cuoricino empty"></i>');
               },
               error: function(err) {
                 console.log(err);
@@ -280,6 +291,7 @@
                 success: function (response) {
                   console.log(response);
                   selfElement.addClass('favorite');
+                  selfElement.html('<i class="fas fa-heart cuoricino full"></i>');
                 },
                 error: function(err) {
                   console.log(err);

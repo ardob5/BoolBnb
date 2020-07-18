@@ -25,6 +25,7 @@
       </div>
   </div>
 </div>
+
 <div class="main_content">
   <div class="sponsored_and_filters">
     <div class="sponsored_carousel">
@@ -104,117 +105,96 @@
             </div>
           </div> --}}
           {{-- @include('components.carousel') --}}
-          <img class="logobnb-loading" src="{{asset('img/LOGO_UNO_MOD.png')}}" alt="logo_boolbnb">
+    <img class="logobnb-loading" src="{{asset('img/LOGO_UNO_MOD.png')}}" alt="logo_boolbnb">
       <div class="row justify-content-center container-apartments">
         @if(count($apartments_no_sponsor) < 1)
-        <div class="alert alert-danger text-center" role="alert">
-          <strong class="text-danger">Nessun risultato trovato</strong>
-        </div>
+          <div class="alert alert-danger text-center" role="alert">
+            <strong class="text-danger">Nessun risultato trovato</strong>
+      </div>
         @else
-          @foreach ($apartments_no_sponsor as $nosponsorApt)
-            <div class="cartina">
-              <div class="cartina_left">
-                <div class="img">
-                  <div class="created-at-stick">
-                  </div>
-                  <img class="card-img-right flex-auto d-none d-md-block"
-                  @if(stristr($nosponsorApt -> image, 'http'))
-                    src=" {{ asset($nosponsorApt -> image) }}"
-                  @else
-                    src="{{ asset('storage/' . $nosponsorApt -> image) }}"
-                  @endif
-                  alt="cartina image cap">
-                </div>
-              </div>
-
-              <div class="cartina_center">
-                <h3 class="mb-0">
-                  <a class="text-dark" href="{{ route('show', $nosponsorApt -> id) }}"> {{ $nosponsorApt -> title }} </a>
-                  <span>
-                    {{-- <strong class="d-inline-block mb-2 text-warning"><i class="fab fa-stripe-s"></i></strong> --}}
-                  </span>
-                </h3>
-                <div class="detail-home">
-                  <div class="sticker-detail">
-                    <p><i class="fas fa-bed"></i> <span class="number-of-elements"> {{$nosponsorApt -> beds}} </span> posti letto</p>
-                  </div>
-
-                  <div class="sticker-detail">
-                    <p><i class="fas fa-door-open"></i> <span class="number-of-elements"> {{$nosponsorApt -> room_number}}</span> stanze</p>
-                  </div>
-
-                  <div class="sticker-detail">
-                    <p class="bagni"> <i class="fas fa-bath"></i>  <span class="number-of-elements"> {{$nosponsorApt -> bath_number}} </span> bagni</p>
-                  </div>
-                  <hr class="cartina_hr">
-                  <p>{{ $nosponsorApt -> price }} € - Totale</p>
-                </div>
-                <div class="optional-home">
-                  {{-- <ul class="optional">
-                    <li>
-                      @if (count($apartment -> optionals) < 1)
-                        <h2>No optionals</h2>
-                        @else
-                          <h2>Optionals</h2>
-                          <ul>
-                            @foreach ($optionals as $optional)
-                            <li>
-                              {{ $optional -> optional }}
-                            </li>
-                            @endforeach
-                          </ul>
-                      @endif
-                    </li>
-                  </ul> --}}
-                </div>
-              </div>
-              <div class="cartina_right">
-                <div class="cuoricino-container
-                @foreach ($apartments as $apartment)
-                  @foreach($apartment -> preferences as $preference)
-                    @if ($nosponsorApt -> id == $apartment -> id)
-                      @if($preference -> user_id == Auth::id())
-                        favorite
-                      @endif
-                    @endif
-                  @endforeach
-                @endforeach
-                "
-                data-id="{{$nosponsorApt -> id}}">
-                  <i class="far fa-heart cuoricino"></i>
-                </div>
-                <div class="bottone">
-                  <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
-                </div>
-              </div>
-              <div class="cartina_sponsor">
-                <p class="sponsored">sponsorizzato</p>
-              </div>
+        @foreach ($apartments_no_sponsor as $nosponsorApt)
+          <div class="cartina">
+            <div class="cartina_left">
+              <div class="img">
+                <img class="card-img-right flex-auto d-none d-md-block"
+                @if(stristr($nosponsorApt -> image, 'http'))
+                  src=" {{ asset($nosponsorApt -> image) }}"
+                @else
+                  src="{{ asset('storage/' . $nosponsorApt -> image) }}"
+                @endif
+                alt="cartina image cap">
             </div>
-          @endforeach
+          </div>
+
+          <div class="cartina_center">
+
+            <h3 class="mb-0">
+              <a class="text-dark" href="{{ route('show', $nosponsorApt -> id) }}"> {{ $nosponsorApt -> title }} </a>
+            </h3>
+
+            <div class="detail-home">
+
+              <div class="sticker-detail">
+                <p><i class="fas fa-bed"></i> <span class="number-of-elements"> {{$nosponsorApt -> beds}} </span> posti letto</p>
+              </div>
+
+              <div class="sticker-detail">
+                <p><i class="fas fa-door-open"></i> <span class="number-of-elements"> {{$nosponsorApt -> room_number}}</span> stanze</p>
+              </div>
+
+              <div class="sticker-detail">
+                <p class="bagni"> <i class="fas fa-bath"></i>  <span class="number-of-elements"> {{$nosponsorApt -> bath_number}} </span> bagni</p>
+              </div>
+
+              <hr class="cartina_hr">
+              <p>{{ $nosponsorApt -> price }} € - Totale</p>
+            </div>
+
+          </div>
+
+          <div class="cartina_right">
+            <div class="cuoricino-container
+            @foreach ($apartments as $apartment)
+              @foreach($apartment -> preferences as $preference)
+                @if ($nosponsorApt -> id == $apartment -> id)
+                  @if($preference -> user_id == Auth::id())
+                    favorite
+                  @endif
+                @endif
+              @endforeach
+            @endforeach
+            "
+            data-id="{{$nosponsorApt -> id}}">
+            </div>
+            <div class="bottone">
+              <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
+            </div>
+          </div>
+        </div>
+      @endforeach
         </div>
       @endif
       <div class="row justify-content-center">
         {{ $apartments_no_sponsor -> links() }}
       </div>
+    </div>
   @endsection
   <input id="search-lat" type="hidden" name="search-lat" value="{{ $latitude }}">
   <input id="search-lon" type="hidden" name="search-lon" value="{{ $longitude }}">
-</div>
+    
 
+@section('script')
     <!-- INIZIO HANDLEBARS -->
     <script id="entry-template" type="text/x-handlebars-template">
       <div class="cartina">
         <div class="cartina_left">
           <div class="img">
-            <div class="created-at-stick">
-            </div>
             <img class="card-img-right flex-auto d-none d-md-block"
               src="storage/@{{img}}"
             alt="cartina image cap">
           </div>
         </div>
-
+        
         <div class="cartina_center">
           <h3 class="mb-0">
             <a class="text-dark" href="/show/@{{ id }}"> @{{title}} </a>
@@ -239,36 +219,155 @@
           </div>
         </div>
         <div class="cartina_right">
-          <div class="cuoricino-container
-          @foreach ($apartments_no_sponsor as $nosponsorApt)
-
-            @foreach ($apartments as $apartment)
-              @foreach($apartment -> preferences as $preference)
-                @if ($nosponsorApt -> id == $apartment -> id)
-                  @if($preference -> user_id == Auth::id())
-                    favorite
-                  @endif
-                @endif
-              @endforeach
-            @endforeach
-            @endforeach
-          "
-          data-id="@{{id}}">
-            <i class="far fa-heart cuoricino"></i>
+          <div class="cuoricino-container @{{favorite}}" data-id="@{{id}}">
+            @{{{icon}}}
           </div>
           <div class="bottone">
             <a href="/show/@{{ id }}" class="btn bnb_btn">Vai all'appartamento</a>
           </div>
         </div>
-        <div class="cartina_sponsor">
-          <p class="sponsored">sponsorizzato</p>
-        </div>
       </div>
     </script>
-  <!-- FINE HANDLEBARS -->
+    <!-- FINE HANDLEBARS -->
+    <script src="{{ asset('js/tomtom_search.js') }}"></script>
 
-@section('script')
     <script>
+      $('.cuoricino-container').each(function() {
+        if ($(this).hasClass('favorite')) {
+          $(this).html('<i class="fas fa-heart cuoricino full"></i>');
+        } else {
+            $(this).html('<i class="far fa-heart cuoricino empty"></i>');
+        }
+      });
+      //filtro
+      var optionals = [];
+
+      // handlebars
+      var source = $('#entry-template').html();
+      var template = Handlebars.compile(source);
+
+      $('.filter').change(function (e) {
+
+          e.preventDefault();
+          optionals = [];
+
+          $('input[name="optionals[]"]:checked').each(function () {
+
+              optionals.push($(this).val());
+          })
+
+          var radius = $('#distance').val();
+          var rooms = $('#rooms').val();
+          var beds = $('#beds').val();
+          var lat = $('#search-lat').val();
+          var lon = $('#search-lon').val();
+          $('.container-apartments').html('');
+          // 
+          $('.main_content').css('opacity', '.4');
+          $('.logobnb-loading').show();
+          $.ajax({
+              method: "GET",
+              url: "http://localhost:8000/api/search/filter",
+              data: {
+                  optionals: optionals,
+                  latitude: lat,
+                  longitude: lon,
+                  distance: radius,
+                  beds: beds,
+                  rooms: rooms
+              },
+              dataType: "json",
+              success: function (response) {
+                console.log(response)
+                var data = response.data;
+                $('.main_content').css('opacity', '1');
+                $('.logobnb-loading').hide();
+                if (data.length > 0) {
+                  @auth
+                    var allApartments = @json($apartments);
+                    var allApartmentsPreferences = response.preferences;
+                    var userId = {{ auth() -> user() -> id }};
+                    var icon;
+
+                    var apartmentsWithPreferences = [];
+                    var apartmentsWithPreferencesUserID = [];
+
+                    for (var preference of allApartmentsPreferences) {
+                      for (var apartmentNotFilter of allApartments) {
+                        if (apartmentNotFilter.id == preference.apartment_id) {
+                          apartmentsWithPreferences.push(preference);
+                        }
+                      }
+                    }
+
+                    for (var apartmentWithPref of apartmentsWithPreferences) {
+                      if (apartmentWithPref.user_id == userId) {
+                        apartmentsWithPreferencesUserID.push(apartmentWithPref);
+                      }
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+  
+                      var apartment = data[i];
+                      var favorite = '';
+  
+                      for (var pref of apartmentsWithPreferencesUserID) {
+                        if (apartment.id == pref.apartment_id) {
+                          favorite = 'favorite';
+                        }
+                      }
+
+                      if (favorite == 'favorite') {
+                        icon = '<i class="fas fa-heart cuoricino full"></i>';
+                      } else {
+                        icon = '<i class="far fa-heart cuoricino empty"></i>';
+                      }
+        
+                      var context = {
+                          title: apartment.title,
+                          beds: apartment.beds,
+                          rooms: apartment.room_number,
+                          bath: apartment.bath_number,
+                          price: apartment.price,
+                          img: apartment.image,
+                          id: apartment.id ,
+                          favorite: favorite,
+                          icon: icon
+                      }
+        
+                      $('.container-apartments').append(template(context));
+                    
+                    }
+
+                  @else
+                    for (var j = 0; j < data.length; j++) {
+                      var apartment = data[j];
+
+                      var context2 = {
+                          title: apartment.title,
+                          beds: apartment.beds,
+                          rooms: apartment.room_number,
+                          bath: apartment.bath_number,
+                          price: apartment.price,
+                          img: apartment.image,
+                          id: apartment.id ,
+                          favorite: '',
+                          icon: '<i class="far fa-heart cuoricino empty"></i>'
+                      };
+        
+                      $('.container-apartments').append(template(context2));
+                      
+                    }
+                  @endauth
+
+                } else {
+                    $('.container-apartments').append('<div class="alert alert-danger text-center" role="alert">' + '<strong class="text-danger">' + 'Nessun risultato trovato' + '</strong>' + '</div>');
+                }     
+              }
+          });
+      });
+
+      
       $('.container-apartments').on('click', '.cuoricino-container', function(){
         @auth
           var selfElement = $(this);
@@ -285,8 +384,8 @@
                   idUser: userID
               },
               success: function (response) {
-                console.log(response);
                 selfElement.removeClass('favorite');
+                selfElement.html('<i class="far fa-heart cuoricino empty"></i>');
               },
               error: function(err) {
                 console.log(err);
@@ -302,8 +401,8 @@
                     idUser: userID
                 },
                 success: function (response) {
-                  console.log(response);
                   selfElement.addClass('favorite');
+                  selfElement.html('<i class="fas fa-heart cuoricino full"></i>');
                 },
                 error: function(err) {
                   console.log(err);
@@ -315,8 +414,11 @@
           window.location.href="{{route('register')}}" ;
       @endauth
       });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-    <script src="{{ asset('js/tomtom_search.js') }}"></script>
+
+  </script>
+
+    
+    
+
+    
 @endsection

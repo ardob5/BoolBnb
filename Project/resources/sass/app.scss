@@ -47,4 +47,11 @@
   .main_content {
       margin-top: 100px;
     }
+    .alert-success, .alert-error {
+      position: absolute;
+      top: 300px;
+      left: 50%;
+      z-index: 100;
+      transform: translateX(-50%);
+    }
   }

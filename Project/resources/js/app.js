@@ -17,8 +17,10 @@ const app = new Vue({
 $(document).ready(function () {
 
     // FADE-OUT MESSAGGI CON SUCCESSO
-    var alert = $('.alert-success');
-    alert.fadeOut(4000);
+    var alertSuccess = $('.alert-success');
+    var alertDanger = $('.alert-danger');
+    alertSuccess.fadeOut(3500);
+    alertDanger.fadeOut(3500);
 
     // HAMBURGER MENU
     $('.responsive-icon').click(function(){

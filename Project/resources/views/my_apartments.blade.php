@@ -1,10 +1,14 @@
 @extends('layouts.main_layout')
 @section('content')
-  @if (session('success'))
-      <div class="alert alert-success text-center" role="alert">
+    @if (session('success'))
+        <div class="alert alert-success text-center" role="alert">
         <strong>{{ session('success') }}</strong>
-      </div>
-  @endif
+        </div>
+    @elseif(session('error'))
+        <div class="alert alert-danger alert-error text-danger" role="alert">
+        <strong>{{ session('error') }}</strong>
+        </div>
+    @endif
     <div class="main_content">
       <div class="container">
         @empty (!$apartmentWithSponsor)

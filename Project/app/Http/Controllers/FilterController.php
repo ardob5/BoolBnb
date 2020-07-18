@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\Preference;
 use DB;
 
 class FilterController extends Controller {
@@ -25,7 +26,7 @@ class FilterController extends Controller {
 
     public function filterCheckbox(Request $request) {
 
-
+    $preferences = Preference::all();
     $apartments = Apartment::all();
     $latitude = $request -> latitude;
     $longitude = $request -> longitude;
@@ -115,7 +116,10 @@ class FilterController extends Controller {
             }
         }
 
-     return $apartments_final_filter;
+     return response()->json([
+         'data' => $apartments_final_filter,
+         'preferences' => $preferences
+     ], 200);
     
     }
 }

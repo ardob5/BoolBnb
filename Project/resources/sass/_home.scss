@@ -274,11 +274,12 @@ ul {
   }
 }
 
-.favorite {
+.fas.full {
   color: red;
+  
 }
 
-
+// media query
 @media screen and (max-width: 1350px) {
 
   .endbox1, .endbox2{

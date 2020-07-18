@@ -7,6 +7,10 @@
         <div class="alert alert-success text-center" role="alert">
           <strong>{{ session('success') }}</strong>
         </div>
+      @elseif(session('error'))
+        <div class="alert alert-danger alert-error text-danger" role="alert">
+          <strong>{{ session('error') }}</strong>
+        </div>
       @endif
 
       {{-- IMMAGINI APPARTAMENTO ---------------------------------------------------------}}
@@ -42,6 +46,17 @@
       {{-- DETTAGLI APPARTAMENTO ------------------------------------------------------------}}
       <div class="section2">
         <div class="apartment-description">
+          {{-- cuoricino --}}
+          <div class="cuoricino-container
+            @foreach($apartment -> preferences as $preference)
+              @if($preference -> user_id == Auth::id())
+                favorite
+              @endif
+            @endforeach
+            "
+            data-id="{{$apartment -> id}}">
+          </div>
+
           <div class="titleprice">
             <h1>{{ $apartment -> title }}  <span> di  {{ $apartment ->user -> name}} {{ $apartment -> user-> lastName}} </span></h1>
             <div class="separatore"></div>
@@ -50,7 +65,7 @@
             </div>
           </div>
           <p>{{ $apartment -> description }} </p>
-          <b><i class="fas fa-map-marker-alt"></i> in {{ $apartment -> address }}, {{ $apartment -> civicNumber}} </b>
+          <b><i class="fas fa-map-marker-alt"></i> in {{ $apartment -> address }}, {{ $apartment -> civicNumber}} - {{ $apartment -> city }} </b>
           <div class="pannello-utente">
             <h2>Pannello Utente</h2>
             <div class="bottoni">
@@ -159,12 +174,61 @@
  
   @section('script')
     <script type="text/javascript" src="{{ asset('/js/tomtom_show.js') }}"></script>
+
+    <script>
+        if ($('.cuoricino-container').hasClass('favorite')) {
+          $('.cuoricino-container').html('<i class="fas fa-heart cuoricino full"></i>');
+        } else {
+            $('.cuoricino-container').html('<i class="far fa-heart cuoricino empty"></i>');
+        }
+
+        $('.cuoricino-container').click(function(){
+          @auth
+            var selfElement = $(this);
+            var idApt = $(this).data('id');
+            var userID = {{Auth::id()}};
+
+            if (selfElement.hasClass('favorite')) {
+
+              $.ajax({
+                method: "POST",
+                url: 'http://localhost:8000/api/preferences_apt/remove',
+                data: {
+                    id: idApt,
+                    idUser: userID
+                },
+                success: function (response) {
+                  selfElement.removeClass('favorite');
+                  selfElement.html('<i class="far fa-heart cuoricino empty"></i>');
+                },
+                error: function(err) {
+                  console.log(err);
+                }
+              });
+            } else {
+
+              $.ajax({
+                  method: "POST",
+                  url: 'http://localhost:8000/api/preferences_apt',
+                  data: {
+                      id: idApt,
+                      idUser: userID
+                  },
+                  success: function (response) {
+                    selfElement.addClass('favorite');
+                    selfElement.html('<i class="fas fa-heart cuoricino full"></i>');
+                  },
+                  error: function(err) {
+                    console.log(err);
+                  }
+              });
+            }
+
+          @else
+            window.location.href="{{route('register')}}" ;
+          @endauth
+      });
+      
+    </script>
   @endsection
 
-
-
-
-
-{{-- <div class="" style="background-image: {{}}">
-
-</div> --}}

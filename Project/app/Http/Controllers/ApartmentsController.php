@@ -163,7 +163,7 @@ class ApartmentsController extends Controller
     $apartment = Apartment::findOrFail($id);
     $optionals = Optional::all();
     if($apartment->user->id !== Auth::id()) {
-      return redirect()->route('home');
+      return redirect()->route('home')->withError('Non sei autorizzato');
     } else {
       return view('edit_apartment', compact('apartment', 'optionals'));
     }
@@ -247,7 +247,7 @@ class ApartmentsController extends Controller
     $apartment = Apartment::findOrFail($id);
     $img = $apartment -> image;
     if($apartment-> user-> id !== Auth::id()) {
-      return redirect()->route('home')->withSuccess('Non sei autorizzato');
+      return redirect()->route('home')->withError('Non sei autorizzato');
     } else {
         if (Storage::disk('public') -> exists($img)) {
           Storage::disk('public') -> deleteDirectory('apartments/copertina/' . $apartment -> id);
@@ -263,7 +263,7 @@ class ApartmentsController extends Controller
     $this->checkSponsor();
     $apartment = Apartment::findOrFail($id);
     if($apartment->user->id !== Auth::id()) {
-      return redirect()->route('home')->withSuccess('Non sei autorizzato');
+      return redirect()->route('home')->withError('Non sei autorizzato');
     } else {
       return view('stats', compact('id', 'apartment'));
     }
@@ -273,7 +273,7 @@ class ApartmentsController extends Controller
   public function sponsorApt($id) {
     $apartment = Apartment::findOrFail($id);
     if($apartment-> user-> id !== Auth::id() || count($apartment -> sponsors) > 0) {
-      return redirect()->route('home')->withSuccess('Appartamento già sponsorizzato');
+      return redirect()->route('home')->withError('Appartamento già sponsorizzato');
     } else {
       return view('sponsor_apt', compact('apartment'));
     }
@@ -286,7 +286,7 @@ class ApartmentsController extends Controller
     $messages = Message::where('apartment_id', $id) -> orderBy('created_at', 'desc')->get();
 
     if($apartment->user->id !== Auth::id()) {
-      return redirect()->route('home')->withSuccess('Non sei autorizzato');
+      return redirect()->route('home')->withError('Non sei autorizzato');
     } else {
       return view('show_msg', compact('messages', 'apartment'));
     }
