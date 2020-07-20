@@ -367,3 +367,30 @@
     color: white;
   }
 }
+
+// MEDIA QUERY ----------------------------------------------------------------------------------------
+
+// DISPLAY 2K
+@media screen and (min-device-width: 2000px) {
+
+}
+
+// DISPLAY 1080
+@media screen and (min-device-width: 1900PX) and (max-device-width: 1999px) {
+
+}
+
+// DISPLAY SMALL PC
+@media screen and (min-device-width: 1000PX) and (max-device-width: 1899px) {
+
+}
+
+// DISPLAY TABLET
+@media screen and (min-device-width: 700px) and (max-device-width: 999px) {
+
+}
+
+// DISPLAY SMATPHONE
+@media screen and (max-device-width: 699px) {
+
+}

@@ -32,13 +32,13 @@
                               </div>
                               {{-- <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div> --}}
                               <!--Image-->
-                              <figure> 
+                              <figure>
                                 <img alt="{{ $apartment->title }}"
                                 @if(stristr($apartment -> image, 'http'))
                                     src=" {{ asset($apartment -> image) }}"
                                 @else
                                     src="{{ asset('storage/' . $apartment -> image) }}"
-                                @endif  
+                                @endif
                                  >
                                 </figure>
                             </div>
@@ -48,7 +48,7 @@
                                 <h4><strong>{{$apartment -> title}}</strong></h4>
                                 <span><i class="fas fa-map-marker-alt"></i> in {{ $apartment -> address }}, {{ $apartment -> civicNumber}} - {{ $apartment -> city }}</span>
                               </div>
-                              <div class="col-sm-6">
+                              <div class="col-sm-6 itemini">
                                 <div class="apartment-services">
                                   <ul class="servizi">
                                     <li><i class="fas fa-door-open"></i> {{ $apartment -> room_number }} stanze/a</li>
@@ -60,7 +60,7 @@
                               </div>
                               <!--Text-->
                               <div class="item-box-blog-text">
-                                
+
                               </div>
                             </div>
                             <div class="mt"> <a href="{{ route('show', $apartment -> id) }}" tabindex="0" class="btn bg-blue-ui white read button-bnb">Vai all'appartamento</a> </div>
