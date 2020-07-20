@@ -28,10 +28,11 @@ $(document).ready(function () {
         $('.dx-responsive').show(1000);
       }
     );
-    
+
     $(".jumbotron, .header-sx, .container-fluid").click(function(){
         $('.dx-responsive').slideUp(1000);
         $('.responsive-icon').show(2500);
       }
     );
+
 });

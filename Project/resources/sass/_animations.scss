@@ -132,3 +132,109 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes umberto-profile {
+    0% {
+      opacity: 0;
+      transform: translateX(-600px) rotate(0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0) rotate(-360deg);
+    }
+  }
+
+  @keyframes alessandro-profile {
+    0% {
+      opacity: 0;
+      transform: translateX(600px) rotate(0);
+    }
+
+
+    100% {
+      opacity: 1;
+      transform: translate(0) rotate(360deg);
+    }
+  }
+
+  @keyframes marco-profile {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes gianmarco-profile {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes riccardo-profile {
+    0% {
+      opacity: 0;
+      transform: translateY(-600px);
+    }
+
+    30% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    60% {
+      opacity: 1;
+      transform: translateY(-30px);
+    }
+
+    70% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    80% {
+      opacity: 1;
+      transform: translateY(-15px);
+    }
+
+    85% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    95% {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes profile-scale {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }

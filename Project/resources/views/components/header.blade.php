@@ -59,6 +59,7 @@
   {{-- inizio header dx responsive --}}
   <div class="responsive-icon">
     <i class="fas fa-bars"></i>
+    {{-- <i class="fas fa-times-circle"></i> --}}
   </div>
   <div class="dx-responsive">
     <ul>
