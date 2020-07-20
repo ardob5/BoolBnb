@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <div class="profile-container">
-                    <img src="" alt="profile-marco">
+                <div class="profile-marco">
+                    
                 </div>
             </div>
             <div class="col-md-9">
@@ -21,8 +21,10 @@
         </div>
         <div class="row">
             <div class="col-md-9">
-                <h3>Riccardo Belli</h3>
-                <h5>Full-stack Developer</h5>
+                <div class="caption">
+                    <h3>Riccardo Belli</h3>
+                    <h5>Full-stack Developer</h5>
+                </div>
             </div>
             <div class="col-md-3">
                 <div class="profile-container">
@@ -33,18 +35,22 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="profile-container">
-                    <img src="" alt="profile-gianmarco">
+                    <img src="{{ asset('img/gianmarco-profile.jpg') }}" alt="profile-gianmarco">
                 </div>
             </div>
             <div class="col-md-9">
-                <h3>Gianmarco Montanari</h3>
-                <h5>Full-stack Developer</h5>
+                <div class="caption">
+                    <h3>Gianmarco Montanari</h3>
+                    <h5>Full-stack Developer</h5>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-9">
-                <h3>Alessandro Fraternali</h3>
-                <h5>Full-stack Developer</h5>
+                <div class="caption">
+                    <h3>Alessandro Fraternali</h3>
+                    <h5>Full-stack Developer</h5>
+                </div>
             </div>
             <div class="col-md-3">
                 <div class="profile-container">
@@ -59,8 +65,10 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <h3>Umberto Del Piano</h3>
-                <h5>Full-stack Developer</h5>
+                <div class="caption">
+                    <h3>Umberto Del Piano</h3>
+                    <h5>Full-stack Developer</h5>
+                </div>
             </div>
         </div>
     </div>
