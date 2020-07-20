@@ -19,18 +19,13 @@
 }
 
 .main_content {
-  position: relative;
-
-  #sfondo-search {
-    position: absolute;
-    left: 0;
-    top: 10px;
-    z-index: -1;
-    height: 70%;
-  }
+  
   .sponsored_and_filters{
     display: flex;
     justify-content: space-around;
+    background-image: url('../img/prova-sfondo-search.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 
     .sponsored_carousel {
       width: 35%;

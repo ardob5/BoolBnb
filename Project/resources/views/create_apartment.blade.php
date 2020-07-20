@@ -39,7 +39,7 @@
                       <small class="text-danger">{{ $message }}</small>
                   @enderror
                 </div>
-  
+
                 <div class="col-sm-3">
                   <label for="city">Città</label>
                   <input type="text" required name="city" id="city" class="form-control @error('city') is-invalid @enderror" placeholder="Citta" value="{{ old('city') }}">
@@ -47,7 +47,7 @@
                       <small class="text-danger">{{ $message }}</small>
                   @enderror
                 </div>
-              
+
               <div class="col-sm-3">
                 <label for="postCode">Codice Postale</label>
                 <input type="number" required name="postCode" id="postCode" class="form-control @error('postCode') is-invalid @enderror" placeholder="Citta" value="{{ old('postCode') }}">
@@ -123,27 +123,27 @@
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="checkbox" name="optionals[]" value="1">
-                    <label for="optionals[]">wi-fi</label>
+                    <label for="optionals[]">Wi-fi</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="checkbox" name="optionals[]" value="2">
-                    <label for="optionals[]">Piscina</label>
+                    <label for="optionals[]">Portineria</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="checkbox" name="optionals[]" value="3">
-                    <label for="optionals[]">Sauna</label>
+                    <label for="optionals[]">Posto Auto</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="checkbox" name="optionals[]" value="4">
-                    <label for="optionals[]">Box Auto</label>
+                    <label for="optionals[]">Sauna</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="checkbox" name="optionals[]" value="5">
-                    <label for="optionals[]">Vista Mare</label>
+                    <label for="optionals[]">Piscina</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="checkbox" name="optionals[]" value="6">
-                    <label for="optionals[]">Portineria</label>
+                    <label for="optionals[]">Vista Mare</label>
                   </div>
                 </div>
               </div>
