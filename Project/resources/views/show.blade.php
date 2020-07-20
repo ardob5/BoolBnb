@@ -65,7 +65,7 @@
             </div>
           </div>
           <p>{{ $apartment -> description }} </p>
-          <b><i class="fas fa-map-marker-alt"></i> in {{ $apartment -> address }}, {{ $apartment -> civicNumber}} - {{ $apartment -> city }} </b>  
+          <b><i class="fas fa-map-marker-alt"></i> in {{ $apartment -> address }}, {{ $apartment -> civicNumber}} - {{ $apartment -> city }} </b>
           @if ($apartment-> user-> id == Auth::id())
             <div class="pannello-utente">
               <h2>Pannello Utente</h2>
@@ -136,12 +136,22 @@
       {{-- MAPPA + MESSAGGIO --------------------------------------}}
 
       {{-- ZONA MAPPA --}}
+
       <div class="section3">
-        <div class="apartment-location">
-          <div id='map'></div>
-          <input type="hidden" id="latitude" value="{{$apartment -> latitude}}"></input>
-          <input type="hidden" id="longitude" value="{{$apartment -> longitude}}"></input>
-        </div>
+        @if ($apartment->user->id == Auth::id())
+          <div class="apartment-location-user">
+            <div id='map'></div>
+            <input type="hidden" id="latitude" value="{{$apartment -> latitude}}"></input>
+            <input type="hidden" id="longitude" value="{{$apartment -> longitude}}"></input>
+          </div>
+        @else
+          <div class="apartment-location-public">
+            <div id='map'></div>
+            <input type="hidden" id="latitude" value="{{$apartment -> latitude}}"></input>
+            <input type="hidden" id="longitude" value="{{$apartment -> longitude}}"></input>
+          </div>
+        @endif
+
 
         {{-- ZONA MAIL --}}
         @if ($apartment->user->id !== Auth::id())
