@@ -1,71 +1,54 @@
 @extends('layouts.main_layout')
 
 @section('content')
-<div class="main_content">
+<div class="main_content content-bnb">
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="profile-marco">
+
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="profile-container profile-marco">
                     
                 </div>
-            </div>
-            <div class="col-md-9">
                 <div class="caption">
                     <h3>Marco Petrini</h3>
                     <h5>Full-stack Developer</h5>
-                    <p>
-
-                    </p>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-4">
+                <div class="profile-container profile-riccardo">
+                    
+                </div>
                 <div class="caption">
                     <h3>Riccardo Belli</h3>
                     <h5>Full-stack Developer</h5>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="profile-container">
-                    <img src="" alt="profile-riccardo">
+            <div class="col-md-4">
+                <div class="profile-container profile-gianmarco">
+                    
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="profile-container">
-                    <img src="{{ asset('img/gianmarco-profile.jpg') }}" alt="profile-gianmarco">
-                </div>
-            </div>
-            <div class="col-md-9">
                 <div class="caption">
                     <h3>Gianmarco Montanari</h3>
                     <h5>Full-stack Developer</h5>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-9">
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="profile-container profile-alessandro">
+                    
+                </div>
                 <div class="caption">
                     <h3>Alessandro Fraternali</h3>
                     <h5>Full-stack Developer</h5>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="profile-container">
-                    <img src="" alt="profile-alessandro">
+            <div class="col-md-6">
+                <div class="profile-container profile-umberto">
+                    
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="profile-container">
-                    <img src="" alt="profile-umberto">
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="caption">
+                <div class="caption text-center">
                     <h3>Umberto Del Piano</h3>
                     <h5>Full-stack Developer</h5>
                 </div>

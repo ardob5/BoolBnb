@@ -1,17 +1,30 @@
-// .profile-container {
-//     width: 200px;
-//     height: 200px;
-//     border: solid 1px black;
-//     border-radius: 100%;
-//     img {
-//         width: 100%;
-//         border-radius: 100%;
-//     }
-// }
-
+.content-bnb {
+    background-color: $redbnb;
+    color: white;
+    .caption {
+        margin-left: 50px;
+    }
+}
 .profile-marco {
+    background: url('http://localhost:8000/img/marco-profile.jpg');
+    background-position: center -18px;
+}
+
+.profile-gianmarco {
+    background: url('http://localhost:8000/img/gianmarco-profile.jpg');
+    background-position: center;
+}
+
+.profile-umberto {
+    background: url('http://localhost:8000/img/umberto-profile.jpg');
+    background-position: center;
+}
+
+.profile-container {
     width: 300px;
-    background: url(http://localhost:8000/img/profile-marco.jpg);
+    height: 300px;
+    border-radius: 100%;
+    border: solid 1px black;
     background-size: cover;
     background-repeat: no-repeat;
 }
