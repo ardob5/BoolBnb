@@ -106,73 +106,71 @@
           </div> --}}
           {{-- @include('components.carousel') --}}
     <img class="logobnb-loading" src="{{asset('img/LOGO_UNO_MOD.png')}}" alt="logo_boolbnb">
+    <div class="container">
       <div class="row justify-content-center container-apartments">
         @if(count($apartments_no_sponsor) < 1)
           <div class="alert alert-danger text-center" role="alert">
             <strong class="text-danger">Nessun risultato trovato</strong>
-      </div>
+          </div>
         @else
-        @foreach ($apartments_no_sponsor as $nosponsorApt)
-          <div class="cartina">
-            <div class="cartina_left">
-              <div class="img">
-                <img class="card-img-right flex-auto d-none d-md-block"
-                @if(stristr($nosponsorApt -> image, 'http'))
-                  src=" {{ asset($nosponsorApt -> image) }}"
-                @else
-                  src="{{ asset('storage/' . $nosponsorApt -> image) }}"
-                @endif
-                alt="cartina image cap">
-            </div>
-          </div>
+          <div class="col-lg-12">
+            @foreach ($apartments_no_sponsor as $nosponsorApt)
+              <div class="cartina">
+                <div class="cartina_left">
+                  <div class="img">
+                    <img class="card-img-right flex-auto d-none d-md-block"
+                    @if(stristr($nosponsorApt -> image, 'http'))
+                      src=" {{ asset($nosponsorApt -> image) }}"
+                    @else
+                      src="{{ asset('storage/' . $nosponsorApt -> image) }}"
+                    @endif
+                    alt="cartina image cap">
+                  </div>
+                </div>
 
-          <div class="cartina_center">
+                <div class="cartina_center">
+                  <h3 class="mb-0">
+                    <a class="text-dark" href="{{ route('show', $nosponsorApt -> id) }}"> {{ $nosponsorApt -> title }} </a>
+                  </h3>
+                <div class="detail-home">
+                  <div class="sticker-detail">
+                    <p><i class="fas fa-bed"></i> <span class="number-of-elements"> {{$nosponsorApt -> beds}} </span> posti letto</p>
+                  </div>
+                  <div class="sticker-detail">
+                    <p><i class="fas fa-door-open"></i> <span class="number-of-elements"> {{$nosponsorApt -> room_number}}</span> stanze</p>
+                  </div>
+                  <div class="sticker-detail">
+                    <p class="bagni"> <i class="fas fa-bath"></i>  <span class="number-of-elements"> {{$nosponsorApt -> bath_number}} </span> bagni</p>
+                  </div>
+                  <hr class="cartina_hr">
+                  <p>{{ $nosponsorApt -> price }} € - Totale</p>
+                </div>
 
-            <h3 class="mb-0">
-              <a class="text-dark" href="{{ route('show', $nosponsorApt -> id) }}"> {{ $nosponsorApt -> title }} </a>
-            </h3>
+                </div>
 
-            <div class="detail-home">
-
-              <div class="sticker-detail">
-                <p><i class="fas fa-bed"></i> <span class="number-of-elements"> {{$nosponsorApt -> beds}} </span> posti letto</p>
+                <div class="cartina_right">
+                  <div class="cuoricino-container
+                  @foreach ($apartments as $apartment)
+                    @foreach($apartment -> preferences as $preference)
+                      @if ($nosponsorApt -> id == $apartment -> id)
+                        @if($preference -> user_id == Auth::id())
+                          favorite
+                        @endif
+                      @endif
+                    @endforeach
+                  @endforeach
+                  "
+                  data-id="{{$nosponsorApt -> id}}">
+                  </div>
+                  <div class="bottone">
+                    <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
+                  </div>
+                </div>
               </div>
-
-              <div class="sticker-detail">
-                <p><i class="fas fa-door-open"></i> <span class="number-of-elements"> {{$nosponsorApt -> room_number}}</span> stanze</p>
-              </div>
-
-              <div class="sticker-detail">
-                <p class="bagni"> <i class="fas fa-bath"></i>  <span class="number-of-elements"> {{$nosponsorApt -> bath_number}} </span> bagni</p>
-              </div>
-
-              <hr class="cartina_hr">
-              <p>{{ $nosponsorApt -> price }} € - Totale</p>
-            </div>
-
-          </div>
-
-          <div class="cartina_right">
-            <div class="cuoricino-container
-            @foreach ($apartments as $apartment)
-              @foreach($apartment -> preferences as $preference)
-                @if ($nosponsorApt -> id == $apartment -> id)
-                  @if($preference -> user_id == Auth::id())
-                    favorite
-                  @endif
-                @endif
-              @endforeach
             @endforeach
-            "
-            data-id="{{$nosponsorApt -> id}}">
-            </div>
-            <div class="bottone">
-              <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
-            </div>
           </div>
-        </div>
-      @endforeach
-        </div>
+      </div>
+    </div>
       @endif
       <div class="row justify-content-center">
         {{ $apartments_no_sponsor -> links() }}
@@ -181,7 +179,7 @@
   @endsection
   <input id="search-lat" type="hidden" name="search-lat" value="{{ $latitude }}">
   <input id="search-lon" type="hidden" name="search-lon" value="{{ $longitude }}">
-    
+
 
 @section('script')
     <!-- INIZIO HANDLEBARS -->
@@ -194,7 +192,7 @@
             alt="cartina image cap">
           </div>
         </div>
-        
+
         <div class="cartina_center">
           <h3 class="mb-0">
             <a class="text-dark" href="/show/@{{ id }}"> @{{title}} </a>
@@ -262,7 +260,7 @@
           var lat = $('#search-lat').val();
           var lon = $('#search-lon').val();
           $('.container-apartments').html('');
-          // 
+          //
           $('.main_content').css('opacity', '.4');
           $('.logobnb-loading').show();
           $.ajax({
@@ -307,10 +305,10 @@
                     }
 
                     for (var i = 0; i < data.length; i++) {
-  
+
                       var apartment = data[i];
                       var favorite = '';
-  
+
                       for (var pref of apartmentsWithPreferencesUserID) {
                         if (apartment.id == pref.apartment_id) {
                           favorite = 'favorite';
@@ -322,7 +320,7 @@
                       } else {
                         icon = '<i class="far fa-heart cuoricino empty"></i>';
                       }
-        
+
                       var context = {
                           title: apartment.title,
                           beds: apartment.beds,
@@ -334,9 +332,9 @@
                           favorite: favorite,
                           icon: icon
                       }
-        
+
                       $('.container-apartments').append(template(context));
-                    
+
                     }
 
                   @else
@@ -354,20 +352,20 @@
                           favorite: '',
                           icon: '<i class="far fa-heart cuoricino empty"></i>'
                       };
-        
+
                       $('.container-apartments').append(template(context2));
-                      
+
                     }
                   @endauth
 
                 } else {
                     $('.container-apartments').append('<div class="alert alert-danger text-center" role="alert">' + '<strong class="text-danger">' + 'Nessun risultato trovato' + '</strong>' + '</div>');
-                }     
+                }
               }
           });
       });
 
-      
+
       $('.container-apartments').on('click', '.cuoricino-container', function(){
         @auth
           var selfElement = $(this);
@@ -417,8 +415,8 @@
 
   </script>
 
-    
-    
 
-    
+
+
+
 @endsection

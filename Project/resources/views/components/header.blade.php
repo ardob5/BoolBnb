@@ -22,7 +22,7 @@
         </li>
       @endauth
       <li>
-        <a href="#">Assistenza</a>
+        <a href="#">Chi siamo</a>
       </li>
         <!-- Authentication Links -->
         @guest

@@ -52,7 +52,7 @@
       z-index: 10;
       border-radius: 20px 0px 20px 0px;
 
-     
+
       #created-at {
         color: white;
         font-size: 15px;
@@ -115,7 +115,7 @@
   .item-box-blog-text {
     max-height: 100px;
     overflow: hidden;
-    
+
 
   }
 
@@ -147,7 +147,7 @@
   .apartment-services {
     display: flex;
     flex-direction: column;
-    
+
 
     // @include allcenter;
     .servizi {
@@ -158,8 +158,8 @@
       flex-wrap: wrap;
       list-style-type: none;
       li {
-        padding: 10px;
-        
+        padding: 6px;
+
         text-align: center;
 
         .fas {

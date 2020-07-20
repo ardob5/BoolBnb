@@ -123,11 +123,11 @@
       </div>
 
       {{-- HOME - RIGHT - CONTENT --}}
-      <div class="col-lg-8 col-md-12 justify-content-center">
+      <div class="col-lg-7 col-md-12 justify-content-center">
         {{-- CREAZIONE cartina - SPONSORED ---------------------------------------------------}}
       @empty (!$apartments_sponsor)
         @foreach ($apartments_sponsor as $apartment)
-        <div class="cartina">
+        <div class="cartina sponsored">
           <div class="cartina_left">
             <div class="img">
               <div class="created-at-stick">
@@ -164,25 +164,9 @@
                 <p class="bagni"> <i class="fas fa-bath"></i>  <span class="number-of-elements"> {{$apartment -> bath_number}} </span> bagni</p>
               </div>
               <hr class="cartina_hr">
-              <p>{{ $apartment -> price }} € - Totale</p>
-            </div>
-            <div class="optional-home">
-              {{-- <ul class="optional">
-                <li>
-                  @if (count($apartment -> optionals) < 1)
-                    <h2>No optionals</h2>
-                    @else
-                      <h2>Optionals</h2>
-                      <ul>
-                        @foreach ($optionals as $optional)
-                        <li>
-                          {{ $optional -> optional }}
-                        </li>
-                        @endforeach
-                      </ul>
-                  @endif
-                </li>
-              </ul> --}}
+              <div class="sticker-details">
+                <p class="total_prc">{{ $apartment -> price }} € - Totale</p>
+              </div>
             </div>
           </div>
           @php
@@ -201,9 +185,6 @@
             <div class="bottone">
               <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
             </div>
-          </div>
-          <div class="cartina_sponsor">
-            <p class="sponsored">sponsorizzato</p>
           </div>
         </div>
 
@@ -236,6 +217,8 @@
           </div>
         </div>
       </div>
+      {{-- FIX OFFSET --}}
+      <div class="col-lg-1"></div>
     </div>
   </div>
 <button type="button" id="scrolled-button" class="btn btn-sm rounded">
