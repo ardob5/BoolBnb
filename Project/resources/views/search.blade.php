@@ -27,6 +27,7 @@
 </div>
 
 <div class="main_content">
+  <img id="sfondo-search" src="{{asset('img/prova-sfondo-search.png')}}" alt="">
   <div class="sponsored_and_filters">
     <div class="sponsored_carousel">
       @empty (!$apartmentWithSponsor)
