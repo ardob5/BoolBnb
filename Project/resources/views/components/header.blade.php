@@ -22,7 +22,7 @@
         </li>
       @endauth
       <li>
-        <a href="#">Chi siamo</a>
+        <a href="{{ route('chi_siamo') }}">Chi siamo</a>
       </li>
         <!-- Authentication Links -->
         @guest

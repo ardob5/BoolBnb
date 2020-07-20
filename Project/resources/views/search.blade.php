@@ -414,9 +414,4 @@
       });
 
   </script>
-
-
-
-
-
 @endsection

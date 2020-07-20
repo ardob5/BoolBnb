@@ -28,3 +28,6 @@ Route::get('/', 'ApartmentsController@index')->name('home'); // ROTTA DELLA HOME
 Route::get('/search', 'ApartmentsController@search')->name('search'); // ROTTA DEI RISULTATI DI RICERCA
 Route::get('/show/{id}', 'ApartmentsController@show')->name('show'); // ROTTA DELLA VISTA DETTAGLI APPARTAMENTO
 Route::post('/informations_message/{id}', 'ApartmentsController@saveInformations')->name('informations'); // ROTTA I MESSAGGI INVIATI DA SALVARE NEL DATABASE
+Route::get('/chi_siamo', function () {
+    return view('chi_siamo');
+})->name('chi_siamo');

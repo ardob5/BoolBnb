@@ -8,8 +8,8 @@ h1 {
 }
 
 .triple-sponsorization {
-  border: 0.5px solid black;
-  border-radius: 6px;
+  // border: 0.5px solid black;
+  // border-radius: 6px;
   tr {
     th, td {
       border: 0.3px solid black;
@@ -42,3 +42,17 @@ h1 {
     }
   }
 }
+
+#button_basic, #button_standard, #button_premium {
+  border-radius: 0.25rem;
+  padding: 5px 14px;
+  color: white;
+
+}
+
+#submit-button-basic, #submit-button-standard, #submit-button-premium {
+  border-radius: 0.25rem;
+  padding-top: 4px;
+  padding-bottom: 5px;
+}
+
