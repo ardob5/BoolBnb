@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="overlay-image">
-</div>
-  <div class="main_content">
+<div class="main_content">
+  <div class="overlay-image">
+  </div>
     <div class="container">
       <h2 class="text-center mb-5">Modifica il tuo appartamento</h2>
       <div class="row">
