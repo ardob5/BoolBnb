@@ -182,6 +182,12 @@ header {
       }
     }
   }
+
+  @media screen and (min-width: 981px) {
+    .dx-responsive, .responsive-icon{
+      display: none !important;
+    }
+  }
   // FINE HEADER DX RESPONSIVE
 
 // FINE HEADER
