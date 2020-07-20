@@ -1,10 +1,7 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
 use App\Preference;
 use App\Apartment;
-
 class PreferencesSeeder extends Seeder
 {
     /**
@@ -15,11 +12,9 @@ class PreferencesSeeder extends Seeder
     public function run()
     {
       factory(Preference::class, 30) -> make() -> each(function($preferences){
-
         $apartment = Apartment::inRandomOrder() -> first();
         $preferences -> apartment() -> associate($apartment);
         $preferences -> save();
-
       });
     }
 }
