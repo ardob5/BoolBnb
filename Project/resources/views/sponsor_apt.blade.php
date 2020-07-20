@@ -4,19 +4,43 @@
   <div class="main_content">
     <div class="container-fluid mb-5">
       <div class="row">
-        <div class="col-md-1">
+        <div class="col-md-1 d-flex align-items-center">
           <a href="{{ route('show', $apartment -> id)}}"><i class="fas fa-arrow-circle-left text-danger back-circle"></i></a>
         </div>
+        <div class="col-md-10">
+          <h1>Sponsorizza il tuo appartamento</h1>
+        </div>
         {{-- FIX COL --}}
-        <div class="col-md-11"></div>
+        <div class="col-md-1"></div>
       </div>
     </div>
     <div class="container">
-      <div class="row">
+      <div class="row triple-sponsorization">
         {{-- BASIC --}}
-        <div class="col-md-4">
+        <div class="col-md-4 basic_spnsr">
           <div class="row justify-content-center">
             <h3>Basic</h3>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <div>
+                <table class="table">
+                  <thead class="thead" style="background: rgb(225,60,60); color: #FFF;">
+                    <h6>Dettagli sponsorizzazione</h6>
+                    <tr>
+                      <th scope="col">Costo</th>
+                      <th scope="col">Durata</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>2.99€</td>
+                      <td>24 Hours</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
           <div class="row justify-content-center">
             <button class="dropDown-menu" id="button_basic" type="button" name="button" value="1">Scegli</button>
@@ -70,9 +94,30 @@
         </div>
 
         {{-- STANDARD --}}
-        <div class="col-md-4">
+        <div class="col-md-4 standard_spnsr">
           <div class="row justify-content-center">
             <h3>Standard</h3>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <div>
+                <table class="table">
+                  <thead class="thead" style="background: rgb(225,60,60); color: #FFF;">
+                    <h6>Dettagli sponsorizzazione</h6>
+                    <tr>
+                      <th scope="col">Costo</th>
+                      <th scope="col">Durata</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>5.99€</td>
+                      <td>72 Hours</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
           <div class="row justify-content-center">
             <button class="dropDown-menu" id="button_standard" type="button" name="button" value="2">Scegli</button>
@@ -126,9 +171,30 @@
         </div>
 
         {{-- PREMIUM --}}
-        <div class="col-md-4">
+        <div class="col-md-4 premium_spnsr">
           <div class="row justify-content-center">
             <h3>Premium</h3>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <div>
+                <table class="table">
+                  <thead class="thead" style="background: rgb(225,60,60); color: #FFF;">
+                    <h6>Dettagli sponsorizzazione</h6>
+                    <tr>
+                      <th scope="col">Costo</th>
+                      <th scope="col">Durata</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>9.99€</td>
+                      <td>144 Hours</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
           <div class="row justify-content-center">
             <button class="dropDown-menu" id="button_premium" type="button" name="button" value="3">Scegli</button>
