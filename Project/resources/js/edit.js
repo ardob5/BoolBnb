@@ -7,6 +7,9 @@ $(document).ready(function () {
   var overlay = $('.overlay-image');
   var img = $('<img></img>');
 
+  // metto il logo rosso
+  $('.logobnb').attr('src', 'http://localhost:8000/img/LOGO_UNO_MOD.png');
+
   header.css({
     'background-color': 'white',
     'box-shadow': '1px 1px 15px rgba(0, 0, 0, .1)'
