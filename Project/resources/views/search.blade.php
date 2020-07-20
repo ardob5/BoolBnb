@@ -27,7 +27,6 @@
 </div>
 
 <div class="main_content">
-  <img id="sfondo-search" src="{{asset('img/prova-sfondo-search.png')}}" alt="">
   <div class="sponsored_and_filters">
     <div class="sponsored_carousel">
       @empty (!$apartmentWithSponsor)
@@ -39,29 +38,29 @@
         <div class="checkboxup">
           <div class="checkboxes">
             <input class="filter" type="checkbox" name="optionals[]" value="1">
-            <label for="optionals">Pool</label>
+            <label for="optionals">Wi-Fi</label>
           </div>
           <div class="checkboxes">
             <input class="filter" type="checkbox" name="optionals[]" value="2">
-            <label for="optionals">Security</label>
+            <label for="optionals">Portineria</label>
           </div>
           <div class="checkboxes">
             <input class="filter" type="checkbox" name="optionals[]" value="3">
-            <label for="optionals">Box-auto</label>
+            <label for="optionals">Posto Auto</label>
           </div>
         </div>
         <div class="checkboxdown">
           <div class="checkboxes">
             <input class="filter" type="checkbox" name="optionals[]" value="4">
-            <label for="optionals">wi-fi</label>
-          </div>
-          <div class="checkboxes">
-            <input class="filter" type="checkbox" name="optionals[]" value="5">
             <label for="optionals">Sauna</label>
           </div>
           <div class="checkboxes">
+            <input class="filter" type="checkbox" name="optionals[]" value="5">
+            <label for="optionals">Piscina</label>
+          </div>
+          <div class="checkboxes">
             <input class="filter" type="checkbox" name="optionals[]" value="6">
-            <label for="optionals">Sea-view</label>
+            <label for="optionals">Vista Mare</label>
           </div>
         </div>
       </div>
