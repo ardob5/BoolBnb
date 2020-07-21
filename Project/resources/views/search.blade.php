@@ -163,7 +163,7 @@
                   data-id="{{$nosponsorApt -> id}}">
                   </div>
                   <div class="bottone">
-                    <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
+                    <a href="{{ route('show', $nosponsorApt -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
                   </div>
                 </div>
               </div>
