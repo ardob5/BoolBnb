@@ -4,8 +4,8 @@
 <div class="main_content" id="content-bnb">
     <div class="container">
 
-        <div class="row justify-content-center">
-            <div class="col-md-4 d-flex justify-content-center align-items-center flex-column col-scale">
+        <div class="row justify-content-center flex-wrap">
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center align-items-center flex-column col-scale">
                 <div class="profile-container mb-2 profile-marco">
                     
                 </div>
@@ -14,7 +14,7 @@
                     <h5>Full-stack Developer</h5>
                 </div>
             </div>
-            <div class="col-md-4 d-flex justify-content-center align-items-center flex-column col-scale">
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center align-items-center flex-column col-scale">
                 <div class="profile-container mb-2 profile-riccardo">
                     
                 </div>
@@ -23,7 +23,7 @@
                     <h5>Full-stack Developer</h5>
                 </div>
             </div>
-            <div class="col-md-4 d-flex justify-content-center align-items-center flex-column col-scale">
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center align-items-center flex-column col-scale">
                 <div class="profile-container mb-2 profile-gianmarco">
                     
                 </div>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="row justify-content-center mt-5">
-            <div class="col-md-4 d-flex justify-content-center align-items-center flex-column col-scale">
+            <div class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center flex-column col-scale">
                 <div class="profile-container mb-2 profile-alessandro">
                     
                 </div>
@@ -44,7 +44,7 @@
                     <h5>Full-stack Developer</h5>
                 </div>
             </div>
-            <div class="col-md-4 d-flex justify-content-center align-items-center flex-column col-scale">
+            <div class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center flex-column col-scale">
                 <div class="profile-container mb-2 profile-umberto">
                     
                 </div>
