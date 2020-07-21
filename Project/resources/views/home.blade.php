@@ -51,7 +51,7 @@
           {{-- SPOT VUOTO --}}
           <div class="row" style="height: 120px;"><div class="col-md-12"></div></div>
           <div class="row">
-            <div class="col-md-4" style="margin-left: 30px;">
+            <div class="col-md-5" style="margin-left: 30px;">
               <h2>
                 <b>
                   Noi stiamo con <br> #BlackLivesMatter
@@ -150,7 +150,7 @@
                 {{-- <strong class="d-inline-block mb-2 text-warning"><i class="fab fa-stripe-s"></i></strong> --}}
               </span>
             </h3>
-            <h6>di {{$apartment -> user -> name}} {{$apartment -> user -> lastName}}</h6>
+            <h6 class="home-of">di {{$apartment -> user -> name}} {{$apartment -> user -> lastName}}</h6>
             <div class="detail-home">
               <div class="sticker-detail">
                 <p><i class="fas fa-bed"></i> <span class="number-of-elements"> {{$apartment -> beds}} </span> posti letto</p>
