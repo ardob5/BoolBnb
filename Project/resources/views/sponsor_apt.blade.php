@@ -55,7 +55,7 @@
                   </div>
                 </div>
               </div>
-  
+
               <script>
                 var buttonBasic = document.querySelector('#submit-button-basic');
                 braintree.dropin.create({
@@ -65,7 +65,7 @@
                       buttonBasic.addEventListener('click', function () {
                         var sponsorType = $('#button_basic').val();
                         instance.requestPaymentMethod(function (err, payload) {
-  
+
                           $.ajax({
                             url: "{{ route('payment_process') }}",
                             method: "GET",
@@ -74,12 +74,12 @@
                                 val: sponsorType,
                                 payload: payload
                             },
-  
+
                             success: function (result) {
                                 console.log(result);
                                 if (result.success) {
                                   window.location.href = "{{ route('show', $apartment->id) }}"
-                                  
+
                                 } else {
                                   alert('Transazione fallita');
                                   }
@@ -135,7 +135,7 @@
                   </div>
                 </div>
               </div>
-  
+
               <script>
                 var buttonStand = document.querySelector('#submit-button-standard');
                 braintree.dropin.create({
@@ -145,7 +145,7 @@
                       buttonStand.addEventListener('click', function () {
                         var sponsorType = $('#button_standard').val();
                         instance.requestPaymentMethod(function (err, payload) {
-  
+
                           $.ajax({
                             url: "{{ route('payment_process') }}",
                             method: "GET",
@@ -154,11 +154,11 @@
                                 val: sponsorType,
                                 payload: payload
                             },
-  
+
                             success: function (result) {
                                 console.log(result);
                                 if (result.success) {
-                                  alert('Payment successfull!');
+                                  window.location.href = {{route('show', $apartment -> id)}}
                                 } else {
                                   alert('Payment failed');
                                   }
@@ -214,7 +214,7 @@
                   </div>
                 </div>
               </div>
-  
+
               <script>
                 var buttonPrem = document.querySelector('#submit-button-premium');
                 braintree.dropin.create({
@@ -224,7 +224,7 @@
                       buttonPrem.addEventListener('click', function () {
                         var sponsorType = $('#button_premium').val();
                         instance.requestPaymentMethod(function (err, payload) {
-  
+
                           $.ajax({
                             url: "{{ route('payment_process') }}",
                             method: "GET",
@@ -233,11 +233,11 @@
                                 val: sponsorType,
                                 payload: payload
                             },
-  
+
                             success: function (result) {
                                 console.log(result);
                                 if (result.success) {
-                                  alert('Payment successfull!');
+                                  window.location.href = {{route('show', $apartment -> id)}}
                                 } else {
                                   alert('Payment failed');
                                   }
