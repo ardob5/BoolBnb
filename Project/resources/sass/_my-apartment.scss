@@ -384,11 +384,11 @@ body {
 
 .table-sponsor {
   tbody {
-    
+
     tr {
       background-image: linear-gradient(12deg, white 67%, #FCBA32 115%);
     }
-    
+
   }
   td {
     text-align: center;
@@ -404,11 +404,11 @@ body {
 
 .table-no-sponsor {
   tbody {
-    
+
     tr {
       background-image: linear-gradient(12deg, white 67%, rgb(225, 60, 60) 115%);
     }
-    
+
   }
   td {
     text-align: center;
@@ -465,4 +465,127 @@ body {
       font-size: 22px;
     }
   }
+}
+
+// MEDIA QUERY ----------------------------------------------------------------------------------
+
+// DISPLAY 2K
+@media screen and (min-device-width: 2000px) {
+
+
+}
+
+// DISPLAY 1080
+@media screen and (min-device-width: 1900PX) and (max-device-width: 1999px) {
+
+
+}
+
+// SMALL PC
+@media screen and (min-device-width: 1200PX) and (max-device-width: 1899px) {
+
+  .apartment .section1 .apartment-img {
+    height: 350px;
+  }
+
+  .section2 {
+    padding: 60px 10%;
+  }
+
+  .section3 {
+    padding: 45px 10%;
+  }
+
+  .mapboxgl-canvas {
+    width: 480px;
+  }
+
+}
+
+// DISPLAY TABLET
+@media screen and (min-device-width: 700px) and (max-device-width: 1199px) {
+  .apartment .section1 .apartment-img {
+    height: 250px;
+  }
+
+  .section2 {
+    padding: 50px 3%;
+  }
+
+  .section3 {
+    padding: 45px 10%;
+  }
+
+  .mapboxgl-canvas {
+    width: 480px;
+  }
+
+
+}
+
+// DISPLAY SMATPHONE
+@media screen and (max-device-width: 699px) {
+
+  .apartment .section1 {
+    padding: 30px 5%;
+  }
+
+  .apartment .section1 .apartment-img {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .apartment .section1 .apartment-img .img-secondarie {
+    width: 90%;
+    flex-wrap: nowrap;
+  }
+
+  .apartment .section1 .apartment-img .img-secondarie .img-scnd {
+    height: 100%;
+  }
+
+  .section2 {
+    padding: 60px 5%;
+    flex-direction: column;
+  }
+
+  .section2 .apartment-description {
+    width: 90%;
+    padding: 20px;
+    border-right: none;
+    border-bottom: 1px solid lightgrey;
+
+    .titleprice .separatore {
+        width: 100%;
+    }
+  }
+
+  .section2 .apartment-services {
+    width: 70%;
+  }
+
+  .section3 .apartment-location-public {
+    width: 70%;
+  }
+
+  .section3 .apartment-mail {
+    width: 70%;
+    margin-top: 30px;
+  }
+
+  .section3 {
+    padding: 50px 0%;
+    height: 750px;
+    flex-direction: column;
+
+    .mapboxgl-canvas {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
 }

@@ -106,7 +106,7 @@
 
         <div class="apartment-services">
           <ul class="servizi">
-            <li><i class="fas fa-door-open"></i> {{ $apartment -> room_number }} stanze/a</li>
+            <li><i class="fas fa-door-open"></i> {{ $apartment -> room_number }} stanze</li>
             <li><i class="fas fa-bed"></i>  {{ $apartment -> beds }} letti</li>
             <li><i class="fas fa-toilet"></i> {{ $apartment -> bath_number}} bagni</li>
             <li><i class="fas fa-vector-square"></i> {{ $apartment -> area }} mq</li>
