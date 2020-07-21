@@ -1,7 +1,7 @@
 @extends('layouts.main_layout')
 
 @section('content')
-  <div class="main_content">
+  <div class="main_content content-myapartments">
     <div class="container">
       @empty ($myPref)
         <div class="container">
@@ -10,18 +10,19 @@
           </div>
         </div>
         @else
-          <table class="table">
+          <table class="table table-no-sponsor">
               <thead class="grey" style="background: rgb(225, 60, 60); color: #FFF;">
               <tr>
                   <th scope="col">Copertina</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Città</th>
                   <th scope="col">Prezzo</th>
+                  <th scope="col">Azioni</th>
               </tr>
               </thead>
               <tbody>
                   @foreach ($myPref as $apartment)
-                      <tr style="background: rgba(238, 236, 236, 0.1);">
+                      <tr>
                           <td>
                               <img width="150px"
                               @if(stristr($apartment -> image, 'http'))
@@ -34,6 +35,9 @@
                           <td> {{$apartment -> title}}</td>
                           <td> {{$apartment -> city}}</td>
                           <td> {{$apartment -> price}} €</td>
+                          <td>
+                            <a href="{{ route('show', $apartment->id) }}" class="btn btn-success"><i class="fas fa-info-circle"></i></a>
+                          </td>
                       </tr>
                   @endforeach
               </tbody>

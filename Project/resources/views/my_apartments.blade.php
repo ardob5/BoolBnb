@@ -9,7 +9,7 @@
         <strong>{{ session('error') }}</strong>
         </div>
     @endif
-    <div class="main_content">
+    <div class="main_content content-myapartments">
       <div class="container">
         @empty (!$apartmentWithSponsor)
                 <table class="table table-sponsor mb-5">
@@ -25,7 +25,7 @@
                     </thead>
                     <tbody>
                         @foreach ($apartmentWithSponsor as $apartment)
-                            <tr style="background: rgba(238, 236, 236, 0.1)">
+                            <tr>
                                 <td>
                                     <img width="150px"
                                     @if(stristr($apartment -> image, 'http'))
@@ -56,7 +56,7 @@
                 </table>
         @endempty
         @empty (!$apartmentWithoutSponsor)
-            <table class="table">
+            <table class="table table-no-sponsor">
                 <thead class="grey" style="background: rgb(225, 60, 60); color: #FFF;">
                 <tr>
                     <th scope="col">Copertina</th>
@@ -69,7 +69,7 @@
                 </thead>
                 <tbody>
                     @foreach ($apartmentWithoutSponsor as $apartment)
-                        <tr style="background: rgba(238, 236, 236, 0.1);">
+                        <tr>
                             <td>
                                 <img width="150px"
                                 @if(stristr($apartment -> image, 'http'))

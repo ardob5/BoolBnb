@@ -2,6 +2,20 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+
+  .main_content.content-myapartments {
+    background-image: linear-gradient(180deg, rgb(225, 60, 60), white);
+    margin-top: 80px;
+    padding: 50px;
+    // .container {
+    //   margin-top: 80px;
+    // }
+  }
+}
+
+
 .apartment {
   border-top: 3px solid black;
   height: 180%;
@@ -368,6 +382,46 @@
   }
 }
 
+.table-sponsor {
+  tbody {
+    
+    tr {
+      background-image: linear-gradient(12deg, white 67%, #FCBA32 115%);
+    }
+    
+  }
+  td {
+    text-align: center;
+    a {
+      margin: 2px;
+    }
+  }
+
+  th {
+    text-align: center;
+  }
+}
+
+.table-no-sponsor {
+  tbody {
+    
+    tr {
+      background-image: linear-gradient(12deg, white 67%, rgb(225, 60, 60) 115%);
+    }
+    
+  }
+  td {
+    text-align: center;
+    a {
+      margin: 2px;
+    }
+  }
+
+  th {
+    text-align: center;
+  }
+}
+
 // MEDIA QUERY ----------------------------------------------------------------------------------------
 
 // DISPLAY 2K
@@ -392,5 +446,23 @@
 
 // DISPLAY SMATPHONE
 @media screen and (max-device-width: 699px) {
+  .table-sponsor {
+    td {
+      font-size: 22px;
+    }
+    th {
+      text-align: center;
+      font-size: 22px;
+    }
+  }
 
+  .table-no-sponsor {
+    td {
+      font-size: 22px;
+    }
+    th {
+      text-align: center;
+      font-size: 22px;
+    }
+  }
 }
