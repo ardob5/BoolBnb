@@ -15,7 +15,7 @@
     <input id="id_apt" type="hidden" name="" value="{{$id}}">
 
     <div class="container content-stats">
-      <div class="row">
+      <div class="row allarga">
         <div class="col-md-6">
           <div class="chartOne">
             <canvas id="views" width="300" height="300"></canvas>

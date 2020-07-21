@@ -255,9 +255,9 @@ ul {
       max-height: 80%;
     }
 
-    .cartina_hr, .bagni{
-      display: none;
-    }
+    // .cartina_hr, .bagni{
+    //   display: none;
+    // }
   }
 }
 
@@ -282,13 +282,13 @@ ul {
 @media screen and (max-width: 1170px) {
 
   .cartina{
-    max-height: 180px;
+    max-height: 250px;
     max-width: 500px;
     margin-left: 100px;
 
-    .bottone, .bagni, .cartina_hr{
-      display: none;
-    }
+    // .bottone, .bagni, .cartina_hr{
+    //   display: none;
+    // }
 
     .cartina_sponsor{
       width: 10%;
@@ -335,3 +335,73 @@ ul {
 }
 
 // FINE RESPONSIVE
+
+// MEDIA QUERY ----------------------------------------------------------------------------------------
+
+
+// SMALL PC
+@media screen and (min-device-width: 1200PX) and (max-device-width: 1899px) {
+
+  .cartina {
+    margin-left: 55px;
+  }
+
+  .cartina .cartina_left .created-at-stick {
+    width: 15%;
+    height: 15%;
+  }
+
+  .cartina .cartina_center .detail-home .sticker-detail {
+    width: 65%;
+  }
+
+
+  .social {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// DISPLAY TABLET
+@media screen and (min-device-width: 700px) and (max-device-width: 1199px) {
+
+  .jumbotron {
+    height: 400px;
+  }
+
+  .justify-content-around {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .aside_left {
+    margin-top: 50px;
+    border-top: 10px solid black;
+    border-bottom: 5px solid black;
+    box-shadow: 0px 0px 0px 0px rgba(#541313, 0);
+  }
+}
+
+// DISPLAY SMATPHONE
+@media screen and (max-device-width: 699px) {
+
+  header {
+    top: 15px;
+  }
+
+  .jumbotron {
+    height: 400px;
+  }
+
+  .justify-content-around {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .aside_left {
+    margin-top: 50px;
+    border-top: 10px solid black;
+    border-bottom: 5px solid black;
+    box-shadow: 0px 0px 0px 0px rgba(#541313, 0);
+  }
+}
