@@ -478,6 +478,9 @@ body {
 // DISPLAY 1080
 @media screen and (min-device-width: 1900PX) and (max-device-width: 1999px) {
 
+  .apartment .section1 .apartment-img {
+    height: 430px;
+  }
 
 }
 
@@ -485,7 +488,7 @@ body {
 @media screen and (min-device-width: 1200PX) and (max-device-width: 1899px) {
 
   .apartment .section1 .apartment-img {
-    height: 350px;
+    height: 270px;
   }
 
   .section2 {
@@ -505,7 +508,7 @@ body {
 // DISPLAY TABLET
 @media screen and (min-device-width: 700px) and (max-device-width: 1199px) {
   .apartment .section1 .apartment-img {
-    height: 250px;
+    height: 210px;
   }
 
   .section2 {
@@ -520,11 +523,60 @@ body {
     width: 480px;
   }
 
+  #titleprice h1 span {
+    display: block;
+  }
+
 
 }
 
 // DISPLAY SMATPHONE
 @media screen and (max-device-width: 699px) {
+
+  .titleprice h1  {
+    font-size: 40px;
+  }
+
+  .section2 .apartment-description .titleprice span {
+    font-size: 25px;
+  }
+
+  .section2 .apartment-description .titleprice .prezzo {
+    width: 140px;
+    padding: 5px;
+  }
+
+  .section2 .apartment-description .titleprice .prezzo h6 {
+    font-size: 30px;
+  }
+
+  .apartment-description p {
+    font-size: 30px;
+  }
+
+  .apartment-description b {
+    font-size: 25px;
+  }
+
+  .section2 .apartment-description .pannello-utente h2 {
+    font-size: 30px;
+  }
+
+  .section2 .apartment-description .pannello-utente .bottoni .fas {
+    font-size: 90px;
+  }
+
+  .bottoni h6 {
+    font-size: 25px;
+  }
+
+  .section2 .apartment-services .servizi {
+    font-size: 50px;
+  }
+
+  .section2 .apartment-services .optional ul li {
+    font-size: 30px;
+  }
 
   .apartment .section1 {
     padding: 30px 5%;
