@@ -1,153 +1,85 @@
-
-
-
+*{
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+}
 footer{
-  width: 100%;
-  margin-top: 50px;
-  padding: 40px;
+  background: rgb(255,60,60);
+  background: linear-gradient(180deg, rgba(255,60,60,1) 0%, rgba(255,135,135,1) 100%);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgba(255,255,255,.5);
-  // // debug
-  // border: solid black 1px;
-  background: rgb(238,146,146);
-  background: linear-gradient(270deg, rgba(245,161,161,1) 5%, rgba(234,104,104,1) 30%, rgba(225,60,60,1) 100%);
-
-  .lato-sx{
-    height: 350px;
-    width: 30%;
-    margin-right: 15px;
-    // // debug
-    // border: solid black 1px;
-    .logo{
-      height: 70px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      // // debug
-      // border: solid black 1px;
-      img{
-        height: 70px;
-        width: 90px;
-        opacity: 0.8px;
-      }
-    }
-    .text{
-      font-size: 13px;
-      width: 100%;
-      height: auto;
-      text-align: center;
-      // color: white;
-      // debug
-      // border: solid black 1px;
-      h1{
-        font-size: 30px;
-        padding-top: 10px;
-      }
-    }
-  }
-  .lato-dx{
-    height: 350px;
-    width: 70%;
+  justify-content: space-around;
+  color: white;
+  div {
+    margin-top: 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    // // debug
-    // border: solid black 1px;
-    .container-link{
-      width: 70%;
+    flex-direction: column;
+    max-width: 24%;
+    .loghetto{
+      img{
+        width: 60px;
+        margin-bottom: 15px;
+      }
+    }
+    p{
+      text-align: center;
+    }
+    a{
+      font-size: 15px;
+      text-decoration: none;
+      color: $redbnb;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    ul{
+      line-height: 25px;
+      list-style-type: none;
+      text-align: center;
+    }
+    .footer_socials{
+      font-size: 30px;
+      height: 80%;
       display: flex;
-      justify-content: center;
-      // // debug
-      // border: solid black 1px;
-      .link1{
-        height: 350px;
-        width: 30%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        // color: white;
-        // // debug
-        // border: solid black 1px;
-        ul{
-          li{
-            a{
-              color: white;
-            }
-          }
-        }
-      }
-      .link2{
-        height: 350px;
-        width: 30%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-          margin-right: 15px;
-        // color: white;
-        // // debug
-        // border: solid black 1px;
-        ul{
-          li{
-            a{
-              color: white;
-            }
-          }
-        }
-      }
-      .social{
-        min-width: 30%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        // // debug
-        // border: solid black 1px;
-      }
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+    i{
+      color: white;
+      list-style-type: none;
+    }
+    h2{
+      margin-bottom: 10px;
     }
   }
 }
-
-// INIZIO RESPONSIVE
-@media screen and (max-width: 1000px){
-
+// FINE FOOTER
+// INIZIO FOOTER RESPONSIVE
+@media screen and (max-width: 980px) {
   footer{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    .lato-dx{
-      width: 80%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-
-      .container-link{
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-
-
-        .link1, .link2{
-          width: 50%;
-          font-size: 14px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-        }
-      }
-      .social{
-        display: flex;
-        justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .footer_logo{
+      min-width: 400px;
+    }
+    .footer_story{
+      min-width: 400px;
+    }
+    .footer_contacts{
+      min-width: 300px;
+      margin-bottom: 50px;
+    }
+    .footer_socials{
+      flex-direction: row !important;
+      min-width: 200px;
+      margin-top: 75px;
+      i{
+        font-size: 50px;
+        margin-right: 20px;
       }
     }
   }

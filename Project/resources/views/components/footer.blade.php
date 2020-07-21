@@ -1,78 +1,28 @@
 
 <footer>
-  <div class="lato-sx">
-    <div class="logo">
-      <img src="{{ asset('img/marcomaialona.png') }}" alt="">
-    </div>
-    <div class="text">
-      <h1>
-        Home is where Gian resides.
-      </h1>
-      <p>
-        BoolBnB è un bellissimo portale online che mette in contatto persone in cerca di un alloggio o di una camera per brevi periodi, con persone che dispongono di uno spazio extra da affittare, generalmente privati. <br> Nasce però come prova finale per mettere in pratica le tecnologie apprese in 6 mesi di corso. <br><br> Il sito fu creato nel luglio del 2020 da Alessandro Fraternali, Gianmarco Montanari, Marco Petrini, Riccardo Belli e Umberto Del Piano.
-      </p>
-    </div>
+  <div class="footer_logo">
+    <div class="loghetto"><img src="img/marcomaialona.png" alt=""> </div>
+    <ul>
+      <li>@ 2020 BoolBnB</li>
+      <li>All rights reserved.</li>
+      <li>Proudly made in Boolean</li>
+    </ul>
   </div>
-  <div class="lato-dx">
-    <div class="container-link">
-      <div class="link1">
-        <h1>
-          Home
-        </h1>
-        <ul>
-          <li>
-            <a href="{{ route('home') }}">
-              Home
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href="http://localhost:8000/login">
-              Assistenza
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href="{{ route('my_apartments') }}">
-              Appartamenti
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="link2">
-        <h1>
-         Login
-        </h1>
-        <ul>
-          <li>
-            <a href="#">
-              Login
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href="{{ route('register') }}">
-              Registrati
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href="{{ route('create') }}">
-              Diventa Host
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="social">
-      <a href="facebook"><img src="{{ asset('img/facebook.png') }}" alt=""></a>
-      <a href="facebook"><img src="{{ asset('img/instagram.png') }}" alt=""></a>
-      <a href="facebook"><img src="{{ asset('img/whatsapp.png') }}" alt=""></a>
+  <div class="footer_story">
+    <h2>BoolBnB</h2>
+    <p>BoolBnB è un portale online che mette in contatto persone in cerca di un alloggio o di una camera per brevi periodi, con persone che dispongono di uno spazio extra da affittare, generalmente privati. Nasce però come prova finale per mettere in pratica le tecnologie apprese in 6 mesi di corso. <br><br> Il sito fu creato nel luglio del 2020 da Alessandro Fraternali, Gianmarco Montanari, Marco Petrini, Riccardo Belli e Umberto Del Piano.</p>
+  </div>
+  <div class="footer_contacts">
+    <h2>Contattaci</h2>
+      <p>Controlla i nostri profili GitHub e Linkedin per scoprire a quali altri progetti abbiamo lavorato</p>
+      <a href="#">CHI SIAMO</a>
+  </div>
+  <div>
+    <div class="footer_socials">
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-youtube"></i>
     </div>
   </div>
 </footer>
