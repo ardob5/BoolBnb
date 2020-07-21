@@ -29,7 +29,7 @@ $(document).ready(function () {
       }
     );
 
-    $(".jumbotron, .header-sx, .container-fluid").click(function(){
+    $(".indietro").click(function(){
         $('.dx-responsive').slideUp(1000);
         $('.responsive-icon').show(2500);
       }

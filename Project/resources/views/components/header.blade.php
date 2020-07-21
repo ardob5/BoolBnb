@@ -63,6 +63,7 @@
   </div>
   <div class="dx-responsive">
     <ul>
+      <a href="#" class="indietro"> <i class="fas fa-chevron-up"></i> </a>
         <!-- Authentication Links -->
         @guest
             <li id="login" class="nav-item">
