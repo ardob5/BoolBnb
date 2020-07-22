@@ -15,7 +15,7 @@
   <div class="footer_contacts">
     <h2>Contattaci</h2>
       <p>Controlla i nostri profili GitHub e Linkedin per scoprire a quali altri progetti abbiamo lavorato</p>
-      <a href="#">CHI SIAMO</a>
+      <a href="{{ route('chi_siamo') }}">CHI SIAMO</a>
   </div>
   <div>
     <div class="footer_socials">
