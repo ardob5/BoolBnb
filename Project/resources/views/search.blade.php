@@ -189,7 +189,7 @@
           <div class="img">
             <img class="card-img-right flex-auto d-none d-md-block"
               src="storage/@{{img}}"
-            alt="cartina image cap">
+              alt="cartina image cap">
           </div>
         </div>
 

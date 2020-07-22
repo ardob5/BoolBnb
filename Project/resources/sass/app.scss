@@ -50,7 +50,17 @@
       margin-top: 130px;
       min-height: calc(100vh - 80px - 350px);
     }
-    
+
+
+    .caption {
+      a {
+        text-decoration: none;
+        h3 {
+          color: #000;
+        }
+      }
+    }
+
     .alert-success, .alert-error {
       position: absolute;
       top: 300px;
