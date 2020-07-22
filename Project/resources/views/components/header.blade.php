@@ -102,7 +102,7 @@
           </li>
         @endauth
         <li>
-          <a href="#">Assistenza</a>
+          <a href="{{ route('chi_siamo')}}">Chi siamo</a>
         </li>
     </ul>
   </div>
