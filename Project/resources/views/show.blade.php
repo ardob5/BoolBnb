@@ -140,6 +140,8 @@
       {{-- ZONA MAPPA --}}
 
       <div class="section3">
+        {{-- marcatore personalizzato --}}
+
         @if ($apartment->user->id == Auth::id())
           <div class="apartment-location-user">
             <div id='map'></div>

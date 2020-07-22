@@ -80,7 +80,12 @@ $(document).ready(function(){
         zoom: 15 //valore dello zoom sulla mappa
       });
 
+  //personalizzazione marker
+  var element = document.createElement('div');
+  element.id = 'marker';
+
   // creazione del marcatore sulla mappa
-  var marker = new tt.Marker().setLngLat(position).addTo(map);
+  var marker = new tt.Marker({element: element}).setLngLat(position).addTo(map);
+  // var marker = new tt.Marker().setLngLat(position).addTo(map);
 
 });
