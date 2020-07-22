@@ -40,7 +40,7 @@ class FilterController extends Controller {
     $apartments_complete_filter = [];
     $apartments_final_filter = [];
 
-     
+
     if (isset($optionals_request)) {
         //  filtro checkbox
         foreach ($apartments as $apartment) {
@@ -63,19 +63,19 @@ class FilterController extends Controller {
 
         // filtro distanza con filtro checkbox
         foreach ($apartments_radius as $apartment_radius) {
-            if (count($filter_apartments) < 1) {
+            if (!isset($optionals_request)) {
                 $apartments_radius_filter[] = $apartment_radius;
             }
             foreach ($filter_apartments as $filter_apartment) {
-                
+
                 if ($apartment_radius -> id === $filter_apartment -> id) {
                     $apartments_radius_filter[] = $apartment_radius;
                 }
-                
+
             }
           }
 
-        
+
         // filtro appartamneti per numero letti
        if ($beds_request) {
            $apartments_beds = Apartment::where('beds', '>=', $beds_request)->get();
@@ -88,9 +88,9 @@ class FilterController extends Controller {
                 $apartments_complete_filter[] = $apartment_filter;
             }
             foreach ($apartments_beds as $apartment_beds) {
-                
+
                 if ($apartment_filter -> id === $apartment_beds -> id) {
-                   
+
                     $apartments_complete_filter[] = $apartment_filter;
                 }
             }
@@ -108,9 +108,9 @@ class FilterController extends Controller {
                 $apartments_final_filter[] = $apartment_complete;
             }
             foreach ($apartments_rooms as $apartment_rooms) {
-                
+
                 if ($apartment_complete -> id === $apartment_rooms -> id) {
-                   
+
                     $apartments_final_filter[] = $apartment_complete;
                 }
             }
@@ -120,6 +120,6 @@ class FilterController extends Controller {
          'data' => $apartments_final_filter,
          'preferences' => $preferences
      ], 200);
-    
+
     }
 }
