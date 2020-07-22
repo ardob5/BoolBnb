@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -99,7 +99,9 @@ $(document).ready(function () {
   var links = $('header a');
   var images = $('img');
   var overlay = $('.overlay-image');
-  var img = $('<img></img>');
+  var img = $('<img></img>'); // metto il logo rosso
+
+  $('.logobnb').attr('src', 'http://localhost:8000/img/LOGO_UNO_MOD.png');
   header.css({
     'background-color': 'white',
     'box-shadow': '1px 1px 15px rgba(0, 0, 0, .1)'
@@ -119,7 +121,7 @@ $(document).ready(function () {
     overlay.hide();
   }); // evento al rilascio di un tasto sui tag input
 
-  $('input').keyup(function () {
+  $('input').on('input', function () {
     // prendo i valori degli input
     var address = $('#address').val();
     var city = $('#city').val();
@@ -155,14 +157,14 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!************************************!*\
   !*** multi ./resources/js/edit.js ***!
   \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\edit.js */"./resources/js/edit.js");
+module.exports = __webpack_require__(/*! C:\Users\39331\Desktop\MyProjects\BoolBnb\Project\resources\js\edit.js */"./resources/js/edit.js");
 
 
 /***/ })

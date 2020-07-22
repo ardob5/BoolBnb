@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -95,43 +95,125 @@
 
 // EVENTI E CHIAMATE AJAX NELLE PAGINE DI RICERCA APPARTAMENTO
 $(document).ready(function () {
-  // evento al rilascio di un tasto sui tag input
-  $('#search-search-bar').keyup(function () {
-    // chiudo in una variabile il valore dell'input nella barra di ricerca
-    var city = $('#search-search-bar').val(); // preparo l'url personalizzato da dare in pasto all'api
+  var registerButton = $('.register-button');
+  var scrolledButton = $('#scrolled-button'); // header scroll
 
-    var url = "https://api.tomtom.com/search/2/geocode/" + city + ".JSON?key=A19bLrkzxbFaNdTAWvUaqCPN1NCB7UQH"; // chiamata ajax per ottenere latitudine e longitudine partendo dalla città
+  $(document).scroll(function () {
+    var scrollDocument = $(document).scrollTop();
 
-    $.ajax({
-      url: url,
-      method: "GET",
-      success: function success(data) {
-        // chiudo in variabili i valori dati dall'api di latitudine e longitudine
-        var lat = data.results[0]['position']['lat'];
-        console.log(lat);
-        var lon = data.results[0]['position']['lon'];
-        console.log(lon); // inserisco i dati nell'hidden input che servirà a passarli al backend
+    if (scrollDocument != 0) {
+      $('.logobnb').attr('src', 'img/LOGO_UNO_MOD.png');
+      $('header').css({
+        'background-color': 'white',
+        'box-shadow': '1px 1px 15px 5px grey'
+      });
+      $('.header-dx ul li a').css({
+        'color': 'rgb(225, 60, 60)'
+      });
+      registerButton.addClass('scrolled');
+    } else {
+      $('.logobnb').attr('src', 'img/LOGO_UNO_MOD_BA.png');
+      registerButton.removeClass('scrolled');
+      $('header').css({
+        'background-color': 'transparent',
+        'box-shadow': 'none'
+      });
+      $('.header-dx ul a').css({
+        'color': 'white'
+      });
+    }
+  }); // click sul scrolled-Button
 
-        $('#hidden-lat-search').val(lat);
-        $('#hidden-lon-search').val(lon);
-      },
-      error: function error(_error, status) {
-        console.log('errore:' + _error);
-      }
+  scrolledButton.click(function () {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
     });
+  }); // hover register-button
+
+  registerButton.mouseenter(function () {
+    registerButton.css({
+      'background-color': 'rgb(225, 60, 60)'
+    });
+    $('.register-button a').css({
+      'color': 'white'
+    });
+  }); // hover register-button
+
+  registerButton.mouseleave(function () {
+    registerButton.css({
+      'background-color': 'transparent'
+    });
+
+    if (registerButton.hasClass('scrolled')) {
+      $('.register-button a').css({
+        'color': 'rgb(225, 60, 60)'
+      });
+    } else {
+      $('.register-button a').css({
+        'color': 'white'
+      });
+    }
+  }); // evento al rilascio di un tasto sui tag input
+
+  $('#submit-search').click(function (e) {
+    e.preventDefault();
+    var city = $('#search-search-bar').val(); // chiudo in una variabile il valore dell'input nella barra di ricerca
+
+    if (city != '') {
+      // preparo l'url personalizzato da dare in pasto all'api
+      var url = "https://api.tomtom.com/search/2/geocode/" + city + ".JSON?key=A19bLrkzxbFaNdTAWvUaqCPN1NCB7UQH"; // chiamata ajax per ottenere latitudine e longitudine partendo dalla città
+
+      $.ajax({
+        url: url,
+        method: "GET",
+        success: function success(data) {
+          // chiudo in variabili i valori dati dall'api di latitudine e longitudine
+          var lat = data.results[0]['position']['lat'];
+          console.log(lat);
+          var lon = data.results[0]['position']['lon'];
+          console.log(lon);
+          console.log(city); // inserisco i dati nell'hidden input che servirà a passarli al backend
+
+          $('#hidden-lat-search').val(lat);
+          $('#hidden-lon-search').val(lon);
+          $('#form-search').submit();
+        },
+        error: function error(_error, status) {
+          console.log('errore:' + _error);
+        }
+      });
+    }
   });
+
+  (function () {
+    var placesAutocomplete = places({
+      appId: 'pl3MGAFPUYLC',
+      apiKey: 'b9a43d62226d2109d529ba9f00f20cb8',
+      container: document.querySelector('#search-search-bar'),
+      templates: {
+        value: function value(suggestion) {
+          return suggestion.name;
+        }
+      }
+    }).configure({
+      type: 'city',
+      aroundLatLngViaIP: false
+    });
+  })();
 });
 
 /***/ }),
 
-/***/ 8:
+/***/ 6:
 /*!*********************************************!*\
   !*** multi ./resources/js/tomtom_search.js ***!
   \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\tomtom_search.js */"./resources/js/tomtom_search.js");
+module.exports = __webpack_require__(/*! C:\Users\39331\Desktop\MyProjects\BoolBnb\Project\resources\js\tomtom_search.js */"./resources/js/tomtom_search.js");
 
 
 /***/ })

@@ -81,148 +81,84 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/tomtom_home.js":
+/***/ "./resources/js/sponsor_apt.js":
 /*!*************************************!*\
-  !*** ./resources/js/tomtom_home.js ***!
+  !*** ./resources/js/sponsor_apt.js ***!
   \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// EVENTI E CHIAMATE AJAX NELLE PAGINE DI RICERCA APPARTAMENTO
 $(document).ready(function () {
-  var registerButton = $('.register-button');
-  var scrolledButton = $('#scrolled-button'); // HEADER SCROLL
+  // metto il logo rosso
+  $('.logobnb').attr('src', 'http://localhost:8000/img/LOGO_UNO_MOD.png'); // chiudo in variabile i tag header con i suoi link
 
-  $(document).scroll(function () {
-    var scrollDocument = $(document).scrollTop();
+  var header = $('header');
+  var links = $('header a'); // cambio stile css dell'header
 
-    if (scrollDocument != 0) {
-      $('.logobnb').attr('src', 'img/LOGO_UNO_MOD.png');
-      $('header').css({
-        'background-color': 'white',
-        'box-shadow': '1px 1px 15px 5px grey'
-      });
-      $('.header-dx ul li a').css({
-        'color': 'rgb(225, 60, 60)'
-      });
-      registerButton.addClass('scrolled');
-    } else {
-      $('.logobnb').attr('src', 'img/LOGO_UNO_MOD_BA.png');
-      registerButton.removeClass('scrolled');
-      $('header').css({
-        'background-color': 'transparent',
-        'box-shadow': 'none'
-      });
-      $('.header-dx ul a').css({
-        'color': 'white'
-      });
-    } // scrolled-button
+  header.css({
+    'background-color': 'white',
+    'box-shadow': '1px 1px 15px rgba(0, 0, 0, .1)'
+  }); // cambio stile css dei link nell'header
 
+  links.css({
+    'color': 'rgb(225, 60, 60)'
+  });
+  $('#button_basic').click(function () {
+    $('#dropdown_sponsor_standard').hide();
+    $('#dropdown_sponsor_premium').hide();
+    $('#button_standard').text('Scegli');
+    $('#button_premium').text('Scegli');
+    $('#dropdown_sponsor_basic').slideToggle(500);
 
-    if (scrollDocument > $('.container-fluid').offset().top) {
-      scrolledButton.css('display', 'block');
-    }
-
-    if (scrollDocument < $('.container-fluid').offset().top) {
-      scrolledButton.css('display', 'none');
-    }
-  }); // click sul scrolled-Button
-
-  scrolledButton.click(function () {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }); // hover register-button
-
-  registerButton.mouseenter(function () {
-    registerButton.css({
-      'background-color': 'rgb(225, 60, 60)'
-    });
-    $('.register-button a').css({
-      'color': 'white'
-    });
-  }); // hover register-button
-
-  registerButton.mouseleave(function () {
-    registerButton.css({
-      'background-color': 'transparent'
-    });
-
-    if (registerButton.hasClass('scrolled')) {
-      $('.register-button a').css({
-        'color': 'rgb(225, 60, 60)'
-      });
-    } else {
-      $('.register-button a').css({
-        'color': 'white'
-      });
-    }
-  }); // evento al rilascio di un tasto sui tag input
-
-  $('#submit-home').click(function (e) {
-    e.preventDefault();
-    var city = $('#home-search-bar').val(); // chiudo in una variabile il valore dell'input nella barra di ricerca
-
-    if (city != '') {
-      // preparo l'url personalizzato da dare in pasto all'api
-      var url = "https://api.tomtom.com/search/2/geocode/" + city + ".JSON?key=A19bLrkzxbFaNdTAWvUaqCPN1NCB7UQH"; // chiamata ajax per ottenere latitudine e longitudine partendo dalla città
-
-      $.ajax({
-        url: url,
-        method: "GET",
-        success: function success(data) {
-          // chiudo in variabili i valori dati dall'api di latitudine e longitudine
-          var lat = data.results[0]['position']['lat'];
-          console.log(lat);
-          var lon = data.results[0]['position']['lon'];
-          console.log(lon);
-          console.log(city); // inserisco i dati nell'hidden input che servirà a passarli al backend
-
-          $('#hidden-lat').val(lat);
-          $('#hidden-lon').val(lon);
-          $('#form-search').submit();
-        },
-        error: function error(_error, status) {
-          console.log('errore:' + _error);
-        }
-      });
+    if ($(this).text() === 'Scegli') {
+      $(this).text('Chiudi');
+    } else if ($(this).text() === 'Chiudi') {
+      $(this).text('Scegli');
     }
   });
+  $('#button_standard').click(function () {
+    $('#dropdown_sponsor_basic').hide();
+    $('#dropdown_sponsor_premium').hide();
+    $('#button_basic').text('Scegli');
+    $('#button_premium').text('Scegli');
+    $('#dropdown_sponsor_standard').slideToggle(500);
 
-  (function () {
-    var placesAutocomplete = places({
-      appId: 'pl3MGAFPUYLC',
-      apiKey: 'b9a43d62226d2109d529ba9f00f20cb8',
-      container: document.querySelector('#home-search-bar'),
-      templates: {
-        value: function value(suggestion) {
-          return suggestion.name;
-        }
-      }
-    }).configure({
-      type: 'city',
-      aroundLatLngViaIP: false
-    });
-  })();
+    if ($(this).text() === 'Scegli') {
+      $(this).text('Chiudi');
+    } else if ($(this).text() === 'Chiudi') {
+      $(this).text('Scegli');
+    }
+  });
+  $('#button_premium').click(function () {
+    $('#dropdown_sponsor_basic').hide();
+    $('#dropdown_sponsor_standard').hide();
+    $('#button_basic').text('Scegli');
+    $('#button_standard').text('Scegli');
+    $('#dropdown_sponsor_premium').slideToggle(500);
+
+    if ($(this).text() === 'Scegli') {
+      $(this).text('Chiudi');
+    } else if ($(this).text() === 'Chiudi') {
+      $(this).text('Scegli');
+    }
+  });
 });
 
 /***/ }),
 
-/***/ 4:
+/***/ 8:
 /*!*******************************************!*\
-  !*** multi ./resources/js/tomtom_home.js ***!
+  !*** multi ./resources/js/sponsor_apt.js ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\39331\Desktop\MyProjects\BoolBnb\Project\resources\js\tomtom_home.js */"./resources/js/tomtom_home.js");
+module.exports = __webpack_require__(/*! C:\Users\39331\Desktop\MyProjects\BoolBnb\Project\resources\js\sponsor_apt.js */"./resources/js/sponsor_apt.js");
 
 
 /***/ })
