@@ -158,8 +158,8 @@
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-sm-12">
-                        <h1 class="text-center font-weight-bold">
-                            Perchè inserire un appartamento
+                        <h1 class="text-center font-weight-bold" style="color: #000;">
+                            Perchè inserire un appartamento?
                         </h1>
                     </div>
                 </div>

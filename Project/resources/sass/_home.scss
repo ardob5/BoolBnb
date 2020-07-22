@@ -123,17 +123,19 @@ ul {
 
     h6 {
       color: rgb(182, 182, 182);
+      font-size: 0.8rem;
     }
 
     h3{
       text-transform: capitalize;
+      font-size: 1.15rem;
     }
 
     .detail-home {
 
       .sticker-detail{
 
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.05);
         border-radius: 0px 10px 10px 0px;
         padding-left: 20px;
         width: 50%;

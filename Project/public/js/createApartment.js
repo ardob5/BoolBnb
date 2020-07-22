@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -115,7 +115,7 @@ $(document).ready(function () {
     'color': 'rgb(225, 60, 60)'
   }); // evento al rilascio di un tasto sui tag input
 
-  $('input').keyup(function () {
+  $('input').on('input', function () {
     // prendo i valori degli input
     var address = $('#address').val();
     var city = $('#city').val();
@@ -151,14 +151,14 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!***********************************************!*\
   !*** multi ./resources/js/createApartment.js ***!
   \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Shild\Documents\Boolean\BoolBnb\Project\resources\js\createApartment.js */"./resources/js/createApartment.js");
+module.exports = __webpack_require__(/*! C:\Users\39331\Desktop\MyProjects\BoolBnb\Project\resources\js\createApartment.js */"./resources/js/createApartment.js");
 
 
 /***/ })
