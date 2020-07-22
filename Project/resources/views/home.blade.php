@@ -73,7 +73,7 @@
   <div class="container-fluid">
     <div class="row justify-content-around">
       {{-- HOME - LEFT - CONTENT --}}
-      <div class="col-lg-3 col-md-12 offset-lg-1">
+      <div class="col-lg-3 col-md-12">
         <div class="aside_left">
           <div class="aside_content">
             <div class="aside_title">
@@ -123,7 +123,7 @@
       </div>
 
       {{-- HOME - RIGHT - CONTENT --}}
-      <div class="col-lg-7 col-md-12 justify-content-center">
+      <div class="col-lg-7 col-md-12 d-flex  flex-column align-items-center">
         {{-- CREAZIONE cartina - SPONSORED ---------------------------------------------------}}
       @empty (!$apartments_sponsor)
         @foreach ($apartments_sponsor as $apartment)
@@ -165,7 +165,7 @@
               </div>
               <hr class="cartina_hr">
               <div class="sticker-details">
-                <p class="total_prc">{{ $apartment -> price }} € - Totale</p>
+                <p class="total_prc"><b> {{ $apartment -> price }} €</b> a notte</p>
               </div>
             </div>
           </div>
@@ -183,7 +183,7 @@
             data-id="{{$apartment -> id}}">
             </div>
             <div class="bottone">
-              <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
+              <a href="{{ route('show', $apartment -> id) }}" class="btn bnb_btn">Dettagli</a>
             </div>
           </div>
         </div>
@@ -218,7 +218,7 @@
         </div>
       </div>
       {{-- FIX OFFSET --}}
-      <div class="col-lg-1"></div>
+      {{-- <div class="col-lg-1"></div> --}}
     </div>
   </div>
 <button type="button" id="scrolled-button" class="btn btn-sm rounded">

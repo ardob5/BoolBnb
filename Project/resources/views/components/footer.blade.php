@@ -1,7 +1,7 @@
 
 <footer>
   <div class="footer_logo">
-    <div class="loghetto"><img src="img/marcomaialona.png" alt=""> </div>
+    <div class="loghetto"><img src="img/marcoporcellona.png" alt=""> </div>
     <ul>
       <li>@ 2020 BoolBnB</li>
       <li>All rights reserved.</li>

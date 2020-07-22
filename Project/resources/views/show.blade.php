@@ -2,6 +2,8 @@
 
 @section('content')
   <div class="main_content">
+    <div class="overlay-image-show">
+    </div>
     <div class="apartment">
       @if (session('success'))
         <div class="alert alert-success text-center" role="alert">

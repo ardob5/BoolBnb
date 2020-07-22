@@ -8,6 +8,25 @@ $(document).ready(function(){
    var links = $('header a');
    var registerButton = $('.register-button');
 
+    var images = $('img');
+    var overlay = $('.overlay-image-show');
+    var img = $('<img></img>');
+
+    // overlay con immagine centrata
+    overlay.html(img);
+
+    images.click(function() {
+
+      var src = $(this).attr('src');
+      overlay.show();
+      img.attr('src', src);
+      console.log(src);
+    });
+
+    overlay.click(function() {
+      overlay.hide();
+    });
+
     // hover bottone register
    registerButton.mouseenter(function(){
     registerButton.css({

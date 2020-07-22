@@ -143,7 +143,7 @@
                     <p class="bagni"> <i class="fas fa-bath"></i>  <span class="number-of-elements"> {{$nosponsorApt -> bath_number}} </span> bagni</p>
                   </div>
                   <hr class="cartina_hr">
-                  <p>{{ $nosponsorApt -> price }} € - Totale</p>
+                  <b> <p>{{ $nosponsorApt -> price }} € </b> a notte</p>
                 </div>
 
                 </div>
@@ -163,7 +163,7 @@
                   data-id="{{$nosponsorApt -> id}}">
                   </div>
                   <div class="bottone">
-                    <a href="{{ route('show', $nosponsorApt -> id) }}" class="btn bnb_btn">Vai all'appartamento</a>
+                    <a href="{{ route('show', $nosponsorApt -> id) }}" class="btn bnb_btn">Dettagli</a>
                   </div>
                 </div>
               </div>
@@ -221,7 +221,7 @@
             @{{{icon}}}
           </div>
           <div class="bottone">
-            <a href="/show/@{{ id }}" class="btn bnb_btn">Vai all'appartamento</a>
+            <a href="/show/@{{ id }}" class="btn bnb_btn">Dettagli</a>
           </div>
         </div>
       </div>

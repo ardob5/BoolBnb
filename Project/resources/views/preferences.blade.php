@@ -6,7 +6,7 @@
       @empty ($myPref)
         <div class="container">
           <div class="row d-flex justify-content-center">
-            <h2>Nessun preferito</h2>
+            <h2 style="color: white;">Nessun preferito</h2>
           </div>
         </div>
         @else

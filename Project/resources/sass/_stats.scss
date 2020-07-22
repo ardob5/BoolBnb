@@ -103,5 +103,19 @@
 // DISPLAY SMATPHONE
 @media screen and (max-device-width: 699px) {
 
+  .allarga {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .back-circle {
+      font-size: 55px;
+    }
+  }
+
+  .col-md-6{
+    max-width: 100%;
+    margin-bottom: 50px;
+  }
 
 }

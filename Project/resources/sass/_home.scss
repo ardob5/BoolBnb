@@ -28,7 +28,6 @@
 // TOTAL PRICE
 .total_prc {
   margin-bottom: none;
-  font-weight: bold;
 }
 
 // BOTTONE IN BASSO A DESTRA
@@ -124,17 +123,19 @@ ul {
 
     h6 {
       color: rgb(182, 182, 182);
+      font-size: 0.8rem;
     }
 
     h3{
       text-transform: capitalize;
+      font-size: 1.15rem;
     }
 
     .detail-home {
 
       .sticker-detail{
 
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.05);
         border-radius: 0px 10px 10px 0px;
         padding-left: 20px;
         width: 50%;
@@ -183,6 +184,7 @@ ul {
       cursor:pointer;
       i {
         margin-top: 15px;
+        font-size: 25px;
       }
     }
     div{
@@ -249,7 +251,6 @@ ul {
   .cartina{
     // max-height: 200px;
     max-width: 730px;
-    margin-left: 100px;
 
     // .cartina_hr, .bagni{
     //   display: none;
@@ -279,7 +280,6 @@ ul {
 
   .cartina{
     max-width: 500px;
-    margin-left: 100px;
 
     // .bottone, .bagni, .cartina_hr{
     //   display: none;
@@ -342,7 +342,6 @@ ul {
   }
 
   .cartina {
-    margin-left: 55px;
   }
 
   .cartina .cartina_left .created-at-stick {
@@ -375,8 +374,6 @@ ul {
 
   .aside_left {
     margin-top: 50px;
-    border-top: 10px solid black;
-    border-bottom: 5px solid black;
     box-shadow: 0px 0px 0px 0px rgba(#541313, 0);
   }
 
@@ -434,13 +431,12 @@ ul {
 
   .aside_left {
     margin-top: 50px;
-    border-top: 10px solid black;
-    border-bottom: 5px solid black;
     box-shadow: 0px 0px 0px 0px rgba(#541313, 0);
   }
 
   .cartina {
     height: 340px;
+    margin-bottom: 50px;
   }
 
   .cartina .cartina_left {

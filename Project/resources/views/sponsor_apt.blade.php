@@ -158,7 +158,7 @@
                             success: function (result) {
                                 console.log(result);
                                 if (result.success) {
-                                  window.location.href = {{route('show', $apartment -> id)}}
+                                  window.location.href = "{{ route('show', $apartment->id) }}"
                                 } else {
                                   alert('Payment failed');
                                   }
@@ -237,7 +237,7 @@
                             success: function (result) {
                                 console.log(result);
                                 if (result.success) {
-                                  window.location.href = {{route('show', $apartment -> id)}}
+                                  window.location.href = "{{ route('show', $apartment->id) }}"
                                 } else {
                                   alert('Payment failed');
                                   }

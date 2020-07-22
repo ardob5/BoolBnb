@@ -100,6 +100,11 @@
                 </tbody>
             </table>
         @endempty
+        @if (count($apartmentWithSponsor) > 0 || count($apartmentWithoutSponsor) > 0)
+          <div class="row justify-content-center mt-5">
+            <a type="button" style="background-color: rgb(225, 60, 60); color: white;" class="btn btn-lg" href="{{ route('create') }}">Inserisci Appartamento</a>
+          </div>
+        @endif
             {{-- @empty(!$apartmentWithSponsor)
                 <div class="row justify-content-center">
                     @foreach ($apartmentWithSponsor as $apartment)
@@ -147,16 +152,14 @@
                     </div>
                 </div>
             @endempty --}}
-            <div class="row justify-content-center mt-5">
-              <a type="button" style="background-color: rgb(225, 60, 60); color: white;" class="btn btn-lg" href="{{ route('create') }}">Inserisci Appartamento</a>
-            </div>
+
       </div>
         @if (count($apartmentWithSponsor) < 1 && count($apartmentWithoutSponsor) < 1)
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-sm-12">
-                        <h1 class="text-center font-weight-bold">
-                            Perchè inserire un appartamento
+                        <h1 class="text-center font-weight-bold" style="color: #000;">
+                            Perchè inserire un appartamento?
                         </h1>
                     </div>
                 </div>
