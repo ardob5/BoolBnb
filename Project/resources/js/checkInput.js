@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     var titleInput = $('#title');
     var addressInput = $('#address');
     var civicNumberInput = $('#civicNumber');
@@ -10,7 +10,7 @@ $(document).ready(function () {
     var bedsInput = $('#beds');
     var areaInput = $('#area');
     var priceInput = $('#price');
-    
+
 
     // evento input titolo
     titleInput.on('input', function() {
@@ -39,7 +39,7 @@ $(document).ready(function () {
     // controllo input numero civico
     civicNumberInput.on('input', function() {
         // controllo input numero civico
-        if ($(this).val().match(/[a-zA-Z]/g) ||$(this).val().match(/[#@\$!_\-\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "") {
+        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\-\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "" || $(this).val() < 0) {
             $(this).removeClass('is-valid');
             $(this).addClass('is-invalid');
         } else {
@@ -63,7 +63,7 @@ $(document).ready(function () {
     // controllo codice postale
     postCodeInput.on('input', function() {
         // controllo codice postale
-        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "") {
+        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "" || $(this).val() < 0) {
             $(this).removeClass('is-valid');
             $(this).addClass('is-invalid');
        } else {
@@ -75,7 +75,7 @@ $(document).ready(function () {
     // controllo input numero di stanze
     roomNumberInput.on('input', function(){
         // controllo numero stanze
-        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "") {
+        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "" || $(this).val() < 0) {
             $(this).removeClass('is-valid');
             $(this).addClass('is-invalid');
         } else {
@@ -87,7 +87,7 @@ $(document).ready(function () {
     // controllo input bagni
     bathNumberInput.on('input', function () {
         // controllo numero bagni
-        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "") {
+        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "" || $(this).val() < 0) {
             $(this).removeClass('is-valid');
             $(this).addClass('is-invalid');
         } else {
@@ -99,7 +99,7 @@ $(document).ready(function () {
     // controllo input posti letto
     bedsInput.on('input', function() {
         // controllo numero posti letto
-        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "") {
+        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "" || $(this).val() < 0) {
             $(this).removeClass('is-valid');
             $(this).addClass('is-invalid');
         } else {
@@ -111,7 +111,7 @@ $(document).ready(function () {
     // controllo input area
     areaInput.on('input', function() {
         // controllo area
-        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "") {
+        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "" || $(this).val() < 0) {
             $(this).removeClass('is-valid');
             $(this).addClass('is-invalid');
         } else {
@@ -123,7 +123,7 @@ $(document).ready(function () {
     // controllo input prezzo
     priceInput.on('input', function() {
         // controllo prezzo
-        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "") {
+        if ($(this).val().match(/[a-zA-Z]/g) || $(this).val().match(/[#@\$!_\?\"\'\+\%\&\=\^\<\>\;\[\]\Ç\§\.\,]/g) || $(this).val() == "" || $(this).val() < 0) {
             $(this).removeClass('is-valid');
             $(this).addClass('is-invalid');
         } else {

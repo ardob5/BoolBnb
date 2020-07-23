@@ -177,6 +177,10 @@ header {
           font-size: 20px;
           font-weight: bold;
 
+          .dropdown-menu {
+            background: $redbnb;
+          }
+
           a{
             color: white !important;
             text-decoration: none;
