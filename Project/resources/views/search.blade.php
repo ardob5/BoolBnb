@@ -78,7 +78,7 @@
           <input class="filter" type="number" name="rooms" id="rooms">
         </div>
         <div class="tendine">
-          <label for="rooms">Letti <br> necessari</label>
+          <label for="rooms">Posti <br> letto</label>
           <input class="filter" type="number" name="beds" id="beds">
         </div>
       </div>

@@ -33,6 +33,10 @@ footer{
       border-radius: 10px;
       font-weight: bold;
       margin-top: 20px;
+      &:hover {
+        text-decoration: none;
+        color: $redbnb;
+      }
     }
     ul{
       line-height: 25px;
